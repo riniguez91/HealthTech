@@ -47,14 +47,8 @@ local.properties
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
-
-# Generated files
-.idea/**/contentModel.xml
+.idea/misc.xml
+*.xml
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
@@ -95,6 +89,7 @@ out/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
 
 
 
@@ -104,3 +99,5 @@ hs_err_pid*
 *.xml
 .classpath
 .project
+=======
+>>>>>>> d66d1917045e2168e38654473581b4de5efe6fd7
