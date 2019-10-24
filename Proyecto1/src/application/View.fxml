@@ -2,11 +2,25 @@
 
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controlador">
    <children>
-      <PasswordField fx:id="password_tfield" focusTraversable="false" layoutX="559.0" layoutY="477.0" prefHeight="35.0" prefWidth="288.0" promptText="Introduce contraseña" />
-      <TextField fx:id="user_tfield" focusTraversable="false" layoutX="559.0" layoutY="421.0" onKeyPressed="#changeFocus_TAB" prefHeight="35.0" prefWidth="288.0" promptText="Introduce nombre de usuario" />
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../Fotos/FotoLogin1.jpg" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="password_tfield" focusTraversable="false" layoutX="288.0" layoutY="728.0" prefHeight="66.0" prefWidth="371.0" promptText="Introduce contraseña" />
+      <TextField fx:id="user_tfield" focusTraversable="false" layoutX="288.0" layoutY="607.0" onKeyPressed="#changeFocus_TAB" prefHeight="66.0" prefWidth="371.0" promptText="Introduce nombre de usuario" />
+      <ImageView fitHeight="883.0" fitWidth="1028.0" layoutY="-172.0">
+         <image>
+            <Image url="@../../../Fotos/Logo.png" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="1080.0" prefWidth="700.0" />
    </children>
 </AnchorPane>
