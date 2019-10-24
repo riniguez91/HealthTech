@@ -11,9 +11,25 @@
    <children>
       <ImageView fitHeight="1080.0" fitWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
+            <Image url="@../../../Fotos/FotoLogin4.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../Fotos/FotoLogin3.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../Fotos/FotoLogin2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
             <Image url="@../../../Fotos/FotoLogin1.jpg" />
          </image>
       </ImageView>
+      <VBox prefHeight="1080.0" prefWidth="700.0" />
       <PasswordField fx:id="password_tfield" focusTraversable="false" layoutX="288.0" layoutY="728.0" prefHeight="66.0" prefWidth="371.0" promptText="Introduce contraseña" />
       <TextField fx:id="user_tfield" focusTraversable="false" layoutX="288.0" layoutY="607.0" onKeyPressed="#changeFocus_TAB" prefHeight="66.0" prefWidth="371.0" promptText="Introduce nombre de usuario" />
       <ImageView fitHeight="883.0" fitWidth="1028.0" layoutY="-172.0">
@@ -21,6 +37,5 @@
             <Image url="@../../../Fotos/Logo.png" />
          </image>
       </ImageView>
-      <VBox prefHeight="1080.0" prefWidth="700.0" />
    </children>
 </AnchorPane>
