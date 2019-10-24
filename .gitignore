@@ -29,7 +29,6 @@ out/
 hs_err_pid*
 <<<<<<< HEAD
 
-.idea/misc.xml
 *.xml
 .classpath
 .project
