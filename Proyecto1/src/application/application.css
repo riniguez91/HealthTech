@@ -7,11 +7,24 @@
 
 .inicioLabel{
 	-fx-text-fill: black;
-	-fx-font-size: 18;
+	-fx-font-size: 35;
 	-fx-font-family: System;
 	-fx-font-weight: Bold;
 }
 
 .botones{
-	
+	-fx-color: #B1E4FE;
+	-fx-border-color: black;
+	-fx-font-size: 35;
+	-fx-font-family: System;
+	-fx-font-weight: Bold;
+    -fx-border-radius: 30px;
+    -fx-border: 3px double #006505;
 }
+.botones:hover{
+    -fx-opacity: 0.6;
+    -fx-text-fill: black;
+    -fx-color: #C6E9FB;
+    -fx-cursor: hand;
+    
+  }
