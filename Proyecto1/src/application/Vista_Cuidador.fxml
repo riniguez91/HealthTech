@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane prefHeight="1080.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -27,18 +27,21 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
                      <children>
-                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1052.0" prefWidth="458.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1460.0" AnchorPane.topAnchor="0.0">
+                        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1051.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ImageView fx:id="User" fitHeight="376.0" fitWidth="460.0" focusTraversable="true" nodeOrientation="INHERIT">
+                              <ImageView fx:id="User" fitHeight="376.0" fitWidth="550.0" focusTraversable="true" nodeOrientation="INHERIT">
                                  <image>
-                                    <Image url="@../resources/fotos/user.jpg" />
+                                    <Image url="@../resources/fotos/user.png" />
                                  </image>
+                                 <VBox.margin>
+                                    <Insets left="30.0" top="10.0" />
+                                 </VBox.margin>
                               </ImageView>
                               <Separator prefHeight="45.0" prefWidth="460.0" />
                               <GridPane prefHeight="234.0" prefWidth="460.0">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="224.0" minWidth="10.0" prefWidth="142.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="318.0" minWidth="10.0" prefWidth="318.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="538.0" minWidth="10.0" prefWidth="202.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="348.0" minWidth="10.0" prefWidth="348.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
@@ -79,12 +82,12 @@
                                     <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                  </children>
                               </GridPane>
-                              <Button fx:id="Cerrar_Sesion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="268.0" text="Cerrar Sesión">
+                              <Button fx:id="Cerrar_Sesion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="69.0" prefWidth="360.0" styleClass="botones" stylesheets="@application.css" text="Cerrar Sesión">
                                  <VBox.margin>
                                     <Insets top="370.0" />
                                  </VBox.margin></Button>
                            </children></VBox>
-                        <Pane layoutX="460.0" prefHeight="1050.0" prefWidth="1460.0" />
+                        <Pane layoutX="562.0" layoutY="-2.0" prefHeight="1050.0" prefWidth="1294.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -95,14 +98,44 @@
           </Tab>
             <Tab text="                         Usuarios                         ">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@application.css">
                      <children>
-                        <Pane layoutY="14.0" prefHeight="1052.0" prefWidth="458.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1462.0" AnchorPane.topAnchor="0.0">
+                        <Pane layoutY="14.0" prefHeight="1052.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ScrollBar layoutY="130.0" orientation="VERTICAL" prefHeight="921.0" prefWidth="14.0" />
+                              <ScrollBar layoutY="188.0" orientation="VERTICAL" prefHeight="863.0" prefWidth="6.0" />
                               <ComboBox fx:id="filtradoRolBox" layoutX="112.0" layoutY="28.0" prefHeight="25.0" prefWidth="200.0" promptText="Filtrar por" />
                               <TextField layoutX="112.0" layoutY="67.0" prefHeight="25.0" prefWidth="200.0" promptText="Buscar" />
-                              <Label layoutX="55.0" layoutY="122.0" prefHeight="17.0" prefWidth="74.0" styleClass="inicioLabel" stylesheets="@application.css" text="Nombre" />
+                              <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="158.0" styleClass="inicioLabel" stylesheets="@application.css" text="Nombre" />
+                              <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
+                              <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
+                           </children>
+                        </Pane>
+                        <Pane layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label fx:id="Nombre1" layoutX="628.0" layoutY="62.0" prefHeight="30.0" prefWidth="301.0" styleClass="inicioLabel" stylesheets="@application.css" text="Nombre:">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="Apellidos1" layoutX="628.0" layoutY="118.0" prefHeight="30.0" prefWidth="374.0" styleClass="inicioLabel" stylesheets="@application.css" text="Apellidos:" />
+                              <Label fx:id="ID1" layoutX="630.0" layoutY="236.0" prefHeight="45.0" prefWidth="400.0" styleClass="inicioLabel" stylesheets="@application.css" text="Fecha de Nacimiento:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="Rol1" layoutX="627.0" layoutY="177.0" prefHeight="45.0" prefWidth="400.0" styleClass="inicioLabel" stylesheets="@application.css" text="Tipo de Usuario (Rol):" />
+                              <Label fx:id="ID11" layoutX="632.0" layoutY="297.0" prefHeight="45.0" prefWidth="400.0" styleClass="inicioLabel" stylesheets="@application.css" text="Edad:">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="270.0" fitWidth="504.0" layoutX="135.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../resources/fotos/user.png" />
+                                 </image>
+                              </ImageView>
+                              <Separator layoutX="8.0" layoutY="347.0" prefHeight="61.0" prefWidth="1280.0" />
+                              <Button layoutX="90.0" layoutY="457.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="364.0" styleClass="botones" text="Enviar Mensaje" />
                            </children>
                         </Pane>
                      </children></AnchorPane>
