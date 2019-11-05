@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane prefHeight="1080.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="                         Inicio                         ">
+               <content>
+                  <AnchorPane prefHeight="177.0" prefWidth="1920.0">
+                     <children>
+                        <VBox layoutX="8.0" layoutY="8.0" prefHeight="1021.0" prefWidth="692.0" style="-fx-border-color: blue; -fx-border-width: 2;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1220.0" AnchorPane.topAnchor="5.0" />
+                        <VBox layoutX="786.0" layoutY="258.0" prefHeight="776.0" prefWidth="1130.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label prefHeight="95.0" prefWidth="1220.0" style="-fx-border-color: blue; -fx-border-width: 2;" text="Recordatorios:">
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="52.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+               </content>
+          </Tab>
+          <Tab text="                         Calendario                         ">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="1920.0" />
+            </content>
+          </Tab>
+            <Tab text="                         Usuarios                         ">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="                         Registros                         ">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="                         Mensajes                         ">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
