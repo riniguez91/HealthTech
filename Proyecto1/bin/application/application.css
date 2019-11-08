@@ -3,19 +3,32 @@
 .parent{
 	
 }
-
-
-.inicioLabel{
+/* Labels */
+.informationLabel{
 	-fx-text-fill: black;
 	-fx-font-size: 35;
 	-fx-font-family: System;
 	-fx-font-weight: Bold;
 }
+.tituloLabel{
+	-fx-text-fill: black;
+	-fx-font-size: 60;
+	-fx-font-family: System;
+	-fx-font-weight: Bold;
+	-fx-text-transform: capitalize;
+}
+.textoLabel{
+	-fx-text-fill: black;
+	-fx-font-size: 20;
+	-fx-font-family: System;
+	-fx-font-weight: normal;
+}
 
+/* Botones */
 .botones{
 	-fx-color: #B1E4FE;
 	-fx-border-color: black;
-	-fx-font-size: 35;
+	-fx-font-size: 45;
 	-fx-font-family: System;
 	-fx-font-weight: Bold;
     -fx-border-radius: 30px;
@@ -27,4 +40,21 @@
     -fx-color: #C6E9FB;
     -fx-cursor: hand;
     
-  }
+}
+.botoninfo{
+	-fx-color: #AAA19F;
+	-fx-border-color: black;
+	-fx-font-size: 30;
+	-fx-font-family: System;
+	-fx-font-weight: Bold;
+    -fx-border-radius: 30px;
+    -fx-border: 3px double;
+}
+.botoninfo:hover{
+    -fx-opacity: 0.6;
+    -fx-text-fill: black;
+    -fx-color: #EEE5E3;
+    -fx-cursor: hand;
+    
+}
+
