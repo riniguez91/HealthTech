@@ -76,10 +76,10 @@
                                           <Insets left="10.0" />
                                        </padding>
                                     </Label>
-                                    <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@application.css" text="Catalina" GridPane.columnIndex="1" />
-                                    <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@application.css" text="Rey Rodríguez" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@application.css" text="crey" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@application.css" text="Cuidador" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@application.css" text="Susana" GridPane.columnIndex="1" />
+                                    <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@application.css" text="Díaz Hernández" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@application.css" text="sdiaz" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@application.css" text="Paciente" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                  </children>
                               </GridPane>
                               <Button fx:id="Cerrar_Sesion" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="90.0" prefWidth="550.0" styleClass="botones" stylesheets="@application.css" text="Cerrar Sesión" textAlignment="CENTER">
@@ -173,19 +173,19 @@
                               </ImageView>
                               <Separator layoutX="8.0" layoutY="347.0" prefHeight="61.0" prefWidth="1280.0" />
                               <Button layoutX="792.0" layoutY="912.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="442.0" styleClass="botones" stylesheets="@application.css" text="Enviar Mensaje" />
-                              <Label fx:id="Nombre11" layoutX="897.0" layoutY="68.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="Catalina">
+                              <Label fx:id="Nombre11" layoutX="897.0" layoutY="68.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="Susana">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="Apellidos11" layoutX="897.0" layoutY="124.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="Rey Rodríguez" />
-                              <Label fx:id="ID12" layoutX="899.0" layoutY="242.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="03/06/1984">
+                              <Label fx:id="Apellidos11" layoutX="897.0" layoutY="124.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="Díaz Hernández" />
+                              <Label fx:id="ID12" layoutX="899.0" layoutY="242.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="12/01/1949">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="Rol11" layoutX="896.0" layoutY="183.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="Cuidador" />
-                              <Label fx:id="ID111" layoutX="901.0" layoutY="303.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="35">
+                              <Label fx:id="Rol11" layoutX="896.0" layoutY="183.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="Paciente" />
+                              <Label fx:id="ID111" layoutX="901.0" layoutY="303.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@application.css" text="70">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
