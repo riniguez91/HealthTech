@@ -12,9 +12,10 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/application/vistas/vistaPaciente.fxml"));
 		Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
 		primaryStage.setScene(new Scene(root, visualBounds.getWidth(), visualBounds.getHeight()));
+
 
 		//set Stage boundaries to visible bounds of the main screen
 		primaryStage.setX(visualBounds.getMinX());
