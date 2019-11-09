@@ -1,4 +1,4 @@
-package application;
+package application.controladores;
 
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -15,7 +15,7 @@ import javafx.util.Duration;
 
 
 
-public class Controlador {
+public class controladorLogin {
     @FXML
     private ImageView fotolgn_1;
 
@@ -48,14 +48,12 @@ public class Controlador {
             SequentialTransition sequentialTransition = new SequentialTransition();
 
             FadeTransition fadeIn = getFadeTransition(slide, 0.0, 1.0, 2000);
-            PauseTransition stayOn = new PauseTransition(Duration.millis(2000));
+            PauseTransition stayOn = new PauseTransition(Duration.millis(3000));
             FadeTransition fadeOut = getFadeTransition(slide, 1.0, 0.0, 2000);
 
             sequentialTransition.getChildren().addAll(fadeIn, stayOn, fadeOut);
-            slide.setOpacity(0);
             slideshow.getChildren().add(sequentialTransition);
         }
-
         slideshow.setCycleCount(Timeline.INDEFINITE);
         slideshow.play();
     }

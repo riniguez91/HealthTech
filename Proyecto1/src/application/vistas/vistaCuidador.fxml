@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorCuidador">
+    <children>
+        <TabPane prefHeight="1080.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="                         Inicio                         ">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
+                            <children>
+                                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1051.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <ImageView fx:id="User" fitHeight="376.0" fitWidth="550.0" focusTraversable="true" nodeOrientation="INHERIT">
+                                            <image>
+                                                <Image url="@../../resources/fotos/user.png" />
+                                            </image>
+                                            <VBox.margin>
+                                                <Insets left="30.0" top="10.0" />
+                                            </VBox.margin>
+                                        </ImageView>
+                                        <Separator prefHeight="45.0" prefWidth="460.0" />
+                                        <GridPane prefHeight="234.0" prefWidth="460.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="538.0" minWidth="10.0" prefWidth="202.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="348.0" minWidth="10.0" prefWidth="348.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label fx:id="Nombre" prefHeight="30.0" prefWidth="301.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre:">
+                                                    <padding>
+                                                        <Insets left="10.0" />
+                                                    </padding>
+                                                    <font>
+                                                        <Font name="System Bold" size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="Apellidos" prefHeight="30.0" prefWidth="374.0" styleClass="informationLabel" stylesheets="@../application.css" text="Apellidos:" GridPane.rowIndex="1">
+                                                    <padding>
+                                                        <Insets left="10.0" />
+                                                    </padding>
+                                                </Label>
+                                                <Label fx:id="ID" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="ID:" GridPane.rowIndex="2">
+                                                    <padding>
+                                                        <Insets left="10.0" />
+                                                    </padding>
+                                                    <font>
+                                                        <Font name="System Bold" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="Rol" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Rol:" GridPane.rowIndex="3">
+                                                    <padding>
+                                                        <Insets left="10.0" />
+                                                    </padding>
+                                                </Label>
+                                                <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" text="Catalina" GridPane.columnIndex="1" />
+                                                <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" text="Rey Rodríguez" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" text="crey" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" text="Cuidador" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                            </children>
+                                        </GridPane>
+                                        <Button fx:id="Cerrar_Sesion" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="90.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Cerrar Sesión" textAlignment="CENTER">
+                                            <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" top="340.0" />
+                                            </VBox.margin></Button>
+                                    </children></VBox>
+                                <Pane layoutX="562.0" layoutY="-2.0" prefHeight="1050.0" prefWidth="1294.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label layoutY="16.0" prefHeight="90.0" prefWidth="900.0" styleClass="tituloLabel" stylesheets="@../application.css" text="RECORDATORIOS">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Separator layoutX="-1.0" layoutY="96.0" prefHeight="27.0" prefWidth="1297.0" />
+                                        <Label layoutY="109.0" prefHeight="90.0" prefWidth="900.0" styleClass="tituloLabel" stylesheets="@../application.css" text="Comunicación:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label layoutY="201.0" prefHeight="90.0" prefWidth="550.0" styleClass="textoLabel" stylesheets="@../application.css" text="- 0 mensajes nuevos">
+                                            <padding>
+                                                <Insets left="40.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label layoutX="2.0" layoutY="328.0" prefHeight="90.0" prefWidth="900.0" styleClass="tituloLabel" stylesheets="@../application.css" text="Calendario:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label layoutY="399.0" prefHeight="90.0" prefWidth="550.0" styleClass="textoLabel" stylesheets="@../application.css" text="- La próxima cita es el día: ">
+                                            <padding>
+                                                <Insets left="40.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label layoutX="3.0" layoutY="529.0" prefHeight="90.0" prefWidth="900.0" styleClass="tituloLabel" stylesheets="@../application.css" text="Información Meteorológica:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Button layoutX="442.0" layoutY="949.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="462.0" styleClass="botoninfo" stylesheets="@../application.css" text="Preguntas frecuentes" />
+                                    </children></Pane>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="                         Calendario                         ">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab text="                         Usuarios                         ">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../application.css">
+                            <children>
+                                <Pane layoutY="14.0" prefHeight="1052.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <ScrollBar layoutY="188.0" orientation="VERTICAL" prefHeight="863.0" prefWidth="6.0" />
+                                        <ComboBox fx:id="filtradoRolBox" layoutX="112.0" layoutY="28.0" prefHeight="25.0" prefWidth="240.0" promptText="Filtrar por" />
+                                        <TextField layoutX="112.0" layoutY="67.0" prefHeight="53.0" prefWidth="238.0" promptText="Buscar">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font></TextField>
+                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre" />
+                                        <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
+                                        <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
+                                    </children>
+                                </Pane>
+                                <Pane layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@../application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label fx:id="Nombre1" layoutX="532.0" layoutY="62.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre:">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="Apellidos1" layoutX="532.0" layoutY="118.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Apellidos:" />
+                                        <Label fx:id="ID1" layoutX="534.0" layoutY="236.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="Rol1" layoutX="531.0" layoutY="177.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Tipo de Usuario (Rol):" />
+                                        <Label fx:id="ID11" layoutX="536.0" layoutY="297.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Edad:">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <ImageView fitHeight="270.0" fitWidth="504.0" layoutX="135.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../resources/fotos/user.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Separator layoutX="8.0" layoutY="347.0" prefHeight="61.0" prefWidth="1280.0" />
+                                        <Button layoutX="792.0" layoutY="912.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="442.0" styleClass="botones" stylesheets="@../application.css" text="Enviar Mensaje" />
+                                        <Label fx:id="Nombre11" layoutX="897.0" layoutY="68.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="Catalina">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="Apellidos11" layoutX="897.0" layoutY="124.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="Rey Rodríguez" />
+                                        <Label fx:id="ID12" layoutX="899.0" layoutY="242.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="03/06/1984">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="Rol11" layoutX="896.0" layoutY="183.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="Cuidador" />
+                                        <Label fx:id="ID111" layoutX="901.0" layoutY="303.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="35">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutY="396.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Asunto:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <TextField layoutX="175.0" layoutY="405.0" prefHeight="53.0" prefWidth="1070.0" promptText="Introducir el asunto del mensaje." styleClass="textoLabel" stylesheets="@../application.css">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </TextField>
+                                        <Label layoutX="1.0" layoutY="481.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Mensaje:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <TextField alignment="TOP_LEFT" layoutX="19.0" layoutY="546.0" prefHeight="300.0" prefWidth="1230.0" promptText="Puede escribir su texto pinchando aqui." styleClass="textoLabel">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </TextField>
+                                    </children>
+                                </Pane>
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="                         Mensajes                         ">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="1052.0" prefWidth="640.0">
+                                    <children>
+                                        <ScrollBar layoutY="188.0" orientation="VERTICAL" prefHeight="863.0" prefWidth="6.0" />
+                                        <TextField layoutX="112.0" layoutY="67.0" prefHeight="53.0" prefWidth="238.0" promptText="Buscar">
+                                            <font>
+                                                <Font size="20.0" />
+                                            </font>
+                                        </TextField>
+                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre" />
+                                        <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
+                                        <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
+                                        <Label layoutX="302.0" layoutY="123.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="ID" />
+                                        <Button layoutX="91.0" layoutY="951.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="462.0" styleClass="botoninfo" stylesheets="@../application.css" text="Cancelar Ticket" />
+                                    </children>
+                                </Pane>
+                                <Button layoutX="1434.0" layoutY="726.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="442.0" styleClass="botones" stylesheets="@../application.css" text="Enviar Mensaje" />
+                                <Label layoutX="642.0" layoutY="80.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Asunto:">
+                                    <padding>
+                                        <Insets left="20.0" />
+                                    </padding>
+                                </Label>
+                                <TextField layoutX="817.0" layoutY="89.0" prefHeight="53.0" prefWidth="1070.0" promptText="Introducir el asunto del mensaje." styleClass="textoLabel" stylesheets="@../application.css">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </TextField>
+                                <Label layoutX="643.0" layoutY="295.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Mensaje:">
+                                    <padding>
+                                        <Insets left="20.0" />
+                                    </padding>
+                                </Label>
+                                <TextField alignment="TOP_LEFT" layoutX="661.0" layoutY="360.0" prefHeight="300.0" prefWidth="1230.0" promptText="Puede escribir su texto pinchando aqui." styleClass="textoLabel">
+                                    <font>
+                                        <Font size="20.0" />
+                                    </font>
+                                </TextField>
+                                <Label layoutX="642.0" layoutY="189.0" prefHeight="67.0" prefWidth="250.0" styleClass="informationLabel" stylesheets="@../application.css" text="Destinatario:">
+                                    <padding>
+                                        <Insets left="20.0" />
+                                    </padding>
+                                </Label>
+                                <ComboBox fx:id="filtradoRolBox1" layoutX="894.0" layoutY="210.0" prefHeight="25.0" prefWidth="240.0" promptText="Seleccionar destinatario" />
+                            </children></AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
+
