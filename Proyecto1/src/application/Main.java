@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -35,6 +36,7 @@ public class Main extends Application {
 		primaryStage.setHeight(visualBounds.getHeight());
 		primaryStage.setMaximized(true);
 		primaryStage.show();
+		primaryStage.getIcons().add(new Image("@../../resources/fotos/Logo.png"));
 	}
 
 
