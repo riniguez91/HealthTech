@@ -1,55 +1,308 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorFamiliar">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorMedico">
     <children>
         <TabPane prefHeight="1080.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
                 <Tab text="                         Inicio                         ">
                     <content>
-                        <AnchorPane prefHeight="177.0" prefWidth="1920.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
                             <children>
-                                <VBox layoutX="8.0" layoutY="8.0" prefHeight="1021.0" prefWidth="692.0" style="-fx-border-color: blue; -fx-border-width: 2;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="1220.0" AnchorPane.topAnchor="5.0" />
-                                <VBox layoutX="786.0" layoutY="258.0" prefHeight="776.0" prefWidth="1130.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="700.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1051.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <Label prefHeight="95.0" prefWidth="1220.0" style="-fx-border-color: blue; -fx-border-width: 2;" text="Recordatorios:">
+                                        <ImageView fx:id="User" fitHeight="376.0" fitWidth="550.0" focusTraversable="true" nodeOrientation="INHERIT">
+                                            <image>
+                                                <Image url="@../../resources/fotos/user.png" />
+                                            </image>
+                                            <VBox.margin>
+                                                <Insets left="30.0" top="10.0" />
+                                            </VBox.margin>
+                                        </ImageView>
+                                        <Separator prefHeight="45.0" prefWidth="460.0" />
+                                        <GridPane prefHeight="234.0" prefWidth="460.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="538.0" minWidth="10.0" prefWidth="202.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="348.0" minWidth="10.0" prefWidth="348.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="60.0" minHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                            <children>
+                                                <Label fx:id="Nombre" prefHeight="30.0" prefWidth="301.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre:">
+                                                    <padding>
+                                                        <Insets left="10.0" />
+                                                    </padding>
+                                                    <font>
+                                                        <Font name="System Bold" size="18.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="Apellidos" prefHeight="30.0" prefWidth="374.0" styleClass="informationLabel" stylesheets="@../application.css" text="Apellidos:" GridPane.rowIndex="1">
+                                                    <padding>
+                                                        <Insets left="10.0" />
+                                                    </padding>
+                                                </Label>
+                                                <Label fx:id="ID" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="ID:" GridPane.rowIndex="2">
+                                                    <padding>
+                                                        <Insets left="10.0" />
+                                                    </padding>
+                                                    <font>
+                                                        <Font name="System Bold" size="12.0" />
+                                                    </font>
+                                                </Label>
+                                                <Label fx:id="Rol" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Rol:" GridPane.rowIndex="3">
+                                                    <padding>
+                                                        <Insets left="10.0" />
+                                                    </padding>
+                                                </Label>
+                                                <Label fx:id="labelNombre" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" />
+                                                <Label fx:id="labelApellidos" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="labelUsername" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="labelRol" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                            </children>
+                                        </GridPane>
+                              <JFXButton prefHeight="90.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Cerrar Sesión">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" left="10.0" top="340.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                                    </children></VBox>
+                                <Pane layoutX="562.0" layoutY="-2.0" prefHeight="1050.0" prefWidth="1294.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label layoutY="16.0" prefHeight="90.0" prefWidth="900.0" styleClass="tituloLabel" stylesheets="@../application.css" text="RECORDATORIOS">
                                             <padding>
-                                                <Insets left="10.0" />
+                                                <Insets left="20.0" />
                                             </padding>
-                                            <font>
-                                                <Font size="52.0" />
-                                            </font>
                                         </Label>
-                                    </children>
-                                </VBox>
+                                        <Separator layoutX="-1.0" layoutY="96.0" prefHeight="27.0" prefWidth="1297.0" />
+                                        <Label layoutY="109.0" prefHeight="90.0" prefWidth="900.0" styleClass="tituloLabel" stylesheets="@../application.css" text="Comunicación:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label layoutY="201.0" prefHeight="90.0" prefWidth="550.0" styleClass="textoLabel" stylesheets="@../application.css" text="- 0 mensajes nuevos">
+                                            <padding>
+                                                <Insets left="40.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label layoutX="2.0" layoutY="328.0" prefHeight="90.0" prefWidth="900.0" styleClass="tituloLabel" stylesheets="@../application.css" text="Calendario:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label layoutY="399.0" prefHeight="90.0" prefWidth="550.0" styleClass="textoLabel" stylesheets="@../application.css" text="- La próxima cita es el día: ">
+                                            <padding>
+                                                <Insets left="40.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label layoutX="3.0" layoutY="529.0" prefHeight="90.0" prefWidth="900.0" styleClass="tituloLabel" stylesheets="@../application.css" text="Información Meteorológica:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                              <JFXButton layoutX="442.0" layoutY="949.0" prefHeight="67.0" prefWidth="462.0" styleClass="botoninfo" stylesheets="@../application.css" text="Preguntas Frecuentes" />
+                                    </children></Pane>
                             </children></AnchorPane>
                     </content>
                 </Tab>
                 <Tab text="                         Calendario                         ">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="1920.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
                 <Tab text="                         Usuarios                         ">
                     <content>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../application.css">
+                            <children>
+                                <Pane layoutY="14.0" prefHeight="1052.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <ScrollBar layoutY="188.0" orientation="VERTICAL" prefHeight="863.0" prefWidth="6.0" />
+                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre" />
+                                        <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
+                                        <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
+                              <JFXComboBox layoutX="112.0" layoutY="28.0" prefHeight="25.0" prefWidth="274.0" promptText="Seleccionar destinatario" styleClass="textoLabel" stylesheets="@../application.css" />
+                                    </children>
+                                </Pane>
+                                <Pane layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@../application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label fx:id="Nombre1" layoutX="532.0" layoutY="62.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre:">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="Apellidos1" layoutX="532.0" layoutY="118.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Apellidos:" />
+                                        <Label fx:id="ID1" layoutX="534.0" layoutY="236.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="Rol1" layoutX="531.0" layoutY="177.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Tipo de Usuario (Rol):" />
+                                        <Label fx:id="ID11" layoutX="536.0" layoutY="297.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Edad:">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <ImageView fitHeight="270.0" fitWidth="504.0" layoutX="135.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@../../resources/fotos/user.png" />
+                                            </image>
+                                        </ImageView>
+                                        <Separator layoutX="8.0" layoutY="347.0" prefHeight="61.0" prefWidth="1280.0" />
+                                        <Label fx:id="Nombre11" layoutX="897.0" layoutY="68.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="Rosa">
+                                            <font>
+                                                <Font name="System Bold" size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="Apellidos11" layoutX="897.0" layoutY="124.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="Nieto Moreno" />
+                                        <Label fx:id="ID12" layoutX="899.0" layoutY="242.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="21/02/1989">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="Rol11" layoutX="896.0" layoutY="183.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="Familiar" />
+                                        <Label fx:id="ID111" layoutX="901.0" layoutY="303.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="30">
+                                            <font>
+                                                <Font name="System Bold" size="12.0" />
+                                            </font>
+                                        </Label>
+                                        <Label layoutY="396.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Asunto:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                                        <Label layoutX="1.0" layoutY="481.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Mensaje:">
+                                            <padding>
+                                                <Insets left="20.0" />
+                                            </padding>
+                                        </Label>
+                              <JFXButton layoutX="792.0" layoutY="912.0" prefHeight="105.0" prefWidth="442.0" styleClass="botones" stylesheets="@../application.css" text="Enviar Mensaje" />
+                                    </children>
+                                </Pane>
+                        <JFXTextField layoutX="661.0" layoutY="553.0" prefHeight="300.0" prefWidth="1230.0" promptText="Puede escribir su texto pinchando aqui." styleClass="textoLabel" stylesheets="@../application.css" AnchorPane.bottomAnchor="198.0" AnchorPane.leftAnchor="661.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="553.0" />
+                        <JFXTextField layoutX="817.0" layoutY="399.0" prefHeight="53.0" prefWidth="1070.0" promptText="Introducir el asunto del mensaje." styleClass="textoLabel" stylesheets="@../application.css" AnchorPane.bottomAnchor="599.0" AnchorPane.leftAnchor="817.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="399.0" />
+                        <JFXTextField layoutX="132.0" layoutY="67.0" prefHeight="53.0" prefWidth="238.0" promptText="Buscar" styleClass="textoLabel" stylesheets="@../application.css" AnchorPane.bottomAnchor="931.0" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="1550.0" AnchorPane.topAnchor="67.0" />
+                            </children></AnchorPane>
                     </content>
                 </Tab>
                 <Tab text="                         Registros                         ">
-                    <content>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                    </content>
-                </Tab>
+              		<content>
+                		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     		<children>
+                        		<Pane prefHeight="1080.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           		<children>
+                              		<Label layoutX="30.0" layoutY="20.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor de Gas:" />
+                             		<Label layoutX="30.0" layoutY="540.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor Magnético:" />
+                              		<StackedBarChart layoutX="65.0" layoutY="70.0">
+                                		<xAxis>
+                                  		<CategoryAxis side="BOTTOM" />
+                                		</xAxis>
+                                		<yAxis>
+                                  		<NumberAxis side="LEFT" />
+                                		</yAxis>
+                              		</StackedBarChart>
+                              		<StackedBarChart layoutX="65.0" layoutY="585.0">
+                                		<xAxis>
+                                  		<CategoryAxis side="BOTTOM" />
+                               		</xAxis>
+                                		<yAxis>
+                                  		<NumberAxis side="LEFT" />
+                                		</yAxis>
+                              		</StackedBarChart>
+                           		</children>
+                        		</Pane>
+                        		<Separator orientation="VERTICAL" prefHeight="1080.0" AnchorPane.leftAnchor="640.0" />
+                        		<Separator orientation="VERTICAL" prefHeight="1080.0" AnchorPane.leftAnchor="1280.0" />
+                        		<Pane prefHeight="1080.0" prefWidth="640.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="640.0">
+                           		<opaqueInsets>
+                              		<Insets />
+                           		</opaqueInsets>
+                           		<children>
+                              		<Label layoutX="30.0" layoutY="20.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor de Temperatura:" />
+                              		<LineChart layoutX="65.0" layoutY="65.0">
+                                		<xAxis>
+                                  		<CategoryAxis side="BOTTOM" />
+                                		</xAxis>
+                                		<yAxis>
+                                  		<NumberAxis side="LEFT" />
+                                		</yAxis>
+                              		</LineChart>
+                           		</children>
+                        		</Pane>
+                        		<Pane prefHeight="1080.0" prefWidth="640.0" AnchorPane.leftAnchor="1280.0" AnchorPane.rightAnchor="0.0">
+                           		<children>
+                              		<Label layoutX="30.0" layoutY="20.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor de Presión:" />
+                              		<PieChart layoutX="65.0" layoutY="65.0" />
+                              		<Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoLabel" text="Horas de Sueño." x="80.0" y="550.0" />
+                              		<Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoLabel" text="Horas de Actividad." x="80.0" y="585.0" />
+                              		<Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoLabel" text="Horas Fuera de Casa." x="80.0" y="620.0" />
+                           		</children>
+                        		</Pane>
+                        		<Separator prefWidth="200.0" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="520.0" />
+                     		</children></AnchorPane>
+              		</content>
+            	</Tab>
                 <Tab text="                         Mensajes                         ">
                     <content>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Pane prefHeight="1052.0" prefWidth="640.0">
+                                    <children>
+                                        <ScrollBar layoutY="188.0" orientation="VERTICAL" prefHeight="863.0" prefWidth="6.0" />
+                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre" />
+                                        <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
+                                        <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
+                                        <Label layoutX="302.0" layoutY="123.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="ID" />
+                              <JFXTextField layoutX="112.0" layoutY="67.0" prefHeight="53.0" prefWidth="238.0" promptText="Buscar" styleClass="textoLabel" stylesheets="@../application.css" />
+                              <JFXButton layoutX="91.0" layoutY="951.0" prefHeight="67.0" prefWidth="462.0" styleClass="botoninfo" stylesheets="@../application.css" text="Cancelar Ticket" />
+                                    </children>
+                                </Pane>
+                                <Label layoutX="642.0" layoutY="80.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Asunto:" AnchorPane.bottomAnchor="904.0" AnchorPane.leftAnchor="642.0" AnchorPane.rightAnchor="1108.0" AnchorPane.topAnchor="80.0">
+                                    <padding>
+                                        <Insets left="20.0" />
+                                    </padding>
+                                </Label>
+                                <Label layoutX="643.0" layoutY="295.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Mensaje:" AnchorPane.bottomAnchor="689.0" AnchorPane.leftAnchor="643.0" AnchorPane.rightAnchor="1107.0" AnchorPane.topAnchor="295.0">
+                                    <padding>
+                                        <Insets left="20.0" />
+                                    </padding>
+                                </Label>
+                                <Label layoutX="642.0" layoutY="189.0" prefHeight="67.0" prefWidth="250.0" styleClass="informationLabel" stylesheets="@../application.css" text="Destinatario:" AnchorPane.bottomAnchor="795.0" AnchorPane.leftAnchor="642.0" AnchorPane.rightAnchor="1028.0" AnchorPane.topAnchor="189.0">
+                                    <padding>
+                                        <Insets left="20.0" />
+                                    </padding>
+                                </Label>
+                        <JFXComboBox layoutX="894.0" layoutY="210.0" prefHeight="25.0" prefWidth="286.0" promptText="Seleccionar destinatario" styleClass="textoLabel" stylesheets="@../application.css" AnchorPane.bottomAnchor="816.0" AnchorPane.leftAnchor="894.0" AnchorPane.rightAnchor="740.0" AnchorPane.topAnchor="210.0" />
+                        <JFXButton layoutX="1434.0" layoutY="726.0" prefHeight="105.0" prefWidth="442.0" styleClass="botones" stylesheets="@../application.css" text="Enviar Mensaje" AnchorPane.bottomAnchor="220.0" AnchorPane.leftAnchor="1434.0" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="726.0" />
+                        <JFXTextField layoutX="661.0" layoutY="360.0" prefHeight="300.0" prefWidth="1230.0" promptText="Puede escribir su texto pinchando aqui." styleClass="textoLabel" stylesheets="@../application.css" AnchorPane.bottomAnchor="391.0" AnchorPane.leftAnchor="661.0" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="360.0" />
+                        <JFXTextField layoutX="817.0" layoutY="84.0" prefHeight="53.0" prefWidth="1070.0" promptText="Introducir el asunto del mensaje." styleClass="textoLabel" stylesheets="@../application.css" AnchorPane.bottomAnchor="914.0" AnchorPane.leftAnchor="817.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="84.0" />
+                            </children></AnchorPane>
                     </content>
                 </Tab>
             </tabs>
