@@ -1,74 +1,74 @@
-{
-  "medico": [
-    {
-      "name": "Sara",
-      "surname": "Gómez Hernández",
-      "age": 39,
-      "birthday": "03/01/1980",
-      "username": "sgomez",
-      "password": "1fz91VYT"
-    },
-    {
-      "name": "Jose",
-      "surname": "Moreno García",
-      "age": 46,
-      "birthday": "26/11/1972",
-      "username": "jmoreno",
-      "password": "0HdJYSAN"
-    }
-  ],
-  "cuidador": [
-    {
-      "name": "Catalina",
-      "surname": "Rey Rodríguez",
-      "age": 35,
-      "birthday": "03/06/1984",
-      "username": "crey",
-      "password": "3A9m5Y81"
-    },
-    {
-      "name": "Juan José",
-      "surname": "Rodríguez Fernández",
-      "age": 26,
-      "birthday": "14/10/1993",
-      "username": "jrodriguez",
-      "password": "nLQJ5lJo"
-    }
-  ],
-  "familiar": [
-    {
-      "name": "Sancho",
-      "surname": "Hernández Díaz",
-      "age": 49,
-      "birthday": "23/10/1970",
-      "username": "shernandez",
-      "password": "aiM1RJI9"
-    },
-    {
-      "name": "Rosa",
-      "surname": "Nieto Moreno",
-      "age": 30,
-      "birthday": "21/02/1989",
-      "username": "rnieto",
-      "password": "6ixzYoW8"
-    }
-  ],
-  "paciente": [
-    {
-      "name": "Susana",
-      "surname": "Díaz Hernández",
-      "age": 70,
-      "birthday": "12/01/1949",
-      "username": "sdiaz",
-      "password": "qKMSgMvp"
-    },
-    {
-      "name": "Pedro",
-      "surname": "Bascuas Nieto",
-      "age": 82,
-      "birthday": "20/04/1937",
-      "username": "pbascuas",
-      "password": "0A8ycTm4"
-    }
-  ]
-}
+[
+  {
+    "name": "Sara",
+    "surname": "Gómez Hernández",
+    "age": 39,
+    "birthday": "03/01/1980",
+    "username": "sgomez",
+    "password": "1fz91VYT",
+    "rol": "medico"
+  },
+  {
+    "name": "Jose",
+    "surname": "Moreno García",
+    "age": 46,
+    "birthday": "26/11/1972",
+    "username": "jmoreno",
+    "password": "0HdJYSAN",
+    "rol": "medico"
+  },
+  {
+    "name": "Catalina",
+    "surname": "Rey Rodríguez",
+    "age": 35,
+    "birthday": "03/06/1984",
+    "username": "crey",
+    "password": "3A9m5Y81",
+    "rol": "cuidador"
+  },
+  {
+    "name": "Juan José",
+    "surname": "Rodríguez Fernández",
+    "age": 26,
+    "birthday": "14/10/1993",
+    "username": "jrodriguez",
+    "password": "nLQJ5lJo",
+    "rol": "cuidador"
+  },
+  {
+    "name": "Sancho",
+    "surname": "Hernández Díaz",
+    "age": 49,
+    "birthday": "23/10/1970",
+    "username": "shernandez",
+    "password": "aiM1RJI9",
+    "rol": "familiar"
+  },
+  {
+    "name": "Rosa",
+    "surname": "Nieto Moreno",
+    "age": 30,
+    "birthday": "21/02/1989",
+    "username": "rnieto",
+    "password": "6ixzYoW8",
+    "rol": "familiar"
+  },
+  {
+    "name": "Susana",
+    "surname": "Díaz Hernández",
+    "age": 70,
+    "birthday": "12/01/1949",
+    "username": "sdiaz",
+    "password": "qKMSgMvp",
+    "rol": "paciente"
+  },
+  {
+    "name": "Pedro",
+    "surname": "Bascuas Nieto",
+    "age": 82,
+    "birthday": "20/04/1937",
+    "username": "pbascuas",
+    "password": "0A8ycTm4",
+    "rol": "paciente"
+  }
+]

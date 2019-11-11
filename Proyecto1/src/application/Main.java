@@ -1,5 +1,8 @@
 package application;
 
+import application.controladores.*;
+import application.modelos.Usuario;
+import application.modelos.modelo;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -12,7 +15,15 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/application/vistas/vistaPaciente.fxml"));
+		FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("/application/vistas/vistaLogin.fxml"));
+		Parent root = loginLoader.load();
+		controladorLogin loginControlador = loginLoader.getController();
+		// Parent root = FXMLLoader.load(getClass().getResource("/application/vistas/vistaLogin.fxml"));
+
+		modelo m = new modelo();
+		Usuario u = new Usuario();
+		loginControlador.initModelo(m,u);
+
 		Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
 		primaryStage.setScene(new Scene(root, visualBounds.getWidth(), visualBounds.getHeight()));
 
@@ -27,9 +38,8 @@ public class Main extends Application {
 	}
 
 
-	public static void main(String[] args) { 
-		launch(args); 
-		
+	public static void main(String[] args) {
+		launch(args);
 	}
 	
 }
