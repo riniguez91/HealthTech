@@ -35,14 +35,14 @@
         </ImageView>
       <AnchorPane fx:id="crearUsuarioElementos" prefHeight="1080.0" prefWidth="693.0" visible="false">
          <children>
-            <JFXTextField fx:id="crearNombreTField" layoutX="110.0" layoutY="339.0" prefHeight="60.0" prefWidth="452.0" />
-            <JFXTextField fx:id="crearApellidosTField" layoutX="110.0" layoutY="429.0" prefHeight="60.0" prefWidth="452.0" />
-            <JFXTextField fx:id="crearEdadTField" layoutX="110.0" layoutY="519.0" prefHeight="60.0" prefWidth="452.0" />
-            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="609.0" prefHeight="60.0" prefWidth="452.0" />
-            <JFXTextField fx:id="crearUsernameTField" layoutX="110.0" layoutY="699.0" prefHeight="60.0" prefWidth="452.0" />
-            <JFXTextField fx:id="crearPasswordTField" layoutX="110.0" layoutY="789.0" prefHeight="60.0" prefWidth="452.0" />
-            <JFXTextField fx:id="crearRolTField" layoutX="110.0" layoutY="879.0" prefHeight="60.0" prefWidth="452.0" />
-            <JFXButton fx:id="crearCuentaBttn" layoutX="165.0" layoutY="969.0" prefHeight="60.0" prefWidth="342.74" />
+            <JFXTextField fx:id="crearNombreTField" layoutX="110.0" layoutY="339.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre" />
+            <JFXTextField fx:id="crearApellidosTField" layoutX="110.0" layoutY="429.0" prefHeight="60.0" prefWidth="452.0" promptText="Apellidos" />
+            <JFXTextField fx:id="crearEdadTField" layoutX="110.0" layoutY="519.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Cuantos años tienes?" />
+            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="609.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Cuando cumples los años? xx/xx/xxxx" />
+            <JFXTextField fx:id="crearUsernameTField" layoutX="110.0" layoutY="699.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre de usuario" />
+            <JFXTextField fx:id="crearPasswordTField" layoutX="110.0" layoutY="789.0" prefHeight="60.0" prefWidth="452.0" promptText="Contraseña" />
+            <JFXTextField fx:id="crearRolTField" layoutX="110.0" layoutY="879.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Medico, cuidador, paciente o familiar?" />
+            <JFXButton fx:id="crearCuentaBttn" layoutX="165.0" layoutY="969.0" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="loginElements" layoutX="121.0" layoutY="489.0">
