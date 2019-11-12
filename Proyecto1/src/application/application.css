@@ -25,31 +25,19 @@
 
 /* Botones */
 .botones{
-	-fx-color: #B1E4FE;
-	-fx-border-color: black;
-	-fx-font-size: 45;
-	-fx-font-family: System;
-	-fx-font-weight: Bold;
-    -fx-border-radius: 30px;
-    -fx-border: 3px double #006505;
+	-fx-background-color: #60C7C1;
 }
 .botones:hover{
-    -fx-opacity: 0.6;
+    -fx-opacity: 0.8;
     -fx-text-fill: black;
     -fx-color: #C6E9FB;
     -fx-cursor: hand;
 }
 .botoninfo{
-	-fx-color: #AAA19F;
-	-fx-border-color: black;
-	-fx-font-size: 30;
-	-fx-font-family: System;
-	-fx-font-weight: Bold;
-    -fx-border-radius: 30px;
-    -fx-border: 3px double;
+	-fx-background-color:  #60C7C1;
 }
 .botoninfo:hover{
-    -fx-opacity: 0.6;
+    -fx-opacity: 0.8;
     -fx-text-fill: black;
     -fx-color: #EEE5E3;
     -fx-cursor: hand;

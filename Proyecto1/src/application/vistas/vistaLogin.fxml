@@ -35,14 +35,35 @@
         </ImageView>
       <AnchorPane fx:id="crearUsuarioElementos" prefHeight="1080.0" prefWidth="693.0" visible="false">
          <children>
-            <JFXTextField fx:id="crearNombreTField" layoutX="110.0" layoutY="339.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre" />
-            <JFXTextField fx:id="crearApellidosTField" layoutX="110.0" layoutY="429.0" prefHeight="60.0" prefWidth="452.0" promptText="Apellidos" />
-            <JFXTextField fx:id="crearEdadTField" layoutX="110.0" layoutY="519.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Cuantos años tienes?" />
-            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="609.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Cuando cumples los años? xx/xx/xxxx" />
-            <JFXTextField fx:id="crearUsernameTField" layoutX="110.0" layoutY="699.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre de usuario" />
-            <JFXTextField fx:id="crearPasswordTField" layoutX="110.0" layoutY="789.0" prefHeight="60.0" prefWidth="452.0" promptText="Contraseña" />
-            <JFXTextField fx:id="crearRolTField" layoutX="110.0" layoutY="879.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Medico, cuidador, paciente o familiar?" />
-            <JFXButton fx:id="crearCuentaBttn" layoutX="165.0" layoutY="969.0" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" />
+            <JFXTextField fx:id="crearNombreTField" layoutX="110.0" layoutY="339.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="crearApellidosTField" layoutX="110.0" layoutY="429.0" prefHeight="60.0" prefWidth="452.0" promptText="Apellidos">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="crearEdadTField" layoutX="110.0" layoutY="519.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Cuantos años tienes?">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="609.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Cuando cumples los años? xx/xx/xxxx">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="crearUsernameTField" layoutX="110.0" layoutY="699.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre de usuario">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="crearPasswordTField" layoutX="110.0" layoutY="789.0" prefHeight="60.0" prefWidth="452.0" promptText="Contraseña">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="crearRolTField" layoutX="110.0" layoutY="879.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Medico, cuidador, paciente o familiar?">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font></JFXTextField>
+            <JFXButton fx:id="crearCuentaBttn" layoutX="165.0" layoutY="969.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" styleClass="botones" stylesheets="@../application.css" text="Crear cuenta" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="loginElements" layoutX="121.0" layoutY="489.0">
@@ -62,7 +83,7 @@
                       <Font size="13.0" />
                   </font>
               </JFXCheckBox>
-              <JFXButton fx:id="loginButton" focusTraversable="false" layoutX="55.0" layoutY="295.0" onAction="#defaultBtn" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" text="Iniciar sesion">
+              <JFXButton fx:id="loginButton" focusTraversable="false" layoutX="55.0" layoutY="295.0" onAction="#defaultBtn" prefHeight="60.0" prefWidth="342.74" styleClass="botones" stylesheets="@../application.css" text="Iniciar sesion">
                   <font>
                       <Font size="18.0" />
                   </font>

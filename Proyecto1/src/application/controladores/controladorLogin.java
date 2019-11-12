@@ -1,15 +1,13 @@
 package application.controladores;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.animation.FadeTransition;
@@ -30,6 +28,7 @@ import application.modelos.modelo;
 public class controladorLogin {
     private modelo modelo;
     private Usuario usuario;
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -149,9 +148,49 @@ public class controladorLogin {
 
     @FXML
     void mostrarCreacionUsuario(ActionEvent event) {
+        if (incorrectFieldLabel.isVisible()){
+            incorrectFieldLabel.setVisible(false);
+        }
         loginElements.setVisible(false);
         crearUsuarioElementos.setVisible(true);
         logo.setY(-125);
+    }
+
+    @FXML
+    void crearUsuario(ActionEvent event) {
+        /*
+        // WIP
+        modelo.serializarAJson(usuario);
+        */
+        if ( modelo.countWordsString(crearNombreTField.getText())!=1 ){
+            alert.setHeaderText("Cuidado");
+            alert.setContentText("Debes introducir un nombre valido, que consista de una sola palabra");
+            alert.showAndWait();
+        }
+        else if( modelo.countWordsString(crearApellidosTField.getText()) !=2 ){
+            alert.setHeaderText("Cuidado");
+            alert.setContentText("Debes introducir unos apellidos validos, que consista de dos palabras");
+            alert.showAndWait();
+        }
+        else if ( modelo.checkRol(crearUsernameTField.getText()) ) {
+            alert.setHeaderText("Cuidado");
+            alert.setContentText("Debes introducir un nombre de usuario valido, que consista de una sola palabra (riniguez)");
+            alert.showAndWait();
+        }
+        else if( !modelo.checkRol(crearRolTField.getText()) ){
+            alert.setHeaderText("Cuidado");
+            alert.setContentText("Debes introducir un rol valido, que consista de una sola palabra (medico, cuidador, paciente, familiar)");
+            alert.showAndWait();
+        }
+        else if ( crearCumpleTField.getText().length() != 10 ){
+            alert.setHeaderText("Cuidado");
+            alert.setContentText("Debes introducir una fecha valida (27/10/1989)");
+            alert.showAndWait();
+        }
+        else {
+            loginElements.setVisible(true);
+            crearUsuarioElementos.setVisible(false);
+        }
     }
 
 
