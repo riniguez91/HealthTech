@@ -4,6 +4,18 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Usuario {
+    public Usuario(){
+
+    }
+    public Usuario(String name, String surname, Integer age, String birthday, String username, String password, String rol){
+        this.name=name;
+        this.surname=surname;
+        this.age=age;
+        this.birthday=birthday;
+        this.username=username;
+        this.password=password;
+        this.rol=rol;
+    }
 
     @SerializedName("name")
     @Expose

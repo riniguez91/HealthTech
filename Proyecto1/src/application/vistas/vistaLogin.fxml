@@ -95,7 +95,7 @@
             </Hyperlink>
          </children>
       </AnchorPane>
-      <Label fx:id="incorrectFieldLabel" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="121.0" layoutY="739.0" prefHeight="0.0" prefWidth="452.0" text="Nombre de usuario o contraseña incorrectos, intentelo de nuevo" visible="false">
+      <Label fx:id="incorrectFieldLabel" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="121.0" layoutY="739.0" prefHeight="0.0" prefWidth="452.0" text="Nombre de usuario o contraseña incorrectos, intentelo de nuevo" textFill="#c92222" visible="false">
          <font>
             <Font name="Segoe UI Emoji" size="15.0" />
          </font>

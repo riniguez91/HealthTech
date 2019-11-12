@@ -162,34 +162,41 @@ public class controladorLogin {
         // WIP
         modelo.serializarAJson(usuario);
         */
-        if ( modelo.countWordsString(crearNombreTField.getText())!=1 ){
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes introducir un nombre valido, que consista de una sola palabra");
-            alert.showAndWait();
-        }
-        else if( modelo.countWordsString(crearApellidosTField.getText()) !=2 ){
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes introducir unos apellidos validos, que consista de dos palabras");
-            alert.showAndWait();
-        }
-        else if ( modelo.checkRol(crearUsernameTField.getText()) ) {
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes introducir un nombre de usuario valido, que consista de una sola palabra (riniguez)");
-            alert.showAndWait();
-        }
-        else if( !modelo.checkRol(crearRolTField.getText()) ){
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes introducir un rol valido, que consista de una sola palabra (medico, cuidador, paciente, familiar)");
-            alert.showAndWait();
-        }
-        else if ( crearCumpleTField.getText().length() != 10 ){
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes introducir una fecha valida (27/10/1989)");
-            alert.showAndWait();
-        }
-        else {
-            loginElements.setVisible(true);
-            crearUsuarioElementos.setVisible(false);
+        try {
+            if (modelo.countWordsString(crearNombreTField.getText()) != 1) {
+                alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir un nombre valido, que consista de una sola palabra");
+                alert.showAndWait();
+            } else if (modelo.countWordsString(crearApellidosTField.getText()) != 2) {
+                alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir unos apellidos validos, que consista de dos palabras");
+                alert.showAndWait();
+            } else if (modelo.checkRol(crearUsernameTField.getText())) {
+                alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir un nombre de usuario valido, que consista de una sola palabra (riniguez)");
+                alert.showAndWait();
+            } else if (!modelo.checkRol(crearRolTField.getText())) {
+                alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir un rol valido, que consista de una sola palabra (medico, cuidador, paciente, familiar)");
+                alert.showAndWait();
+            } else if (crearCumpleTField.getText().length() != 10) {
+                alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir una fecha valida (27/10/1989)");
+                alert.showAndWait();
+            } else if ((Integer.parseInt(crearEdadTField.getText()) < 0 && Integer.parseInt(crearEdadTField.getText()) > 100)) {
+                alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir una edad valida entre 1-100");
+                alert.showAndWait();
+            } else {
+                Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), Integer.parseInt(crearEdadTField.getText()), crearCumpleTField.getText(),
+                        crearUsernameTField.getText(), crearPasswordTField.getText(), crearRolTField.getText());
+                
+                loginElements.setVisible(true);
+                crearUsuarioElementos.setVisible(false);
+                logo.setY(-60);
+            }
+        } catch (NumberFormatException nfe){
+            nfe.printStackTrace();
         }
     }
 
