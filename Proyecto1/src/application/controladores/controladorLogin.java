@@ -155,9 +155,6 @@ public class controladorLogin {
         if (incorrectFieldLabel.isVisible()){
             incorrectFieldLabel.setVisible(false);
         }
-        Usuario newUser2 = new Usuario("pepe","pepe pepee",23,"27/10/1999","pepe","pepe","medico");
-        modelo.getUsuarios().add(newUser2);
-        modelo.serializarAJson(modelo.getUsuarios());
         loginElements.setVisible(false);
         crearUsuarioElementos.setVisible(true);
         logo.setY(-125);
@@ -204,8 +201,8 @@ public class controladorLogin {
             } else {
                 Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), Integer.parseInt(crearEdadTField.getText()), crearCumpleTField.getText(),
                         crearUsernameTField.getText(), crearPasswordTField.getText(), crearRolTField.getText());
-                //modelo.serializarAJson(newUser);
-
+                modelo.getUsuarios().add(newUser);
+                modelo.serializarAJson(modelo.getUsuarios());
                 loginElements.setVisible(true);
                 crearUsuarioElementos.setVisible(false);
                 logo.setY(-60);

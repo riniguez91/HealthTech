@@ -68,7 +68,7 @@ public class modelo {
             File file = new File(url.getPath());
             System.out.println(file.getAbsolutePath());
             //br = new BufferedWriter(new FileWriter(new File("C:\\Users\\rinig\\Documents\\GitHub\\proyecto1-techhealth\\Proyecto1\\src\\application\\Users.json")));
-            br = new BufferedWriter(new FileWriter(new File("../Users.json")));
+            br = new BufferedWriter(new FileWriter(file));
             prettyGson.toJson(users,br);
         } catch(IOException e){
             e.printStackTrace();
