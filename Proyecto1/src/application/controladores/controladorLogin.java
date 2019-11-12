@@ -16,6 +16,7 @@ import javafx.animation.SequentialTransition;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -99,6 +100,9 @@ public class controladorLogin {
     private Hyperlink accountHyperLink;
 
     @FXML
+    private Hyperlink cancelarCrecionHyperLink;
+
+    @FXML
     private Label incorrectFieldLabel;
 
     @FXML
@@ -151,9 +155,19 @@ public class controladorLogin {
         if (incorrectFieldLabel.isVisible()){
             incorrectFieldLabel.setVisible(false);
         }
+        Usuario newUser2 = new Usuario("pepe","pepe pepee",23,"27/10/1999","pepe","pepe","medico");
+        modelo.getUsuarios().add(newUser2);
+        modelo.serializarAJson(modelo.getUsuarios());
         loginElements.setVisible(false);
         crearUsuarioElementos.setVisible(true);
         logo.setY(-125);
+    }
+
+    @FXML
+    void cancelarCreacion(MouseEvent event) {
+        crearUsuarioElementos.setVisible(false);
+        loginElements.setVisible(true);
+        logo.setY(-30);
     }
 
     @FXML
@@ -190,7 +204,8 @@ public class controladorLogin {
             } else {
                 Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), Integer.parseInt(crearEdadTField.getText()), crearCumpleTField.getText(),
                         crearUsernameTField.getText(), crearPasswordTField.getText(), crearRolTField.getText());
-                
+                //modelo.serializarAJson(newUser);
+
                 loginElements.setVisible(true);
                 crearUsuarioElementos.setVisible(false);
                 logo.setY(-60);

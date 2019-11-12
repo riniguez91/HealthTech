@@ -60,18 +60,27 @@ public class modelo {
         return words.equals("medico") || words.equals("paciente") || words.equals("familiar") || words.equals("cuidador");
     }
 
-    public void serializarAJson(Usuario user){ // wip
-        usuarios.add(user);
+    public void serializarAJson(List<Usuario> users){
         Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-        String representacionBonita = prettyGson.toJson(usuarios);
+        BufferedWriter br = null;
         try {
             URL url = getClass().getResource("../Users.json");
             File file = new File(url.getPath());
-            FileWriter writer = new FileWriter(file);
-            // writer.flush();
-            writer.write(representacionBonita);
+            System.out.println(file.getAbsolutePath());
+            //br = new BufferedWriter(new FileWriter(new File("C:\\Users\\rinig\\Documents\\GitHub\\proyecto1-techhealth\\Proyecto1\\src\\application\\Users.json")));
+            br = new BufferedWriter(new FileWriter(new File("../Users.json")));
+            prettyGson.toJson(users,br);
         } catch(IOException e){
             e.printStackTrace();
+        }
+        finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

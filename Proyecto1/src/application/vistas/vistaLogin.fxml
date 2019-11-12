@@ -64,6 +64,11 @@
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
             <JFXButton fx:id="crearCuentaBttn" layoutX="165.0" layoutY="969.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" styleClass="botones" stylesheets="@../application.css" text="Crear cuenta" />
+            <Hyperlink fx:id="cancelarCrecionHyperLink" layoutX="8.0" layoutY="985.0" onMouseClicked="#cancelarCreacion" text="Cancelar accion y volver">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font>
+            </Hyperlink>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="loginElements" layoutX="121.0" layoutY="489.0">
