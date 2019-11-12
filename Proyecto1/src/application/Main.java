@@ -35,8 +35,8 @@ public class Main extends Application {
 		primaryStage.setWidth(visualBounds.getWidth());
 		primaryStage.setHeight(visualBounds.getHeight());
 		primaryStage.setMaximized(true);
-		primaryStage.show();
 		primaryStage.getIcons().add(new Image("@../../resources/fotos/Logo.png"));
+		primaryStage.show();
 	}
 
 
