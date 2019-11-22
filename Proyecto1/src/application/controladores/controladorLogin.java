@@ -169,10 +169,6 @@ public class controladorLogin {
 
     @FXML
     void crearUsuario(ActionEvent event) {
-        /*
-        // WIP
-        modelo.serializarAJson(usuario);
-        */
         try {
             if (modelo.countWordsString(crearNombreTField.getText()) != 1) {
                 alert.setHeaderText("Cuidado");
