@@ -21,6 +21,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
+import java.text.ParseException;
 
 
 import application.modelos.Usuario;
@@ -190,13 +191,14 @@ public class controladorLogin {
             } else {
                 Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), crearCumpleTField.getText(),
                                               crearUsernameTField.getText(), crearPasswordTField.getText(), crearRolTField.getText());
+                newUser.setAge(modelo.calculateAge(newUser.getBirthday())); // throws ParseException
                 modelo.getUsuarios().add(newUser);
                 modelo.serializarAJson(modelo.getUsuarios());
                 loginElements.setVisible(true);
                 crearUsuarioElementos.setVisible(false);
                 logo.setY(-60);
             }
-        } catch (NumberFormatException nfe){
+        } catch (NumberFormatException | ParseException nfe){
             nfe.printStackTrace();
         }
     }

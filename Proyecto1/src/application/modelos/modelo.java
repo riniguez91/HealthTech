@@ -3,12 +3,17 @@ package application.modelos;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 
 
@@ -25,8 +30,6 @@ public class modelo {
         Gson gson = new Gson();
         BufferedReader br = null;
         try {
-            // URL url = getClass().getResource("../Users.json");
-            // File file = new File(url.getPath());
             File file = new File("./Proyecto1/src/application/Users.json");
             br = new BufferedReader(new FileReader(file));
             Type tipoListaUsuarios = new TypeToken<List<Usuario>>(){}.getType();
@@ -65,10 +68,6 @@ public class modelo {
         Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
         BufferedWriter br = null;
         try {
-            // URL url = getClass().getResource("../Users.json");
-            // File file = new File(url.getPath());
-            // System.out.println(file.getAbsolutePath());
-            //br = new BufferedWriter(new FileWriter(new File("C:\\Users\\rinig\\Documents\\GitHub\\proyecto1-techhealth\\Proyecto1\\src\\application\\Users.json")));
             File file = new File("./Proyecto1/src/application/Users.json");
             br = new BufferedWriter(new FileWriter(file));
             prettyGson.toJson(users,br);
@@ -84,6 +83,18 @@ public class modelo {
                 }
             }
         }
+    }
+
+    public int calculateAge(String dOB) throws ParseException {
+        DateFormat parseFormat = new SimpleDateFormat("dd/M/yyyy");
+        Date dt = parseFormat.parse(dOB);
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        Instant instant = dt.toInstant();
+        LocalDate birthday = instant.atZone(defaultZoneId).toLocalDate(); // Convert Date to LocalDate
+        LocalDate today = LocalDate.now();                //Today's date
+        Period p = Period.between(birthday, today);
+
+        return p.getYears();
     }
 
 

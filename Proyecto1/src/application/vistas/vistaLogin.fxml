@@ -43,7 +43,7 @@
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="519.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Fecha de nacimiento? xx/xx/xxxx">
+            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="519.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Fecha de nacimiento? dd/M/yyyy">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>

@@ -19,7 +19,6 @@ public class Main extends Application {
 		FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("/application/vistas/vistaLogin.fxml"));
 		Parent root = loginLoader.load();
 		controladorLogin loginControlador = loginLoader.getController();
-		// Parent root = FXMLLoader.load(getClass().getResource("/application/vistas/vistaLogin.fxml"));
 
 		modelo m = new modelo();
 		Usuario u = new Usuario();
@@ -27,7 +26,6 @@ public class Main extends Application {
 
 		Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
 		primaryStage.setScene(new Scene(root, visualBounds.getWidth(), visualBounds.getHeight()));
-
 
 		//set Stage boundaries to visible bounds of the main screen
 		primaryStage.setX(visualBounds.getMinX());
