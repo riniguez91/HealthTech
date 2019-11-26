@@ -7,10 +7,9 @@ public class Usuario {
     public Usuario(){
 
     }
-    public Usuario(String name, String surname, Integer age, String birthday, String username, String password, String rol){
+    public Usuario(String name, String surname, String birthday, String username, String password, String rol){
         this.name=name;
         this.surname=surname;
-        this.age=age;
         this.birthday=birthday;
         this.username=username;
         this.password=password;

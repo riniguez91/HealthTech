@@ -43,28 +43,24 @@
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="crearEdadTField" layoutX="110.0" layoutY="519.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Cuantos años tienes?">
+            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="519.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Fecha de nacimiento? xx/xx/xxxx">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="609.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Cuando cumples los años? xx/xx/xxxx">
+            <JFXTextField fx:id="crearUsernameTField" layoutX="110.0" layoutY="609.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre de usuario">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="crearUsernameTField" layoutX="110.0" layoutY="699.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre de usuario">
+            <JFXTextField fx:id="crearPasswordTField" layoutX="110.0" layoutY="699.0" prefHeight="60.0" prefWidth="452.0" promptText="Contraseña">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="crearPasswordTField" layoutX="110.0" layoutY="789.0" prefHeight="60.0" prefWidth="452.0" promptText="Contraseña">
+            <JFXTextField fx:id="crearRolTField" layoutX="110.0" layoutY="789.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Medico, cuidador, paciente o familiar?">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="crearRolTField" layoutX="110.0" layoutY="879.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Medico, cuidador, paciente o familiar?">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font></JFXTextField>
-            <JFXButton fx:id="crearCuentaBttn" layoutX="165.0" layoutY="969.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" styleClass="botones" stylesheets="@../application.css" text="Crear cuenta" />
-            <Hyperlink fx:id="cancelarCrecionHyperLink" layoutX="8.0" layoutY="985.0" onMouseClicked="#cancelarCreacion" text="Cancelar accion y volver">
+            <JFXButton fx:id="crearCuentaBttn" layoutX="162.0" layoutY="937.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" styleClass="botones" stylesheets="@../application.css" text="Crear cuenta" />
+            <Hyperlink fx:id="cancelarCrecionHyperLink" layoutX="404.0" layoutY="889.0" onMouseClicked="#cancelarCreacion" style="-fx-border-width: 0;" text="Cancelar accion y volver" textFill="#4059a9">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font>
@@ -93,7 +89,7 @@
                       <Font size="18.0" />
                   </font>
               </JFXButton>
-            <Hyperlink fx:id="accountHyperLink" alignment="CENTER" layoutX="90.0" layoutY="381.0" onAction="#mostrarCreacionUsuario" prefHeight="23.0" prefWidth="272.0" style="-fx-border-width: 0;" text="No tienes una cuenta? Crea una " textFill="#4059a9" underline="true" wrapText="true">
+            <Hyperlink fx:id="accountHyperLink" alignment="CENTER" layoutX="90.0" layoutY="381.0" onAction="#mostrarCreacionUsuario" prefHeight="23.0" prefWidth="272.0" style="-fx-border-width: 0;" text="No tienes una cuenta? Crea una " textFill="#4059a9" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>

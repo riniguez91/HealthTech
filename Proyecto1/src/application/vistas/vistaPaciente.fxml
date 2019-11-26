@@ -2,13 +2,13 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -21,8 +21,8 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorPaciente">
     <children>
-        <TabPane prefHeight="1080.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <tabs>
+      <JFXTabPane prefHeight="1080.0" prefWidth="1920.0">
+         <tabs>
                 <Tab text="                         Inicio                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
@@ -242,7 +242,7 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-            </tabs>
-        </TabPane>
+         </tabs>
+      </JFXTabPane>
     </children>
 </AnchorPane>

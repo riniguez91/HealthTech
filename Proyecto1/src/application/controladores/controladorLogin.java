@@ -64,9 +64,6 @@ public class controladorLogin {
     private JFXTextField crearApellidosTField;
 
     @FXML
-    private JFXTextField crearEdadTField;
-
-    @FXML
     private JFXTextField crearCumpleTField;
 
     @FXML
@@ -190,13 +187,9 @@ public class controladorLogin {
                 alert.setHeaderText("Cuidado");
                 alert.setContentText("Debes introducir una fecha valida (27/10/1989)");
                 alert.showAndWait();
-            } else if ((Integer.parseInt(crearEdadTField.getText()) < 0 && Integer.parseInt(crearEdadTField.getText()) > 100)) {
-                alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir una edad valida entre 1-100");
-                alert.showAndWait();
             } else {
-                Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), Integer.parseInt(crearEdadTField.getText()), crearCumpleTField.getText(),
-                        crearUsernameTField.getText(), crearPasswordTField.getText(), crearRolTField.getText());
+                Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), crearCumpleTField.getText(),
+                                              crearUsernameTField.getText(), crearPasswordTField.getText(), crearRolTField.getText());
                 modelo.getUsuarios().add(newUser);
                 modelo.serializarAJson(modelo.getUsuarios());
                 loginElements.setVisible(true);
