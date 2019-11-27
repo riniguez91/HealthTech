@@ -6,7 +6,8 @@
     "birthday": "03/01/1980",
     "username": "sgomez",
     "password": "1fz91VYT",
-    "rol": "medico"
+    "rol": "medico",
+    "relaciones": []
   },
   {
     "name": "Jose",
@@ -15,7 +16,8 @@
     "birthday": "26/11/1972",
     "username": "jmoreno",
     "password": "0HdJYSAN",
-    "rol": "medico"
+    "rol": "medico",
+    "relaciones": []
   },
   {
     "name": "Catalina",
@@ -24,7 +26,8 @@
     "birthday": "03/06/1984",
     "username": "crey",
     "password": "3A9m5Y81",
-    "rol": "cuidador"
+    "rol": "cuidador",
+    "relaciones": []
   },
   {
     "name": "Juan",
@@ -33,7 +36,8 @@
     "birthday": "14/10/1993",
     "username": "jrodriguez",
     "password": "nLQJ5lJo",
-    "rol": "cuidador"
+    "rol": "cuidador",
+    "relaciones": []
   },
   {
     "name": "Sancho",
@@ -42,7 +46,8 @@
     "birthday": "23/10/1970",
     "username": "shernandez",
     "password": "aiM1RJI9",
-    "rol": "familiar"
+    "rol": "familiar",
+    "relaciones": []
   },
   {
     "name": "Rosa",
@@ -51,7 +56,8 @@
     "birthday": "21/02/1989",
     "username": "rnieto",
     "password": "6ixzYoW8",
-    "rol": "familiar"
+    "rol": "familiar",
+    "relaciones": []
   },
   {
     "name": "Susana",
@@ -60,7 +66,12 @@
     "birthday": "12/01/1949",
     "username": "sdiaz",
     "password": "qKMSgMvp",
-    "rol": "paciente"
+    "rol": "paciente",
+    "relaciones": [
+      "sgomez",
+      "crey",
+      "shernandez"
+    ]
   },
   {
     "name": "Pedro",
@@ -69,7 +80,12 @@
     "birthday": "20/04/1937",
     "username": "pbascuas",
     "password": "0A8ycTm4",
-    "rol": "paciente"
+    "rol": "paciente",
+    "relaciones": [
+      "jmoreno",
+      "jrodriguez",
+      "rnieto"
+    ]
   },
   {
     "name": "pepe",

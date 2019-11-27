@@ -1,26 +1,33 @@
 package application.controladores;
 
+import application.modelos.Message;
 import com.jfoenix.controls.*;
 
 import application.modelos.usuarioTTView;
 import application.modelos.Usuario;
 import application.modelos.modelo;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class controladorPaciente {
     private modelo modelo;
     private Usuario usuario;
+    public List<Usuario> relatedUsers;
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     public void initModelo(application.modelos.modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -28,6 +35,7 @@ public class controladorPaciente {
         }
         this.modelo = modelo_ ;
         this.usuario = usuario_;
+        modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
 
         // Datos pestaña inicio
         labelNombreInicio.setText(usuario.getName());
@@ -41,15 +49,11 @@ public class controladorPaciente {
         labelRolUsuarios.setText(usuario.getRol());
         labelFechaNacimientoUsuarios.setText(usuario.getBirthday());
         labelEdadUsuarios.setText(usuario.getAge()+"");
-        // Posibles roles del jfxComboBox para buscar un usuario
-        filtradoJFXComboBox.getItems().add("Medico");
-        filtradoJFXComboBox.getItems().add("Cuidador");
-        filtradoJFXComboBox.getItems().add("Familiar");
+
+        // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario
+        panelDatosYMensajesUsuarios.setVisible(false);
 
         crearTreeTableViewUsuarios();
-
-
-
     }
 
     @FXML
@@ -101,10 +105,10 @@ public class controladorPaciente {
     private JFXButton atrasbtn;
 
     @FXML
-    private JFXComboBox<String> filtradoJFXComboBox;
+    private JFXTextArea nombresJFXTextArea;
 
     @FXML
-    private JFXTextArea nombresJFXTextArea;
+    private Pane panelDatosYMensajesUsuarios;
 
     @FXML
     private Label Nombre1;
@@ -140,10 +144,10 @@ public class controladorPaciente {
     private Label labelEdadUsuarios;
 
     @FXML
-    private JFXTextArea mensajeJFXTestField;
+    private JFXTextArea mensajeJFXTextFieldUsuarios;
 
     @FXML
-    private JFXTextField asuntoJFXTextField;
+    private JFXTextField asuntoJFXTextFieldUsuarios;
 
     @FXML
     private JFXButton cancelarTicketbtn;
@@ -162,7 +166,7 @@ public class controladorPaciente {
 
     @FXML
     private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
-    
+
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
 	void verInicio(ActionEvent event) {
@@ -198,14 +202,56 @@ public class controladorPaciente {
 
         ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
         // Añadimos los usuarios
-        for (Usuario user : modelo.getUsuarios()) {
-            users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol()));
+        relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
+        for (Usuario user : relatedUsers) {
+            users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(),user.getBirthday(), user.getAge()));
         }
 
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
         treeTableViewUsuarios.getColumns().setAll(nombreCol, apellidosCol, rolCol);
         treeTableViewUsuarios.setRoot(root);
         treeTableViewUsuarios.setShowRoot(false);
+    }
+
+    @FXML
+    void mostrarDatosYMensajeUsuarios(MouseEvent event) {
+	    // Comprobamos que no este visible
+	    if (!panelDatosYMensajesUsuarios.isVisible()){
+	        panelDatosYMensajesUsuarios.setVisible(true);
+        }
+	    if (panelDatosYMensajesUsuarios.isVisible()){
+            // Cambiamos los datos del usuario
+            labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
+            labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
+            labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
+            labelFechaNacimientoUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getBirthday().get());
+            labelEdadUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAge().get()+"");
+        }
+    }
+
+    @FXML
+    void enviarMensajeUsuarios(ActionEvent event) {
+        if (asuntoJFXTextFieldUsuarios.getText().isEmpty()) {
+            alert.setHeaderText("Cuidado");
+            alert.setContentText("Debes de poner un asunto");
+            alert.showAndWait();
+        }
+        else if (mensajeJFXTextFieldUsuarios.getText().isEmpty()) {
+            alert.setHeaderText("Cuidado");
+            alert.setContentText("Debes de poner un mensaje");
+            alert.showAndWait();
+        }
+        else {
+            Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
+                    +treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText());
+            modelo.getMessages().add(msg);
+            modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
+            alert.setHeaderText("Informacion");
+            alert.setContentText("Se ha enviado el mensaje correctamente");
+            alert.showAndWait();
+            asuntoJFXTextFieldUsuarios.clear();
+            mensajeJFXTextFieldUsuarios.clear();
+        }
     }
 	
 

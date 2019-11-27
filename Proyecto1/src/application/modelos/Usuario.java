@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
+import java.util.List;
+
 public class Usuario {
     public Usuario(){
 
@@ -40,6 +42,17 @@ public class Usuario {
     @SerializedName("rol")
     @Expose
     private String rol;
+
+    private List<String> relaciones;
+
+    public List<String> getRelaciones() {
+        return relaciones;
+    }
+
+    public void setRelaciones(List<String> relaciones) {
+        this.relaciones = relaciones;
+    }
+
 
     public String getName() {
         return name;

@@ -4,6 +4,13 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Message {
+    public Message(String sender, String receiver, String subject, String message){
+        this.sender = sender;
+        this.receiver = receiver;
+        this.subject = subject;
+        this.message = message;
+    }
+
     @SerializedName("sender")
     @Expose
     private String sender;
