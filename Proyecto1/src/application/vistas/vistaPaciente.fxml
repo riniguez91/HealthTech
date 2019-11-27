@@ -83,7 +83,7 @@
                                                 <Label fx:id="labelRolInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                             </children>
                                         </GridPane>
-                              <JFXButton fx:id="cerrarSesionBtn" prefHeight="90.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Cerrar Sesión">
+                              <JFXButton fx:id="cerrarSesionBtn" onAction="#cerrarSesion" prefHeight="90.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Cerrar Sesión">
                                  <VBox.margin>
                                     <Insets bottom="10.0" left="10.0" top="340.0" />
                                  </VBox.margin>
@@ -124,21 +124,21 @@
                               <Label layoutX="21.0" layoutY="9.0" prefHeight="109.0" prefWidth="870.0" styleClass="tituloLabel" stylesheets="@../application.css" text="Preguntas Frecuentes" />
                               <JFXButton fx:id="atrasbtn" layoutX="442.0" layoutY="949.0" onAction="#verInicio" prefHeight="67.0" prefWidth="462.0" styleClass="botoninfo" stylesheets="@../application.css" text="Atrás" />
                               <Label layoutX="41.0" layoutY="131.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="1. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="41.0" layoutY="171.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." />
-                              <Label layoutX="41.0" layoutY="231.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" />
-                              <Label layoutX="41.0" layoutY="271.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña de &quot;Inicio&quot; en la parte inferior izquierda, hay que pulsar el botón&quot;Cerrar Sesión&quot;." />
-                              <Label layoutX="41.0" layoutY="331.0" prefHeight="51.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="3. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="41.0" layoutY="371.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " />
-                              <Label layoutX="41.0" layoutY="431.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="4. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="41.0" layoutY="471.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " />
-                              <Label layoutX="41.0" layoutY="531.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="5. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="41.0" layoutY="571.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " />
-                              <Label layoutX="41.0" layoutY="631.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="6. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="41.0" layoutY="671.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " />
-                              <Label layoutX="41.0" layoutY="731.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="7. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="41.0" layoutY="771.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " />
-                              <Label layoutX="41.0" layoutY="831.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="8. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="41.0" layoutY="871.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " />
+                              <Label layoutX="41.0" layoutY="171.0" prefHeight="96.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="261.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="301.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña de &quot;Inicio&quot; en la parte inferior izquierda, hay que pulsar el botón&quot;Cerrar Sesión&quot;." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="361.0" prefHeight="51.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="3. ¿Puedo buscar un Usuario por su nombre o apellido?" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="401.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: Sí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="461.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="4. ¿Dónde puedo ver todos mis mensajes?" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="501.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="561.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="5. Ventajas en la lista de Usuarios." wrapText="true" />
+                              <Label layoutX="41.0" layoutY="601.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="En la lista de usuarios, se pueden ordenar alfabéticamente tanto los nombres, los apellidos y los roles." wrapText="true" />
+                              <Label layoutX="41.0" layoutY="661.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="6. ¿?" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="701.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " wrapText="true" />
+                              <Label layoutX="41.0" layoutY="761.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="7. ¿?" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="801.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " wrapText="true" />
+                              <Label layoutX="41.0" layoutY="861.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="8. ¿?" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="901.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " wrapText="true" />
                            </children>
                         </Pane>
                             </children></AnchorPane>
