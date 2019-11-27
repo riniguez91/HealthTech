@@ -2,28 +2,24 @@ package application.controladores;
 
 import com.jfoenix.controls.*;
 
+import application.modelos.usuarioTTView;
 import application.modelos.Usuario;
 import application.modelos.modelo;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
-import javafx.util.Callback;
 
-import java.util.function.Predicate;
 
 public class controladorPaciente {
-    private application.modelos.modelo modelo;
+    private modelo modelo;
     private Usuario usuario;
 
     public void initModelo(application.modelos.modelo modelo_, Usuario usuario_){
@@ -32,6 +28,7 @@ public class controladorPaciente {
         }
         this.modelo = modelo_ ;
         this.usuario = usuario_;
+
         // Datos pestaña inicio
         labelNombreInicio.setText(usuario.getName());
         labelApellidosInicio.setText(usuario.getSurname());
@@ -164,7 +161,7 @@ public class controladorPaciente {
     private JFXTextArea mensajeJFXTextArea;
 
     @FXML
-    private JFXTreeTableView<Usuario> treeTableViewUsuarios;
+    private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
     
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
@@ -180,32 +177,31 @@ public class controladorPaciente {
 
     @FXML
     void filterUsersUsuario(KeyEvent event) {
-        treeTableViewUsuarios.setPredicate( usuarioTreeItem -> usuarioTreeItem.getValue().getName().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
+        treeTableViewUsuarios.setPredicate( usuarioTreeItem -> usuarioTreeItem.getValue().getName().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
 	}
 
 	public void crearTreeTableViewUsuarios() {
-        JFXTreeTableColumn<Usuario, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
-        JFXTreeTableColumn<Usuario, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
-        JFXTreeTableColumn<Usuario, String> rolCol = new JFXTreeTableColumn<>("Rol");
+        JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
+        JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
+        JFXTreeTableColumn<usuarioTTView, String> rolCol = new JFXTreeTableColumn<>("Rol");
 
-        nombreCol.setCellValueFactory(param -> {
-            usuario.nameSS = new SimpleStringProperty(param.getValue().getValue().getName());
-            return usuario.nameSS;
-        });
+        nombreCol.setCellValueFactory(param -> param.getValue().getValue().getName());
         nombreCol.setMinWidth(189);
         nombreCol.setMaxWidth(189);
-        apellidosCol.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSurname()));
+        apellidosCol.setCellValueFactory(param -> param.getValue().getValue().getSurname());
         apellidosCol.setMinWidth(189);
         apellidosCol.setMaxWidth(189);
-        rolCol.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getRol()));
+        rolCol.setCellValueFactory(param -> param.getValue().getValue().getRolUsuario());
         rolCol.setMinWidth(189);
         rolCol.setMaxWidth(189);
 
-        ObservableList<Usuario> users = FXCollections.observableArrayList();
+        ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
         // Añadimos los usuarios
-        users.addAll(modelo.getUsuarios());
+        for (Usuario user : modelo.getUsuarios()) {
+            users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol()));
+        }
 
-        TreeItem<Usuario> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
+        TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
         treeTableViewUsuarios.getColumns().setAll(nombreCol, apellidosCol, rolCol);
         treeTableViewUsuarios.setRoot(root);
         treeTableViewUsuarios.setShowRoot(false);

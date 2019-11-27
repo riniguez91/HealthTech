@@ -3,9 +3,9 @@ package application.modelos;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.SimpleStringProperty;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
-public class Usuario extends RecursiveTreeObject<Usuario> {
+public class Usuario {
     public Usuario(){
 
     }
@@ -40,8 +40,6 @@ public class Usuario extends RecursiveTreeObject<Usuario> {
     @SerializedName("rol")
     @Expose
     private String rol;
-
-    public SimpleStringProperty nameSS;
 
     public String getName() {
         return name;

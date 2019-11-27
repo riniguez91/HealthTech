@@ -6,10 +6,7 @@
     "birthday": "03/01/1980",
     "username": "sgomez",
     "password": "1fz91VYT",
-    "rol": "medico",
-    "children": [],
-    "groupedColumn": {},
-    "groupedValue": {}
+    "rol": "medico"
   },
   {
     "name": "Jose",
@@ -18,10 +15,7 @@
     "birthday": "26/11/1972",
     "username": "jmoreno",
     "password": "0HdJYSAN",
-    "rol": "medico",
-    "children": [],
-    "groupedColumn": {},
-    "groupedValue": {}
+    "rol": "medico"
   },
   {
     "name": "Catalina",
@@ -30,10 +24,7 @@
     "birthday": "03/06/1984",
     "username": "crey",
     "password": "3A9m5Y81",
-    "rol": "cuidador",
-    "children": [],
-    "groupedColumn": {},
-    "groupedValue": {}
+    "rol": "cuidador"
   },
   {
     "name": "Juan",
@@ -42,10 +33,7 @@
     "birthday": "14/10/1993",
     "username": "jrodriguez",
     "password": "nLQJ5lJo",
-    "rol": "cuidador",
-    "children": [],
-    "groupedColumn": {},
-    "groupedValue": {}
+    "rol": "cuidador"
   },
   {
     "name": "Sancho",
@@ -54,10 +42,7 @@
     "birthday": "23/10/1970",
     "username": "shernandez",
     "password": "aiM1RJI9",
-    "rol": "familiar",
-    "children": [],
-    "groupedColumn": {},
-    "groupedValue": {}
+    "rol": "familiar"
   },
   {
     "name": "Rosa",
@@ -66,10 +51,7 @@
     "birthday": "21/02/1989",
     "username": "rnieto",
     "password": "6ixzYoW8",
-    "rol": "familiar",
-    "children": [],
-    "groupedColumn": {},
-    "groupedValue": {}
+    "rol": "familiar"
   },
   {
     "name": "Susana",
@@ -78,10 +60,7 @@
     "birthday": "12/01/1949",
     "username": "sdiaz",
     "password": "qKMSgMvp",
-    "rol": "paciente",
-    "children": [],
-    "groupedColumn": {},
-    "groupedValue": {}
+    "rol": "paciente"
   },
   {
     "name": "Pedro",
@@ -90,9 +69,15 @@
     "birthday": "20/04/1937",
     "username": "pbascuas",
     "password": "0A8ycTm4",
-    "rol": "paciente",
-    "children": [],
-    "groupedColumn": {},
-    "groupedValue": {}
+    "rol": "paciente"
+  },
+  {
+    "name": "pepe",
+    "surname": "pepe pepe",
+    "age": 18,
+    "birthday": "24/12/2000",
+    "username": "pepe",
+    "password": "pepe",
+    "rol": "medico"
   }
 ]
