@@ -26,11 +26,11 @@ public class modelo {
         this.usuarios=usuarios;
     }
 
-    public void leerJson(){
+    public void leerJson(String path){
         Gson gson = new Gson();
         BufferedReader br = null;
         try {
-            File file = new File("./Proyecto1/src/application/Users.json");
+            File file = new File(path);
             br = new BufferedReader(new FileReader(file));
             Type tipoListaUsuarios = new TypeToken<List<Usuario>>(){}.getType();
             setUsuarios(gson.fromJson(br, tipoListaUsuarios));
@@ -64,11 +64,11 @@ public class modelo {
         return words.equals("medico") || words.equals("paciente") || words.equals("familiar") || words.equals("cuidador");
     }
 
-    public void serializarAJson(List<Usuario> users){
+    public void serializarAJson(String path, List<Usuario> users){
         Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
         BufferedWriter br = null;
         try {
-            File file = new File("./Proyecto1/src/application/Users.json");
+            File file = new File(path);
             br = new BufferedWriter(new FileWriter(file));
             prettyGson.toJson(users,br);
         } catch(IOException e){

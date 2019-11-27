@@ -5,9 +5,9 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
@@ -77,10 +77,10 @@
                                                         <Insets left="10.0" />
                                                     </padding>
                                                 </Label>
-                                                <Label fx:id="labelNombre" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" />
-                                                <Label fx:id="labelApellidos" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label fx:id="labelUsername" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Label fx:id="labelRol" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Label fx:id="labelNombreInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" />
+                                                <Label fx:id="labelApellidosInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="labelUsernameInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label fx:id="labelRolInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                             </children>
                                         </GridPane>
                               <JFXButton fx:id="cerrarSesionBtn" prefHeight="90.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Cerrar Sesión">
@@ -158,17 +158,9 @@
                                         <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre" />
                                         <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
                                         <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
-                              <JFXComboBox fx:id="flitradoJFXComboBox" layoutX="298.0" layoutY="61.0" prefHeight="25.0" prefWidth="274.0" promptText="Filtrado por rol" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <JFXTextField layoutX="29.0" layoutY="61.0" prefHeight="40.0" prefWidth="238.0" promptText="Buscar" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <ScrollPane layoutX="28.0" layoutY="212.0" prefHeight="804.0" prefWidth="575.0">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="802.0" prefWidth="575.0">
-                                       <children>
-                                          <JFXTextArea fx:id="nombresJFXTextArea" prefHeight="784.0" prefWidth="559.0" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </ScrollPane>
+                              <JFXComboBox fx:id="filtradoJFXComboBox" labelFloat="true" layoutX="298.0" layoutY="61.0" prefHeight="25.0" prefWidth="274.0" promptText="Filtrado por rol" styleClass="textoLabel" stylesheets="@../application.css" />
+                              <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" layoutX="29.0" layoutY="61.0" onKeyPressed="#filterUsersUsuario" prefHeight="40.0" prefWidth="238.0" promptText="Buscar" styleClass="textoLabel" stylesheets="@../application.css" />
+                              <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewUsuarios" layoutX="34.0" layoutY="210.0" prefHeight="811.0" prefWidth="569.0" stylesheets="@../application.css" />
                                     </children>
                                 </Pane>
                                 <Pane layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@../application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -196,19 +188,19 @@
                                             </image>
                                         </ImageView>
                                         <Separator layoutX="8.0" layoutY="347.0" prefHeight="61.0" prefWidth="1280.0" />
-                                        <Label fx:id="Nombre11" layoutX="932.0" layoutY="68.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="Susana">
+                                        <Label fx:id="labelNombreUsuarios" layoutX="932.0" layoutY="68.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css">
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="Apellidos11" layoutX="932.0" layoutY="124.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="Díaz Hernández" />
-                                        <Label fx:id="ID12" layoutX="932.0" layoutY="242.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="12/01/1949">
+                                        <Label fx:id="labelApellidosUsuarios" layoutX="932.0" layoutY="124.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" />
+                                        <Label fx:id="labelFechaNacimientoUsuarios" layoutX="932.0" layoutY="242.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="Rol11" layoutX="932.0" layoutY="183.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="Paciente" />
-                                        <Label fx:id="ID111" layoutX="932.0" layoutY="303.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" text="70">
+                                        <Label fx:id="labelRolUsuarios" layoutX="932.0" layoutY="183.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" />
+                                        <Label fx:id="labelEdadUsuarios" layoutX="932.0" layoutY="303.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -243,15 +235,7 @@
                                         <Label layoutX="302.0" layoutY="123.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="ID" />
                               <JFXTextField layoutX="55.0" layoutY="57.0" prefHeight="53.0" prefWidth="493.0" promptText="Buscar mensaje" styleClass="textoLabel" stylesheets="@../application.css" />
                               <JFXButton fx:id="cancelarTicketbtn" layoutX="160.0" layoutY="995.0" prefHeight="30.0" prefWidth="443.0" styleClass="botoninfo" stylesheets="@../application.css" text="Cancelar Ticket" />
-                              <ScrollPane layoutX="28.0" layoutY="212.0" prefHeight="765.0" prefWidth="575.0">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="767.0" prefWidth="576.0">
-                                       <children>
-                                          <JFXTextArea fx:id="mensajesJFXTextArea" prefHeight="746.0" prefWidth="560.0" />
-                                       </children>
-                                    </AnchorPane>
-                                </content>
-                              </ScrollPane>
+                              <JFXTextArea fx:id="mensajesJFXTextArea" layoutX="30.0" layoutY="202.0" prefHeight="772.0" prefWidth="586.0" />
                                     </children>
                                 </Pane>
                                 <Label layoutX="642.0" layoutY="80.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Asunto:" AnchorPane.bottomAnchor="904.0" AnchorPane.leftAnchor="642.0" AnchorPane.rightAnchor="1108.0" AnchorPane.topAnchor="80.0">

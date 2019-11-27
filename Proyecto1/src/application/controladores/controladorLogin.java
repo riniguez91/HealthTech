@@ -38,7 +38,7 @@ public class controladorLogin {
         }
         this.modelo = modelo_ ;
         this.usuario = usuario_;
-        modelo.leerJson();
+        modelo.leerJson("./Proyecto1/src/application/jsonFiles/Users.json");
     }
     @FXML
     private AnchorPane rootp;
@@ -193,7 +193,7 @@ public class controladorLogin {
                                               crearUsernameTField.getText(), crearPasswordTField.getText(), crearRolTField.getText());
                 newUser.setAge(modelo.calculateAge(newUser.getBirthday())); // throws ParseException
                 modelo.getUsuarios().add(newUser);
-                modelo.serializarAJson(modelo.getUsuarios());
+                modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/Users.json", modelo.getUsuarios());
                 loginElements.setVisible(true);
                 crearUsuarioElementos.setVisible(false);
                 logo.setY(-60);
