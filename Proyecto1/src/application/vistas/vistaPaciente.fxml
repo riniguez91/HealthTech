@@ -132,12 +132,10 @@
                               <Label layoutX="41.0" layoutY="501.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos." textAlignment="JUSTIFY" wrapText="true" />
                               <Label layoutX="41.0" layoutY="561.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="5. Ventajas en la lista de Usuarios." wrapText="true" />
                               <Label layoutX="41.0" layoutY="601.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="En la lista de usuarios, se pueden ordenar alfabéticamente tanto los nombres, los apellidos y los roles." wrapText="true" />
-                              <Label layoutX="41.0" layoutY="661.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="6. ¿?" wrapText="true" />
-                              <Label layoutX="41.0" layoutY="701.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " wrapText="true" />
-                              <Label layoutX="41.0" layoutY="761.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="7. ¿?" wrapText="true" />
-                              <Label layoutX="41.0" layoutY="801.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " wrapText="true" />
-                              <Label layoutX="41.0" layoutY="861.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="8. ¿?" wrapText="true" />
-                              <Label layoutX="41.0" layoutY="901.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: " wrapText="true" />
+                              <Label layoutX="41.0" layoutY="661.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="6. ¿Dónde puedo ver mis datos personales?" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="701.0" prefHeight="50.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Inicio&quot; debajo de la foto de perfil se encuentran todo sus datos personales. " wrapText="true" />
+                              <Label layoutX="41.0" layoutY="761.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="7. ¿Cómo puedo buscar a un usuario?" wrapText="true" />
+                              <Label layoutX="41.0" layoutY="801.0" prefHeight="67.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Usuarios&quot; una vez seleccionado el usuario de la lista, se mostrará a la derecha de la pantalla toda la información de los datos relativos." textAlignment="JUSTIFY" wrapText="true" />
                            </children>
                         </Pane>
                             </children></AnchorPane>
