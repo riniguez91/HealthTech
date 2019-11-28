@@ -8,6 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -17,7 +20,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
@@ -334,7 +339,17 @@ public class controladorPaciente {
             tabPanePaciente.getSelectionModel().select(tabMensajesPaciente);
         }
     }
-	
+
+    @FXML
+    void cerrarSesion(ActionEvent event) throws IOException {
+        Stage stageBttnBelongsTo = (Stage) cerrarSesionBtn.getScene().getWindow();
+        FXMLLoader loaderLogin = new FXMLLoader(getClass().getResource("/application/vistas/vistaLogin.fxml"));
+        Parent rootLogin;
+        rootLogin = loaderLogin.load();
+        controladorLogin contrLogin = loaderLogin.getController();
+        contrLogin.initModelo(modelo,usuario);
+        stageBttnBelongsTo.setScene(new Scene(rootLogin));
+    }
 
 	
 	
