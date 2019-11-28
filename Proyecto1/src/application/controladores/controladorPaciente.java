@@ -1,11 +1,8 @@
 package application.controladores;
 
-import application.modelos.Message;
+import application.modelos.*;
 import com.jfoenix.controls.*;
 
-import application.modelos.usuarioTTView;
-import application.modelos.Usuario;
-import application.modelos.modelo;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,14 +10,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TreeItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 public class controladorPaciente {
@@ -53,7 +52,9 @@ public class controladorPaciente {
         // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario
         panelDatosYMensajesUsuarios.setVisible(false);
 
+        // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();
+        // crearTreeTableViewMensajes();
     }
 
     @FXML
@@ -141,6 +142,9 @@ public class controladorPaciente {
     private Label labelRolUsuarios;
 
     @FXML
+    private Label seleccionaMensajeLabelMensajes;
+
+    @FXML
     private Label labelEdadUsuarios;
 
     @FXML
@@ -156,16 +160,50 @@ public class controladorPaciente {
     private JFXTextArea mensajesJFXTextArea;
 
     @FXML
-    private JFXComboBox<String> destinatarioJFXComboBox;
-
-    @FXML
     private JFXButton enviarJFXbtn;
 
     @FXML
-    private JFXTextArea mensajeJFXTextArea;
+    private JFXTextArea crearMensajeJFXTextAreaMensajes;
 
     @FXML
     private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
+
+    @FXML
+    private Tab tabInicioPaciente;
+
+    @FXML
+    private Tab tabCalendarioPaciente;
+
+    @FXML
+    private Tab tabUsuariosPaciente;
+
+    @FXML
+    private Tab tabMensajesPaciente;
+
+    @FXML
+    private JFXTabPane tabPanePaciente;
+
+    @FXML
+    private JFXTextField destinatarioJFXTextFieldUsuarios;
+
+    @FXML
+    private JFXTreeTableView<messageTTView> treeTableViewMensajes;
+
+    @FXML
+    private JFXTextField filtrarMensajeTFieldMensajes;
+
+    @FXML
+    private JFXButton botonCancelarMensajesUsuarios;
+
+    @FXML
+    private AnchorPane mensajePaneMensajes;
+
+    @FXML
+    private JFXTextField destinatarioJFXTextFieldMensajes;
+
+    @FXML
+    private JFXTextField asuntoJFXTextFieldMensajes;
+
 
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
@@ -185,7 +223,41 @@ public class controladorPaciente {
         		usuarioTreeItem.getValue().getSurname().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
 	}
 
+    @FXML
+    void cancelarMensajeUsuarios(ActionEvent event) {
+        asuntoJFXTextFieldUsuarios.clear();
+        mensajeJFXTextFieldUsuarios.clear();
+    }
+
 	public void crearTreeTableViewUsuarios() {
+        JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
+        JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
+        JFXTreeTableColumn<usuarioTTView, String> rolCol = new JFXTreeTableColumn<>("Rol");
+
+        nombreCol.setCellValueFactory(param -> param.getValue().getValue().getName());
+        nombreCol.setMinWidth(189);
+        nombreCol.setMaxWidth(189);
+        apellidosCol.setCellValueFactory(param -> param.getValue().getValue().getSurname());
+        apellidosCol.setMinWidth(189);
+        apellidosCol.setMaxWidth(189);
+        rolCol.setCellValueFactory(param -> param.getValue().getValue().getRolUsuario());
+        rolCol.setMinWidth(189);
+        rolCol.setMaxWidth(189);
+
+        ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
+        // Añadimos los usuarios
+        relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
+        for (Usuario user : relatedUsers) {
+            users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(),user.getBirthday(), user.getAge()));
+        }
+
+        TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
+        treeTableViewUsuarios.getColumns().setAll(nombreCol, apellidosCol, rolCol);
+        treeTableViewUsuarios.setRoot(root);
+        treeTableViewUsuarios.setShowRoot(false);
+    }
+
+    public void crearTreeTableViewMensajes() {
         JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
         JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
         JFXTreeTableColumn<usuarioTTView, String> rolCol = new JFXTreeTableColumn<>("Rol");
@@ -226,6 +298,8 @@ public class controladorPaciente {
             labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
             labelFechaNacimientoUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getBirthday().get());
             labelEdadUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAge().get()+"");
+            destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
+                                                      + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
         }
     }
 
@@ -242,15 +316,22 @@ public class controladorPaciente {
             alert.showAndWait();
         }
         else {
+            UUID uniqueKey = UUID.randomUUID();
             Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
-                    +treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText());
+                    +treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
+                    uniqueKey.toString());
             modelo.getMessages().add(msg);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
             alert.setHeaderText("Informacion");
             alert.setContentText("Se ha enviado el mensaje correctamente");
             alert.showAndWait();
+            // Borramos los campos para evitar confusion
             asuntoJFXTextFieldUsuarios.clear();
             mensajeJFXTextFieldUsuarios.clear();
+            destinatarioJFXTextFieldUsuarios.clear();
+
+            // Cambiamos a la pestaña de mensajes para que vea que efectivamente se ha enviado correctamente junto al historial de mensajes
+            tabPanePaciente.getSelectionModel().select(tabMensajesPaciente);
         }
     }
 	

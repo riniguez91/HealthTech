@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -22,9 +21,9 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorPaciente">
     <children>
-      <JFXTabPane prefHeight="1080.0" prefWidth="1920.0">
+      <JFXTabPane fx:id="tabPanePaciente" prefHeight="1080.0" prefWidth="1920.0">
          <tabs>
-                <Tab text="                         Inicio                         ">
+                <Tab fx:id="tabInicioPaciente" text="                         Inicio                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
                             <children>
@@ -144,21 +143,21 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="                         Calendario                         ">
+                <Tab fx:id="tabCalendarioPaciente" text="                         Calendario                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
-                <Tab text="                         Usuarios                         ">
+                <Tab fx:id="tabUsuariosPaciente" text="                         Usuarios                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../application.css">
                             <children>
                                 <Pane layoutY="14.0" prefHeight="1052.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre" />
+                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="297.0" styleClass="informationLabel" stylesheets="@../application.css" text="Lista de usuarios" />
                                         <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
                                         <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
-                              <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" labelFloat="true" layoutX="29.0" layoutY="61.0" onKeyPressed="#filterUsersUsuario" prefHeight="44.0" prefWidth="574.0" promptText="Buscar" styleClass="textoLabel" stylesheets="@../application.css" />
+                              <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" labelFloat="true" layoutX="29.0" layoutY="61.0" onKeyPressed="#filterUsersUsuario" prefHeight="44.0" prefWidth="574.0" promptText="Buscar usuario" styleClass="textoLabel" stylesheets="@../application.css" />
                               <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewUsuarios" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarDatosYMensajeUsuarios" prefHeight="811.0" prefWidth="569.0" stylesheets="@../application.css" />
                                     </children>
                                 </Pane>
@@ -209,37 +208,47 @@
                                                 <Insets left="20.0" />
                                             </padding>
                                         </Label>
-                                        <Label layoutX="1.0" layoutY="481.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Mensaje:">
+                                        <Label layoutX="1.0" layoutY="537.0" prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Mensaje:">
                                             <padding>
                                                 <Insets left="20.0" />
                                             </padding>
                                         </Label>
                               <JFXButton layoutX="849.0" layoutY="963.0" onAction="#enviarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Enviar Mensaje" />
-                              <JFXTextArea fx:id="mensajeJFXTextFieldUsuarios" layoutX="25.0" layoutY="546.0" prefHeight="398.0" prefWidth="1235.0" promptText="Escriba su mensaje">
+                              <JFXTextArea fx:id="mensajeJFXTextFieldUsuarios" layoutX="25.0" layoutY="596.0" prefHeight="348.0" prefWidth="1235.0" promptText="Escriba su mensaje">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="17.0" />
                                  </font></JFXTextArea>
                               <JFXTextField fx:id="asuntoJFXTextFieldUsuarios" layoutX="178.0" layoutY="400.0" prefHeight="53.0" prefWidth="1070.0" promptText="Introducir el asunto del mensaje." styleClass="textoLabel" stylesheets="@../application.css" />
+                              <Label layoutY="468.0" prefHeight="67.0" prefWidth="236.0" styleClass="informationLabel" stylesheets="@../application.css" text="Destinatario:">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <JFXTextField fx:id="destinatarioJFXTextFieldUsuarios" editable="false" layoutX="250.0" layoutY="474.0" prefHeight="53.0" prefWidth="998.0" styleClass="textoLabel" stylesheets="@../application.css" />
+                              <JFXButton fx:id="botonCancelarMensajesUsuarios" layoutX="28.0" layoutY="963.0" onAction="#cancelarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar mensaje">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="12.0" />
+                                 </font>
+                              </JFXButton>
                                     </children>
                                 </Pane>
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="                         Mensajes                         ">
+                <Tab fx:id="tabMensajesPaciente" text="                         Mensajes                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
                                 <Pane prefHeight="1052.0" prefWidth="640.0">
                                     <children>
-                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre" />
+                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="308.0" styleClass="informationLabel" stylesheets="@../application.css" text="Lista de mensajes" />
                                         <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
                                         <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
-                                        <Label layoutX="302.0" layoutY="123.0" prefHeight="51.0" prefWidth="246.0" styleClass="informationLabel" stylesheets="@../application.css" text="ID" />
-                              <JFXTextField labelFloat="true" layoutX="55.0" layoutY="57.0" prefHeight="53.0" prefWidth="493.0" promptText="Buscar mensaje" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <JFXTextArea fx:id="mensajesJFXTextArea" layoutX="30.0" layoutY="202.0" prefHeight="772.0" prefWidth="586.0" />
+                              <JFXTextField fx:id="filtrarMensajeTFieldMensajes" labelFloat="true" layoutX="29.0" layoutY="61.0" prefHeight="44.0" prefWidth="574.0" promptText="Buscar mensaje" styleClass="textoLabel" stylesheets="@../application.css" />
+                              <JFXTreeTableView fx:id="treeTableViewMensajes" layoutX="34.0" layoutY="210.0" prefHeight="811.0" prefWidth="569.0" />
                                     </children>
                                 </Pane>
-                        <AnchorPane layoutX="642.0" layoutY="80.0">
+                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="80.0" visible="false">
                            <children>
                                       <Label prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Asunto:">
                                           <padding>
@@ -256,17 +265,21 @@
                                               <Insets left="20.0" />
                                           </padding>
                                       </Label>
-                              <JFXComboBox fx:id="destinatarioJFXComboBox" layoutX="255.0" layoutY="121.0" prefHeight="33.0" prefWidth="286.0" promptText="Seleccionar destinatario" styleClass="textoLabel" stylesheets="@../application.css" />
                               <JFXButton fx:id="enviarJFXbtn" layoutX="779.0" layoutY="886.0" prefHeight="37.0" prefWidth="443.0" styleClass="botones" stylesheets="@../application.css" text="Enviar Mensaje" />
-                              <JFXTextArea fx:id="mensajeJFXTextArea" layoutX="20.0" layoutY="280.0" prefHeight="587.0" prefWidth="1202.0" promptText="Escriba su mensaje">
+                              <JFXTextArea fx:id="crearMensajeJFXTextAreaMensajes" layoutX="20.0" layoutY="280.0" prefHeight="587.0" prefWidth="1202.0" promptText="Escriba su mensaje">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="17.0" />
                                  </font>
                               </JFXTextArea>
-                              <JFXTextField fx:id="asuntoJFXTextField" layoutX="175.0" layoutY="4.0" prefHeight="45.0" prefWidth="1047.0" promptText="Introducir el asunto del mensaje." styleClass="textoLabel" stylesheets="@../application.css" />
-                              <JFXButton fx:id="cancelarTicketbtn" layoutX="17.0" layoutY="886.0" prefHeight="37.0" prefWidth="443.0" styleClass="botoninfo" stylesheets="@../application.css" text="Cancelar Ticket" />
+                              <JFXTextField fx:id="asuntoJFXTextFieldMensajes" layoutX="175.0" layoutY="4.0" prefHeight="45.0" prefWidth="1047.0" promptText="Introducir el asunto del mensaje." styleClass="textoLabel" stylesheets="@../application.css" />
+                              <JFXTextField fx:id="destinatarioJFXTextFieldMensajes" editable="false" layoutX="249.0" layoutY="116.0" prefHeight="53.0" prefWidth="976.0" styleClass="textoLabel" stylesheets="@../application.css" />
                            </children>
                         </AnchorPane>
+                        <Label fx:id="seleccionaMensajeLabelMensajes" layoutX="1156.0" layoutY="534.0" prefHeight="32.0" prefWidth="303.0" text="Selecciona un mensaje">
+                           <font>
+                              <Font name="Segoe UI Emoji" size="28.0" />
+                           </font>
+                        </Label>
                             </children></AnchorPane>
                     </content>
                 </Tab>

@@ -86,14 +86,5 @@
       "jrodriguez",
       "rnieto"
     ]
-  },
-  {
-    "name": "pepe",
-    "surname": "pepe pepe",
-    "age": 18,
-    "birthday": "24/12/2000",
-    "username": "pepe",
-    "password": "pepe",
-    "rol": "medico"
   }
 ]

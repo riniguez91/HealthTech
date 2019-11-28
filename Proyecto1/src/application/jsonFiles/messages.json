@@ -3,6 +3,21 @@
     "sender": "Susana Díaz Hernández",
     "receiver": "Sara Gómez Hernández",
     "subject": "Hola!",
-    "message": "Te gusta como funciona la aplicacion?"
+    "message": "Te gusta como funciona la aplicacion?",
+    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773"
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Catalina Rey Rodríguez",
+    "subject": "sssssss",
+    "message": "sssssss",
+    "idTicket": "beaefbd4-7136-49ae-b369-4bb57762dec6"
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Catalina Rey Rodríguez",
+    "subject": "ss",
+    "message": "ss",
+    "idTicket": "97b6cd5f-e080-4572-91f1-5392980c9f10"
   }
 ]
