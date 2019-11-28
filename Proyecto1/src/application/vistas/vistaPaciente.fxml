@@ -19,17 +19,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorPaciente">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: white;" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorPaciente">
     <children>
-      <JFXTabPane fx:id="tabPanePaciente" prefHeight="1080.0" prefWidth="1920.0">
+      <JFXTabPane fx:id="tabPanePaciente" prefHeight="1080.0" prefWidth="1920.0" styleClass="tab-header-background" stylesheets="@../application.css">
          <tabs>
                 <Tab fx:id="tabInicioPaciente" text="                         Inicio                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
                             <children>
-                                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1051.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
+                                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1043.0" prefWidth="528.0" style="-fx-background-color: #293039;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1390.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <ImageView fx:id="User" fitHeight="376.0" fitWidth="550.0" focusTraversable="true" nodeOrientation="INHERIT">
+                                        <ImageView fx:id="User" fitHeight="376.0" fitWidth="455.0" focusTraversable="true" nodeOrientation="INHERIT">
                                             <image>
                                                 <Image url="@../../resources/fotos/user.png" />
                                             </image>
@@ -50,7 +50,7 @@
                                                 <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
-                                                <Label fx:id="Nombre" prefHeight="30.0" prefWidth="301.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre:">
+                                                <Label fx:id="Nombre" prefHeight="30.0" prefWidth="301.0" style="-fx-text-fill: white;" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre:">
                                                     <padding>
                                                         <Insets left="10.0" />
                                                     </padding>
@@ -58,12 +58,12 @@
                                                         <Font name="System Bold" size="18.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="Apellidos" prefHeight="30.0" prefWidth="374.0" styleClass="informationLabel" stylesheets="@../application.css" text="Apellidos:" GridPane.rowIndex="1">
+                                                <Label fx:id="Apellidos" prefHeight="30.0" prefWidth="374.0" style="-fx-text-fill: white;" styleClass="informationLabel" stylesheets="@../application.css" text="Apellidos:" GridPane.rowIndex="1">
                                                     <padding>
                                                         <Insets left="10.0" />
                                                     </padding>
                                                 </Label>
-                                                <Label fx:id="ID" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="ID:" GridPane.rowIndex="2">
+                                                <Label fx:id="ID" prefHeight="45.0" prefWidth="400.0" style="-fx-text-fill: white;" styleClass="informationLabel" stylesheets="@../application.css" text="ID:" GridPane.rowIndex="2">
                                                     <padding>
                                                         <Insets left="10.0" />
                                                     </padding>
@@ -71,7 +71,7 @@
                                                         <Font name="System Bold" size="12.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="Rol" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Rol:" GridPane.rowIndex="3">
+                                                <Label fx:id="Rol" prefHeight="45.0" prefWidth="400.0" style="-fx-text-fill: white;" styleClass="informationLabel" stylesheets="@../application.css" text="Rol:" GridPane.rowIndex="3">
                                                     <padding>
                                                         <Insets left="10.0" />
                                                     </padding>
@@ -82,14 +82,14 @@
                                                 <Label fx:id="labelRolInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                             </children>
                                         </GridPane>
-                              <JFXButton fx:id="cerrarSesionBtn" onAction="#cerrarSesion" prefHeight="90.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Cerrar Sesión">
+                              <JFXButton fx:id="cerrarSesionBtn" onAction="#cerrarSesion" prefHeight="70.0" prefWidth="499.0" styleClass="botones" stylesheets="@../application.css" text="Cerrar Sesión" textFill="WHITE">
                                  <VBox.margin>
-                                    <Insets bottom="10.0" left="10.0" top="340.0" />
+                                    <Insets bottom="30.0" left="15.0" top="340.0" />
                                  </VBox.margin>
                               </JFXButton>
                                     </children></VBox>
                                   <Separator layoutX="649.0" layoutY="96.0" prefHeight="27.0" prefWidth="1297.0" />
-                                <Pane fx:id="PaneInicio" layoutX="562.0" layoutY="-2.0" prefHeight="1050.0" prefWidth="1294.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Pane fx:id="PaneInicio" layoutX="528.0" layoutY="-2.0" prefHeight="1043.0" prefWidth="1392.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="530.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <Label layoutY="16.0" prefHeight="90.0" prefWidth="900.0" styleClass="tituloLabel" stylesheets="@../application.css" text="RECORDATORIOS">
                                             <padding>
@@ -116,12 +116,12 @@
                                     <Font name="Segoe UI Emoji" size="18.0" />
                                  </font>
                               </JFXTextArea>
-                              <JFXButton fx:id="preguntasfrecuentesbtn" layoutX="1040.0" layoutY="1.0" onAction="#verPreguntasFrecuentes" prefHeight="31.0" prefWidth="240.0" styleClass="botoninfo" stylesheets="@../application.css" text="Preguntas Frecuentes" />
+                              <JFXButton fx:id="preguntasfrecuentesbtn" layoutX="1040.0" layoutY="1.0" onAction="#verPreguntasFrecuentes" prefHeight="31.0" prefWidth="240.0" styleClass="botones" stylesheets="@../application.css" text="Preguntas Frecuentes" textFill="WHITE" />
                                     </children></Pane>
-                        <Pane fx:id="PanePreguntasFrecuentes" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Pane fx:id="PanePreguntasFrecuentes" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="530.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Label layoutX="21.0" layoutY="9.0" prefHeight="109.0" prefWidth="870.0" styleClass="tituloLabel" stylesheets="@../application.css" text="Preguntas Frecuentes" />
-                              <JFXButton fx:id="atrasbtn" layoutX="442.0" layoutY="949.0" onAction="#verInicio" prefHeight="67.0" prefWidth="462.0" styleClass="botoninfo" stylesheets="@../application.css" text="Atrás" />
+                              <JFXButton fx:id="atrasbtn" layoutX="442.0" layoutY="949.0" onAction="#verInicio" prefHeight="67.0" prefWidth="462.0" styleClass="botones" stylesheets="@../application.css" text="Atrás" textFill="WHITE" />
                               <Label layoutX="41.0" layoutY="131.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="1. ¿Cómo puedo enviar un mensaje a mi médico?" />
                               <Label layoutX="41.0" layoutY="171.0" prefHeight="96.0" prefWidth="1230.0" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." textAlignment="JUSTIFY" wrapText="true" />
                               <Label layoutX="41.0" layoutY="261.0" prefHeight="50.0" prefWidth="1230.0" styleClass="informationLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" wrapText="true" />
@@ -211,7 +211,7 @@
                                                 <Insets left="20.0" />
                                             </padding>
                                         </Label>
-                              <JFXButton layoutX="849.0" layoutY="963.0" onAction="#enviarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Enviar Mensaje" />
+                              <JFXButton layoutX="849.0" layoutY="963.0" onAction="#enviarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Enviar Mensaje" textFill="WHITE" />
                               <JFXTextArea fx:id="mensajeJFXTextFieldUsuarios" layoutX="25.0" layoutY="596.0" prefHeight="348.0" prefWidth="1235.0" promptText="Escriba su mensaje">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="17.0" />
@@ -223,7 +223,7 @@
                                  </padding>
                               </Label>
                               <JFXTextField fx:id="destinatarioJFXTextFieldUsuarios" editable="false" layoutX="250.0" layoutY="474.0" prefHeight="53.0" prefWidth="998.0" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <JFXButton fx:id="botonCancelarMensajesUsuarios" layoutX="28.0" layoutY="963.0" onAction="#cancelarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar mensaje">
+                              <JFXButton fx:id="botonCancelarMensajesUsuarios" layoutX="28.0" layoutY="963.0" onAction="#cancelarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar mensaje" textFill="WHITE">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="12.0" />
                                  </font>

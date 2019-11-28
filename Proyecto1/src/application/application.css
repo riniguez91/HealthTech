@@ -25,7 +25,8 @@
 
 /* Botones */
 .botones{
-	-fx-background-color: #60C7C1;
+	-fx-background-color: #00c4cc;/* #155dd5;*/
+	
 }
 .botones:hover{
     -fx-opacity: 0.8;
@@ -120,4 +121,7 @@
     -fx-focus-color: rgba(240,40,40);
 }
 
+.jfx-tab-pane .tab-header-background{
+	-fx-background-color:  #0e1318;
+}
 
