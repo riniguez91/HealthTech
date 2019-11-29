@@ -25,7 +25,7 @@
 
 /* Botones */
 .botones{
-	-fx-background-color: #00c4cc;/* #155dd5;*/
+	-fx-background-color: #155dd5;
 	
 }
 .botones:hover{
@@ -122,6 +122,6 @@
 }
 
 .jfx-tab-pane .tab-header-background{
-	-fx-background-color:  #0e1318;
+	-fx-background-color:  #080b0f;
 }
 
