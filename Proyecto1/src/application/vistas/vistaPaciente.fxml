@@ -18,8 +18,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import jfxtras.scene.control.CalendarPicker?>
-<?import jfxtras.scene.control.agenda.Agenda?>
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorPaciente">
     <children>
@@ -145,11 +143,8 @@
                 </Tab>
                 <Tab fx:id="tabCalendarioPaciente" text="                         Calendario                         ">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <CalendarPicker layoutX="82.0" layoutY="33.0" prefHeight="210.0" prefWidth="1152.0" />
-                        <Agenda layoutX="244.0" layoutY="279.0" prefHeight="485.0" prefWidth="829.0" />
-                     </children></AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+
                     </content>
                 </Tab>
                 <Tab fx:id="tabUsuariosPaciente" text="                         Usuarios                         ">
