@@ -9,20 +9,25 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TreeItem;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +37,8 @@ public class controladorPaciente {
     private Usuario usuario;
     public List<Usuario> relatedUsers;
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    private List<Label> labelMessages = new ArrayList<>();
+    private List<String> uniqueIDS = new ArrayList<>();
 
     public void initModelo(application.modelos.modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -46,13 +53,6 @@ public class controladorPaciente {
         labelApellidosInicio.setText(usuario.getSurname());
         labelRolInicio.setText(usuario.getRol());
         labelUsernameInicio.setText(usuario.getUsername());
-
-        // Datos pestaña Usuario
-        labelNombreUsuarios.setText(usuario.getUsername());
-        labelApellidosUsuarios.setText(usuario.getSurname());
-        labelRolUsuarios.setText(usuario.getRol());
-        labelFechaNacimientoUsuarios.setText(usuario.getBirthday());
-        labelEdadUsuarios.setText(usuario.getAge()+"");
 
         // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario
         panelDatosYMensajesUsuarios.setVisible(false);
@@ -165,9 +165,6 @@ public class controladorPaciente {
     private JFXTextArea mensajesJFXTextArea;
 
     @FXML
-    private JFXTextArea crearMensajeJFXTextAreaMensajes;
-
-    @FXML
     private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
 
     @FXML
@@ -209,6 +206,17 @@ public class controladorPaciente {
     @FXML
     private JFXTextField idTicketJFXTextFieldMensajes;
 
+    @FXML
+    private AnchorPane conversacionMensajes;
+
+    @FXML
+    private VBox vboxConversacionMensajes;
+
+    @FXML
+    private JFXButton responderTicketMensajes;
+
+    @FXML
+    private Label seleccionaUsuarioUsuarios;
 
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
@@ -279,8 +287,14 @@ public class controladorPaciente {
 
         ObservableList<messageTTView> messages = FXCollections.observableArrayList();
         // Añadimos los mensajes
-        for (Message mensaje : modelo.getMessages())
-            messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket()));
+        for (Message mensaje : modelo.getMessages()) {
+            // Comprobamos que solo se añadan tickets para el usuario, y no todos los mensajes del json
+            if (!uniqueIDS.contains(mensaje.getIdTicket()) && (mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())
+                    || mensaje.getReceiver().equals(usuario.getName()+" "+usuario.getSurname()))) {
+                messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket()));
+                uniqueIDS.add(mensaje.getIdTicket());
+            }
+        }
 
         TreeItem<messageTTView> root = new RecursiveTreeItem<>(messages, RecursiveTreeObject::getChildren);
         treeTableViewMensajes.getColumns().setAll(idCol, senderCol, asuntoCol);
@@ -293,8 +307,10 @@ public class controladorPaciente {
 	    // Comprobamos que no este visible
 	    if (!panelDatosYMensajesUsuarios.isVisible()){
 	        panelDatosYMensajesUsuarios.setVisible(true);
+	        seleccionaUsuarioUsuarios.setVisible(false);
+
         }
-	    else { // Cambiamos los datos del usuario
+	    if (panelDatosYMensajesUsuarios.isVisible()) { // Cambiamos los datos del usuario
             labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
             labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
             labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
@@ -311,11 +327,31 @@ public class controladorPaciente {
         if (!mensajePaneMensajes.isVisible()){
             mensajePaneMensajes.setVisible(true);
         }
-        else { // Cambiamos los datos del mensaje
+        if (mensajePaneMensajes.isVisible()) { // Cambiamos los datos del mensaje
+            // Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
+            labelMessages.clear();
+            vboxConversacionMensajes.getChildren().clear();
+
             asuntoJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get());
             destinatarioJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get());
             idTicketJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get());
-            crearMensajeJFXTextAreaMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getMessage().get());
+            int i = 0;
+            for (Message mensaje : modelo.getMessages()) {
+                if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
+                    labelMessages.add(new Label(mensaje.getMessage()));
+                    labelMessages.get(i).setPrefWidth(1202);
+                    labelMessages.get(i).setWrapText(true);
+                    if (!mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())) {
+                        labelMessages.get(i).setPadding(new Insets(0,0,0,669));
+                    }
+                    else {
+                        labelMessages.get(i).setPadding(new Insets(0,669,0,0));
+                    }
+                    vboxConversacionMensajes.getChildren().add(labelMessages.get(i));
+                    vboxConversacionMensajes.setSpacing(10);
+                    i++;
+                }
+            }
             seleccionaMensajeLabelMensajes.setVisible(false);
         }
     }
@@ -335,9 +371,11 @@ public class controladorPaciente {
         else {
             UUID uniqueKey = UUID.randomUUID();
             Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
-                    +treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
-                    uniqueKey.toString());
-            modelo.getMessages().add(msg);
+                        +treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
+                        uniqueKey.toString());
+            List<Message> updatedMessages = modelo.getMessages();
+            updatedMessages.add(msg);
+            modelo.setMessages(updatedMessages);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
             alert.setHeaderText("Informacion");
             alert.setContentText("Se ha enviado el mensaje correctamente");
@@ -345,10 +383,10 @@ public class controladorPaciente {
             // Borramos los campos para evitar confusion
             asuntoJFXTextFieldUsuarios.clear();
             mensajeJFXTextFieldUsuarios.clear();
-            destinatarioJFXTextFieldUsuarios.clear();
 
-            // Cambiamos a la pestaña de mensajes para que vea que efectivamente se ha enviado correctamente junto al historial de mensajes
-            tabPanePaciente.getSelectionModel().select(tabMensajesPaciente);
+            // Actualizamos la lista de mensajes
+            treeTableViewMensajes.getRoot().getChildren().add(new TreeItem<>(new messageTTView(msg.getSender(), msg.getReceiver(), msg.getSubject(),
+                                                                                                msg.getMessage(), msg.getIdTicket())));
         }
     }
 
@@ -361,6 +399,11 @@ public class controladorPaciente {
         controladorLogin contrLogin = loaderLogin.getController();
         contrLogin.initModelo(modelo,usuario);
         stageBttnBelongsTo.setScene(new Scene(rootLogin));
+    }
+
+    @FXML
+    void responderTicketMensajes(ActionEvent event) {
+
     }
 
 	

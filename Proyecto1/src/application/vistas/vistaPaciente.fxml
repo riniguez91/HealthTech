@@ -7,6 +7,7 @@
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
@@ -151,16 +152,21 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../application.css">
                             <children>
+                        <Label fx:id="seleccionaUsuarioUsuarios" layoutX="1156.0" layoutY="534.0" prefHeight="32.0" prefWidth="303.0" text="Selecciona un usuario">
+                           <font>
+                              <Font name="Segoe UI Emoji" size="28.0" />
+                           </font>
+                        </Label>
                                 <Pane layoutY="14.0" prefHeight="1052.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="297.0" styleClass="informationLabel" stylesheets="@../application.css" text="Lista de usuarios" />
                                         <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
                                         <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
-                              <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" labelFloat="true" layoutX="29.0" layoutY="61.0" onKeyPressed="#filterUsersUsuario" prefHeight="44.0" prefWidth="574.0" promptText="Buscar usuario" styleClass="textoLabel" stylesheets="@../application.css" />
+                              <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" focusTraversable="false" labelFloat="true" layoutX="29.0" layoutY="61.0" onKeyPressed="#filterUsersUsuario" prefHeight="44.0" prefWidth="574.0" promptText="Buscar usuario" styleClass="textoLabel" stylesheets="@../application.css" />
                               <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewUsuarios" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarDatosYMensajeUsuarios" prefHeight="811.0" prefWidth="569.0" stylesheets="@../application.css" />
                                     </children>
                                 </Pane>
-                                <Pane fx:id="panelDatosYMensajesUsuarios" layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@../application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Pane fx:id="panelDatosYMensajesUsuarios" layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@../application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <Label fx:id="Nombre1" layoutX="532.0" layoutY="62.0" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre:">
                                             <font>
@@ -212,7 +218,7 @@
                                                 <Insets left="20.0" />
                                             </padding>
                                         </Label>
-                              <JFXButton layoutX="849.0" layoutY="963.0" onAction="#enviarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Enviar Mensaje" />
+                              <JFXButton layoutX="849.0" layoutY="963.0" onAction="#enviarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Generar ticket nuevo" />
                               <JFXTextArea fx:id="mensajeJFXTextFieldUsuarios" layoutX="25.0" layoutY="596.0" prefHeight="348.0" prefWidth="1235.0" promptText="Escriba su mensaje">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="17.0" />
@@ -224,7 +230,7 @@
                                  </padding>
                               </Label>
                               <JFXTextField fx:id="destinatarioJFXTextFieldUsuarios" editable="false" layoutX="250.0" layoutY="474.0" prefHeight="53.0" prefWidth="998.0" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <JFXButton fx:id="botonCancelarMensajesUsuarios" layoutX="28.0" layoutY="963.0" onAction="#cancelarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar mensaje">
+                              <JFXButton fx:id="botonCancelarMensajesUsuarios" layoutX="28.0" layoutY="963.0" onAction="#cancelarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar ticket">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="12.0" />
                                  </font>
@@ -244,10 +250,10 @@
                                         <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0" />
                                         <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
                               <JFXTextField fx:id="filtrarMensajeTFieldMensajes" labelFloat="true" layoutX="29.0" layoutY="61.0" prefHeight="44.0" prefWidth="574.0" promptText="Buscar mensaje" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <JFXTreeTableView fx:id="treeTableViewMensajes" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarTicketMensajes" prefHeight="811.0" prefWidth="569.0" />
+                              <JFXTreeTableView fx:id="treeTableViewMensajes" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarTicketMensajes" prefHeight="794.0" prefWidth="569.0" />
                                     </children>
                                 </Pane>
-                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="80.0">
+                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="80.0" maxHeight="200.0" visible="false">
                            <children>
                                       <Label prefHeight="67.0" prefWidth="170.0" styleClass="informationLabel" stylesheets="@../application.css" text="Asunto:">
                                           <padding>
@@ -264,11 +270,15 @@
                                               <Insets left="20.0" />
                                           </padding>
                                       </Label>
-                              <JFXTextArea fx:id="crearMensajeJFXTextAreaMensajes" editable="false" layoutX="20.0" layoutY="288.0" prefHeight="639.0" prefWidth="1202.0">
-                                 <font>
-                                    <Font name="Segoe UI Emoji" size="17.0" />
-                                 </font>
-                              </JFXTextArea>
+                              <ScrollPane layoutX="20.0" layoutY="289.0" prefHeight="588.0" prefWidth="1202.0">
+                                 <content>
+                                    <AnchorPane fx:id="conversacionMensajes">
+                                       <children>
+                                          <VBox fx:id="vboxConversacionMensajes" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
                               <JFXTextField fx:id="asuntoJFXTextFieldMensajes" editable="false" layoutX="175.0" layoutY="4.0" prefHeight="45.0" prefWidth="1047.0" styleClass="textoLabel" stylesheets="@../application.css" />
                               <JFXTextField fx:id="destinatarioJFXTextFieldMensajes" editable="false" layoutX="249.0" layoutY="72.0" prefHeight="53.0" prefWidth="976.0" styleClass="textoLabel" stylesheets="@../application.css" />
                               <Label layoutY="148.0" prefHeight="67.0" prefWidth="250.0" styleClass="informationLabel" stylesheets="@../application.css" text="ID Ticket:">
@@ -284,6 +294,7 @@
                               <Font name="Segoe UI Emoji" size="28.0" />
                            </font>
                         </Label>
+                        <JFXButton fx:id="responderTicketMensajes" layoutX="1454.0" layoutY="975.0" onAction="#responderTicketMensajes" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Responder al ticket" />
                             </children></AnchorPane>
                     </content>
                 </Tab>
