@@ -59,7 +59,7 @@ public class controladorPaciente {
 
         // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();
-        // crearTreeTableViewMensajes();
+        crearTreeTableViewMensajes();
     }
 
     @FXML
@@ -165,9 +165,6 @@ public class controladorPaciente {
     private JFXTextArea mensajesJFXTextArea;
 
     @FXML
-    private JFXButton enviarJFXbtn;
-
-    @FXML
     private JFXTextArea crearMensajeJFXTextAreaMensajes;
 
     @FXML
@@ -208,6 +205,9 @@ public class controladorPaciente {
 
     @FXML
     private JFXTextField asuntoJFXTextFieldMensajes;
+
+    @FXML
+    private JFXTextField idTicketJFXTextFieldMensajes;
 
 
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
@@ -263,31 +263,29 @@ public class controladorPaciente {
     }
 
     public void crearTreeTableViewMensajes() {
-        JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
-        JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
-        JFXTreeTableColumn<usuarioTTView, String> rolCol = new JFXTreeTableColumn<>("Rol");
+        JFXTreeTableColumn<messageTTView, String> idCol = new JFXTreeTableColumn<>("ID Ticket");
+        JFXTreeTableColumn<messageTTView, String> senderCol = new JFXTreeTableColumn<>("De");
+        JFXTreeTableColumn<messageTTView, String> asuntoCol = new JFXTreeTableColumn<>("Asunto");
 
-        nombreCol.setCellValueFactory(param -> param.getValue().getValue().getName());
-        nombreCol.setMinWidth(189);
-        nombreCol.setMaxWidth(189);
-        apellidosCol.setCellValueFactory(param -> param.getValue().getValue().getSurname());
-        apellidosCol.setMinWidth(189);
-        apellidosCol.setMaxWidth(189);
-        rolCol.setCellValueFactory(param -> param.getValue().getValue().getRolUsuario());
-        rolCol.setMinWidth(189);
-        rolCol.setMaxWidth(189);
+        idCol.setCellValueFactory(param -> param.getValue().getValue().getIdTicket());
+        idCol.setMinWidth(100);
+        idCol.setMaxWidth(100);
+        senderCol.setCellValueFactory(param -> param.getValue().getValue().getSender());
+        senderCol.setMinWidth(169);
+        senderCol.setMaxWidth(169);
+        asuntoCol.setCellValueFactory(param -> param.getValue().getValue().getSubject());
+        asuntoCol.setMinWidth(308);
+        asuntoCol.setMaxWidth(308);
 
-        ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
-        // Añadimos los usuarios
-        relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
-        for (Usuario user : relatedUsers) {
-            users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(),user.getBirthday(), user.getAge()));
-        }
+        ObservableList<messageTTView> messages = FXCollections.observableArrayList();
+        // Añadimos los mensajes
+        for (Message mensaje : modelo.getMessages())
+            messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket()));
 
-        TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
-        treeTableViewUsuarios.getColumns().setAll(nombreCol, apellidosCol, rolCol);
-        treeTableViewUsuarios.setRoot(root);
-        treeTableViewUsuarios.setShowRoot(false);
+        TreeItem<messageTTView> root = new RecursiveTreeItem<>(messages, RecursiveTreeObject::getChildren);
+        treeTableViewMensajes.getColumns().setAll(idCol, senderCol, asuntoCol);
+        treeTableViewMensajes.setRoot(root);
+        treeTableViewMensajes.setShowRoot(false);
     }
 
     @FXML
@@ -296,8 +294,7 @@ public class controladorPaciente {
 	    if (!panelDatosYMensajesUsuarios.isVisible()){
 	        panelDatosYMensajesUsuarios.setVisible(true);
         }
-	    if (panelDatosYMensajesUsuarios.isVisible()){
-            // Cambiamos los datos del usuario
+	    else { // Cambiamos los datos del usuario
             labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
             labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
             labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
@@ -305,6 +302,21 @@ public class controladorPaciente {
             labelEdadUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAge().get()+"");
             destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
                                                       + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
+        }
+    }
+
+    @FXML
+    void mostrarTicketMensajes(MouseEvent event) {
+        // Comprobamos que no este visible
+        if (!mensajePaneMensajes.isVisible()){
+            mensajePaneMensajes.setVisible(true);
+        }
+        else { // Cambiamos los datos del mensaje
+            asuntoJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get());
+            destinatarioJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get());
+            idTicketJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get());
+            crearMensajeJFXTextAreaMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getMessage().get());
+            seleccionaMensajeLabelMensajes.setVisible(false);
         }
     }
 

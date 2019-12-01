@@ -5,9 +5,9 @@
 }
 /* Labels */
 .informationLabel{
-	-fx-text-fill: black;
+	-fx-text-fill: white;
 	-fx-font-size: 35;
-	-fx-font-family: System;
+	-fx-font-family: Segoe UI Emoji;
 	-fx-font-weight: Bold;
 }
 .tituloLabel{
@@ -119,5 +119,8 @@
 .tree-table-row-cell .jfx-text-field{
     -fx-focus-color: rgba(240,40,40);
 }
+
+.jfx-tab-pane .tab-header-background { -fx-background-color: #1D232A; }
+
 
 
