@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.calendarfx.view.AgendaView?>
+<?import com.calendarfx.view.DetailedDayView?>
+<?import com.calendarfx.view.page.MonthPage?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextArea?>
@@ -143,7 +146,12 @@
                 </Tab>
                 <Tab fx:id="tabCalendarioPaciente" text="                         Calendario                         ">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AgendaView layoutX="8.0" layoutY="422.0" prefHeight="607.0" prefWidth="992.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="920.0" AnchorPane.topAnchor="422.0" />
+                        <DetailedDayView layoutX="1033.0" layoutY="30.0" prefHeight="1002.0" prefWidth="869.0" />
+                        <MonthPage layoutX="14.0" layoutY="12.0" prefHeight="365.0" prefWidth="968.0" />
+                     </children></AnchorPane>
 
                     </content>
                 </Tab>
