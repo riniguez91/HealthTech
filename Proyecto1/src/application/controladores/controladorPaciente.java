@@ -2,9 +2,7 @@ package application.controladores;
 
 import application.modelos.*;
 
-import com.calendarfx.view.AgendaView;
-import com.calendarfx.view.DetailedDayView;
-import com.calendarfx.view.page.MonthPage;
+import com.calendarfx.view.page.DayPage;
 import com.jfoenix.controls.*;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -223,13 +221,11 @@ public class controladorPaciente {
     private Label seleccionaUsuarioUsuarios;
     
     @FXML
-    private MonthPage calendario;
+    private DayPage calendario;
     
     @FXML
-    private AgendaView agenda;
+    private JFXButton guardarCalendario;
     
-    @FXML
-    private DetailedDayView tareas;
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
 	void verInicio(ActionEvent event) {
@@ -417,6 +413,8 @@ public class controladorPaciente {
     void responderTicketMensajes(ActionEvent event) {
 
     }
-
-	   
+    
+    @FXML
+    void guardarCalendario(ActionEvent event) {
+    }
 }

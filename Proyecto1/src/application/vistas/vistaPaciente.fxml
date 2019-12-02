@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.calendarfx.view.AgendaView?>
-<?import com.calendarfx.view.DetailedDayView?>
-<?import com.calendarfx.view.page.MonthPage?>
+<?import com.calendarfx.view.page.DayPage?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextArea?>
@@ -149,11 +147,9 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <MonthPage fx:id="calendario" layoutX="22.0" layoutY="11.0" prefHeight="418.0" prefWidth="900.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
-                        <AgendaView fx:id="agenda" layoutX="31.0" layoutY="431.0" prefHeight="576.0" prefWidth="900.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" />
-                        <DetailedDayView fx:id="tareas" layoutX="937.0" layoutY="7.0" prefHeight="1000.0" prefWidth="960.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                        <DayPage fx:id="calendario" layoutX="437.0" layoutY="290.0" prefHeight="961.0" prefWidth="1900.0" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <JFXButton fx:id="guardarCalendario" layoutX="915.0" layoutY="971.0" onAction="#guardarCalendario" prefHeight="47.0" prefWidth="110.0" styleClass="botones" text="Guardar" />
                      </children></AnchorPane>
-
                     </content>
                 </Tab>
                 <Tab fx:id="tabUsuariosPaciente" text="                         Usuarios                         ">
