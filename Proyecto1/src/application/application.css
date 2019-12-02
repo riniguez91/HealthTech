@@ -7,25 +7,43 @@
 .informationLabel{
 	-fx-text-fill: white;
 	-fx-font-size: 35;
-	-fx-font-family: Segoe UI Emoji;
+	-fx-font-family: Century Gothic;
 	-fx-font-weight: Bold;
 }
 .tituloLabel{
 	-fx-text-fill: black;
 	-fx-font-size: 60;
-	-fx-font-family: System;
-	-fx-font-weight: Bold;
+	-fx-font-family: Century Gothic;
+	-fx-font-weight: bold;
 }
 .textoLabel{
 	-fx-text-fill: black;
 	-fx-font-size: 20;
-	-fx-font-family: Segoe UI Emoji;
+	-fx-font-family: Century Gothic;
 	-fx-font-weight: normal;
+}
+.textoLabelwhite{
+	-fx-text-fill: white;
+	-fx-prompt-text-fill: white;
+	-fx-font-size: 20;
+	-fx-font-family: Century Gothic;
+	-fx-font-weight: normal;
+}
+
+.preguntaLabel{
+	-fx-text-fill: black;
+	-fx-font-size: 35;
+	-fx-font-family: Century Gothic;
+	-fx-font-weight: Bold;
 }
 
 /* Botones */
 .botones{
-	-fx-background-color: #60C7C1;
+	-fx-background-color: #34394c;
+	-fx-border-color: white;
+	-fx-border-width: 2px;
+	-fx-font-family: Segoe UI Emoji;
+	-fx-text-fill: white;
 }
 .botones:hover{
     -fx-opacity: 0.8;
@@ -34,7 +52,7 @@
     -fx-cursor: hand;
 }
 .botoninfo{
-	-fx-background-color:  #60C7C1;
+	-fx-background-color:  #1363cb;
 }
 .botoninfo:hover{
     -fx-opacity: 0.8;
@@ -120,7 +138,29 @@
     -fx-focus-color: rgba(240,40,40);
 }
 
-.jfx-tab-pane .tab-header-background { -fx-background-color: #1D232A; }
+/* Tabs */
+.jfx-tab-pane .tab-header-background { 
+	-fx-background-color: #0163af;
+}
+
+.jfx-tab-pane .tab .tab-label {
+    -fx-font-family: Century Gothic;
+    -fx-text-fill: white;
+    -fx-font-size: 22.69;
+    -fx-font-weight: bold;
+}
+
+/* Separador */
+.separator-black *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: black;
+}
+.separator-white *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: white;
+}
 
 
 
