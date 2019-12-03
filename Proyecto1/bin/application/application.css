@@ -37,34 +37,32 @@
 	-fx-font-weight: Bold;
 }
 
+.textoArea {
+	-fx-text-fill: black;
+	-fx-prompt-text-fill: black;
+	-fx-font-size: 20;
+	-fx-font-family: Century Gothic;
+	-fx-font-weight: lighter;
+	-fx-background-color: white;
+}
+
 /* Botones */
 .botones{
 	-fx-background-color: #34394c;
 	-fx-border-color: white;
 	-fx-border-width: 2px;
-	-fx-font-family: Segoe UI Emoji;
+	-fx-font-family: Century Gothic;
 	-fx-text-fill: white;
 }
 .botones:hover{
-    -fx-opacity: 0.8;
-    -fx-text-fill: black;
-    -fx-color: #C6E9FB;
-    -fx-cursor: hand;
-}
-.botoninfo{
-	-fx-background-color:  #1363cb;
-}
-.botoninfo:hover{
-    -fx-opacity: 0.8;
-    -fx-text-fill: black;
-    -fx-color: #EEE5E3;
     -fx-cursor: hand;
 }
 
 /* Tree table view */
 .tree-table-view{
-    -fx-tree-table-color: rgba(30, 170, 0, 0.8);
+    -fx-tree-table-color: #0163af;
     -fx-tree-table-rippler-color : rgba(255, 0, 0, 0.9);
+    -fx-font-family: Century Gothic;
 }
 .tree-table-view:focused .tree-table-row-cell:selected {
     -fx-background-color: -fx-tree-table-color  ;

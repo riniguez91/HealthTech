@@ -24,7 +24,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import sun.plugin.javascript.navig.Anchor;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,6 +52,8 @@ public class controladorPaciente {
         labelApellidosInicio.setText(usuario.getSurname());
         labelRolInicio.setText(usuario.getRol());
         labelUsernameInicio.setText(usuario.getUsername());
+        labelFechaNacimientoInicio.setText(usuario.getBirthday());
+        labelEdadInicio.setText(usuario.getAge() + "");
 
         // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario
         panelDatosYMensajesUsuarios.setVisible(false);
@@ -88,6 +89,12 @@ public class controladorPaciente {
 
     @FXML
     private Label labelRolInicio;
+    
+    @FXML
+    private Label labelFechaNacimientoInicio;
+
+    @FXML
+    private Label labelEdadInicio;
 
     @FXML
     private JFXButton cerrarSesionBtn;
@@ -233,6 +240,9 @@ public class controladorPaciente {
     @FXML
     private JFXButton crearMensajeResponderTicketBttnMensajes;
     
+    @FXML
+    private JFXButton cancelarRespuestaTicketBtn;
+    
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
 	void verInicio(ActionEvent event) {
@@ -347,6 +357,7 @@ public class controladorPaciente {
             crearMensajeJFXTextAreaMensajes.setVisible(false);
             responderTicketMensajes.setVisible(true);
             crearMensajeResponderTicketBttnMensajes.setVisible(false);
+            cancelarRespuestaTicketBtn.setVisible(false);
         }
         if (mensajePaneMensajes.isVisible()) { // Cambiamos los datos del mensaje
             // Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
@@ -432,6 +443,7 @@ public class controladorPaciente {
             crearMensajeJFXTextAreaMensajes.setVisible(true);
             responderTicketMensajes.setVisible(false);
             crearMensajeResponderTicketBttnMensajes.setVisible(true);
+            cancelarRespuestaTicketBtn.setVisible(true);
         }
     }
 
@@ -465,6 +477,15 @@ public class controladorPaciente {
     
     @FXML
     void guardarCalendario(ActionEvent event) {
+    }
+    
+    @FXML
+    void cancelarRespuestaTicket(ActionEvent event) {
+    	scrollPaneMensajes.setVisible(true);
+        crearMensajeJFXTextAreaMensajes.setVisible(false);
+        responderTicketMensajes.setVisible(true);
+        crearMensajeResponderTicketBttnMensajes.setVisible(false);
+        cancelarRespuestaTicketBtn.setVisible(false);
     }
 }
 
