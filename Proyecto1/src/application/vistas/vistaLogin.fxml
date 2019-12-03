@@ -59,7 +59,7 @@
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXButton fx:id="crearCuentaBttn" layoutX="162.0" layoutY="937.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" styleClass="botones" stylesheets="@../application.css" text="Crear cuenta" />
+            <JFXButton fx:id="crearCuentaBttn" layoutX="162.0" layoutY="937.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" text="Crear cuenta" />
             <Hyperlink fx:id="cancelarCrecionHyperLink" layoutX="404.0" layoutY="889.0" onMouseClicked="#cancelarCreacion" style="-fx-border-width: 0;" text="Cancelar accion y volver" textFill="#4059a9">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
@@ -84,7 +84,7 @@
                       <Font size="13.0" />
                   </font>
               </JFXCheckBox>
-              <JFXButton fx:id="loginButton" focusTraversable="false" layoutX="55.0" layoutY="295.0" onAction="#defaultBtn" prefHeight="60.0" prefWidth="342.74" styleClass="botones" stylesheets="@../application.css" text="Iniciar sesion">
+              <JFXButton fx:id="loginButton" focusTraversable="false" layoutX="55.0" layoutY="295.0" onAction="#defaultBtn" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" styleClass="botones" text="Iniciar sesion">
                   <font>
                       <Font size="18.0" />
                   </font>

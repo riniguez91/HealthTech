@@ -33,7 +33,7 @@
                                     <children>
                                         <ImageView fx:id="User" fitHeight="407.0" fitWidth="550.0" focusTraversable="true" nodeOrientation="INHERIT">
                                             <image>
-                                                <Image url="@../../resources/fotos/harold.png" />
+                                                <Image url="@../../resources/fotos/pbascuas_paciente.png" />
                                             </image>
                                             <VBox.margin>
                                                 <Insets left="30.0" top="10.0" />
@@ -116,7 +116,7 @@
                               </JFXButton>
                                     </children></VBox>
                                   <Separator layoutX="649.0" layoutY="96.0" prefHeight="27.0" prefWidth="1297.0" />
-                                <Pane fx:id="PaneInicio" layoutX="562.0" layoutY="-2.0" prefHeight="1050.0" prefWidth="1294.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Pane fx:id="PaneInicio" layoutX="640.0" prefHeight="1050.0" prefWidth="1294.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <Label layoutX="19.0" layoutY="1.0" prefHeight="106.0" prefWidth="709.0" text="RECORDATORIOS">
                                             <padding>
@@ -163,7 +163,7 @@
                                  <font>
                                     <Font name="Century Gothic Bold" size="69.0" />
                                  </font></Label>
-                              <JFXButton fx:id="atrasbtn" layoutX="442.0" layoutY="949.0" onAction="#verInicio" prefHeight="67.0" prefWidth="462.0" styleClass="botones" stylesheets="@../application.css" text="Atrás" />
+                              <JFXButton fx:id="atrasbtn" layoutX="442.0" layoutY="949.0" onAction="#verInicio" prefHeight="60.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Atrás" />
                               <Label layoutX="31.0" layoutY="121.0" prefHeight="52.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="1. ¿Cómo puedo enviar un mensaje a mi médico?" />
                               <Label layoutX="31.0" layoutY="170.0" prefHeight="87.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." textAlignment="JUSTIFY" wrapText="true" />
                               <Label layoutX="31.0" layoutY="269.0" prefHeight="39.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" wrapText="true" />
@@ -249,7 +249,7 @@
                                         </Label>
                                         <ImageView fitHeight="270.0" fitWidth="385.0" layoutX="103.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/fotos/harold.png" />
+                                                <Image url="@../../resources/fotos/pbascuas_paciente.png" />
                                             </image>
                                         </ImageView>
                                         <Separator layoutX="-9.0" layoutY="347.0" prefHeight="61.0" prefWidth="1297.0" styleClass="separator-black" stylesheets="@../application.css">
@@ -309,7 +309,7 @@
                               <JFXTreeTableView fx:id="treeTableViewMensajes" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarTicketMensajes" prefHeight="764.0" prefWidth="569.0" />
                                     </children>
                                 </Pane>
-                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="80.0" maxHeight="200.0" visible="false">
+                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="80.0" maxHeight="947.0" prefHeight="947.0" prefWidth="1230.0">
                            <children>
                                       <Label layoutX="20.0" prefHeight="67.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:">
                                           <padding>
@@ -326,11 +326,11 @@
                                               <Insets left="10.0" />
                                           </padding>
                                       </Label>
-                              <ScrollPane layoutX="20.0" layoutY="289.0" prefHeight="588.0" prefWidth="1202.0" style="-fx-background-color: white;">
+                              <ScrollPane fx:id="scrollPaneMensajes" hbarPolicy="NEVER" layoutX="20.0" layoutY="289.0" prefHeight="588.0" prefWidth="1202.0">
                                  <content>
-                                    <AnchorPane fx:id="conversacionMensajes" style="-fx-background-color: white;">
+                                    <AnchorPane fx:id="conversacionMensajes">
                                        <children>
-                                          <VBox fx:id="vboxConversacionMensajes" style="-fx-background-color: white;" />
+                                          <VBox fx:id="vboxConversacionMensajes" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -343,6 +343,9 @@
                                  </padding>
                               </Label>
                               <JFXTextField fx:id="idTicketJFXTextFieldMensajes" editable="false" layoutX="250.0" layoutY="134.0" prefHeight="67.0" prefWidth="980.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
+                              <JFXTextArea fx:id="crearMensajeJFXTextAreaMensajes" layoutX="20.0" layoutY="289.0" prefHeight="588.0" prefWidth="1202.0" promptText="Escriba aqui su mensaje" styleClass="text" stylesheets="@../application.css" visible="false" wrapText="true" />
+                              <JFXButton fx:id="crearMensajeResponderTicketBttnMensajes" layoutX="815.0" layoutY="883.0" onAction="#crearMensajeYResponderTicket" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Responder al ticket" visible="false" />
+                              <JFXButton fx:id="responderTicketMensajes" layoutX="815.0" layoutY="883.0" onAction="#responderTicketMensajes" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Responder al ticket" />
                            </children>
                         </AnchorPane>
                         <Label fx:id="seleccionaMensajeLabelMensajes" layoutX="1156.0" layoutY="534.0" prefHeight="32.0" prefWidth="303.0" text="Selecciona un mensaje">
@@ -350,7 +353,6 @@
                               <Font name="Segoe UI Emoji" size="28.0" />
                            </font>
                         </Label>
-                        <JFXButton fx:id="responderTicketMensajes" layoutX="1454.0" layoutY="975.0" onAction="#responderTicketMensajes" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Responder al ticket" />
                             </children></AnchorPane>
                     </content>
                 </Tab>

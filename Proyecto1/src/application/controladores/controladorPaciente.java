@@ -15,18 +15,16 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TreeItem;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import sun.plugin.javascript.navig.Anchor;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -122,6 +120,9 @@ public class controladorPaciente {
     private Label Nombre1;
 
     @FXML
+    private JFXTextArea crearMensajeJFXTextAreaMensajes;
+
+    @FXML
     private Label Apellidos1;
 
     @FXML
@@ -191,6 +192,9 @@ public class controladorPaciente {
     private JFXTreeTableView<messageTTView> treeTableViewMensajes;
 
     @FXML
+    private ScrollPane scrollPaneMensajes;
+
+    @FXML
     private JFXTextField filtrarMensajeTFieldMensajes;
 
     @FXML
@@ -225,6 +229,9 @@ public class controladorPaciente {
     
     @FXML
     private JFXButton guardarCalendario;
+
+    @FXML
+    private JFXButton crearMensajeResponderTicketBttnMensajes;
     
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
@@ -335,6 +342,12 @@ public class controladorPaciente {
         if (!mensajePaneMensajes.isVisible()){
             mensajePaneMensajes.setVisible(true);
         }
+        else if(crearMensajeResponderTicketBttnMensajes.isVisible()) {
+            scrollPaneMensajes.setVisible(true);
+            crearMensajeJFXTextAreaMensajes.setVisible(false);
+            responderTicketMensajes.setVisible(true);
+            crearMensajeResponderTicketBttnMensajes.setVisible(false);
+        }
         if (mensajePaneMensajes.isVisible()) { // Cambiamos los datos del mensaje
             // Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
             labelMessages.clear();
@@ -349,14 +362,17 @@ public class controladorPaciente {
                     labelMessages.add(new Label(mensaje.getMessage()));
                     labelMessages.get(i).setPrefWidth(1202);
                     labelMessages.get(i).setWrapText(true);
+                    labelMessages.get(i).setFont(new Font("Century Gothic", 20));
                     if (!mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())) {
-                        labelMessages.get(i).setPadding(new Insets(0,0,0,669));
+                        labelMessages.get(i).setPadding(new Insets(10,13,0,310));
+                        labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
                     }
                     else {
-                        labelMessages.get(i).setPadding(new Insets(0,669,0,0));
+                        labelMessages.get(i).setPadding(new Insets(10,310,0,13));
+                        labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.WHEAT,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
                     }
                     vboxConversacionMensajes.getChildren().add(labelMessages.get(i));
-                    vboxConversacionMensajes.setSpacing(10);
+                    vboxConversacionMensajes.setSpacing(15);
                     i++;
                 }
             }
@@ -411,10 +427,44 @@ public class controladorPaciente {
 
     @FXML
     void responderTicketMensajes(ActionEvent event) {
+	    if (scrollPaneMensajes.isVisible()){
+            scrollPaneMensajes.setVisible(false);
+            crearMensajeJFXTextAreaMensajes.setVisible(true);
+            responderTicketMensajes.setVisible(false);
+            crearMensajeResponderTicketBttnMensajes.setVisible(true);
+        }
+    }
 
+    @FXML
+    void crearMensajeYResponderTicket(ActionEvent event) {
+        if (crearMensajeJFXTextAreaMensajes.getText().isEmpty()){
+            alert.setHeaderText("Cuidado");
+            alert.setContentText("Debes de poner un mensaje");
+            alert.showAndWait();
+        }
+        else {
+            Message msg = new Message(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSender().get(),
+                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get(),
+                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get(),
+                                      crearMensajeJFXTextAreaMensajes.getText(),
+                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()
+            );
+
+            List<Message> updatedMessages = modelo.getMessages();
+            updatedMessages.add(msg);
+            modelo.setMessages(updatedMessages);
+            modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
+            alert.setHeaderText("Informacion");
+            alert.setContentText("Se ha enviado el mensaje correctamente");
+            alert.showAndWait();
+
+            // Borramos los campos para evitar confusion
+            crearMensajeJFXTextAreaMensajes.clear();
+        }
     }
     
     @FXML
     void guardarCalendario(ActionEvent event) {
     }
 }
+

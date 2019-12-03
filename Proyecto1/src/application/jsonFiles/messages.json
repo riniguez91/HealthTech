@@ -61,5 +61,26 @@
     "subject": "jsfd asfljsad lfkj",
     "message": "asdjflkadsjflkasdjfkads",
     "idTicket": "6421a6b5-d921-4051-ad7d-d68e50fc907b"
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Sara Gómez Hernández",
+    "subject": "Hola!",
+    "message": "PRUEBA",
+    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773"
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Catalina Rey Rodríguez",
+    "subject": "hola loco",
+    "message": "QUE PASA MORENO",
+    "idTicket": "14a74b5f-2f0a-4ea6-9772-d9d8fb899557"
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Sara Gómez Hernández",
+    "subject": "Hola!",
+    "message": "PRUEBA 2",
+    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773"
   }
 ]

@@ -42,22 +42,10 @@
 	-fx-background-color: #34394c;
 	-fx-border-color: white;
 	-fx-border-width: 2px;
-	-fx-font-family: Segoe UI Emoji;
+	-fx-font-family: Century Gothic;
 	-fx-text-fill: white;
 }
 .botones:hover{
-    -fx-opacity: 0.8;
-    -fx-text-fill: black;
-    -fx-color: #C6E9FB;
-    -fx-cursor: hand;
-}
-.botoninfo{
-	-fx-background-color:  #1363cb;
-}
-.botoninfo:hover{
-    -fx-opacity: 0.8;
-    -fx-text-fill: black;
-    -fx-color: #EEE5E3;
     -fx-cursor: hand;
 }
 
