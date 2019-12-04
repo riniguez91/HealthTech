@@ -192,7 +192,7 @@ public class controladorLogin {
                 alert.showAndWait();
             } else {
                 Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), crearCumpleTField.getText(),
-                                              crearUsernameTField.getText(), crearPasswordTField.getText(), crearRolTField.getText());
+                                              crearUsernameTField.getText(), encriptaEnMD5(crearPasswordTField.getText()), crearRolTField.getText());
                 newUser.setAge(modelo.calculateAge(newUser.getBirthday())); // throws ParseException
                 modelo.getUsuarios().add(newUser);
                 modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/Users.json", modelo.getUsuarios(),false);

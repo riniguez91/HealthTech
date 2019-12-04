@@ -130,13 +130,18 @@ public class modelo {
 
     public List<Usuario> userInRelatedUsers(List<Usuario> usuarios, Usuario usuario){
         List<Usuario> finalUsers = new ArrayList<>();
-        for (Usuario users : usuarios) {
-            for (int i = 0;i<usuario.getRelaciones().size();i++){
-                if (users.getUsername().equals(usuario.getRelaciones().get(i))){
-                    assert false;
-                    finalUsers.add(users);
-                }
-            }
+        if (usuario.getRelaciones() == null) {
+        	return finalUsers;
+		} else {
+			for (Usuario users : usuarios) {
+	            for (int i = 0;i<usuario.getRelaciones().size();i++){
+	                if (users.getUsername().equals(usuario.getRelaciones().get(i))){
+	                    assert false;
+	                    finalUsers.add(users);
+	                }
+	            }
+	            return finalUsers;
+			}
         }
         return finalUsers;
     }
