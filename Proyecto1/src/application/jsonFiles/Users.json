@@ -5,7 +5,7 @@
     "age": 39,
     "birthday": "03/01/1980",
     "username": "sgomez",
-    "password": "1fz91VYT",
+    "password": "d052f03df8a741ca9769026b7772a00c",	//"1fz91VYT"
     "rol": "medico",
     "relaciones": []
   },
@@ -15,7 +15,7 @@
     "age": 46,
     "birthday": "26/11/1972",
     "username": "jmoreno",
-    "password": "0HdJYSAN",
+    "password": "bdd79e34eb8efba0b8a3b5a7c7d10d62",		//"0HdJYSAN"
     "rol": "medico",
     "relaciones": []
   },
@@ -25,7 +25,7 @@
     "age": 35,
     "birthday": "03/06/1984",
     "username": "crey",
-    "password": "3A9m5Y81",
+    "password": "e29371b26afe0c2085cf2d782c790ba3",	//"3A9m5Y81"
     "rol": "cuidador",
     "relaciones": []
   },
@@ -35,7 +35,7 @@
     "age": 26,
     "birthday": "14/10/1993",
     "username": "jrodriguez",
-    "password": "nLQJ5lJo",
+    "password": "84f1d171953f18ec679c1234fcdc6239",	//"nLQJ5lJo"
     "rol": "cuidador",
     "relaciones": []
   },
@@ -45,7 +45,7 @@
     "age": 49,
     "birthday": "23/10/1970",
     "username": "shernandez",
-    "password": "aiM1RJI9",
+    "password": "dc5f7df336c3f1e0bb167d3bbd3b5d1f",	//"aiM1RJI9"
     "rol": "familiar",
     "relaciones": []
   },
@@ -55,7 +55,7 @@
     "age": 30,
     "birthday": "21/02/1989",
     "username": "rnieto",
-    "password": "6ixzYoW8",
+    "password": "3d44b835510f266f3d6a08c0f1b10625",	//"6ixzYoW8"
     "rol": "familiar",
     "relaciones": []
   },
@@ -65,7 +65,7 @@
     "age": 70,
     "birthday": "12/01/1949",
     "username": "sdiaz",
-    "password": "qKMSgMvp",
+    "password": "7941d3e63ea0578290660b6482db33af",	//"qKMSgMvp"
     "rol": "paciente",
     "relaciones": [
       "sgomez",
@@ -79,7 +79,7 @@
     "age": 82,
     "birthday": "20/04/1937",
     "username": "pbascuas",
-    "password": "0A8ycTm4",
+    "password": "6a7f3dfe57030d3544c6636a4446fe8b",	//"0A8ycTm4"
     "rol": "paciente",
     "relaciones": [
       "jmoreno",
