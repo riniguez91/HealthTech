@@ -69,12 +69,12 @@
       </AnchorPane>
       <AnchorPane fx:id="loginElements" layoutX="121.0" layoutY="489.0">
          <children>
-              <JFXTextField fx:id="usrnameField" focusTraversable="false" labelFloat="true" onKeyPressed="#keyTab" prefHeight="60.0" prefWidth="452.0" promptText="Introduzca nombre de usuario:" unFocusColor="#4059a9">
+              <JFXTextField fx:id="usrnameField" focusTraversable="false" labelFloat="true" onAction="#onEnterNombreDeUsuario" onKeyPressed="#keyTab" prefHeight="60.0" prefWidth="452.0" promptText="Introduzca nombre de usuario:" unFocusColor="#4059a9">
                   <font>
                       <Font name="Segoe UI Emoji" size="18.0" />
                   </font>
               </JFXTextField>
-              <JFXPasswordField fx:id="pswdField" focusTraversable="false" labelFloat="true" layoutY="107.0" prefHeight="60.0" prefWidth="452.0" promptText="Introduzca la contraseña:" unFocusColor="#4059a9">
+              <JFXPasswordField fx:id="pswdField" focusTraversable="false" labelFloat="true" layoutY="107.0" onAction="#onEnter" prefHeight="60.0" prefWidth="452.0" promptText="Introduzca la contraseña:" unFocusColor="#4059a9">
                   <font>
                       <Font name="Segoe UI Emoji" size="18.0" />
                   </font>

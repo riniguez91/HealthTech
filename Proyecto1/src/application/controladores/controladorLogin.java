@@ -149,6 +149,87 @@ public class controladorLogin {
             incorrectFieldLabel.setVisible(true);
         }
     }
+    
+    @FXML
+    public void onEnter(ActionEvent event) throws IOException{
+        for (Usuario usuario: modelo.getUsuarios()){
+            if (usrnameField.getText().equals(usuario.getUsername()) && encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
+                Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
+                switch(usuario.getRol()){
+                    case "medico":
+                        FXMLLoader loaderMedico = new FXMLLoader(getClass().getResource("/application/vistas/vistaMedico.fxml"));
+                        Parent rootMedico = loaderMedico.load();
+                        controladorMedico contrMedico = loaderMedico.getController();
+                        contrMedico.initModelo(modelo,usuario);
+                        stageBttnBelongsTo.setScene(new Scene(rootMedico));
+                        break;
+                    case "paciente":
+                        FXMLLoader loaderPaciente = new FXMLLoader(getClass().getResource("/application/vistas/vistaPaciente.fxml"));
+                        Parent rootPaciente = loaderPaciente.load();
+                        controladorPaciente contrPaciente = loaderPaciente.getController();
+                        contrPaciente.initModelo(modelo,usuario);
+                        stageBttnBelongsTo.setScene(new Scene(rootPaciente));
+                        break;
+                    case "familiar":
+                        Parent rootFamiliar = FXMLLoader.load(getClass().getResource("/application/vistas/vistaFamiliar.fxml"));
+                        stageBttnBelongsTo.setScene(new Scene(rootFamiliar));
+                        break;
+                    case "cuidador":
+                        FXMLLoader loaderCuidador = new FXMLLoader(getClass().getResource("/application/vistas/vistaCuidador.fxml"));
+                        Parent rootCuidador = loaderCuidador.load();
+                        controladorCuidador contrCuidador = loaderCuidador.getController();
+                        contrCuidador.initModelo(modelo,usuario);
+                        stageBttnBelongsTo.setScene(new Scene(rootCuidador));
+                        break;
+                }
+                break;
+            }
+            incorrectFieldLabel.setVisible(true);
+        }
+    }
+    
+    @FXML
+    public void onEnterNombreDeUsuario(ActionEvent event) throws IOException {
+    	if (pswdField.getText() != null && (usrnameField.getText().equals(usuario.getUsername()) && encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword()))) {
+    		incorrectFieldLabel.setText("Introduzca una contraseña");
+    		incorrectFieldLabel.setVisible(true);
+		} else {
+			for (Usuario usuario: modelo.getUsuarios()){
+	            if (usrnameField.getText().equals(usuario.getUsername()) && encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
+	                Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
+	                switch(usuario.getRol()){
+	                    case "medico":
+	                        FXMLLoader loaderMedico = new FXMLLoader(getClass().getResource("/application/vistas/vistaMedico.fxml"));
+	                        Parent rootMedico = loaderMedico.load();
+	                        controladorMedico contrMedico = loaderMedico.getController();
+	                        contrMedico.initModelo(modelo,usuario);
+	                        stageBttnBelongsTo.setScene(new Scene(rootMedico));
+	                        break;
+	                    case "paciente":
+	                        FXMLLoader loaderPaciente = new FXMLLoader(getClass().getResource("/application/vistas/vistaPaciente.fxml"));
+	                        Parent rootPaciente = loaderPaciente.load();
+	                        controladorPaciente contrPaciente = loaderPaciente.getController();
+	                        contrPaciente.initModelo(modelo,usuario);
+	                        stageBttnBelongsTo.setScene(new Scene(rootPaciente));
+	                        break;
+	                    case "familiar":
+	                        Parent rootFamiliar = FXMLLoader.load(getClass().getResource("/application/vistas/vistaFamiliar.fxml"));
+	                        stageBttnBelongsTo.setScene(new Scene(rootFamiliar));
+	                        break;
+	                    case "cuidador":
+	                        FXMLLoader loaderCuidador = new FXMLLoader(getClass().getResource("/application/vistas/vistaCuidador.fxml"));
+	                        Parent rootCuidador = loaderCuidador.load();
+	                        controladorCuidador contrCuidador = loaderCuidador.getController();
+	                        contrCuidador.initModelo(modelo,usuario);
+	                        stageBttnBelongsTo.setScene(new Scene(rootCuidador));
+	                        break;
+	                }
+	                break;
+	            }
+	            incorrectFieldLabel.setVisible(true);
+			}
+		}
+    }
 
     @FXML
     void mostrarCreacionUsuario(ActionEvent event) {

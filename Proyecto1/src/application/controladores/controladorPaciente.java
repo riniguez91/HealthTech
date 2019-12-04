@@ -359,36 +359,37 @@ public class controladorPaciente {
             crearMensajeResponderTicketBttnMensajes.setVisible(false);
             cancelarRespuestaTicketBtn.setVisible(false);
         }
-        if (mensajePaneMensajes.isVisible()) { // Cambiamos los datos del mensaje
-            // Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
-            labelMessages.clear();
-            vboxConversacionMensajes.getChildren().clear();
-
-            asuntoJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get());
-            destinatarioJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get());
-            idTicketJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get());
-            int i = 0;
-            for (Message mensaje : modelo.getMessages()) {
-                if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
-                    labelMessages.add(new Label(mensaje.getMessage()));
-                    labelMessages.get(i).setPrefWidth(1202);
-                    labelMessages.get(i).setWrapText(true);
-                    labelMessages.get(i).setFont(new Font("Century Gothic", 20));
-                    if (!mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())) {
-                        labelMessages.get(i).setPadding(new Insets(10,13,0,310));
-                        labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
-                    }
-                    else {
-                        labelMessages.get(i).setPadding(new Insets(10,310,0,13));
-                        labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.WHEAT,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
-                    }
-                    vboxConversacionMensajes.getChildren().add(labelMessages.get(i));
-                    vboxConversacionMensajes.setSpacing(15);
-                    i++;
-                }
-            }
-            seleccionaMensajeLabelMensajes.setVisible(false);
-        }
+        if (treeTableViewMensajes.getSelectionModel().getSelectedItem() == null) {
+			mensajePaneMensajes.setVisible(false);
+			seleccionaMensajeLabelMensajes.setText("No tiene mensajes");
+		} else if (mensajePaneMensajes.isVisible()) { // Cambiamos los datos del mensaje
+			// Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
+			labelMessages.clear();
+			vboxConversacionMensajes.getChildren().clear();
+			asuntoJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get());
+			destinatarioJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get());
+			idTicketJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get());
+			int i = 0;
+			for (Message mensaje : modelo.getMessages()) {
+				if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
+					labelMessages.add(new Label(mensaje.getMessage()));
+					labelMessages.get(i).setPrefWidth(1202);
+					labelMessages.get(i).setWrapText(true);
+					labelMessages.get(i).setFont(new Font("Century Gothic", 20));
+					if (!mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())) {
+						labelMessages.get(i).setPadding(new Insets(10,13,0,310));
+						labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
+					} else {
+						labelMessages.get(i).setPadding(new Insets(10,310,0,13));
+						labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.WHEAT,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
+					}
+					vboxConversacionMensajes.getChildren().add(labelMessages.get(i));
+					vboxConversacionMensajes.setSpacing(15);
+					i++;
+				}
+			}
+			seleccionaMensajeLabelMensajes.setVisible(false);
+		}
     }
 
     @FXML

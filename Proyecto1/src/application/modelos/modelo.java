@@ -140,9 +140,8 @@ public class modelo {
 	                    finalUsers.add(users);
 	                }
 	            }
-	            return finalUsers;
 			}
+			return finalUsers;
         }
-        return finalUsers;
     }
 }
