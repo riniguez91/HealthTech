@@ -286,8 +286,6 @@ public class controladorLogin {
         }
     }
 
-
-
     public FadeTransition getFadeTransition(ImageView imageView, double fromValue, double toValue, int durationInMilliseconds) {
 
         FadeTransition ft = new FadeTransition(Duration.millis(durationInMilliseconds), imageView);
@@ -295,7 +293,6 @@ public class controladorLogin {
         ft.setToValue(toValue);
         return ft;
     }
-
 
     public void initialize(){
         ImageView[] slides = new ImageView[3];
@@ -319,7 +316,7 @@ public class controladorLogin {
     }
     
     
- // Encriptacion de las constraseñas en MD5
+    // Encriptacion de las constraseñas en MD5
     private static final char[] CONSTS_HEX = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
     
     public static String encriptaEnMD5(String stringAEncriptar) {
@@ -327,8 +324,7 @@ public class controladorLogin {
            MessageDigest msgd = MessageDigest.getInstance("MD5");
            byte[] bytes = msgd.digest(stringAEncriptar.getBytes());
            StringBuilder strbCadenaMD5 = new StringBuilder(2 * bytes.length);
-           for (int i = 0; i < bytes.length; i++)
-           {
+           for (int i = 0; i < bytes.length; i++) {
                int bajo = (int)(bytes[i] & 0x0f);
                int alto = (int)((bytes[i] & 0xf0) >> 4);
                strbCadenaMD5.append(CONSTS_HEX[alto]);
@@ -337,6 +333,6 @@ public class controladorLogin {
            return strbCadenaMD5.toString();
         } catch (NoSuchAlgorithmException e) {
            return null;
-        }
+        }   
     }
 }

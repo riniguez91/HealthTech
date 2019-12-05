@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 public class modelo {
     private List<Usuario> usuarios;
     public List<Usuario> getUsuarios(){
@@ -34,7 +33,6 @@ public class modelo {
     public void setMessages(List<Message> messages){
         this.mensajes=messages;
     }
-
 
     public void leerJson(String path){
         Gson gson = new Gson();

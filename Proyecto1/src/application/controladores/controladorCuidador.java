@@ -7,10 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 public class controladorCuidador {
-    private application.modelos.modelo modelo;
+    private modelo modelo;
     private Usuario usuario;
 
-    public void initModelo(application.modelos.modelo modelo_, Usuario usuario_){
+    public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }

@@ -57,5 +57,4 @@ public class messageTTView extends RecursiveTreeObject<messageTTView> {
 
     public void setIdTicket(String idTicket) { this.idTicket.set(idTicket); }
 
-
 }
