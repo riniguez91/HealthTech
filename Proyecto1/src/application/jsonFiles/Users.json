@@ -7,7 +7,8 @@
     "username": "sgomez",
     "password": "d052f03df8a741ca9769026b7772a00c",	//"1fz91VYT"
     "rol": "medico",
-    "relaciones": []
+    "relaciones": [],
+    "imagenPerfil" : ""
   },
   {
     "name": "Jose",
@@ -17,7 +18,8 @@
     "username": "jmoreno",
     "password": "bdd79e34eb8efba0b8a3b5a7c7d10d62",		//"0HdJYSAN"
     "rol": "medico",
-    "relaciones": []
+    "relaciones": [],
+    "imagenPerfil" : ""
   },
   {
     "name": "Catalina",
@@ -27,7 +29,8 @@
     "username": "crey",
     "password": "e29371b26afe0c2085cf2d782c790ba3",	//"3A9m5Y81"
     "rol": "cuidador",
-    "relaciones": []
+    "relaciones": [],
+    "imagenPerfil" : ""
   },
   {
     "name": "Juan",
@@ -37,7 +40,8 @@
     "username": "jrodriguez",
     "password": "84f1d171953f18ec679c1234fcdc6239",	//"nLQJ5lJo"
     "rol": "cuidador",
-    "relaciones": []
+    "relaciones": [],
+    "imagenPerfil" : ""
   },
   {
     "name": "Sancho",
@@ -47,7 +51,8 @@
     "username": "shernandez",
     "password": "dc5f7df336c3f1e0bb167d3bbd3b5d1f",	//"aiM1RJI9"
     "rol": "familiar",
-    "relaciones": []
+    "relaciones": [],
+    "imagenPerfil" : ""
   },
   {
     "name": "Rosa",
@@ -57,7 +62,8 @@
     "username": "rnieto",
     "password": "3d44b835510f266f3d6a08c0f1b10625",	//"6ixzYoW8"
     "rol": "familiar",
-    "relaciones": []
+    "relaciones": [],
+    "imagenPerfil" : ""
   },
   {
     "name": "Susana",
@@ -71,7 +77,8 @@
       "sgomez",
       "crey",
       "shernandez"
-    ]
+    ],
+    "imagenPerfil" : ""
   },
   {
     "name": "Pedro",
@@ -85,6 +92,7 @@
       "jmoreno",
       "jrodriguez",
       "rnieto"
-    ]
+    ],
+    "imagenPerfil" : ""
   }
 ]

@@ -309,7 +309,7 @@
                               <JFXTreeTableView fx:id="treeTableViewMensajes" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarTicketMensajes" prefHeight="764.0" prefWidth="569.0" />
                                     </children>
                                 </Pane>
-                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="80.0" maxHeight="947.0" prefHeight="947.0" prefWidth="1230.0">
+                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="80.0" maxHeight="947.0" prefHeight="947.0" prefWidth="1230.0" visible="false">
                            <children>
                                       <Label layoutX="20.0" prefHeight="67.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:">
                                           <padding>

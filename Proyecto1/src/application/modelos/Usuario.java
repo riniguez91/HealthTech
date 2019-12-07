@@ -42,6 +42,9 @@ public class Usuario {
     @SerializedName("rol")
     @Expose
     private String rol;
+    @SerializedName("imagenPerfil")
+    @Expose
+    private String imagenPerfil;
 
     private List<String> relaciones;
 
@@ -108,5 +111,13 @@ public class Usuario {
 
     public void setRol(String rol) {
         this.rol = rol;
+    }
+
+    public String getImagenPerfil() {
+        return imagenPerfil;
+    }
+
+    public void setImagenPerfil(String imagenPerfil) {
+        this.imagenPerfil = imagenPerfil;
     }
 }
