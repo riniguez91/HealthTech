@@ -8,7 +8,7 @@
     "password": "d052f03df8a741ca9769026b7772a00c",	//"1fz91VYT"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\sgomez_medico.png"
   },
   {
     "name": "Jose",
@@ -19,7 +19,7 @@
     "password": "bdd79e34eb8efba0b8a3b5a7c7d10d62",		//"0HdJYSAN"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\jmoreno_medico.png"
   },
   {
     "name": "Catalina",
@@ -30,7 +30,7 @@
     "password": "e29371b26afe0c2085cf2d782c790ba3",	//"3A9m5Y81"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\crey_cuidador.png"
   },
   {
     "name": "Juan",
@@ -41,7 +41,7 @@
     "password": "84f1d171953f18ec679c1234fcdc6239",	//"nLQJ5lJo"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\jrodriguez_cuidador.png"
   },
   {
     "name": "Sancho",
@@ -52,7 +52,7 @@
     "password": "dc5f7df336c3f1e0bb167d3bbd3b5d1f",	//"aiM1RJI9"
     "rol": "familiar",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\shernandez_familiar.png"
   },
   {
     "name": "Rosa",
@@ -63,7 +63,7 @@
     "password": "3d44b835510f266f3d6a08c0f1b10625",	//"6ixzYoW8"
     "rol": "familiar",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\rnieto_familiar.png"
   },
   {
     "name": "Susana",
@@ -78,7 +78,7 @@
       "crey",
       "shernandez"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\sdiaz_paciente.png"
   },
   {
     "name": "Pedro",
@@ -93,6 +93,6 @@
       "jrodriguez",
       "rnieto"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\pbascuas_paciente.png"
   }
 ]

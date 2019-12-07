@@ -58,6 +58,9 @@ public class controladorPaciente {
         // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario
         panelDatosYMensajesUsuarios.setVisible(false);
 
+        // Establecemos la foto del usuario en la pestaña de Inicio
+        userImageViewInicio.setImage(new Image(usuario.getImagenPerfil()));
+
         // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();
         crearTreeTableViewMensajes();
@@ -242,6 +245,12 @@ public class controladorPaciente {
     
     @FXML
     private JFXButton cancelarRespuestaTicketBtn;
+
+    @FXML
+    private ImageView userImageViewUsuarios;
+
+    @FXML
+    private ImageView userImageViewInicio;
     
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
@@ -286,7 +295,7 @@ public class controladorPaciente {
         // Añadimos los usuarios
         relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
         for (Usuario user : relatedUsers) {
-            users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(),user.getBirthday(), user.getAge()));
+            users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(),user.getBirthday(), user.getAge(), user.getImagenPerfil()));
         }
 
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
@@ -343,6 +352,7 @@ public class controladorPaciente {
             labelEdadUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAge().get()+"");
             destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
                                                       + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
+            userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getImagenPerfil().get()));
         }
     }
 
