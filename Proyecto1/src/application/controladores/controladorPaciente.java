@@ -251,7 +251,13 @@ public class controladorPaciente {
 
     @FXML
     private ImageView userImageViewInicio;
-    
+
+    @FXML
+    private AnchorPane aPaneCreacionTicket;
+
+    @FXML
+    private AnchorPane aPaneRespuestaTicket;
+
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
 	void verInicio(ActionEvent event) {
@@ -272,8 +278,15 @@ public class controladorPaciente {
 
     @FXML
     void cancelarMensajeUsuarios(ActionEvent event) {
-        asuntoJFXTextFieldUsuarios.clear();
-        mensajeJFXTextFieldUsuarios.clear();
+	    if (asuntoJFXTextFieldMensajes.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
+            alert.setHeaderText("Informacion");
+            alert.setContentText("Primero debe introducir un asunto o un mensaje");
+            alert.showAndWait();
+        }
+	    else {
+            asuntoJFXTextFieldUsuarios.clear();
+            mensajeJFXTextFieldUsuarios.clear();
+        }
     }
 
 	public void crearTreeTableViewUsuarios() {
@@ -321,14 +334,13 @@ public class controladorPaciente {
 
         ObservableList<messageTTView> messages = FXCollections.observableArrayList();
         // Añadimos los mensajes
-        for (Message mensaje : modelo.getMessages()) {
-            // Comprobamos que solo se añadan tickets para el usuario, y no todos los mensajes del json
+        modelo.getMessages().forEach(mensaje -> {
             if (!uniqueIDS.contains(mensaje.getIdTicket()) && (mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())
                     || mensaje.getReceiver().equals(usuario.getName()+" "+usuario.getSurname()))) {
                 messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket()));
                 uniqueIDS.add(mensaje.getIdTicket());
             }
-        }
+        });
 
         TreeItem<messageTTView> root = new RecursiveTreeItem<>(messages, RecursiveTreeObject::getChildren);
         treeTableViewMensajes.getColumns().setAll(idCol, senderCol, asuntoCol);
@@ -359,20 +371,20 @@ public class controladorPaciente {
     @FXML
     void mostrarTicketMensajes(MouseEvent event) {
         // Comprobamos que no este visible
-        if (!mensajePaneMensajes.isVisible()){
-            mensajePaneMensajes.setVisible(true);
+        if (!aPaneRespuestaTicket.isVisible()){
+            aPaneRespuestaTicket.setVisible(true);
         }
-        else if(crearMensajeResponderTicketBttnMensajes.isVisible()) {
-            scrollPaneMensajes.setVisible(true);
-            crearMensajeJFXTextAreaMensajes.setVisible(false);
-            responderTicketMensajes.setVisible(true);
-            crearMensajeResponderTicketBttnMensajes.setVisible(false);
-            cancelarRespuestaTicketBtn.setVisible(false);
+        else if(aPaneCreacionTicket.isVisible()) {
+            aPaneCreacionTicket.setVisible(false);
+            aPaneRespuestaTicket.setVisible(true);
         }
-        if (treeTableViewMensajes.getSelectionModel().getSelectedItem() == null) {
-			mensajePaneMensajes.setVisible(false);
-			seleccionaMensajeLabelMensajes.setText("No tiene mensajes");
-		} else if (mensajePaneMensajes.isVisible()) { // Cambiamos los datos del mensaje
+
+        if (treeTableViewMensajes.getSelectionModel().getSelectedItem() != null) { // Cambiamos los datos del mensaje
+            // Se cancela igualmente el ticket si selecciona otro mensaje en la tabla
+            if (aPaneCreacionTicket.isVisible()) {
+                aPaneCreacionTicket.setVisible(false);
+                aPaneRespuestaTicket.setVisible(true);
+            }
 			// Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
 			labelMessages.clear();
 			vboxConversacionMensajes.getChildren().clear();
@@ -380,6 +392,7 @@ public class controladorPaciente {
 			destinatarioJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get());
 			idTicketJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get());
 			int i = 0;
+			// En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
 			for (Message mensaje : modelo.getMessages()) {
 				if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
 					labelMessages.add(new Label(mensaje.getMessage()));
@@ -417,7 +430,7 @@ public class controladorPaciente {
         else {
             UUID uniqueKey = UUID.randomUUID();
             Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
-                        +treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
+                        + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
                         uniqueKey.toString());
             List<Message> updatedMessages = modelo.getMessages();
             updatedMessages.add(msg);
@@ -449,13 +462,8 @@ public class controladorPaciente {
 
     @FXML
     void responderTicketMensajes(ActionEvent event) {
-	    if (scrollPaneMensajes.isVisible()){
-            scrollPaneMensajes.setVisible(false);
-            crearMensajeJFXTextAreaMensajes.setVisible(true);
-            responderTicketMensajes.setVisible(false);
-            crearMensajeResponderTicketBttnMensajes.setVisible(true);
-            cancelarRespuestaTicketBtn.setVisible(true);
-        }
+        aPaneRespuestaTicket.setVisible(false);
+	    aPaneCreacionTicket.setVisible(true);
     }
 
     @FXML
@@ -492,11 +500,8 @@ public class controladorPaciente {
     
     @FXML
     void cancelarRespuestaTicket(ActionEvent event) {
-    	scrollPaneMensajes.setVisible(true);
-        crearMensajeJFXTextAreaMensajes.setVisible(false);
-        responderTicketMensajes.setVisible(true);
-        crearMensajeResponderTicketBttnMensajes.setVisible(false);
-        cancelarRespuestaTicketBtn.setVisible(false);
+	    aPaneCreacionTicket.setVisible(false);
+	    aPaneRespuestaTicket.setVisible(true);
     }
 }
 
