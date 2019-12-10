@@ -37,3 +37,5 @@ hs_err_pid*
 >>>>>>> d66d1917045e2168e38654473581b4de5efe6fd7
 Proyecto1/build.fxbuild
 Proyecto1/Proyecto1.iml
+*.class
+Proyecto1/bin/application/Main.class

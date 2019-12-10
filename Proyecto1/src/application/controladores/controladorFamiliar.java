@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,7 +35,7 @@ public class controladorFamiliar {
     }
     
     @FXML
-    void AbrirMapa(ActionEvent event) throws IOException {
+    void AbrirMapa(MouseEvent event) throws IOException {
     	try{
     		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/vistas/vistaMapa.fxml"));
     		Parent root1 = (Parent)fxmlLoader.load();
