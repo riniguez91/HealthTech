@@ -51,7 +51,10 @@
     "username": "shernandez",
     "password": "dc5f7df336c3f1e0bb167d3bbd3b5d1f",	//"aiM1RJI9"
     "rol": "familiar",
-    "relaciones": [],
+    "relaciones": [
+    	"sgomez", 
+    	"crey"
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\shernandez_familiar.png"
   },
   {
@@ -62,7 +65,10 @@
     "username": "rnieto",
     "password": "3d44b835510f266f3d6a08c0f1b10625",	//"6ixzYoW8"
     "rol": "familiar",
-    "relaciones": [],
+    "relaciones": [
+		"sgomez",
+		"crey"
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\rnieto_familiar.png"
   },
   {
@@ -74,9 +80,9 @@
     "password": "7941d3e63ea0578290660b6482db33af",	//"qKMSgMvp"
     "rol": "paciente",
     "relaciones": [
-      "sgomez",
-      "crey",
-      "shernandez"
+      	"sgomez",
+      	"crey",
+      	"shernandez"
     ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\sdiaz_paciente.png"
   },
@@ -89,9 +95,9 @@
     "password": "6a7f3dfe57030d3544c6636a4446fe8b",	//"0A8ycTm4"
     "rol": "paciente",
     "relaciones": [
-      "jmoreno",
-      "jrodriguez",
-      "rnieto"
+		"jmoreno",
+		"jrodriguez",
+      	"rnieto"
     ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\pbascuas_paciente.png"
   }

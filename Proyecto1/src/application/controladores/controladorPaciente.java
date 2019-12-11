@@ -12,7 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -30,8 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
 public class controladorPaciente {
+		
     private modelo modelo;
     private Usuario usuario;
     public List<Usuario> relatedUsers;
@@ -39,11 +38,11 @@ public class controladorPaciente {
     private List<Label> labelMessages = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
 
-    public void initModelo(application.modelos.modelo modelo_, Usuario usuario_){
+    public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }
-        this.modelo = modelo_ ;
+        this.modelo = modelo_;
         this.usuario = usuario_;
         modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
 

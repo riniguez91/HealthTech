@@ -25,7 +25,7 @@
     <children>
       <JFXTabPane fx:id="tabPanePaciente" prefHeight="1080.0" prefWidth="1920.0" styleClass="jfx-tab-pane" stylesheets="@../application.css">
          <tabs>
-                <Tab fx:id="tabInicioPaciente" text="                         Inicio                         ">
+              	<Tab fx:id="tabInicioPaciente" text="                         Inicio                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
                             <children>

@@ -38,7 +38,7 @@ public class controladorLogin {
         if (this.modelo != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }
-        this.modelo = modelo_ ;
+        this.modelo = modelo_;
         this.usuario = usuario_;
         modelo.leerJson("./Proyecto1/src/application/jsonFiles/Users.json");
     }
@@ -133,7 +133,10 @@ public class controladorLogin {
                         stageBttnBelongsTo.setScene(new Scene(rootPaciente));
                         break;
                     case "familiar":
-                        Parent rootFamiliar = FXMLLoader.load(getClass().getResource("/application/vistas/vistaFamiliar.fxml"));
+                        FXMLLoader loaderFamiliar = new FXMLLoader(getClass().getResource("/application/vistas/vistaFamiliar.fxml"));
+                        Parent rootFamiliar = loaderFamiliar.load();
+                        controladorFamiliar contrFamiliar = loaderFamiliar.getController();
+                        contrFamiliar.initModelo(modelo,usuario);
                         stageBttnBelongsTo.setScene(new Scene(rootFamiliar));
                         break;
                     case "cuidador":
@@ -171,7 +174,10 @@ public class controladorLogin {
                         stageBttnBelongsTo.setScene(new Scene(rootPaciente));
                         break;
                     case "familiar":
-                        Parent rootFamiliar = FXMLLoader.load(getClass().getResource("/application/vistas/vistaFamiliar.fxml"));
+                        FXMLLoader loaderFamiliar = new FXMLLoader(getClass().getResource("/application/vistas/vistaFamiliar.fxml"));
+                        Parent rootFamiliar = loaderFamiliar.load();
+                        controladorPaciente contrFamiliar = loaderFamiliar.getController();
+                        contrFamiliar.initModelo(modelo,usuario);
                         stageBttnBelongsTo.setScene(new Scene(rootFamiliar));
                         break;
                     case "cuidador":
