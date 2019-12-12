@@ -44,6 +44,94 @@
     "imagenPerfil" : "@..\\..\\resources\\fotos\\jrodriguez_cuidador.png"
   },
   {
+    "name": "Sebastián",
+    "surname": "Arrollo Ayala",
+    "age": 26,
+    "birthday": "20/09/1993",
+    "username": "sarollo",
+    "password": "70b1f6501cbf048e103698743dd7eb95",	//"Eyn&Zm4n"
+    "rol": "cuidador",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\sarollo_cuidador.png"
+  },
+  {
+    "name": "Lola",
+    "surname": "Rodriguez Sánchez",
+    "age": 32,
+    "birthday": "05/04/1987",
+    "username": "lrodriguez",
+    "password": "255eef7f000d1f0f2e7b0ff7fc65e2ba",	//"A99sQF$g"
+    "rol": "cuidador",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\lrodriguez_cuidador.png"
+  },
+  {
+    "name": "Ramona",
+    "surname": "Campos Cuevas",
+    "age": 32,
+    "birthday": "02/11/1987",
+    "username": "rcampos",
+    "password": "0068fb51e902d168ad974ef09bf70bc5",	//"Dkyo^Bpl"
+    "rol": "cuidador",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\rcampos_cuidador.png"
+  },
+  {
+    "name": "Susana",
+    "surname": "López López",
+    "age": 29,
+    "birthday": "20/10/1990",
+    "username": "slopez",
+    "password": "ed728f09f629ca386c1fe9207a2ea046",	//"LjOeIkc!"
+    "rol": "cuidador",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\slopez_cuidador.png"
+  },
+  {
+    "name": "Sara",
+    "surname": "Gimenez López",
+    "age": 25,
+    "birthday": "17/11/1994",
+    "username": "sgimenez",
+    "password": "6e93f9349c982171d679a324b0f67bc2",	//"1MI0WZtx"
+    "rol": "cuidador",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\sgimenez_cuidador.png"
+  },
+  {
+    "name": "Juan",
+    "surname": "Cabeza Cuevas",
+    "age": 22,
+    "birthday": "17/10/1997",
+    "username": "jcabeza",
+    "password": "38012ccf7b3dd291a9cef9c3042e2f3b",	//"Ru9nHS8W"
+    "rol": "cuidador",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\jcabeza_cuidador.png"
+  },
+  {
+    "name": "Pedro",
+    "surname": "Galindo Ferrer",
+    "age": 22,
+    "birthday": "01/06/1997",
+    "username": "pgalindo",
+    "password": "9878b8c983fbbae9bf6ba33dc72d7817",	//"cRZjm1me"
+    "rol": "cuidador",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\pgalindo_cuidador.png"
+  },
+  {
+    "name": "Mario",
+    "surname": "Iglesias Hierro",
+    "age": 39,
+    "birthday": "13/04/1980",
+    "username": "miglesias",
+    "password": "1324d3157a7fb4b93c604bbca156202e",	//"0V72gqmO"
+    "rol": "cuidador",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\miglesias_cuidador.png"
+  },
+  {
     "name": "Sancho",
     "surname": "Hernández Díaz",
     "age": 49,
