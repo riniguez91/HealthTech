@@ -13,7 +13,7 @@
     "subject": "Hola!",
     "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
-    "read": false
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
@@ -102,5 +102,13 @@
     "message": "asdfasdf",
     "idTicket": "7e3168ee-beab-43ca-a838-d0c1cf14a37f",
     "read": true
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Sara Gómez Hernández",
+    "subject": "ddd",
+    "message": "ddd",
+    "idTicket": "c56499d5-8f78-4618-9fcf-b6fce056c939",
+    "read": false
   }
 ]

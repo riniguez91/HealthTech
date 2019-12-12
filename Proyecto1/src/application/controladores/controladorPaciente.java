@@ -39,7 +39,7 @@ public class controladorPaciente {
     private List<Label> labelMessages = new ArrayList<>();
     private List<Label> labelMessagesInicio = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
-    private List<Message> updatedMessages;
+    // private List<Message> updatedMessages;
 
     public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -47,7 +47,7 @@ public class controladorPaciente {
         }
         this.modelo = modelo_;
         this.usuario = usuario_;
-        updatedMessages = modelo.getMessages();
+        // updatedMessages = modelo.getMessages();
         modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
 
         // Datos pestaña inicio
@@ -470,7 +470,7 @@ public class controladorPaciente {
             Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
                         + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
                         uniqueKey.toString(), false);
-            // List<Message> updatedMessages = modelo.getMessages();
+            List<Message> updatedMessages = modelo.getMessages();
             updatedMessages.add(msg);
             modelo.setMessages(updatedMessages);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
