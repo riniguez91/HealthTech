@@ -72,6 +72,119 @@
     "imagenPerfil" : "@..\\..\\resources\\fotos\\rnieto_familiar.png"
   },
   {
+    "name": "Carlos",
+    "surname": "Alonso Martinez",
+    "age": 71,
+    "birthday": "01/01/1948",
+    "username": "calonso",
+    "password": "1d3639bd07f2708e2b2be21409360ad0",	//"calonso"
+    "rol": "paciente",
+    "relaciones": [
+
+    ],
+    "imagenPerfil" : " "
+  },
+  
+  {
+    "name": "Paco",
+    "surname": "Cañizo Gil",
+    "age": 60,
+    "birthday": "01/03/1959",
+    "username": "pcañizo",
+    "password": "f8449abe7ded08a5c6038b78756d3421",	//"pcañizo"
+    "rol": "paciente",
+    "relaciones": [
+
+    ],
+    "imagenPerfil" : " "
+  },
+  
+  {
+    "name": "Federico",
+    "surname": "Montero Ramos",
+    "age": 80,
+    "birthday": "12/05/1939",
+    "username": "fmontero",
+    "password": "9665d803bdfe594da7a7830d445a0d68",	//"fmontero"
+    "rol": "paciente",
+    "relaciones": [
+
+    ],
+    "imagenPerfil" : " "
+  },
+  
+  {
+    "name": "Patricia",
+    "surname": "Canoyra Fernandez",
+    "age": 77,
+    "birthday": "15/12/1942",
+    "username": "pcanoyra",
+    "password": "7b942d686f5eebfebd15d449e4afd00d",	//"pcanoyra"
+    "rol": "paciente",
+    "relaciones": [
+
+    ],
+    "imagenPerfil" : " "
+  },
+  
+  
+  {
+    "name": "Andrea",
+    "surname": "Tendero Zanata",
+    "age": 77,
+    "birthday": "06/07/1942",
+    "username": "atendero",
+    "password": "89c8e6d1f6b3455c4b1135a2a8d52c30",	//"atendero"
+    "rol": "paciente",
+    "relaciones": [
+
+    ],
+    "imagenPerfil" : " "
+  },
+  
+  
+  {
+    "name": "Marta",
+    "surname": "Rubio Serrano",
+    "age": 72,
+    "birthday": "06/10/1947",
+    "username": "mrubio",
+    "password": "a5deb7139a95624aab3bec23072972e5",	//"mrubio"
+    "rol": "paciente",
+    "relaciones": [
+
+    ],
+    "imagenPerfil" : " "
+  },
+  
+  {
+    "name": "Andres",
+    "surname": "Baeza Saez",
+    "age": 76,
+    "birthday": "15/09/1943",
+    "username": "abaeza",
+    "password": "d0c50d633f987433e2f9e26c1d4d36f0",	//"abaeza"
+    "rol": "paciente",
+    "relaciones": [
+
+    ],
+    "imagenPerfil" : " "
+  },
+  
+  {
+    "name": "Ana",
+    "surname": "Utrera Ortega",
+    "age": 84,
+    "birthday": "15/05/1935",
+    "username": "autrera",
+    "password": "17c1bc870f3877a408a7a821d530b1d3",	//"autrera"
+    "rol": "paciente",
+    "relaciones": [
+
+    ],
+    "imagenPerfil" : " "
+  },
+  {
     "name": "Susana",
     "surname": "Díaz Hernández",
     "age": 70,
