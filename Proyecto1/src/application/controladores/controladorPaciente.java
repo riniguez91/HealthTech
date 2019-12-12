@@ -62,7 +62,11 @@ public class controladorPaciente {
         panelDatosYMensajesUsuarios.setVisible(false);
 
         // Establecemos la foto del usuario en la pestaña de Inicio
-        userImageViewInicio.setImage(new Image(usuario.getImagenPerfil()));
+        if (usuario.getImagenPerfil().isEmpty()) {
+        	userImageViewInicio.setImage(new Image("@..\\..\\resources\\fotos\\user.png"));
+		} else {
+			userImageViewInicio.setImage(new Image(usuario.getImagenPerfil()));
+		}
 
         // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();
@@ -365,7 +369,7 @@ public class controladorPaciente {
         treeTableViewMensajes.getColumns().setAll(idCol, senderCol, asuntoCol);
         treeTableViewMensajes.setRoot(root);
         treeTableViewMensajes.setShowRoot(false);
-    }
+        }
 
     @FXML
     void mostrarDatosYMensajeUsuarios(MouseEvent event) {
@@ -534,6 +538,7 @@ public class controladorPaciente {
     @FXML
     void guardarCalendario(ActionEvent event) {
 	    if (calendario.getAgendaView().getListView().getItems().size() != 0) {
+//	    	System.out.println(prueba.getListView().getId());
             prueba.getListView().setItems(calendario.getAgendaView().getListView().getItems());
             alert.setHeaderText("Informacion");
             alert.setContentText("El evento se ha añadido correctamente");

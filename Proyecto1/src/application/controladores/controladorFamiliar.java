@@ -58,7 +58,11 @@ public class controladorFamiliar {
         panelDatosYMensajesUsuarios.setVisible(false);
 
         // Establecemos la foto del usuario en la pestaña de Inicio
-        userImageViewInicio.setImage(new Image(usuario.getImagenPerfil()));
+        if (usuario.getImagenPerfil() == " ") {
+        	userImageViewInicio.setImage(new Image("@..\\..\\resources\\fotos\\user.png"));
+		} else {
+			userImageViewInicio.setImage(new Image(usuario.getImagenPerfil()));
+		}
 
         // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();

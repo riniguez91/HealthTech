@@ -30,7 +30,7 @@
     "password": "a9c05ee1dd8f689f90545aee8dda7555",	//"hernandez1"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\rhernandez_medico.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "María",
@@ -41,7 +41,7 @@
     "password": "7df9ca11eb49513ac74fcb3b2cdc07f5",	//"Cetreria3"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\msuarez_medico.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Rosa",
@@ -52,7 +52,7 @@
     "password": "4527b4881408a7d778b36559abfe8822",	//"trece092000"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\rmartin_medico.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Mar",
@@ -63,7 +63,7 @@
     "password": "b9cc501e935b3e4dd7add33a6cd0a6a1",	//"1309dosmil"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\msanchez_medico.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Rafael",
@@ -74,7 +74,7 @@
     "password": "997e26bcc4b31c0220c5058ce3ea8558",	//"13sep2000"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\rcaballero_medico.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Rodrigo",
@@ -85,7 +85,7 @@
     "password": "bcd3b0bcb73fc2b4945bf6a3dafed01a",	//"TrecEsep2000"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\rvicario_medico.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Mariana",
@@ -96,7 +96,7 @@
     "password": "7804bae6c90f7645dcaf0bf9d2b3a14a",	//"mvega"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\mvega_medico.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Marina",
@@ -107,7 +107,7 @@
     "password": "1e6512345f6c7de0af5363dd339c6112",	//"mnieto"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\mnieto_medico.png"
+    "imagenPerfil" : ""
   },
   
   
@@ -145,7 +145,7 @@
     "password": "70b1f6501cbf048e103698743dd7eb95",	//"Eyn&Zm4n"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\sarollo_cuidador.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Lola",
@@ -156,7 +156,7 @@
     "password": "255eef7f000d1f0f2e7b0ff7fc65e2ba",	//"A99sQF$g"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\lrodriguez_cuidador.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Ramona",
@@ -167,7 +167,7 @@
     "password": "0068fb51e902d168ad974ef09bf70bc5",	//"Dkyo^Bpl"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\rcampos_cuidador.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Susana",
@@ -178,7 +178,7 @@
     "password": "ed728f09f629ca386c1fe9207a2ea046",	//"LjOeIkc!"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\slopez_cuidador.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Sara",
@@ -189,7 +189,7 @@
     "password": "6e93f9349c982171d679a324b0f67bc2",	//"1MI0WZtx"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\sgimenez_cuidador.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Juan",
@@ -200,7 +200,7 @@
     "password": "38012ccf7b3dd291a9cef9c3042e2f3b",	//"Ru9nHS8W"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\jcabeza_cuidador.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Pedro",
@@ -211,7 +211,7 @@
     "password": "9878b8c983fbbae9bf6ba33dc72d7817",	//"cRZjm1me"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\pgalindo_cuidador.png"
+    "imagenPerfil" : ""
   },
   {
     "name": "Mario",
@@ -222,7 +222,7 @@
     "password": "1324d3157a7fb4b93c604bbca156202e",	//"0V72gqmO"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\miglesias_cuidador.png"
+    "imagenPerfil" : ""
   },
   
   
@@ -272,7 +272,7 @@
       	"sarrollo",
       	"calonso"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Marta",
@@ -287,7 +287,7 @@
       	"rcampos",
       	"autrera"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Clara",
@@ -302,7 +302,7 @@
       	"lrodriguez",
       	"pcañizo"	
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Claudia",
@@ -318,7 +318,7 @@
       	"fmontero"
     ],
     
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },  
   {
     "name": "Lucía",
@@ -333,7 +333,7 @@
       	"sgimenez",
       	"canoyra"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "José",
@@ -348,7 +348,7 @@
       	"jcabeza",
       	"atendero"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Xavier",
@@ -364,7 +364,7 @@
       	"mrubio"
 		
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Anabel",
@@ -379,7 +379,7 @@
       	"miglesias",
       	"abaeza"		
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   
   
@@ -399,7 +399,7 @@
       	"sarrollo",
       	"salonso"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Paco",
@@ -414,7 +414,7 @@
       	"lrodriguez",
       	"cgil"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Federico",
@@ -429,7 +429,7 @@
       	"slopez",
       	"cmontero"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Patricia",
@@ -444,7 +444,7 @@
       	"sgimenez",
       	"lramos"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Andrea",
@@ -459,7 +459,7 @@
       	"jcabeza",
       	"jlopez"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Marta",
@@ -474,7 +474,7 @@
       	"pgalindo",
       	"xhernandez"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Andres",
@@ -489,7 +489,7 @@
       	"miglesias",
       	"aalonso"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Ana",
@@ -504,7 +504,7 @@
       	"rcampos",
       	"mutrera"
     ],
-    "imagenPerfil" : " "
+    "imagenPerfil" : ""
   },
   {
     "name": "Susana",
