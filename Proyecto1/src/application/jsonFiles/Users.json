@@ -21,6 +21,99 @@
     "relaciones": [],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\jmoreno_medico.png"
   },
+{
+    "name": "Ramero",
+    "surname": "Hernández Fernández",
+    "age": 41,
+    "birthday": "18/01/1978",
+    "username": "rhernandez",
+    "password": "a9c05ee1dd8f689f90545aee8dda7555",	//"hernandez1"
+    "rol": "medico",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\rhernandez_medico.png"
+  },
+  {
+    "name": "María",
+    "surname": "Suarez Sanz",
+    "age": 53,
+    "birthday": "17/07/1966",
+    "username": "msuarez",
+    "password": "7df9ca11eb49513ac74fcb3b2cdc07f5",	//"Cetreria3"
+    "rol": "medico",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\msuarez_medico.png"
+  },
+  {
+    "name": "Rosa",
+    "surname": "Martín Pérez",
+    "age": 37,
+    "birthday": "18/09/1982",
+    "username": "rmartin",
+    "password": "4527b4881408a7d778b36559abfe8822",	//"trece092000"
+    "rol": "medico",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\rmartin_medico.png"
+  },
+  {
+    "name": "Mar",
+    "surname": "Sánchez Caballero",
+    "age": 39,
+    "birthday": "18/03/1980",
+    "username": "msanchez",
+    "password": "b9cc501e935b3e4dd7add33a6cd0a6a1",	//"1309dosmil"
+    "rol": "medico",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\msanchez_medico.png"
+  },
+  {
+    "name": "Rafael",
+    "surname": "Caballero Sánchez",
+    "age": 33,
+    "birthday": "10/07/1986",
+    "username": "rcaballero",
+    "password": "997e26bcc4b31c0220c5058ce3ea8558",	//"13sep2000"
+    "rol": "medico",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\rcaballero_medico.png"
+  },
+  {
+    "name": "Rodrigo",
+    "surname": "Vicario Doctor",
+    "age": 44,
+    "birthday": "17/07/1975",
+    "username": "rvicario",
+    "password": "bcd3b0bcb73fc2b4945bf6a3dafed01a",	//"TrecEsep2000"
+    "rol": "medico",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\rvicario_medico.png"
+  },
+  {
+    "name": "Mariana",
+    "surname": "Vega Nieto",
+    "age": 39,
+    "birthday": "20/09/1980",
+    "username": "mvega",
+    "password": "7804bae6c90f7645dcaf0bf9d2b3a14a",	//"mvega"
+    "rol": "medico",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\mvega_medico.png"
+  },
+  {
+    "name": "Marina",
+    "surname": "Nieto Hernández",
+    "age": 41,
+    "birthday": "20/10/1978",
+    "username": "mnieto",
+    "password": "1e6512345f6c7de0af5363dd339c6112",	//"mnieto"
+    "rol": "medico",
+    "relaciones": [],
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\mnieto_medico.png"
+  },
+  
+  
+  //CUIDADORES
+  
+  
   {
     "name": "Catalina",
     "surname": "Rey Rodríguez",
@@ -131,6 +224,11 @@
     "relaciones": [],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\miglesias_cuidador.png"
   },
+  
+  
+  //FAMILIARES
+  
+  
   {
     "name": "Sancho",
     "surname": "Hernández Díaz",
@@ -141,7 +239,8 @@
     "rol": "familiar",
     "relaciones": [
     	"sgomez", 
-    	"crey"
+    	"crey",
+    	"sdiaz"
     ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\shernandez_familiar.png"
   },
@@ -155,12 +254,13 @@
     "rol": "familiar",
     "relaciones": [
 		"sgomez",
-		"crey"
+		"crey",
+		"pbascuas"
     ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\rnieto_familiar.png"
   },
   {
-    "name": "Sofia ",
+    "name": "Sofia",
     "surname": "Alonso Martinez",
     "age": 30,
     "birthday": "12/05/1989",
@@ -168,13 +268,14 @@
     "password": "ed203e94f7e3a57b621b752a7a7818e9",	//"salonso"
     "rol": "familiar",
     "relaciones": [
-		"calonso"
-		
+      	"rhernandez",
+      	"sarrollo",
+      	"calonso"
     ],
     "imagenPerfil" : " "
   },
   {
-    "name": "Marta ",
+    "name": "Marta",
     "surname": "Utrera Ortega",
     "age": 24,
     "birthday": "12/05/1995",
@@ -182,13 +283,14 @@
     "password": "65b372aa81091eb6995e511916f2eb94",	//"mutrera"
     "rol": "familiar",
     "relaciones": [
-		"autrera"
-		
+      	"msuarez",
+      	"rcampos",
+      	"autrera"
     ],
     "imagenPerfil" : " "
   },
   {
-    "name": "Clara ",
+    "name": "Clara",
     "surname": "Gil Urrutia",
     "age": 50,
     "birthday": "02/12/1969",
@@ -196,35 +298,92 @@
     "password": "a228d5b52f3fabab936aaa757467eebb",	//"cgil"
     "rol": "familiar",
     "relaciones": [
-		"pcañizo"
-		
+      	"rmartín",
+      	"lrodriguez",
+      	"pcañizo"	
     ],
     "imagenPerfil" : " "
   },
   {
-    "name": "Claudia ",
+    "name": "Claudia",
     "surname": "Montero Villanova",
-    "age": 300,
+    "age": 30,
     "birthday": "25/07/1989",
     "username": "cmontero",
     "password": "c328464ff6cb09d925879e498b836437",	//"cmontero"
     "rol": "familiar",
     "relaciones": [
-		"fmontero"
+      	"msanchez",
+      	"slopez",
+      	"fmontero"
+    ],
+    
+    "imagenPerfil" : " "
+  },  
+  {
+    "name": "Lucía",
+    "surname": "Ramos Sanz",
+    "age": 50,
+    "birthday": "20/11/1969",
+    "username": "lramos",
+    "password": "",	//"lramos"
+    "rol": "familiar",
+    "relaciones": [
+      	"rcaballero",
+      	"sgimenez",
+      	"canoyra"
+    ],
+    "imagenPerfil" : " "
+  },
+  {
+    "name": "José",
+    "surname": "López Gimenez",
+    "age": 30,
+    "birthday": "21/05/1989",
+    "username": "jlopez",
+    "password": "",	//"jlopez"
+    "rol": "familiar",
+    "relaciones": [
+      	"rvicario",
+      	"jcabeza",
+      	"atendero"
+    ],
+    "imagenPerfil" : " "
+  },
+  {
+    "name": "Xavier",
+    "surname": "Hernández Geuer",
+    "age": 24,
+    "birthday": "21/05/1995",
+    "username": "xhernandez",
+    "password": "",	//"zhernandez"
+    "rol": "familiar",
+    "relaciones": [
+      	"mvega",
+      	"pgalindo",
+      	"mrubio"
 		
+    ],
+    "imagenPerfil" : " "
+  },
+  {
+    "name": "Anabel",
+    "surname": "Alonso Cárdenas",
+    "age": 39,
+    "birthday": "21/05/1980",
+    "username": "aalonso",
+    "password": "",	//"aalonso"
+    "rol": "familiar",
+    "relaciones": [
+		"mnieto",
+      	"miglesias",
+      	"abaeza"		
     ],
     "imagenPerfil" : " "
   },
   
   
-  
-  
-  
-  
-  
-  
-  
-  
+  //PACIENTES
   
   
   {
@@ -236,11 +395,12 @@
     "password": "1d3639bd07f2708e2b2be21409360ad0",	//"calonso"
     "rol": "paciente",
     "relaciones": [
-
+      	"rhernandez",
+      	"sarrollo",
+      	"salonso"
     ],
     "imagenPerfil" : " "
   },
-  
   {
     "name": "Paco",
     "surname": "Cañizo Gil",
@@ -250,11 +410,12 @@
     "password": "f8449abe7ded08a5c6038b78756d3421",	//"pcañizo"
     "rol": "paciente",
     "relaciones": [
-
+      	"rmartin",
+      	"lrodriguez",
+      	"cgil"
     ],
     "imagenPerfil" : " "
   },
-  
   {
     "name": "Federico",
     "surname": "Montero Ramos",
@@ -264,11 +425,12 @@
     "password": "9665d803bdfe594da7a7830d445a0d68",	//"fmontero"
     "rol": "paciente",
     "relaciones": [
-
+      	"msanchez",
+      	"slopez",
+      	"cmontero"
     ],
     "imagenPerfil" : " "
   },
-  
   {
     "name": "Patricia",
     "surname": "Canoyra Fernandez",
@@ -278,12 +440,12 @@
     "password": "7b942d686f5eebfebd15d449e4afd00d",	//"pcanoyra"
     "rol": "paciente",
     "relaciones": [
-
+      	"rcaballero",
+      	"sgimenez",
+      	"lramos"
     ],
     "imagenPerfil" : " "
   },
-  
-  
   {
     "name": "Andrea",
     "surname": "Tendero Zanata",
@@ -293,12 +455,12 @@
     "password": "89c8e6d1f6b3455c4b1135a2a8d52c30",	//"atendero"
     "rol": "paciente",
     "relaciones": [
-
+      	"rvicario",
+      	"jcabeza",
+      	"jlopez"
     ],
     "imagenPerfil" : " "
   },
-  
-  
   {
     "name": "Marta",
     "surname": "Rubio Serrano",
@@ -308,11 +470,12 @@
     "password": "a5deb7139a95624aab3bec23072972e5",	//"mrubio"
     "rol": "paciente",
     "relaciones": [
-
+      	"mvega",
+      	"pgalindo",
+      	"xhernandez"
     ],
     "imagenPerfil" : " "
   },
-  
   {
     "name": "Andres",
     "surname": "Baeza Saez",
@@ -322,11 +485,12 @@
     "password": "d0c50d633f987433e2f9e26c1d4d36f0",	//"abaeza"
     "rol": "paciente",
     "relaciones": [
-
+      	"mnieto",
+      	"miglesias",
+      	"aalonso"
     ],
     "imagenPerfil" : " "
   },
-  
   {
     "name": "Ana",
     "surname": "Utrera Ortega",
@@ -336,7 +500,9 @@
     "password": "17c1bc870f3877a408a7a821d530b1d3",	//"autrera"
     "rol": "paciente",
     "relaciones": [
-
+      	"msuarez",
+      	"rcampos",
+      	"mutrera"
     ],
     "imagenPerfil" : " "
   },
