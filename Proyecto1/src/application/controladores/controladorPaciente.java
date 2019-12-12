@@ -346,14 +346,14 @@ public class controladorPaciente {
         JFXTreeTableColumn<messageTTView, String> asuntoCol = new JFXTreeTableColumn<>("Asunto");
 
         idCol.setCellValueFactory(param -> param.getValue().getValue().getIdTicket());
-        idCol.setMinWidth(100);
-        idCol.setMaxWidth(100);
+        idCol.setMinWidth(189);
+        idCol.setMaxWidth(189);
         senderCol.setCellValueFactory(param -> param.getValue().getValue().getSender());
-        senderCol.setMinWidth(169);
-        senderCol.setMaxWidth(169);
+        senderCol.setMinWidth(189);
+        senderCol.setMaxWidth(189);
         asuntoCol.setCellValueFactory(param -> param.getValue().getValue().getSubject());
-        asuntoCol.setMinWidth(308);
-        asuntoCol.setMaxWidth(308);
+        asuntoCol.setMinWidth(189);
+        asuntoCol.setMaxWidth(189);
 
         ObservableList<messageTTView> messages = FXCollections.observableArrayList();
         // Añadimos los mensajes

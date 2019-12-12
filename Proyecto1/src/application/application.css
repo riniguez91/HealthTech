@@ -63,6 +63,7 @@
     -fx-tree-table-color: #0163af;
     -fx-tree-table-rippler-color : rgba(255, 0, 0, 0.9);
     -fx-font-family: Century Gothic;
+    -fx-font-size: 22px;
 }
 .tree-table-view:focused .tree-table-row-cell:selected {
     -fx-background-color: -fx-tree-table-color  ;
