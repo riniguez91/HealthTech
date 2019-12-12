@@ -326,7 +326,7 @@
     "age": 50,
     "birthday": "20/11/1969",
     "username": "lramos",
-    "password": "",	//"lramos"
+    "password": "87332577e431b8fbb728257385ef78ea",	//"lramos"
     "rol": "familiar",
     "relaciones": [
       	"rcaballero",
@@ -341,7 +341,7 @@
     "age": 30,
     "birthday": "21/05/1989",
     "username": "jlopez",
-    "password": "",	//"jlopez"
+    "password": "cbe1ba534465de78cea731b2ba3e571e",	//"jlopez"
     "rol": "familiar",
     "relaciones": [
       	"rvicario",
@@ -356,7 +356,7 @@
     "age": 24,
     "birthday": "21/05/1995",
     "username": "xhernandez",
-    "password": "",	//"zhernandez"
+    "password": "289a60cdb6e80d06b3b9c17bb80d5020",	//"xhernandez"
     "rol": "familiar",
     "relaciones": [
       	"mvega",
@@ -372,7 +372,7 @@
     "age": 39,
     "birthday": "21/05/1980",
     "username": "aalonso",
-    "password": "",	//"aalonso"
+    "password": "8ca16b819ab0995e7ca208f34304c8ea",	//"aalonso"
     "rol": "familiar",
     "relaciones": [
 		"mnieto",
