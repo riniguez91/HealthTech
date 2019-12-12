@@ -72,6 +72,74 @@
     "imagenPerfil" : "@..\\..\\resources\\fotos\\rnieto_familiar.png"
   },
   {
+    "name": "Sofia ",
+    "surname": "Alonso Martinez",
+    "age": 30,
+    "birthday": "12/05/1989",
+    "username": "salonso",
+    "password": "ed203e94f7e3a57b621b752a7a7818e9",	//"salonso"
+    "rol": "familiar",
+    "relaciones": [
+		"calonso"
+		
+    ],
+    "imagenPerfil" : " "
+  },
+  {
+    "name": "Marta ",
+    "surname": "Utrera Ortega",
+    "age": 24,
+    "birthday": "12/05/1995",
+    "username": "mutrera",
+    "password": "65b372aa81091eb6995e511916f2eb94",	//"mutrera"
+    "rol": "familiar",
+    "relaciones": [
+		"autrera"
+		
+    ],
+    "imagenPerfil" : " "
+  },
+  {
+    "name": "Clara ",
+    "surname": "Gil Urrutia",
+    "age": 50,
+    "birthday": "02/12/1969",
+    "username": "cgil",
+    "password": "a228d5b52f3fabab936aaa757467eebb",	//"cgil"
+    "rol": "familiar",
+    "relaciones": [
+		"pcañizo"
+		
+    ],
+    "imagenPerfil" : " "
+  },
+  {
+    "name": "Claudia ",
+    "surname": "Montero Villanova",
+    "age": 300,
+    "birthday": "25/07/1989",
+    "username": "cmontero",
+    "password": "c328464ff6cb09d925879e498b836437",	//"cmontero"
+    "rol": "familiar",
+    "relaciones": [
+		"fmontero"
+		
+    ],
+    "imagenPerfil" : " "
+  },
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  {
     "name": "Carlos",
     "surname": "Alonso Martinez",
     "age": 71,
