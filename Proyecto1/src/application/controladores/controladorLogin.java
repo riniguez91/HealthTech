@@ -219,7 +219,10 @@ public class controladorLogin {
 	                        stageBttnBelongsTo.setScene(new Scene(rootPaciente));
 	                        break;
 	                    case "familiar":
-	                        Parent rootFamiliar = FXMLLoader.load(getClass().getResource("/application/vistas/vistaFamiliar.fxml"));
+	                        FXMLLoader loaderFamiliar = new FXMLLoader(getClass().getResource("/application/vistas/vistaFamiliar.fxml"));
+	                        Parent rootFamiliar = loaderFamiliar.load();
+	                        controladorFamiliar contrFamiliar = loaderFamiliar.getController();
+	                        contrFamiliar.initModelo(modelo,usuario);
 	                        stageBttnBelongsTo.setScene(new Scene(rootFamiliar));
 	                        break;
 	                    case "cuidador":

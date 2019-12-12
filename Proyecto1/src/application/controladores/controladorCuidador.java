@@ -374,12 +374,12 @@ public class controladorCuidador {
     @FXML
     void mostrarDatosYMensajeUsuarios(MouseEvent event) {
 	    // Comprobamos que no este visible
-	    if (!panelDatosYMensajesUsuarios.isVisible()){
+	    if (!panelDatosYMensajesUsuarios.isVisible() && treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null){
 	        panelDatosYMensajesUsuarios.setVisible(true);
 	        seleccionaUsuarioUsuarios.setVisible(false);
 
         }
-	    if (panelDatosYMensajesUsuarios.isVisible()) { // Cambiamos los datos del usuario
+	    if (panelDatosYMensajesUsuarios.isVisible() && treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) { // Cambiamos los datos del usuario
             labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
             labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
             labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
