@@ -4,12 +4,13 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Message {
-    public Message(String sender, String receiver, String subject, String message, String idTicket){
+    public Message(String sender, String receiver, String subject, String message, String idTicket, boolean read){
         this.sender = sender;
         this.receiver = receiver;
         this.subject = subject;
         this.message = message;
         this.idTicket = idTicket;
+        this.read = read;
     }
 
     @SerializedName("sender")
@@ -27,6 +28,9 @@ public class Message {
     @SerializedName("idTicket")
     @Expose
     private String idTicket;
+    @SerializedName("read")
+    @Expose
+    private boolean read;
 
     public String getSender() { return sender; }
 
@@ -48,7 +52,11 @@ public class Message {
         return idTicket;
     }
 
-    public void setIdTicket(String idTicket) {
-        this.idTicket = idTicket;
+    public boolean getRead() {
+        return read;
+    }
+
+    public void setRead(boolean read) {
+        this.read = read;
     }
 }

@@ -1,10 +1,7 @@
 package application.modelos;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 public class messageTTView extends RecursiveTreeObject<messageTTView> {
     private StringProperty sender;
@@ -12,13 +9,15 @@ public class messageTTView extends RecursiveTreeObject<messageTTView> {
     private StringProperty subject;
     private StringProperty message;
     private StringProperty idTicket;
+    private BooleanProperty read;
 
-    public messageTTView(String sender, String receiver, String subject, String message, String idTicket) {
+    public messageTTView(String sender, String receiver, String subject, String message, String idTicket, boolean read) {
         this.sender = new SimpleStringProperty(sender);
         this.receiver = new SimpleStringProperty(receiver);
         this.subject = new SimpleStringProperty(subject);
         this.message = new SimpleStringProperty(message);
         this.idTicket = new SimpleStringProperty(idTicket);
+        this.read = new SimpleBooleanProperty(read);
     }
 
     public StringProperty getSender() {
@@ -57,4 +56,11 @@ public class messageTTView extends RecursiveTreeObject<messageTTView> {
 
     public void setIdTicket(String idTicket) { this.idTicket.set(idTicket); }
 
+    public BooleanProperty getRead() {
+        return this.read;
+    }
+
+    public void setRead(boolean read) {
+        this.read.set(read);
+    }
 }

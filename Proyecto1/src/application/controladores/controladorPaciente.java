@@ -2,6 +2,7 @@ package application.controladores;
 
 import application.modelos.*;
 
+import com.calendarfx.view.AgendaView;
 import com.calendarfx.view.page.DayPage;
 import com.jfoenix.controls.*;
 
@@ -36,7 +37,9 @@ public class controladorPaciente {
     public List<Usuario> relatedUsers;
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
     private List<Label> labelMessages = new ArrayList<>();
+    private List<Label> labelMessagesInicio = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
+    private List<Message> updatedMessages;
 
     public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -44,6 +47,7 @@ public class controladorPaciente {
         }
         this.modelo = modelo_;
         this.usuario = usuario_;
+        updatedMessages = modelo.getMessages();
         modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
 
         // Datos pestaña inicio
@@ -63,6 +67,9 @@ public class controladorPaciente {
         // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();
         crearTreeTableViewMensajes();
+
+        // Comprobamos mensajes nuevos
+        comprobarMensajesNuevos();
     }
 
     @FXML
@@ -257,6 +264,19 @@ public class controladorPaciente {
     @FXML
     private AnchorPane aPaneRespuestaTicket;
 
+    @FXML
+    private AgendaView prueba;
+
+    @FXML
+    private ScrollPane scrollPaneMensajesInicio;
+
+    @FXML
+    private AnchorPane conversacionMensajesInicio;
+
+    @FXML
+    private VBox vboxConversacionMensajesInicio;
+
+
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
 	void verInicio(ActionEvent event) {
@@ -336,7 +356,7 @@ public class controladorPaciente {
         modelo.getMessages().forEach(mensaje -> {
             if (!uniqueIDS.contains(mensaje.getIdTicket()) && (mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())
                     || mensaje.getReceiver().equals(usuario.getName()+" "+usuario.getSurname()))) {
-                messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket()));
+                messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket(),mensaje.getRead()));
                 uniqueIDS.add(mensaje.getIdTicket());
             }
         });
@@ -391,6 +411,21 @@ public class controladorPaciente {
 			destinatarioJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get());
 			idTicketJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get());
 			int i = 0;
+
+			// Cambiamos el mensaje como leido si no lo estaba
+            if (!treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getRead().get()) {
+                for (Message msg : modelo.getMessages()) {
+                    if (msg.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()) &&
+                            msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurname())){
+                        msg.setRead(true);
+                        modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
+                        modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
+                        comprobarMensajesNuevos();
+                        break;
+                    }
+                }
+            }
+
 			// En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
 			for (Message mensaje : modelo.getMessages()) {
 				if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
@@ -430,8 +465,8 @@ public class controladorPaciente {
             UUID uniqueKey = UUID.randomUUID();
             Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
                         + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
-                        uniqueKey.toString());
-            List<Message> updatedMessages = modelo.getMessages();
+                        uniqueKey.toString(), false);
+            // List<Message> updatedMessages = modelo.getMessages();
             updatedMessages.add(msg);
             modelo.setMessages(updatedMessages);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
@@ -444,7 +479,9 @@ public class controladorPaciente {
 
             // Actualizamos la lista de mensajes
             treeTableViewMensajes.getRoot().getChildren().add(new TreeItem<>(new messageTTView(msg.getSender(), msg.getReceiver(), msg.getSubject(),
-                                                                                                msg.getMessage(), msg.getIdTicket())));
+                                                                                                msg.getMessage(), msg.getIdTicket(), msg.getRead())));
+            // Junto a los mensajes no leidos
+            comprobarMensajesNuevos();
         }
     }
 
@@ -477,7 +514,8 @@ public class controladorPaciente {
                                       treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get(),
                                       treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get(),
                                       crearMensajeJFXTextAreaMensajes.getText(),
-                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()
+                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get(),
+                                      false
             );
 
             List<Message> updatedMessages = modelo.getMessages();
@@ -495,12 +533,48 @@ public class controladorPaciente {
     
     @FXML
     void guardarCalendario(ActionEvent event) {
+	    if (calendario.getAgendaView().getListView().getItems().size() != 0) {
+            prueba.getListView().setItems(calendario.getAgendaView().getListView().getItems());
+            alert.setHeaderText("Informacion");
+            alert.setContentText("El evento se ha añadido correctamente");
+            alert.showAndWait();
+        } else {
+            alert.setHeaderText("Informacion");
+            alert.setContentText("Primero debe añadir un evento al calendario");
+            alert.showAndWait();
+        }
+
     }
     
     @FXML
     void cancelarRespuestaTicket(ActionEvent event) {
 	    aPaneCreacionTicket.setVisible(false);
 	    aPaneRespuestaTicket.setVisible(true);
+    }
+
+    public void comprobarMensajesNuevos(){
+        // Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
+        labelMessagesInicio.clear();
+        vboxConversacionMensajesInicio.getChildren().clear();
+        int i = 0;
+        // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
+        for (Message mensaje : modelo.getMessages()) {
+            if (!mensaje.getRead() && (!mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurname()))) {
+                labelMessagesInicio.add(new Label("- Asunto: " + mensaje.getSubject() + " || De parte de: " + mensaje.getSender()));
+                labelMessagesInicio.get(i).setPrefWidth(1202);
+                labelMessagesInicio.get(i).setWrapText(true);
+                labelMessagesInicio.get(i).setFont(new Font("Century Gothic", 26));
+                labelMessagesInicio.get(i).setPadding(new Insets(0,0,0,20));
+                vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(i));
+                vboxConversacionMensajesInicio.setSpacing(15);
+                i++;
+            }
+        }
+        if (labelMessagesInicio.size()==0){
+            labelMessagesInicio.add(new Label(" - No tiene mensajes nuevos"));
+            labelMessagesInicio.get(0).setFont(new Font("Century Gothic", 26));
+            vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(0));
+        }
     }
 }
 

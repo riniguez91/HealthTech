@@ -317,7 +317,7 @@ public class controladorMedico {
         modelo.getMessages().forEach(mensaje -> {
             if (!uniqueIDS.contains(mensaje.getIdTicket()) && (mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())
                     || mensaje.getReceiver().equals(usuario.getName()+" "+usuario.getSurname()))) {
-                messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket()));
+                messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket(), mensaje.getRead()));
                 uniqueIDS.add(mensaje.getIdTicket());
             }
         });
@@ -439,7 +439,7 @@ public class controladorMedico {
             UUID uniqueKey = UUID.randomUUID();
             Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
                         + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
-                        uniqueKey.toString());
+                        uniqueKey.toString(), false);
             List<Message> updatedMessages = modelo.getMessages();
             updatedMessages.add(msg);
             modelo.setMessages(updatedMessages);
@@ -453,7 +453,7 @@ public class controladorMedico {
 
             // Actualizamos la lista de mensajes
             treeTableViewMensajes.getRoot().getChildren().add(new TreeItem<>(new messageTTView(msg.getSender(), msg.getReceiver(), msg.getSubject(),
-                                                                                                msg.getMessage(), msg.getIdTicket())));
+                                                                                                msg.getMessage(), msg.getIdTicket(), msg.getRead())));
         }
     }
 	
@@ -485,7 +485,8 @@ public class controladorMedico {
                                       treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get(),
                                       treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get(),
                                       crearMensajeJFXTextAreaMensajes.getText(),
-                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()
+                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get(),
+                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getRead().get()
             );
 
             List<Message> updatedMessages = modelo.getMessages();

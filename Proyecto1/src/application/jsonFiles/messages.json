@@ -4,83 +4,103 @@
     "receiver": "Sara Gómez Hernández",
     "subject": "Hola!",
     "message": "Te gusta como funciona la aplicacion?\nEs una pasada verdad que si!?",
-    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773"
+    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
+    "read": false
   },
   {
     "sender": "Sara Gómez Hernández",
     "receiver": "Susana Díaz Hernández",
     "subject": "Hola!",
     "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773"
+    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Catalina Rey Rodríguez",
     "subject": "ss",
     "message": "ss",
-    "idTicket": "97b6cd5f-e080-4572-91f1-5392980c9f10"
+    "idTicket": "97b6cd5f-e080-4572-91f1-5392980c9f10",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Catalina Rey Rodríguez",
     "subject": "hola loco",
     "message": "que pasa moreno",
-    "idTicket": "14a74b5f-2f0a-4ea6-9772-d9d8fb899557"
+    "idTicket": "14a74b5f-2f0a-4ea6-9772-d9d8fb899557",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Sara Gómez Hernández",
     "subject": "dfdsfsdfsdf",
     "message": "asdfadsfdasfdasfasf",
-    "idTicket": "8bdd3144-e435-4471-953c-100eadc2dccd"
+    "idTicket": "8bdd3144-e435-4471-953c-100eadc2dccd",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Catalina Rey Rodríguez",
     "subject": "gfdsgsfdgfsdg",
     "message": "fdsfgdsgdfsgfds",
-    "idTicket": "ea3703f3-49ab-460c-beb7-b06f879cff02"
+    "idTicket": "ea3703f3-49ab-460c-beb7-b06f879cff02",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Sancho Hernández Díaz",
     "subject": "sss",
     "message": "ssss",
-    "idTicket": "f804d4be-9857-44b1-b876-b23a11d357d5"
+    "idTicket": "f804d4be-9857-44b1-b876-b23a11d357d5",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Sancho Hernández Díaz",
     "subject": "dgfdsg",
     "message": "dfsgsfd",
-    "idTicket": "76564970-29a4-41c2-a581-bf4fb9242e08"
+    "idTicket": "76564970-29a4-41c2-a581-bf4fb9242e08",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Catalina Rey Rodríguez",
     "subject": "jsfd asfljsad lfkj",
     "message": "asdjflkadsjflkasdjfkads",
-    "idTicket": "6421a6b5-d921-4051-ad7d-d68e50fc907b"
+    "idTicket": "6421a6b5-d921-4051-ad7d-d68e50fc907b",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Sara Gómez Hernández",
     "subject": "Hola!",
     "message": "PRUEBA",
-    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773"
+    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Catalina Rey Rodríguez",
     "subject": "hola loco",
     "message": "QUE PASA MORENO",
-    "idTicket": "14a74b5f-2f0a-4ea6-9772-d9d8fb899557"
+    "idTicket": "14a74b5f-2f0a-4ea6-9772-d9d8fb899557",
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Sara Gómez Hernández",
     "subject": "Hola!",
     "message": "PRUEBA 2",
-    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773"
+    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
+    "read": true
+  },
+  {
+    "sender": "Pedro Bascuas Nieto",
+    "receiver": "Rosa Nieto Moreno",
+    "subject": "dsaf",
+    "message": "asdfasdf",
+    "idTicket": "7e3168ee-beab-43ca-a838-d0c1cf14a37f",
+    "read": true
   }
 ]
