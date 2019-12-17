@@ -318,11 +318,11 @@ public class controladorPaciente {
         JFXTreeTableColumn<usuarioTTView, String> rolCol = new JFXTreeTableColumn<>("Rol");
 
         nombreCol.setCellValueFactory(param -> param.getValue().getValue().getName());
-        nombreCol.setMinWidth(189);
-        nombreCol.setMaxWidth(189);
+        nombreCol.setMinWidth(159);
+        nombreCol.setMaxWidth(159);
         apellidosCol.setCellValueFactory(param -> param.getValue().getValue().getSurname());
-        apellidosCol.setMinWidth(189);
-        apellidosCol.setMaxWidth(189);
+        apellidosCol.setMinWidth(219);
+        apellidosCol.setMaxWidth(219);
         rolCol.setCellValueFactory(param -> param.getValue().getValue().getRolUsuario());
         rolCol.setMinWidth(189);
         rolCol.setMaxWidth(189);
