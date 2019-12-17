@@ -79,7 +79,7 @@ public class controladorMedico {
         panelDatosYMensajesUsuarios.setVisible(false);
 
         // Establecemos la foto del usuario en la pestaña de Inicio
-        if (usuario.getImagenPerfil() == " ") {
+        if (usuario.getImagenPerfil().isEmpty()) {
         	userImageViewInicio.setImage(new Image("@..\\..\\resources\\fotos\\user.png"));
 		} else {
 			userImageViewInicio.setImage(new Image(usuario.getImagenPerfil()));
