@@ -8,7 +8,7 @@
     "password": "d052f03df8a741ca9769026b7772a00c",	//"1fz91VYT"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\sgomez_medico.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_sgomez.png"
   },
   {
     "name": "Jose",
@@ -19,7 +19,7 @@
     "password": "bdd79e34eb8efba0b8a3b5a7c7d10d62",		//"0HdJYSAN"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\jmoreno_medico.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_jmoreno.png"
   },
 {
     "name": "Ramero",
@@ -123,7 +123,7 @@
     "password": "e29371b26afe0c2085cf2d782c790ba3",	//"3A9m5Y81"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\crey_cuidador.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_crey.png"
   },
   {
     "name": "Juan",
@@ -134,7 +134,7 @@
     "password": "84f1d171953f18ec679c1234fcdc6239",	//"nLQJ5lJo"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\jrodriguez_cuidador.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jrodriguez.png"
   },
   {
     "name": "Sebastián",
@@ -242,7 +242,7 @@
     	"crey",
     	"sdiaz"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\shernandez_familiar.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_shernandez.png"
   },
   {
     "name": "Rosa",
@@ -257,7 +257,7 @@
 		"crey",
 		"pbascuas"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\rnieto_familiar.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_rnieto.png"
   },
   {
     "name": "Sofia",
@@ -519,7 +519,7 @@
       	"crey",
       	"shernandez"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\sdiaz_paciente.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_sdiaz.png"
   },
   {
     "name": "Pedro",
@@ -534,6 +534,6 @@
 		"jrodriguez",
       	"rnieto"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\pbascuas_paciente.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pbascuas.png"
   }
 ]
