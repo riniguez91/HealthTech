@@ -1,4 +1,5 @@
 [
+//MEDICOS  
   {
     "name": "Sara",
     "surname": "Gómez Hernández",
@@ -30,7 +31,7 @@
     "password": "a9c05ee1dd8f689f90545aee8dda7555",	//"hernandez1"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rhernandez.png"
   },
   {
     "name": "María",
@@ -41,7 +42,7 @@
     "password": "7df9ca11eb49513ac74fcb3b2cdc07f5",	//"Cetreria3"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msuarez.png"
   },
   {
     "name": "Rosa",
@@ -52,7 +53,7 @@
     "password": "4527b4881408a7d778b36559abfe8822",	//"trece092000"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rmartin.png"
   },
   {
     "name": "Mar",
@@ -63,7 +64,7 @@
     "password": "b9cc501e935b3e4dd7add33a6cd0a6a1",	//"1309dosmil"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msanchez.png"
   },
   {
     "name": "Rafael",
@@ -74,7 +75,7 @@
     "password": "997e26bcc4b31c0220c5058ce3ea8558",	//"13sep2000"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rcaballero.png"
   },
   {
     "name": "Rodrigo",
@@ -85,7 +86,7 @@
     "password": "bcd3b0bcb73fc2b4945bf6a3dafed01a",	//"TrecEsep2000"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rvicario.png"
   },
   {
     "name": "Mariana",
@@ -96,7 +97,7 @@
     "password": "7804bae6c90f7645dcaf0bf9d2b3a14a",	//"mvega"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mvega.png"
   },
   {
     "name": "Marina",
@@ -107,11 +108,11 @@
     "password": "1e6512345f6c7de0af5363dd339c6112",	//"mnieto"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mnieto.png"
   },
   
   
-  //CUIDADORES
+//CUIDADORES
   
   
   {
@@ -141,11 +142,11 @@
     "surname": "Arrollo Ayala",
     "age": 26,
     "birthday": "20/09/1993",
-    "username": "sarollo",
+    "username": "sarrollo",
     "password": "70b1f6501cbf048e103698743dd7eb95",	//"Eyn&Zm4n"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sarrollo.png"
   },
   {
     "name": "Lola",
@@ -156,7 +157,7 @@
     "password": "255eef7f000d1f0f2e7b0ff7fc65e2ba",	//"A99sQF$g"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_lrodriguez.png"
   },
   {
     "name": "Ramona",
@@ -167,7 +168,7 @@
     "password": "0068fb51e902d168ad974ef09bf70bc5",	//"Dkyo^Bpl"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_rcampos.png"
   },
   {
     "name": "Susana",
@@ -178,7 +179,7 @@
     "password": "ed728f09f629ca386c1fe9207a2ea046",	//"LjOeIkc!"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_slopez.png"
   },
   {
     "name": "Sara",
@@ -189,7 +190,7 @@
     "password": "6e93f9349c982171d679a324b0f67bc2",	//"1MI0WZtx"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sgimenez.png"
   },
   {
     "name": "Juan",
@@ -200,7 +201,7 @@
     "password": "38012ccf7b3dd291a9cef9c3042e2f3b",	//"Ru9nHS8W"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jcabeza.png"
   },
   {
     "name": "Pedro",
@@ -211,7 +212,7 @@
     "password": "9878b8c983fbbae9bf6ba33dc72d7817",	//"cRZjm1me"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_pgalindo.png"
   },
   {
     "name": "Mario",
@@ -222,11 +223,11 @@
     "password": "1324d3157a7fb4b93c604bbca156202e",	//"0V72gqmO"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_miglesias.png"
   },
   
   
-  //FAMILIARES
+//FAMILIARES
   
   
   {
@@ -272,7 +273,7 @@
       	"sarrollo",
       	"calonso"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_salonso.png"
   },
   {
     "name": "Marta",
@@ -287,7 +288,7 @@
       	"rcampos",
       	"autrera"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_mutrera.png"
   },
   {
     "name": "Clara",
@@ -302,7 +303,7 @@
       	"lrodriguez",
       	"pcañizo"	
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_cgil.png"
   },
   {
     "name": "Claudia",
@@ -318,7 +319,7 @@
       	"fmontero"
     ],
     
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_cmontero.png"
   },  
   {
     "name": "Lucía",
@@ -333,7 +334,7 @@
       	"sgimenez",
       	"canoyra"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_lramos.png"
   },
   {
     "name": "José",
@@ -348,7 +349,7 @@
       	"jcabeza",
       	"atendero"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_jlopez.png"
   },
   {
     "name": "Xavier",
@@ -364,7 +365,7 @@
       	"mrubio"
 		
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_xhernandez.png"
   },
   {
     "name": "Anabel",
@@ -379,11 +380,11 @@
       	"miglesias",
       	"abaeza"		
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_aalonso.png"
   },
   
   
-  //PACIENTES
+//PACIENTES
   
   
   {
@@ -397,9 +398,10 @@
     "relaciones": [
       	"rhernandez",
       	"sarrollo",
+      	"miglesias",
       	"salonso"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_calonso.png"
   },
   {
     "name": "Paco",
@@ -412,9 +414,10 @@
     "relaciones": [
       	"rmartin",
       	"lrodriguez",
+      	"pgalindo",
       	"cgil"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pcañizo.png"
   },
   {
     "name": "Federico",
@@ -427,9 +430,10 @@
     "relaciones": [
       	"msanchez",
       	"slopez",
+      	"jcabeza",
       	"cmontero"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_fmontero.png"
   },
   {
     "name": "Patricia",
@@ -442,9 +446,10 @@
     "relaciones": [
       	"rcaballero",
       	"sgimenez",
+      	"crey",
       	"lramos"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pcanoyra.png"
   },
   {
     "name": "Andrea",
@@ -457,9 +462,10 @@
     "relaciones": [
       	"rvicario",
       	"jcabeza",
+      	"sgimenez",
       	"jlopez"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_atendero.png"
   },
   {
     "name": "Marta",
@@ -472,9 +478,10 @@
     "relaciones": [
       	"mvega",
       	"pgalindo",
+      	"slopez",
       	"xhernandez"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_mrubio.png"
   },
   {
     "name": "Andres",
@@ -487,9 +494,10 @@
     "relaciones": [
       	"mnieto",
       	"miglesias",
+      	"lrodriguez",
       	"aalonso"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_abaeza.png"
   },
   {
     "name": "Ana",
@@ -502,9 +510,10 @@
     "relaciones": [
       	"msuarez",
       	"rcampos",
+      	"sarrollo",
       	"mutrera"
     ],
-    "imagenPerfil" : ""
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_autrera.png"
   },
   {
     "name": "Susana",
@@ -517,6 +526,7 @@
     "relaciones": [
       	"sgomez",
       	"crey",
+      	"jrodriguez",
       	"shernandez"
     ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_sdiaz.png"
@@ -532,6 +542,7 @@
     "relaciones": [
 		"jmoreno",
 		"jrodriguez",
+		"rcampos",
       	"rnieto"
     ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pbascuas.png"
