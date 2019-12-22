@@ -301,7 +301,7 @@ public class controladorPaciente {
 
     @FXML
     void cancelarMensajeUsuarios(ActionEvent event) {
-	    if (asuntoJFXTextFieldMensajes.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
+	    if (asuntoJFXTextFieldMensajes.getText().isEmpty() || mensajeJFXTextFieldUsuarios.getText().isEmpty()){
             alert.setHeaderText("Informacion");
             alert.setContentText("Primero debe introducir un asunto o un mensaje");
             alert.showAndWait();
@@ -373,42 +373,41 @@ public class controladorPaciente {
 
     @FXML
     void mostrarDatosYMensajeUsuarios(MouseEvent event) {
-	    // Comprobamos que no este visible
-	    if (!panelDatosYMensajesUsuarios.isVisible() && treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null){
-	        panelDatosYMensajesUsuarios.setVisible(true);
-	        seleccionaUsuarioUsuarios.setVisible(false);
-
-        }
-	    if (panelDatosYMensajesUsuarios.isVisible() && treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) { // Cambiamos los datos del usuario
-            labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
-            labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
-            labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
-            labelFechaNacimientoUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getBirthday().get());
-            labelEdadUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAge().get()+"");
-            destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
-                                                      + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
-            userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getImagenPerfil().get()));
+        // Cambiamos los datos del usuario mientras se haya seleccionado uno
+	    if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) {
+            // Comprobamos si el panel de datos de usuario y creacion de mensajes esta visible
+            if (!panelDatosYMensajesUsuarios.isVisible()){
+                panelDatosYMensajesUsuarios.setVisible(true);
+                seleccionaUsuarioUsuarios.setVisible(false);
+            }
+            // Si esta visible actualizamos los datos del usuario seleccionado
+            if (panelDatosYMensajesUsuarios.isVisible()) {
+                labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
+                labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
+                labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
+                labelFechaNacimientoUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getBirthday().get());
+                labelEdadUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAge().get()+"");
+                destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
+                        + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
+                userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getImagenPerfil().get()));
+            }
         }
     }
 
     @FXML
     void mostrarTicketMensajes(MouseEvent event) {
-        // Comprobamos que no este visible
-        if (!aPaneRespuestaTicket.isVisible()){
-            aPaneRespuestaTicket.setVisible(true);
-        }
-        else if(aPaneCreacionTicket.isVisible()) {
-            aPaneCreacionTicket.setVisible(false);
-            aPaneRespuestaTicket.setVisible(true);
-        }
-
         if (treeTableViewMensajes.getSelectionModel().getSelectedItem() != null) { // Cambiamos los datos del mensaje
-            // Se cancela igualmente el ticket si selecciona otro mensaje en la tabla
+            // Comprobamos si el panel de mensajes esta visible
+            if (!mensajePaneMensajes.isVisible())
+                mensajePaneMensajes.setVisible(true);
+
+            // Si presiona un mensaje mientras esta respondiendo a un ticket, se cancela el ticket y se muestra el mensaje seleccionado
             if (aPaneCreacionTicket.isVisible()) {
                 aPaneCreacionTicket.setVisible(false);
                 aPaneRespuestaTicket.setVisible(true);
             }
-			// Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
+
+			// Borramos la conversacion en caso de que hubiese una seleccionada para poder introducir la siguiente
 			labelMessages.clear();
 			vboxConversacionMensajes.getChildren().clear();
 			asuntoJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get());

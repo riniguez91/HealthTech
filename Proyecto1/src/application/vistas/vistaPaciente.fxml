@@ -153,22 +153,23 @@
                               <Label layoutX="21.0" layoutY="9.0" prefHeight="109.0" prefWidth="742.0" text="Preguntas Frecuentes">
                                  <font>
                                     <Font name="Century Gothic Bold" size="69.0" />
-                                 </font></Label>
+                                 </font>
+                              </Label>
                               <JFXButton fx:id="atrasbtn" layoutX="442.0" layoutY="949.0" onAction="#verInicio" prefHeight="60.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Atrás" />
-                              <Label layoutX="31.0" layoutY="121.0" prefHeight="52.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="1. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="31.0" layoutY="170.0" prefHeight="87.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="269.0" prefHeight="39.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="313.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña de &quot;Inicio&quot; en la parte inferior izquierda, hay que pulsar el botón&quot;Cerrar Sesión&quot;." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="369.0" prefHeight="44.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="3. ¿Puedo buscar un Usuario por su nombre o apellido?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="413.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: Sí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="471.0" prefHeight="41.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="4. ¿Dónde puedo ver todos mis mensajes?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="514.0" prefHeight="47.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="571.0" prefHeight="50.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="5. Ventajas en la lista de Usuarios." wrapText="true" />
-                              <Label layoutX="31.0" layoutY="611.0" prefHeight="50.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="En la lista de usuarios, se pueden ordenar alfabéticamente tanto los nombres, los apellidos y los roles." wrapText="true" />
-                              <Label layoutX="31.0" layoutY="671.0" prefHeight="37.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="6. ¿Dónde puedo ver mis datos personales?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="715.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Inicio&quot; debajo de la foto de perfil se encuentran todo sus datos personales. " wrapText="true" />
-                              <Label layoutX="31.0" layoutY="771.0" prefHeight="36.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="7. ¿Cómo puedo buscar a un usuario?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="815.0" prefHeight="63.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Usuarios&quot; una vez seleccionado el usuario de la lista, se mostrará a la derecha de la pantalla toda la información de los datos relativos." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="121.0" prefHeight="52.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="1. ¿Cómo puedo enviar un mensaje a mi médico?" />
+                              <Label layoutX="31.0" layoutY="181.0" prefHeight="73.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="269.0" prefHeight="39.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="326.0" prefHeight="38.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña de &quot;Inicio&quot; en la parte inferior izquierda, hay que pulsar el botón&quot;Cerrar Sesión&quot;." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="369.0" prefHeight="44.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="3. ¿Puedo buscar un Usuario por su nombre o apellido?" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="421.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: Sí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="471.0" prefHeight="41.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="4. ¿Dónde puedo ver todos mis mensajes?" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="526.0" prefHeight="47.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="571.0" prefHeight="50.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="5. Ventajas en la lista de Usuarios." wrapText="true" />
+                              <Label layoutX="31.0" layoutY="623.0" prefHeight="50.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="En la lista de usuarios, se pueden ordenar alfabéticamente tanto los nombres, los apellidos y los roles." wrapText="true" />
+                              <Label layoutX="31.0" layoutY="671.0" prefHeight="37.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="6. ¿Dónde puedo ver mis datos personales?" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="725.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Inicio&quot; debajo de la foto de perfil se encuentran todo sus datos personales. " wrapText="true" />
+                              <Label layoutX="31.0" layoutY="771.0" prefHeight="36.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="7. ¿Cómo puedo buscar a un usuario?" wrapText="true" />
+                              <Label layoutX="31.0" layoutY="825.0" prefHeight="63.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Usuarios&quot; una vez seleccionado el usuario de la lista, se mostrará a la derecha de la pantalla toda la información de los datos relativos." textAlignment="JUSTIFY" wrapText="true" />
                            </children>
                         </Pane>
                             </children></AnchorPane>
@@ -204,9 +205,9 @@
                               <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewUsuarios" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarDatosYMensajeUsuarios" prefHeight="764.0" prefWidth="569.0" stylesheets="@../application.css" />
                                     </children>
                                 </Pane>
-                                <Pane fx:id="panelDatosYMensajesUsuarios" layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@../application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <Pane fx:id="panelDatosYMensajesUsuarios" layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@../application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <Label fx:id="Nombre1" layoutX="532.0" layoutY="82.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Nombre:">
+                                        <Label fx:id="Nombre1" layoutX="415.0" layoutY="82.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Nombre:">
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
@@ -214,11 +215,11 @@
                                     <Insets left="5.0" />
                                  </padding>
                                         </Label>
-                                        <Label fx:id="Apellidos1" layoutX="532.0" layoutY="126.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Apellidos:">
+                                        <Label fx:id="Apellidos1" layoutX="415.0" layoutY="126.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Apellidos:">
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding></Label>
-                                        <Label fx:id="ID1" layoutX="532.0" layoutY="215.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:">
+                                        <Label fx:id="ID1" layoutX="415.0" layoutY="215.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -226,11 +227,11 @@
                                     <Insets left="5.0" />
                                  </padding>
                                         </Label>
-                                        <Label fx:id="Rol1" layoutX="532.0" layoutY="170.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Tipo de Usuario (Rol):">
+                                        <Label fx:id="Rol1" layoutX="415.0" layoutY="170.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Tipo de Usuario (Rol):">
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding></Label>
-                                        <Label fx:id="ID11" layoutX="532.0" layoutY="259.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Edad:">
+                                        <Label fx:id="ID11" layoutX="415.0" layoutY="259.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Edad:">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -243,19 +244,19 @@
                                  <padding>
                                     <Insets left="20.0" right="20.0" />
                                  </padding></Separator>
-                                        <Label fx:id="labelNombreUsuarios" layoutX="932.0" layoutY="82.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css">
+                                        <Label fx:id="labelNombreUsuarios" layoutX="845.0" layoutY="82.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css">
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="labelApellidosUsuarios" layoutX="932.0" layoutY="126.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                                        <Label fx:id="labelFechaNacimientoUsuarios" layoutX="932.0" layoutY="215.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css">
+                                        <Label fx:id="labelApellidosUsuarios" layoutX="845.0" layoutY="126.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" />
+                                        <Label fx:id="labelFechaNacimientoUsuarios" layoutX="845.0" layoutY="215.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="labelRolUsuarios" layoutX="931.0" layoutY="170.0" prefHeight="45.0" prefWidth="251.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                                        <Label fx:id="labelEdadUsuarios" layoutX="932.0" layoutY="259.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css">
+                                        <Label fx:id="labelRolUsuarios" layoutX="845.0" layoutY="170.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" />
+                                        <Label fx:id="labelEdadUsuarios" layoutX="845.0" layoutY="259.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -263,7 +264,7 @@
                                         <Label layoutX="22.0" layoutY="396.0" prefHeight="67.0" prefWidth="238.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:" />
                                         <Label layoutX="22.0" layoutY="529.0" prefHeight="67.0" prefWidth="1235.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Mensaje" />
                               <JFXButton layoutX="849.0" layoutY="963.0" onAction="#enviarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Generar ticket nuevo" />
-                              <JFXTextArea fx:id="mensajeJFXTextFieldUsuarios" layoutX="22.0" layoutY="596.0" prefHeight="348.0" prefWidth="1235.0" promptText="Escriba su mensaje" styleClass="textoArea" stylesheets="@../application.css">
+                              <JFXTextArea fx:id="mensajeJFXTextFieldUsuarios" layoutX="22.0" layoutY="596.0" prefHeight="348.0" prefWidth="1235.0" promptText=" Escriba su mensaje..." styleClass="textoArea" stylesheets="@../application.css">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="17.0" />
                                  </font></JFXTextArea>
@@ -275,6 +276,16 @@
                                     <Font name="Segoe UI Emoji" size="12.0" />
                                  </font>
                               </JFXButton>
+                              <Separator layoutX="393.0" layoutY="292.0" prefHeight="61.0" prefWidth="687.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
+                              </Separator>
+                              <Separator layoutX="393.0" layoutY="41.0" prefHeight="61.0" prefWidth="687.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
+                              </Separator>
                                     </children>
                                 </Pane>
                             </children></AnchorPane>
@@ -296,12 +307,12 @@
                               <JFXTreeTableView fx:id="treeTableViewMensajes" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarTicketMensajes" prefHeight="764.0" prefWidth="569.0" />
                                     </children>
                                 </Pane>
-                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="80.0" maxHeight="947.0" prefHeight="947.0" prefWidth="1230.0">
+                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="69.0" prefHeight="947.0" prefWidth="1268.0" visible="false">
                            <children>
                                       <Label layoutX="20.0" prefHeight="67.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:">
-                                          <padding>
-                                              <Insets left="10.0" />
-                                          </padding>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
                                       </Label>
                                       <Label layoutX="20.0" layoutY="201.0" prefHeight="67.0" prefWidth="1210.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Mensaje">
                                           <padding>
@@ -321,7 +332,7 @@
                                  </padding>
                               </Label>
                               <JFXTextField fx:id="idTicketJFXTextFieldMensajes" editable="false" layoutX="250.0" layoutY="134.0" prefHeight="67.0" prefWidth="980.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <AnchorPane fx:id="aPaneRespuestaTicket" layoutX="20.0" layoutY="289.0" visible="false">
+                              <AnchorPane fx:id="aPaneRespuestaTicket" layoutX="20.0" layoutY="289.0">
                                  <children>
                                     <ScrollPane fx:id="scrollPaneMensajes" hbarPolicy="NEVER" prefHeight="588.0" prefWidth="1202.0">
                                        <content>
@@ -342,6 +353,16 @@
                                     <JFXButton fx:id="crearMensajeResponderTicketBttnMensajes" layoutX="793.0" layoutY="594.0" onAction="#crearMensajeYResponderTicket" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Responder al ticket" />
                                  </children>
                               </AnchorPane>
+                              <Separator layoutX="-7.0" layoutY="249.0" prefHeight="61.0" prefWidth="1268.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
+                              </Separator>
+                              <Separator layoutX="-7.0" layoutY="-48.0" prefHeight="61.0" prefWidth="1268.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <padding>
+                                    <Insets left="20.0" right="20.0" />
+                                 </padding>
+                              </Separator>
                            </children>
                         </AnchorPane>
                         <Label fx:id="seleccionaMensajeLabelMensajes" layoutX="1156.0" layoutY="534.0" prefHeight="32.0" prefWidth="303.0" text="Selecciona un mensaje">
