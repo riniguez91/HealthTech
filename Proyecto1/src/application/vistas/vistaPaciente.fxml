@@ -207,7 +207,7 @@
                                 </Pane>
                                 <Pane fx:id="panelDatosYMensajesUsuarios" layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@../application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
-                                        <Label fx:id="Nombre1" layoutX="415.0" layoutY="82.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Nombre:">
+                                        <Label fx:id="Nombre1" layoutX="415.0" layoutY="82.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Nombre:">
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
@@ -215,11 +215,11 @@
                                     <Insets left="5.0" />
                                  </padding>
                                         </Label>
-                                        <Label fx:id="Apellidos1" layoutX="415.0" layoutY="126.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Apellidos:">
+                                        <Label fx:id="Apellidos1" layoutX="415.0" layoutY="126.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Apellidos:">
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding></Label>
-                                        <Label fx:id="ID1" layoutX="415.0" layoutY="215.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:">
+                                        <Label fx:id="ID1" layoutX="415.0" layoutY="215.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -227,11 +227,11 @@
                                     <Insets left="5.0" />
                                  </padding>
                                         </Label>
-                                        <Label fx:id="Rol1" layoutX="415.0" layoutY="170.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Tipo de Usuario (Rol):">
+                                        <Label fx:id="Rol1" layoutX="415.0" layoutY="170.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Tipo de Usuario (Rol):">
                                  <padding>
                                     <Insets left="5.0" />
                                  </padding></Label>
-                                        <Label fx:id="ID11" layoutX="415.0" layoutY="259.0" prefHeight="45.0" prefWidth="400.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="Edad:">
+                                        <Label fx:id="ID11" layoutX="415.0" layoutY="259.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Edad:">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
@@ -244,19 +244,19 @@
                                  <padding>
                                     <Insets left="20.0" right="20.0" />
                                  </padding></Separator>
-                                        <Label fx:id="labelNombreUsuarios" layoutX="845.0" layoutY="82.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css">
+                                        <Label fx:id="labelNombreUsuarios" layoutX="845.0" layoutY="82.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css">
                                             <font>
                                                 <Font name="System Bold" size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="labelApellidosUsuarios" layoutX="845.0" layoutY="126.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" />
-                                        <Label fx:id="labelFechaNacimientoUsuarios" layoutX="845.0" layoutY="215.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css">
+                                        <Label fx:id="labelApellidosUsuarios" layoutX="845.0" layoutY="126.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
+                                        <Label fx:id="labelFechaNacimientoUsuarios" layoutX="845.0" layoutY="215.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="labelRolUsuarios" layoutX="845.0" layoutY="170.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css" />
-                                        <Label fx:id="labelEdadUsuarios" layoutX="845.0" layoutY="259.0" prefHeight="45.0" prefWidth="250.0" styleClass="textoLabel" stylesheets="@../application.css">
+                                        <Label fx:id="labelRolUsuarios" layoutX="845.0" layoutY="170.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
+                                        <Label fx:id="labelEdadUsuarios" layoutX="845.0" layoutY="259.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css">
                                             <font>
                                                 <Font name="System Bold" size="12.0" />
                                             </font>
