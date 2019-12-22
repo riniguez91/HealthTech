@@ -35,11 +35,9 @@ public class controladorPaciente {
     private modelo modelo;
     private Usuario usuario;
     public List<Usuario> relatedUsers;
-    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
     private List<Label> labelMessages = new ArrayList<>();
     private List<Label> labelMessagesInicio = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
-    // private List<Message> updatedMessages;
 
     public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -47,7 +45,6 @@ public class controladorPaciente {
         }
         this.modelo = modelo_;
         this.usuario = usuario_;
-        // updatedMessages = modelo.getMessages();
         modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
 
         // Datos pestaña inicio
@@ -301,10 +298,8 @@ public class controladorPaciente {
 
     @FXML
     void cancelarMensajeUsuarios(ActionEvent event) {
-	    if (asuntoJFXTextFieldMensajes.getText().isEmpty() || mensajeJFXTextFieldUsuarios.getText().isEmpty()){
-            alert.setHeaderText("Informacion");
-            alert.setContentText("Primero debe introducir un asunto o un mensaje");
-            alert.showAndWait();
+	    if (asuntoJFXTextFieldUsuarios.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
+            modelo.createAlert("Informacion", "Primero debe introducir un asunto o un mensaje");
         }
 	    else {
             asuntoJFXTextFieldUsuarios.clear();
@@ -455,14 +450,10 @@ public class controladorPaciente {
     @FXML
     void enviarMensajeUsuarios(ActionEvent event) {
         if (asuntoJFXTextFieldUsuarios.getText().isEmpty()) {
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes de poner un asunto");
-            alert.showAndWait();
+            modelo.createAlert("Cuidado", "Debes de poner un asunto");
         }
         else if (mensajeJFXTextFieldUsuarios.getText().isEmpty()) {
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes de poner un mensaje");
-            alert.showAndWait();
+            modelo.createAlert("Cuidado", "Debes de poner un mensaje");
         }
         else {
             UUID uniqueKey = UUID.randomUUID();
@@ -473,9 +464,7 @@ public class controladorPaciente {
             updatedMessages.add(msg);
             modelo.setMessages(updatedMessages);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
-            alert.setHeaderText("Informacion");
-            alert.setContentText("Se ha enviado el mensaje correctamente");
-            alert.showAndWait();
+            modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente");
             // Borramos los campos para evitar confusion
             asuntoJFXTextFieldUsuarios.clear();
             mensajeJFXTextFieldUsuarios.clear();
@@ -508,9 +497,7 @@ public class controladorPaciente {
     @FXML
     void crearMensajeYResponderTicket(ActionEvent event) {
         if (crearMensajeJFXTextAreaMensajes.getText().isEmpty()){
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes de poner un mensaje");
-            alert.showAndWait();
+            modelo.createAlert("Cuidado", "Debes de poner un mensaje");
         }
         else {
             Message msg = new Message(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSender().get(),
@@ -525,9 +512,7 @@ public class controladorPaciente {
             updatedMessages.add(msg);
             modelo.setMessages(updatedMessages);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
-            alert.setHeaderText("Informacion");
-            alert.setContentText("Se ha enviado el mensaje correctamente");
-            alert.showAndWait();
+            modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente");
 
             // Borramos los campos para evitar confusion
             crearMensajeJFXTextAreaMensajes.clear();
@@ -537,17 +522,11 @@ public class controladorPaciente {
     @FXML
     void guardarCalendario(ActionEvent event) {
 	    if (calendario.getAgendaView().getListView().getItems().size() != 0) {
-//	    	System.out.println(prueba.getListView().getId());
             prueba.getListView().setItems(calendario.getAgendaView().getListView().getItems());
-            alert.setHeaderText("Informacion");
-            alert.setContentText("El evento se ha añadido correctamente");
-            alert.showAndWait();
+            modelo.createAlert("Informacion", "El evento se ha añadido correctamente");
         } else {
-            alert.setHeaderText("Informacion");
-            alert.setContentText("Primero debe añadir un evento al calendario");
-            alert.showAndWait();
+            modelo.createAlert("Informacion", "Primero debe de añadir un evento al calendario");
         }
-
     }
     
     @FXML

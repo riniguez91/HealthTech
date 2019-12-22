@@ -3,6 +3,7 @@ package application.modelos;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import javafx.scene.control.Alert;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -33,6 +34,8 @@ public class modelo {
     public void setMessages(List<Message> messages){
         this.mensajes=messages;
     }
+
+    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     public void leerJson(String path){
         Gson gson = new Gson();
@@ -141,5 +144,11 @@ public class modelo {
 			}
 			return finalUsers;
         }
+    }
+
+    public void createAlert(String header, String body) {
+        alert.setHeaderText(header);
+        alert.setContentText(body);
+        alert.showAndWait();
     }
 }
