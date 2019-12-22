@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
@@ -9,7 +10,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,9 +22,9 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorCuidador">
     <children>
-        <TabPane prefHeight="1080.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <JFXTabPane fx:id="tabPaneCuidador" prefHeight="1080.0" prefWidth="1920.0" styleClass="jfx-tab-pane" stylesheets="@../application.css">
             <tabs>
-				<Tab fx:id="tabInicioPaciente" text="                         Inicio                         ">
+				<Tab fx:id="tabInicioCuidador" text="                         Inicio                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
                             <children>
@@ -179,12 +179,12 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="                         Calendario                         ">
+                <Tab fx:id="tabCalendarioCuidador" text="                         Calendario                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                 </Tab>
-                <Tab fx:id="tabUsuariosPaciente" text="                         Usuarios                         ">
+                <Tab fx:id="tabUsuariosCuidador" text="                         Usuarios                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../application.css">
                             <children>
@@ -285,7 +285,7 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-				<Tab fx:id="tabMensajesPaciente" text="                         Mensajes                         ">
+				<Tab fx:id="tabMensajesCuidador" text="                         Mensajes                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -358,6 +358,6 @@
                     </content>
                 </Tab>
             </tabs>
-        </TabPane>
+        </JFXTabPane>
     </children>
 </AnchorPane>
