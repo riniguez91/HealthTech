@@ -303,7 +303,7 @@
                                     <Insets left="10.0" right="10.0" />
                                  </padding></Separator>
                                         <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
-                              <JFXTextField fx:id="filtrarMensajeTFieldMensajes" focusColor="WHITE" labelFloat="true" layoutX="29.0" layoutY="61.0" prefHeight="44.0" prefWidth="574.0" promptText="Buscar mensaje" styleClass="textoLabelwhite" stylesheets="@../application.css" unFocusColor="WHITE" />
+                              <JFXTextField fx:id="filtrarMensajeTFieldMensajes" focusColor="WHITE" labelFloat="true" layoutX="29.0" layoutY="61.0" onKeyPressed="#filterTicketsMensajes" prefHeight="44.0" prefWidth="574.0" promptText="Buscar mensaje" styleClass="textoLabelwhite" stylesheets="@../application.css" unFocusColor="WHITE" />
                               <JFXTreeTableView fx:id="treeTableViewMensajes" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarTicketMensajes" prefHeight="764.0" prefWidth="569.0" />
                                     </children>
                                 </Pane>

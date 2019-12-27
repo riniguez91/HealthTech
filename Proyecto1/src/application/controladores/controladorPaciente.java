@@ -297,6 +297,12 @@ public class controladorPaciente {
 	}
 
     @FXML
+    void filterTicketsMensajes(KeyEvent event) {
+        treeTableViewMensajes.setPredicate( mensajeTreeItem -> mensajeTreeItem.getValue().getSubject().get().toLowerCase().startsWith(filtrarMensajeTFieldMensajes.getText().toLowerCase()) ||
+                mensajeTreeItem.getValue().getIdTicket().get().startsWith(filtrarMensajeTFieldMensajes.getText()));
+    }
+
+    @FXML
     void cancelarMensajeUsuarios(ActionEvent event) {
 	    if (asuntoJFXTextFieldUsuarios.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
             modelo.createAlert("Informacion", "Primero debe introducir un asunto o un mensaje");
@@ -389,6 +395,52 @@ public class controladorPaciente {
         }
     }
 
+    public void setMsgAsRead() {
+        // Cambiamos el mensaje como leido si no lo estaba
+        if (!treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getRead().get()) {
+            for (Message msg : modelo.getMessages()) {
+                // Compramos el mensaje que corresponde con el ID del mensaje y la persona que lo tiene que recibir (receiver)
+                if (msg.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()) &&
+                        msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurname())){
+                    msg.setRead(true);
+
+                    // Lo marcamos como leido en el JSON de mensajes
+                    modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
+
+                    // Actualizamos la lista de mensajes
+                    modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
+
+                    // Borramos el mensaje de la pestaña Recordatorios
+                    comprobarMensajesNuevos();
+                    break;
+                }
+            }
+        }
+    }
+
+    public void changeTicketConversation() {
+        // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
+        int i = 0;
+        for (Message mensaje : modelo.getMessages()) {
+            if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
+                labelMessages.add(new Label(mensaje.getMessage()));
+                labelMessages.get(i).setPrefWidth(1202);
+                labelMessages.get(i).setWrapText(true);
+                labelMessages.get(i).setFont(new Font("Century Gothic", 20));
+                if (!mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())) {
+                    labelMessages.get(i).setPadding(new Insets(10,13,0,310));
+                    labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
+                } else {
+                    labelMessages.get(i).setPadding(new Insets(10,310,0,13));
+                    labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.WHEAT,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
+                }
+                vboxConversacionMensajes.getChildren().add(labelMessages.get(i));
+                vboxConversacionMensajes.setSpacing(15);
+                i++;
+            }
+        }
+    }
+
     @FXML
     void mostrarTicketMensajes(MouseEvent event) {
         if (treeTableViewMensajes.getSelectionModel().getSelectedItem() != null) { // Cambiamos los datos del mensaje
@@ -408,41 +460,12 @@ public class controladorPaciente {
 			asuntoJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get());
 			destinatarioJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get());
 			idTicketJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get());
-			int i = 0;
 
-			// Cambiamos el mensaje como leido si no lo estaba
-            if (!treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getRead().get()) {
-                for (Message msg : modelo.getMessages()) {
-                    if (msg.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()) &&
-                            msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurname())){
-                        msg.setRead(true);
-                        modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
-                        modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
-                        comprobarMensajesNuevos();
-                        break;
-                    }
-                }
-            }
+			// Marcamos el mensaje como leido
+			setMsgAsRead();
 
-			// En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
-			for (Message mensaje : modelo.getMessages()) {
-				if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
-					labelMessages.add(new Label(mensaje.getMessage()));
-					labelMessages.get(i).setPrefWidth(1202);
-					labelMessages.get(i).setWrapText(true);
-					labelMessages.get(i).setFont(new Font("Century Gothic", 20));
-					if (!mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())) {
-						labelMessages.get(i).setPadding(new Insets(10,13,0,310));
-						labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
-					} else {
-						labelMessages.get(i).setPadding(new Insets(10,310,0,13));
-						labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.WHEAT,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
-					}
-					vboxConversacionMensajes.getChildren().add(labelMessages.get(i));
-					vboxConversacionMensajes.setSpacing(15);
-					i++;
-				}
-			}
+			// Cambiamos el scroll pane para mostrar la lista de mensajes correspondientes al ticket seleccionado
+            changeTicketConversation();
 			seleccionaMensajeLabelMensajes.setVisible(false);
 		}
     }
