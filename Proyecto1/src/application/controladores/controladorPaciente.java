@@ -54,6 +54,8 @@ public class controladorPaciente {
         labelUsernameInicio.setText(usuario.getUsername());
         labelFechaNacimientoInicio.setText(usuario.getBirthday());
         labelEdadInicio.setText(usuario.getAge() + "");
+        labelDNIInicio.setText(usuario.getDNI());
+        labelTelefonoInicio.setText(usuario.getTelephone() + "");
 
         // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario
         panelDatosYMensajesUsuarios.setVisible(false);
@@ -106,6 +108,12 @@ public class controladorPaciente {
     @FXML
     private Label labelEdadInicio;
 
+    @FXML
+    private Label labelDNIInicio;
+
+    @FXML
+    private Label labelTelefonoInicio;
+    
     @FXML
     private JFXButton cerrarSesionBtn;
 

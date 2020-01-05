@@ -12,7 +12,7 @@ public class Usuario {
 
     }
 
-    public Usuario(String name, String surname, String birthday, String username, String telephone, String dni, String password, String rol){
+    public Usuario(String name, String surname, String birthday, String username, Integer telephone, String dni, String password, String rol){
         this.name=name;
         this.surname=surname;
         this.birthday=birthday;
@@ -49,7 +49,7 @@ public class Usuario {
     private String imagenPerfil;
     @SerializedName("telephone")
     @Expose
-    private String telephone;
+    private Integer telephone;
     @SerializedName("dni")
     @Expose
     private String dni;
@@ -129,11 +129,11 @@ public class Usuario {
         this.imagenPerfil = imagenPerfil;
     }
     
-    public String getTelephone() {
+    public Integer getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(String telephone) {
+    public void setTelephone(Integer telephone) {
         this.telephone = telephone;
     }
     

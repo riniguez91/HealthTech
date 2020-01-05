@@ -77,7 +77,13 @@ public class controladorLogin {
 
     @FXML
     private JFXTextField crearRolTField;
+    
+    @FXML
+    private JFXTextField crearDNITField;
 
+    @FXML
+    private JFXTextField crearTelefonoTField;
+    
     @FXML
     private JFXButton crearCuentaBttn;
 
@@ -262,27 +268,36 @@ public class controladorLogin {
         try {
             if (modelo.countWordsString(crearNombreTField.getText()) != 1) {
                 alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir un nombre valido, que consista de una sola palabra");
+                alert.setContentText("Debes introducir un nombre válido, que consista de una sola palabra");
                 alert.showAndWait();
             } else if (modelo.countWordsString(crearApellidosTField.getText()) != 2) {
                 alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir unos apellidos validos, que consista de dos palabras");
+                alert.setContentText("Debes introducir unos apellidos válidos, que consista de dos palabras");
                 alert.showAndWait();
             } else if (modelo.checkRol(crearUsernameTField.getText())) {
                 alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir un nombre de usuario valido, que consista de una sola palabra (riniguez)");
-                alert.showAndWait();
-            } else if (!modelo.checkRol(crearRolTField.getText())) {
-                alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir un rol valido, que consista de una sola palabra (medico, cuidador, paciente, familiar)");
+                alert.setContentText("Debes introducir un nombre de usuario válido, que consista de una sola palabra (riniguez)");
                 alert.showAndWait();
             } else if (crearCumpleTField.getText().length() != 10) {
                 alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir una fecha valida (27/10/1989)");
+                alert.setContentText("Debes introducir una fecha válida (27/10/1989)");
+                alert.showAndWait();
+            } else if (crearTelefonoTField.getText().length() != 9) {
+                alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir un número de teléfono valido (9 dígitos)");
+                alert.showAndWait();
+            } else if (crearDNITField.getText().length() != 9) { //validarDNI(crearDNITField.getText().length()) != 9)
+        		alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir un DNI válido. (8 digitos y 1 letra)");
+                alert.showAndWait();
+            } else if (!modelo.checkRol(crearRolTField.getText())) {
+                alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir un rol válido, que consista de una sola palabra (médico, cuidador, paciente, familiar)");
                 alert.showAndWait();
             } else {
                 Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), crearCumpleTField.getText(),
-                                              crearUsernameTField.getText(), encriptaEnMD5(crearPasswordTField.getText()), crearRolTField.getText());
+                                              crearUsernameTField.getText(), Integer.parseInt(crearTelefonoTField.getText()), crearDNITField.getText(), 
+                                              encriptaEnMD5(crearPasswordTField.getText()), crearRolTField.getText());
                 newUser.setAge(modelo.calculateAge(newUser.getBirthday())); // throws ParseException
                 modelo.getUsuarios().add(newUser);
                 modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/Users.json", modelo.getUsuarios(),false);
@@ -344,4 +359,35 @@ public class controladorLogin {
            return null;
         }   
     }
+    
+ // Validador de DNI    
+    public static boolean validarDNI(String dni) { 
+        boolean esValido = false;
+        int i = 0;
+        int caracterASCII = 0;
+        char letra = ' ';
+        int miDNI = 0;
+        int resto = 0;
+        char[] asignacionLetra = {'T', 'R', 'W', 'A', 'G', 'M',
+        						  'Y', 'F', 'P', 'D', 'X','B', 
+        						  'N', 'J', 'Z', 'S', 'Q', 'V', 
+        						  'H', 'L', 'C', 'K', 'E'};
+        
+        if(dni.length() == 9 && Character.isLetter(dni.charAt(8))) {
+            do {
+                caracterASCII = dni.codePointAt(i);
+                esValido = (caracterASCII > 47 && caracterASCII < 58);
+                i++;
+            } 
+            while(i < dni.length()-1 && esValido);     
+        }
+        if(esValido) {
+            letra = Character.toUpperCase(dni.charAt(8));
+            miDNI = Integer.parseInt(dni.substring(0,8));
+            resto = miDNI % 23;
+            esValido = (letra == asignacionLetra[resto]);
+        }
+        return esValido;
+    }
+    
 }
