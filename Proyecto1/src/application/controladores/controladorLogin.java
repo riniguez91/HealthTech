@@ -282,13 +282,13 @@ public class controladorLogin {
                 alert.setHeaderText("Cuidado");
                 alert.setContentText("Debes introducir una fecha válida (27/10/1989)");
                 alert.showAndWait();
-            } else if (crearTelefonoTField.getText().length() != 9) {
-                alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir un número de teléfono valido (9 dígitos)");
-                alert.showAndWait();
             } else if (crearDNITField.getText().length() != 9) { //validarDNI(crearDNITField.getText().length()) != 9)
         		alert.setHeaderText("Cuidado");
                 alert.setContentText("Debes introducir un DNI válido. (8 digitos y 1 letra)");
+                alert.showAndWait();
+            } else if (crearTelefonoTField.getText().length() != 9) {
+                alert.setHeaderText("Cuidado");
+                alert.setContentText("Debes introducir un número de teléfono valido (9 dígitos)");
                 alert.showAndWait();
             } else if (!modelo.checkRol(crearRolTField.getText())) {
                 alert.setHeaderText("Cuidado");
