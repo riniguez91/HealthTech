@@ -11,16 +11,16 @@
   {
     "sender": "Sara Gómez Hernández",
     "receiver": "Susana Díaz Hernández",
-    "subject": "Hola!",
-    "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "subject": "Consulta sobre la recuperación.",
+    "message": "Buenas Susana,\nPues para la siguiente consulta puedes elegir entre dos horarios, el martes por la mañana a las 12:00, o el jueves después de comer a las 16:00.\nTe lo dejo a tu elección, pero necesito que me respondas cuando ya hayas tomado una decisión.\nUn saludo y cuidese.",
     "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
     "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Sara Gómez Hernández",
-    "subject": "Muchas Gracias",
-    "message": "Muchas gracias Doctora",
+    "subject": "Martes a las 12:00",
+    "message": "Muchas gracias Doctora, prefiero el horario del martes por la mañana, asique a las 12:00 estoy en la consulta donde siempre.\nHasta el martes.\nUn saludo.",
     "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
     "read": true
   },
@@ -68,7 +68,7 @@
     "sender": "Sancho Hernández Díaz",
     "receiver": "Susana Díaz Hernández",
     "subject": "Te recojo",
-    "message": "Genial!, no te preocupes por la cita, dime donde es la cita, que te recogo y te acompaño, asi volvemos en coche que tardamos menos y no te esfuerazs tanto.",
+    "message": "Genial!, no te preocupes por la cita, dime donde es la cita, que te recojo y te acompaño, asi volvemos en coche que tardamos menos y no te esfuerazs tanto.",
     "idTicket": "f4344a28-6562-4efb-a566-6947cc3e26d8",
     "read": false
   }
