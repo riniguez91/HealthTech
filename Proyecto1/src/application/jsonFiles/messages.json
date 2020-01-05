@@ -1,9 +1,10 @@
 [
+  
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Sara Gómez Hernández",
-    "subject": "Hola!",
-    "message": "Te gusta como funciona la aplicacion?\nEs una pasada verdad que si!?",
+    "subject": "Horario de la siguiente consulta",
+    "message": "Hola doctora,?\n¿Cuándo vamos a tener la siguiente consulta sobre las nuevas actividades de la recuperación?",
     "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
     "read": false
   },
@@ -13,102 +14,62 @@
     "subject": "Hola!",
     "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
+    "read": true
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Sara Gómez Hernández",
+    "subject": "Muchas Gracias",
+    "message": "Muchas gracias Doctora",
+    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
+    "read": true
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Catalina Rey Rodríguez",
+    "subject": "Salir a dar un paseo",
+    "message": "Hola Catalina,\nÉsta tarde estoy teniendo un unos dolores en la espalda y en la rodilla muy molestos y no se de donde pueden provenir,\nEs posible que sea porque necesito salir a dar un paseo y necesito que me acompañes por si me pasa algo.",
+    "idTicket": "12fb5e31-135e-4dd7-8ccb-966da76ae5ef",
+    "read": false
+  },
+  {
+    "sender": "Catalina Rey Rodríguez",
+    "receiver": "Susana Díaz Hernández",
+    "subject": "Salir a dar un paseo",
+    "message": "Claro Doña Susana, creo que le sentará bien salir un poco de casa y hacer algo de ejercicio, en 10 minutos llego a su casa,\nAcuerdese de tomar agua y las pastillas que le recomendó el médcio para hacer ejercicio.",
+    "idTicket": "12fb5e31-135e-4dd7-8ccb-966da76ae5ef",
+    "read": true
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Catalina Rey Rodríguez",
+    "subject": "Consulta con el médico",
+    "message": "Ya ya he consultado con la doctora, muchas gracias.\nMe dijo la doctora que saliera a caminar un poco más y que tomara mas limonada si preferia en lugar de tanto agua. ",
+    "idTicket": "12fb5e31-135e-4dd7-8ccb-966da76ae5ef",
+    "read": false
+  },
+  {
+    "sender": "Sancho Hernández Díaz",
+    "receiver": "Susana Díaz Hernández",
+    "subject": "Invitación para comer",
+    "message": "¿Qué tal vas con la recuperación Susana?\nSi estás mejor podrías venirte a mi casa qeu te invitamos a comer y pasamos la tarde, ¿Te apetece?.",
+    "idTicket": "f4344a28-6562-4efb-a566-6947cc3e26d8",
     "read": false
   },
   {
     "sender": "Susana Díaz Hernández",
-    "receiver": "Catalina Rey Rodríguez",
-    "subject": "ss",
-    "message": "ss",
-    "idTicket": "97b6cd5f-e080-4572-91f1-5392980c9f10",
-    "read": true
-  },
-  {
-    "sender": "Susana Díaz Hernández",
-    "receiver": "Catalina Rey Rodríguez",
-    "subject": "hola loco",
-    "message": "que pasa moreno",
-    "idTicket": "14a74b5f-2f0a-4ea6-9772-d9d8fb899557",
-    "read": true
-  },
-  {
-    "sender": "Susana Díaz Hernández",
-    "receiver": "Sara Gómez Hernández",
-    "subject": "dfdsfsdfsdf",
-    "message": "asdfadsfdasfdasfasf",
-    "idTicket": "8bdd3144-e435-4471-953c-100eadc2dccd",
-    "read": true
-  },
-  {
-    "sender": "Susana Díaz Hernández",
-    "receiver": "Catalina Rey Rodríguez",
-    "subject": "gfdsgsfdgfsdg",
-    "message": "fdsfgdsgdfsgfds",
-    "idTicket": "ea3703f3-49ab-460c-beb7-b06f879cff02",
-    "read": true
-  },
-  {
-    "sender": "Susana Díaz Hernández",
     "receiver": "Sancho Hernández Díaz",
-    "subject": "sss",
-    "message": "ssss",
-    "idTicket": "f804d4be-9857-44b1-b876-b23a11d357d5",
-    "read": true
+    "subject": "Comida",
+    "message": "Si, ya estoy mucho mejor de la rodilla, si que puedo ir pero igual llego un poco más tarde porque tengo una cita con el médico a la 13:30, pero cuando salga voy directa.",
+    "idTicket": "f4344a28-6562-4efb-a566-6947cc3e26d8",
+    "read": false
   },
   {
-    "sender": "Susana Díaz Hernández",
-    "receiver": "Sancho Hernández Díaz",
-    "subject": "dgfdsg",
-    "message": "dfsgsfd",
-    "idTicket": "76564970-29a4-41c2-a581-bf4fb9242e08",
-    "read": true
-  },
-  {
-    "sender": "Susana Díaz Hernández",
-    "receiver": "Catalina Rey Rodríguez",
-    "subject": "jsfd asfljsad lfkj",
-    "message": "asdjflkadsjflkasdjfkads",
-    "idTicket": "6421a6b5-d921-4051-ad7d-d68e50fc907b",
-    "read": true
-  },
-  {
-    "sender": "Susana Díaz Hernández",
-    "receiver": "Sara Gómez Hernández",
-    "subject": "Hola!",
-    "message": "PRUEBA",
-    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
-    "read": true
-  },
-  {
-    "sender": "Susana Díaz Hernández",
-    "receiver": "Catalina Rey Rodríguez",
-    "subject": "hola loco",
-    "message": "QUE PASA MORENO",
-    "idTicket": "14a74b5f-2f0a-4ea6-9772-d9d8fb899557",
-    "read": true
-  },
-  {
-    "sender": "Susana Díaz Hernández",
-    "receiver": "Sara Gómez Hernández",
-    "subject": "Hola!",
-    "message": "PRUEBA 2",
-    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
-    "read": true
-  },
-  {
-    "sender": "Pedro Bascuas Nieto",
-    "receiver": "Rosa Nieto Moreno",
-    "subject": "dsaf",
-    "message": "asdfasdf",
-    "idTicket": "7e3168ee-beab-43ca-a838-d0c1cf14a37f",
-    "read": true
-  },
-  {
-    "sender": "Susana Díaz Hernández",
-    "receiver": "Sara Gómez Hernández",
-    "subject": "ddd",
-    "message": "ddd",
-    "idTicket": "c56499d5-8f78-4618-9fcf-b6fce056c939",
+    "sender": "Sancho Hernández Díaz",
+    "receiver": "Susana Díaz Hernández",
+    "subject": "Te recojo",
+    "message": "Genial!, no te preocupes por la cita, dime donde es la cita, que te recogo y te acompaño, asi volvemos en coche que tardamos menos y no te esfuerazs tanto.",
+    "idTicket": "f4344a28-6562-4efb-a566-6947cc3e26d8",
     "read": false
   }
 ]
