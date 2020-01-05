@@ -12,11 +12,13 @@ public class Usuario {
 
     }
 
-    public Usuario(String name, String surname, String birthday, String username, String password, String rol){
+    public Usuario(String name, String surname, String birthday, String username, String telephone, String dni, String password, String rol){
         this.name=name;
         this.surname=surname;
         this.birthday=birthday;
         this.username=username;
+        this.telephone=telephone;
+        this.dni=dni;
         this.password=password;
         this.rol=rol;
     }
@@ -45,7 +47,13 @@ public class Usuario {
     @SerializedName("imagenPerfil")
     @Expose
     private String imagenPerfil;
-
+    @SerializedName("telephone")
+    @Expose
+    private String telephone;
+    @SerializedName("dni")
+    @Expose
+    private String dni;
+    
     private List<String> relaciones;
 
     public List<String> getRelaciones() {
@@ -119,5 +127,21 @@ public class Usuario {
 
     public void setImagenPerfil(String imagenPerfil) {
         this.imagenPerfil = imagenPerfil;
+    }
+    
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+    
+    public String getDNI() {
+        return dni;
+    }
+
+    public void setDNI(String dni) {
+        this.dni = dni;
     }
 }

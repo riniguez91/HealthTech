@@ -9,7 +9,9 @@
     "password": "d052f03df8a741ca9769026b7772a00c",	//"1fz91VYT"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_sgomez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_sgomez.png",
+    "telephone" : 912675490,
+    "dni" : "06557834M"
   },
   {
     "name": "Jose",
@@ -20,7 +22,9 @@
     "password": "bdd79e34eb8efba0b8a3b5a7c7d10d62",		//"0HdJYSAN"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_jmoreno.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_jmoreno.png",
+    "telephone" : 915648938,
+    "dni" : "50033072E"
   },
 {
     "name": "Ramero",
@@ -31,7 +35,9 @@
     "password": "a9c05ee1dd8f689f90545aee8dda7555",	//"hernandez1"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rhernandez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rhernandez.png",
+    "telephone" : 914568213,
+    "dni" : "70294239Y"
   },
   {
     "name": "María",
@@ -42,7 +48,9 @@
     "password": "7df9ca11eb49513ac74fcb3b2cdc07f5",	//"Cetreria3"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msuarez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msuarez.png",
+    "telephone" : 913945282,
+    "dni" : "65162946J"
   },
   {
     "name": "Rosa",
@@ -53,7 +61,9 @@
     "password": "4527b4881408a7d778b36559abfe8822",	//"trece092000"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rmartin.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rmartin.png",
+    "telephone" : 914873371,
+    "dni" : "47340446Y"
   },
   {
     "name": "Mar",
@@ -64,7 +74,9 @@
     "password": "b9cc501e935b3e4dd7add33a6cd0a6a1",	//"1309dosmil"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msanchez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msanchez.png",
+    "telephone" : 915437229,
+    "dni" : "80348373N"
   },
   {
     "name": "Rafael",
@@ -75,7 +87,9 @@
     "password": "997e26bcc4b31c0220c5058ce3ea8558",	//"13sep2000"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rcaballero.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rcaballero.png",
+    "telephone" : 916627464,
+    "dni" : "28842204C"
   },
   {
     "name": "Rodrigo",
@@ -86,7 +100,9 @@
     "password": "bcd3b0bcb73fc2b4945bf6a3dafed01a",	//"TrecEsep2000"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rvicario.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rvicario.png",
+    "telephone" : 911579223,
+    "dni" : "19437069E"
   },
   {
     "name": "Mariana",
@@ -97,7 +113,9 @@
     "password": "7804bae6c90f7645dcaf0bf9d2b3a14a",	//"mvega"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mvega.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mvega.png",
+    "telephone" : 917197940,
+    "dni" : "41002670H"
   },
   {
     "name": "Marina",
@@ -108,7 +126,9 @@
     "password": "1e6512345f6c7de0af5363dd339c6112",	//"mnieto"
     "rol": "medico",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mnieto.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mnieto.png",
+    "telephone" : 910899288,
+    "dni" : "74858792W"
   },
   
   
@@ -124,7 +144,9 @@
     "password": "e29371b26afe0c2085cf2d782c790ba3",	//"3A9m5Y81"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_crey.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_crey.png",
+    "telephone" : 689913392,
+    "dni" : "74850975M"
   },
   {
     "name": "Juan",
@@ -135,7 +157,9 @@
     "password": "84f1d171953f18ec679c1234fcdc6239",	//"nLQJ5lJo"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jrodriguez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jrodriguez.png",
+    "telephone" : 627949842,
+    "dni" : "60230874S"
   },
   {
     "name": "Sebastián",
@@ -146,7 +170,9 @@
     "password": "70b1f6501cbf048e103698743dd7eb95",	//"Eyn&Zm4n"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sarrollo.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sarrollo.png",
+    "telephone" : 641399790,
+    "dni" : "35978120W"
   },
   {
     "name": "Lola",
@@ -157,7 +183,9 @@
     "password": "255eef7f000d1f0f2e7b0ff7fc65e2ba",	//"A99sQF$g"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_lrodriguez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_lrodriguez.png",
+    "telephone" : 633781588,
+    "dni" : "81853205T"
   },
   {
     "name": "Ramona",
@@ -168,7 +196,9 @@
     "password": "0068fb51e902d168ad974ef09bf70bc5",	//"Dkyo^Bpl"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_rcampos.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_rcampos.png",
+    "telephone" : 619932478,
+    "dni" : "47575337K"
   },
   {
     "name": "Susana",
@@ -179,7 +209,9 @@
     "password": "ed728f09f629ca386c1fe9207a2ea046",	//"LjOeIkc!"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_slopez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_slopez.png",
+    "telephone" : 684916265,
+    "dni" : "95054416Q"
   },
   {
     "name": "Sara",
@@ -190,7 +222,9 @@
     "password": "6e93f9349c982171d679a324b0f67bc2",	//"1MI0WZtx"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sgimenez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sgimenez.png",
+    "telephone" : 678077620,
+    "dni" : "54442151R"
   },
   {
     "name": "Juan",
@@ -201,7 +235,9 @@
     "password": "38012ccf7b3dd291a9cef9c3042e2f3b",	//"Ru9nHS8W"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jcabeza.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jcabeza.png",
+    "telephone" : 635468654,
+    "dni" : "21528056X"
   },
   {
     "name": "Pedro",
@@ -212,7 +248,9 @@
     "password": "9878b8c983fbbae9bf6ba33dc72d7817",	//"cRZjm1me"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_pgalindo.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_pgalindo.png",
+    "telephone" : 623589446,
+    "dni" : "08737442H"
   },
   {
     "name": "Mario",
@@ -223,7 +261,9 @@
     "password": "1324d3157a7fb4b93c604bbca156202e",	//"0V72gqmO"
     "rol": "cuidador",
     "relaciones": [],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_miglesias.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_miglesias.png",
+    "telephone" : 686528544,
+    "dni" : "26617565X"
   },
   
   
@@ -243,7 +283,9 @@
     	"crey",
     	"sdiaz"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_shernandez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_shernandez.png",
+    "telephone" : 664206782,
+    "dni" : "54348163Z"
   },
   {
     "name": "Rosa",
@@ -258,7 +300,9 @@
 		"crey",
 		"pbascuas"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_rnieto.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_rnieto.png",
+    "telephone" : 686117347,
+    "dni" : "81836494X"
   },
   {
     "name": "Sofia",
@@ -273,7 +317,9 @@
       	"sarrollo",
       	"calonso"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_salonso.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_salonso.png",
+    "telephone" : 695614343,
+    "dni" : "78665571M"
   },
   {
     "name": "Marta",
@@ -288,7 +334,9 @@
       	"rcampos",
       	"autrera"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_mutrera.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_mutrera.png",
+    "telephone" : 697823254,
+    "dni" : "21920774A"
   },
   {
     "name": "Clara",
@@ -303,7 +351,9 @@
       	"lrodriguez",
       	"pcañizo"	
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_cgil.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_cgil.png",
+    "telephone" : 622290811,
+    "dni" : "34357675E"
   },
   {
     "name": "Claudia",
@@ -319,7 +369,9 @@
       	"fmontero"
     ],
     
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_cmontero.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_cmontero.png",
+    "telephone" : 646326997,
+    "dni" : "39357371R"
   },  
   {
     "name": "Lucía",
@@ -334,7 +386,9 @@
       	"sgimenez",
       	"canoyra"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_lramos.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_lramos.png",
+    "telephone" : 622641434,
+    "dni" : "22636909X"
   },
   {
     "name": "José",
@@ -349,7 +403,9 @@
       	"jcabeza",
       	"atendero"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_jlopez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_jlopez.png",
+    "telephone" : 669252481,
+    "dni" : "69577789Y"
   },
   {
     "name": "Xavier",
@@ -365,7 +421,9 @@
       	"mrubio"
 		
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_xhernandez.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_xhernandez.png",
+    "telephone" : 672737479,
+    "dni" : "63498572B"
   },
   {
     "name": "Anabel",
@@ -380,7 +438,9 @@
       	"miglesias",
       	"abaeza"		
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_aalonso.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_aalonso.png",
+    "telephone" : 668801165,
+    "dni" : "47925795M"
   },
   
   
@@ -401,7 +461,9 @@
       	"miglesias",
       	"salonso"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_calonso.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_calonso.png",
+    "telephone" : 629389579,
+    "dni" : "38267589M"
   },
   {
     "name": "Paco",
@@ -417,7 +479,9 @@
       	"pgalindo",
       	"cgil"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pcañizo.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pcañizo.png",
+    "telephone" : 630593239,
+    "dni" : "31571473V"
   },
   {
     "name": "Federico",
@@ -433,7 +497,9 @@
       	"jcabeza",
       	"cmontero"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_fmontero.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_fmontero.png",
+    "telephone" : 676424593,
+    "dni" : "68909593Y"
   },
   {
     "name": "Patricia",
@@ -449,7 +515,9 @@
       	"crey",
       	"lramos"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pcanoyra.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pcanoyra.png",
+    "telephone" : 602898152,
+    "dni" : "87540508R"
   },
   {
     "name": "Andrea",
@@ -465,7 +533,9 @@
       	"sgimenez",
       	"jlopez"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_atendero.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_atendero.png",
+    "telephone" : 636352999,
+    "dni" : "91990667M"
   },
   {
     "name": "Marta",
@@ -481,7 +551,9 @@
       	"slopez",
       	"xhernandez"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_mrubio.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_mrubio.png",
+    "telephone" : 680688471,
+    "dni" : "67690543W"
   },
   {
     "name": "Andres",
@@ -497,7 +569,9 @@
       	"lrodriguez",
       	"aalonso"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_abaeza.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_abaeza.png",
+    "telephone" : 696912581,
+    "dni" : "55598745V"
   },
   {
     "name": "Ana",
@@ -513,7 +587,9 @@
       	"sarrollo",
       	"mutrera"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_autrera.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_autrera.png",
+    "telephone" : 677831648,
+    "dni" : "76217516R"
   },
   {
     "name": "Susana",
@@ -529,7 +605,9 @@
       	"jrodriguez",
       	"shernandez"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_sdiaz.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_sdiaz.png",
+    "telephone" : 655376023,
+    "dni" : "52388913L"
   },
   {
     "name": "Pedro",
@@ -545,6 +623,8 @@
 		"rcampos",
       	"rnieto"
     ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pbascuas.png"
+    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pbascuas.png",
+    "telephone" : 662541232,
+    "dni" : "51632090B"
   }
 ]
