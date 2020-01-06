@@ -267,33 +267,26 @@ public class controladorLogin {
     void crearUsuario(ActionEvent event) {
         try {
             if (modelo.countWordsString(crearNombreTField.getText()) != 1) {
-                alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir un nombre válido, que consista de una sola palabra");
-                alert.showAndWait();
+            	modelo.createAlert("Cuidado", 
+            			"Debes introducir un nombre válido, que consista de una sola palabra.");
             } else if (modelo.countWordsString(crearApellidosTField.getText()) != 2) {
-                alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir unos apellidos válidos, que consista de dos palabras");
-                alert.showAndWait();
+            	modelo.createAlert("Cuidado", 
+            			"Debes introducir unos apellidos válidos, que consista de dos palabras.");
             } else if (modelo.checkRol(crearUsernameTField.getText())) {
-                alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir un nombre de usuario válido, que consista de una sola palabra (riniguez)");
-                alert.showAndWait();
+            	modelo.createAlert("Cuidado", 
+            			"Debes introducir un nombre de usuario válido, que consista de una sola palabra (riniguez).");
             } else if (crearCumpleTField.getText().length() != 10) {
-                alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir una fecha válida (27/10/1989)");
-                alert.showAndWait();
-            } else if (crearDNITField.getText().length() != 9) { //validarDNI(crearDNITField.getText().length()) != 9)
-        		alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir un DNI válido. (8 digitos y 1 letra)");
-                alert.showAndWait();
+            	modelo.createAlert("Cuidado", 
+            			"Debes introducir una fecha válida (27/10/1989).");
+            } else if (validarDNI(crearDNITField.getText())) { //validarDNI(crearDNITField.getText().length()) != 9)
+            	modelo.createAlert("Cuidado", 
+            			"Debes introducir un DNI válido. (8 digitos y 1 letra).");
             } else if (crearTelefonoTField.getText().length() != 9) {
-                alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir un número de teléfono valido (9 dígitos)");
-                alert.showAndWait();
+            	modelo.createAlert("Cuidado", 
+            			"Debes introducir un número de teléfono valido (9 dígitos).");
             } else if (!modelo.checkRol(crearRolTField.getText())) {
-                alert.setHeaderText("Cuidado");
-                alert.setContentText("Debes introducir un rol válido, que consista de una sola palabra (médico, cuidador, paciente, familiar)");
-                alert.showAndWait();
+            	modelo.createAlert("Cuidado", 
+            			"Debes introducir un rol válido, que consista de una sola palabra (médico, cuidador, paciente, familiar).");
             } else {
                 Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), crearCumpleTField.getText(),
                                               crearUsernameTField.getText(), Integer.parseInt(crearTelefonoTField.getText()), crearDNITField.getText(), 
@@ -387,7 +380,7 @@ public class controladorLogin {
             resto = miDNI % 23;
             esValido = (letra == asignacionLetra[resto]);
         }
-        return esValido;
+        return !esValido;
     }
     
 }
