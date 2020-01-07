@@ -278,7 +278,7 @@ public class controladorLogin {
             } else if (crearCumpleTField.getText().length() != 10) {
             	modelo.createAlert("Cuidado", 
             			"Debes introducir una fecha válida (27/10/1989).");
-            } else if (validarDNI(crearDNITField.getText())) { //validarDNI(crearDNITField.getText().length()) != 9)
+            } else if (modelo.validarDNI(crearDNITField.getText())) { //validarDNI(crearDNITField.getText().length()) != 9)
             	modelo.createAlert("Cuidado", 
             			"Debes introducir un DNI válido. (8 digitos y 1 letra).");
             } else if (crearTelefonoTField.getText().length() != 9) {
@@ -353,34 +353,6 @@ public class controladorLogin {
         }   
     }
     
- // Validador de DNI    
-    public static boolean validarDNI(String dni) { 
-        boolean esValido = false;
-        int i = 0;
-        int caracterASCII = 0;
-        char letra = ' ';
-        int miDNI = 0;
-        int resto = 0;
-        char[] asignacionLetra = {'T', 'R', 'W', 'A', 'G', 'M',
-        						  'Y', 'F', 'P', 'D', 'X','B', 
-        						  'N', 'J', 'Z', 'S', 'Q', 'V', 
-        						  'H', 'L', 'C', 'K', 'E'};
-        
-        if(dni.length() == 9 && Character.isLetter(dni.charAt(8))) {
-            do {
-                caracterASCII = dni.codePointAt(i);
-                esValido = (caracterASCII > 47 && caracterASCII < 58);
-                i++;
-            } 
-            while(i < dni.length()-1 && esValido);     
-        }
-        if(esValido) {
-            letra = Character.toUpperCase(dni.charAt(8));
-            miDNI = Integer.parseInt(dni.substring(0,8));
-            resto = miDNI % 23;
-            esValido = (letra == asignacionLetra[resto]);
-        }
-        return !esValido;
-    }
+ 
     
 }
