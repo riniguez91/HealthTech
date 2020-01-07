@@ -21,8 +21,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 
 
@@ -121,7 +119,7 @@ public class controladorLogin {
     @FXML
     void defaultBtn(ActionEvent event) throws IOException {
         for (Usuario usuario: modelo.getUsuarios()){
-            if (usrnameField.getText().equals(usuario.getUsername()) && encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
+            if (usrnameField.getText().equals(usuario.getUsername()) && modelo.encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
                 Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
                 switch(usuario.getRol()){
                     case "medico":
@@ -162,7 +160,7 @@ public class controladorLogin {
     @FXML
     public void onEnter(ActionEvent event) throws IOException{
         for (Usuario usuario: modelo.getUsuarios()){
-            if (usrnameField.getText().equals(usuario.getUsername()) && encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
+            if (usrnameField.getText().equals(usuario.getUsername()) && modelo.encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
                 Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
                 switch(usuario.getRol()){
                     case "medico":
@@ -202,12 +200,12 @@ public class controladorLogin {
     
     @FXML
     public void onEnterNombreDeUsuario(ActionEvent event) throws IOException {
-    	if (pswdField.getText() != null && (usrnameField.getText().equals(usuario.getUsername()) && encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword()))) {
+    	if (pswdField.getText() != null && (usrnameField.getText().equals(usuario.getUsername()) && modelo.encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword()))) {
     		incorrectFieldLabel.setText("Introduzca una contraseña");
     		incorrectFieldLabel.setVisible(true);
 		} else {
 			for (Usuario usuario: modelo.getUsuarios()){
-	            if (usrnameField.getText().equals(usuario.getUsername()) && encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
+	            if (usrnameField.getText().equals(usuario.getUsername()) && modelo.encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
 	                Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
 	                switch(usuario.getRol()){
 	                    case "medico":
@@ -290,7 +288,7 @@ public class controladorLogin {
             } else {
                 Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), crearCumpleTField.getText(),
                                               crearUsernameTField.getText(), Integer.parseInt(crearTelefonoTField.getText()), crearDNITField.getText(), 
-                                              encriptaEnMD5(crearPasswordTField.getText()), crearRolTField.getText());
+                                              modelo.encriptaEnMD5(crearPasswordTField.getText()), crearRolTField.getText());
                 newUser.setAge(modelo.calculateAge(newUser.getBirthday())); // throws ParseException
                 modelo.getUsuarios().add(newUser);
                 modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/Users.json", modelo.getUsuarios(),false);
@@ -331,28 +329,5 @@ public class controladorLogin {
         slideshow.setCycleCount(Timeline.INDEFINITE);
         slideshow.play();
     }
-    
-    
-    // Encriptacion de las constraseñas en MD5
-    private static final char[] CONSTS_HEX = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
-    
-    public static String encriptaEnMD5(String stringAEncriptar) {
-        try {
-           MessageDigest msgd = MessageDigest.getInstance("MD5");
-           byte[] bytes = msgd.digest(stringAEncriptar.getBytes());
-           StringBuilder strbCadenaMD5 = new StringBuilder(2 * bytes.length);
-           for (int i = 0; i < bytes.length; i++) {
-               int bajo = (int)(bytes[i] & 0x0f);
-               int alto = (int)((bytes[i] & 0xf0) >> 4);
-               strbCadenaMD5.append(CONSTS_HEX[alto]);
-               strbCadenaMD5.append(CONSTS_HEX[bajo]);
-           }
-           return strbCadenaMD5.toString();
-        } catch (NoSuchAlgorithmException e) {
-           return null;
-        }   
-    }
-    
- 
     
 }

@@ -1,0 +1,39 @@
+[
+	{
+	"valor": "34522", 
+	"fecha": "12/12/2019",
+	"hora": "00:00:00",
+	"alerta": false 	//mayor que el umbral
+	},
+	{
+	"valor": "22342", 
+	"fecha": "12/12/2019",
+	"hora": "00:10:00", 
+	"alerta": false  //valor mayor que el umbral
+	},
+	{
+	"valor": "763200", 
+	"fecha": "12/12/2019",
+	"hora": "00:20:00",
+	"alerta": true 	//mayor que el umbral
+	},
+	{
+	"valor": "234674", 
+	"fecha": "12/12/2019",
+	"hora": "00:30:00", 
+	"alerta": false  //valor mayor que el umbral
+	},
+	{
+	"valor": "345222", 
+	"fecha": "12/12/2019",
+	"hora": "00:40:00",
+	"alerta": true 	//mayor que el umbral
+	},
+	{
+	"valor": "22342", 
+	"fecha": "12/12/2019",
+	"hora": "00:50:00", 
+	"alerta": false  //valor mayor que el umbral
+	}
+]
+
