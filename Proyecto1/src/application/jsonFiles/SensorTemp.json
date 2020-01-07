@@ -1,0 +1,32 @@
+[
+	{
+	"temperatura": 16,
+	"fecha": "07/01/2020",
+	"hora": "18:20:32"
+	},
+	{
+	"temperatura": 14,
+	"fecha": "07/01/2020",
+	"hora": "18:50:21"
+	},
+	{
+	"temperatura": 13,
+	"fecha": "07/01/2020",
+	"hora": "19:40:21"
+	},
+	{
+	"temperatura": 10,
+	"fecha": "07/01/2020",
+	"hora": "20:20:21"
+	},
+	{
+	"temperatura": 8,
+	"fecha": "07/01/2020",
+	"hora": "21:50:21"
+	},
+	{
+	"temperatura": 4,
+	"fecha": "07/01/2020",
+	"hora": "23:50:21"
+	}
+]
