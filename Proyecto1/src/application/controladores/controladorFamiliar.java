@@ -270,10 +270,8 @@ public class controladorFamiliar {
     @FXML
     void cancelarMensajeUsuarios(ActionEvent event) {
 	    if (asuntoJFXTextFieldMensajes.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
-            alert.setHeaderText("Informacion");
-            alert.setContentText("Primero debe introducir un asunto o un mensaje");
-            alert.showAndWait();
-        }
+            modelo.createAlert("Información",
+            		"Primero debe introducir un asunto o un mensaje");        }
 	    else {
             asuntoJFXTextFieldUsuarios.clear();
             mensajeJFXTextFieldUsuarios.clear();
@@ -409,15 +407,12 @@ public class controladorFamiliar {
     @FXML
     void enviarMensajeUsuarios(ActionEvent event) {
         if (asuntoJFXTextFieldUsuarios.getText().isEmpty()) {
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes de poner un asunto");
-            alert.showAndWait();
+            modelo.createAlert("Cuidado",
+            		"Debes de poner un asunto");
         }
         else if (mensajeJFXTextFieldUsuarios.getText().isEmpty()) {
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes de poner un mensaje");
-            alert.showAndWait();
-        }
+            modelo.createAlert("Cuidado",
+            		"Debes de poner un mensaje");        }
         else {
             UUID uniqueKey = UUID.randomUUID();
             Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
@@ -427,9 +422,8 @@ public class controladorFamiliar {
             updatedMessages.add(msg);
             modelo.setMessages(updatedMessages);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
-            alert.setHeaderText("Informacion");
-            alert.setContentText("Se ha enviado el mensaje correctamente");
-            alert.showAndWait();
+            modelo.createAlert("Información",
+            		"Se ha enviado el mensaje correctamente");
             // Borramos los campos para evitar confusion
             asuntoJFXTextFieldUsuarios.clear();
             mensajeJFXTextFieldUsuarios.clear();
@@ -459,9 +453,8 @@ public class controladorFamiliar {
     @FXML
     void crearMensajeYResponderTicket(ActionEvent event) {
         if (crearMensajeJFXTextAreaMensajes.getText().isEmpty()){
-            alert.setHeaderText("Cuidado");
-            alert.setContentText("Debes de poner un mensaje");
-            alert.showAndWait();
+            modelo.createAlert("Cuidado", 
+            		"Debes de poner un mensaje");
         }
         else {
             Message msg = new Message(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSender().get(),
@@ -476,9 +469,8 @@ public class controladorFamiliar {
             updatedMessages.add(msg);
             modelo.setMessages(updatedMessages);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
-            alert.setHeaderText("Informacion");
-            alert.setContentText("Se ha enviado el mensaje correctamente");
-            alert.showAndWait();
+            modelo.createAlert("Información",
+            		"Se ha enviado el mensaje correctamente");
 
             // Borramos los campos para evitar confusion
             crearMensajeJFXTextAreaMensajes.clear();
