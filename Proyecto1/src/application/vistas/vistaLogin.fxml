@@ -43,10 +43,6 @@
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="626.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Fecha de nacimiento? dd/M/yyyy">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font></JFXTextField>
             <JFXTextField fx:id="crearUsernameTField" layoutX="110.0" layoutY="484.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre de usuario">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
@@ -55,16 +51,10 @@
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="crearRolTField" layoutX="110.0" layoutY="830.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Medico, cuidador, paciente o familiar?">
+            <JFXTextField fx:id="crearCumpleTField" layoutX="110.0" layoutY="626.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Fecha de nacimiento? dd/M/yyyy">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
-            <JFXButton fx:id="crearCuentaBttn" layoutX="162.0" layoutY="938.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" text="Crear cuenta" />
-            <Hyperlink fx:id="cancelarCrecionHyperLink" layoutX="404.0" layoutY="902.0" onMouseClicked="#cancelarCreacion" style="-fx-border-width: 0;" text="Cancelar accion y volver" textFill="#4059a9">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font>
-            </Hyperlink>
             <JFXTextField fx:id="crearDNITField" layoutX="110.0" layoutY="694.0" prefHeight="60.0" prefWidth="452.0" promptText="DNI">
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
@@ -75,6 +65,16 @@
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font>
             </JFXTextField>
+            <JFXTextField fx:id="crearRolTField" layoutX="110.0" layoutY="830.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Medico, cuidador, paciente o familiar?">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font></JFXTextField>
+            <JFXButton fx:id="crearCuentaBttn" layoutX="162.0" layoutY="938.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" text="Crear cuenta" />
+            <Hyperlink fx:id="cancelarCrecionHyperLink" layoutX="404.0" layoutY="902.0" onMouseClicked="#cancelarCreacion" style="-fx-border-width: 0;" text="Cancelar accion y volver" textFill="#4059a9">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font>
+            </Hyperlink>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="loginElements" layoutX="121.0" layoutY="489.0">

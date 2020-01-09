@@ -205,4 +205,13 @@ public class modelo {
         }
         return !esValido;
     }
+
+    public boolean checkUniqueUsername(List<Usuario> usuarios, String username) {
+        for (Usuario user : usuarios) {
+            if (user.getUsername().equals(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

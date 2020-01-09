@@ -270,9 +270,13 @@ public class controladorLogin {
             } else if (modelo.countWordsString(crearApellidosTField.getText()) != 2) {
             	modelo.createAlert("Cuidado", 
             			"Debes introducir unos apellidos válidos, que consista de dos palabras.");
-            } else if (modelo.checkRol(crearUsernameTField.getText())) {
-            	modelo.createAlert("Cuidado", 
-            			"Debes introducir un nombre de usuario válido, que consista de una sola palabra (riniguez).");
+            } else if (crearUsernameTField.getText().length() > 16 || modelo.countWordsString(crearUsernameTField.getText()) >1) {
+                modelo.createAlert("Cuidado",
+                        "Debes introducir una única palabra de longitud máxima 16, que consista de letras y/o numeros (riniguez91).");
+            } else if (!modelo.checkUniqueUsername(modelo.getUsuarios(), crearUsernameTField.getText())) {
+                modelo.createAlert("Cuidado", "Ese nombre ya ha sido elegido, porfavor escoja otro");
+            } else if (crearPasswordTField.getText().isEmpty()) {
+                modelo.createAlert("Cuidado", "Porfavor rellene el campo de contraseña");
             } else if (crearCumpleTField.getText().length() != 10) {
             	modelo.createAlert("Cuidado", 
             			"Debes introducir una fecha válida (27/10/1989).");
@@ -280,12 +284,14 @@ public class controladorLogin {
             	modelo.createAlert("Cuidado", 
             			"Debes introducir un DNI válido. (8 digitos y 1 letra).");
             } else if (crearTelefonoTField.getText().length() != 9) {
+                Integer.parseInt(crearTelefonoTField.getText()); // Comprobamos
             	modelo.createAlert("Cuidado", 
-            			"Debes introducir un número de teléfono valido (9 dígitos).");
+            			"Debes introducir un número de teléfono valido de 9 dígitos (628638442).");
             } else if (!modelo.checkRol(crearRolTField.getText())) {
             	modelo.createAlert("Cuidado", 
             			"Debes introducir un rol válido, que consista de una sola palabra (médico, cuidador, paciente, familiar).");
-            } else {
+            } else
+             {
                 Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), crearCumpleTField.getText(),
                                               crearUsernameTField.getText(), Integer.parseInt(crearTelefonoTField.getText()), crearDNITField.getText(), 
                                               modelo.encriptaEnMD5(crearPasswordTField.getText()), crearRolTField.getText());
@@ -296,8 +302,10 @@ public class controladorLogin {
                 crearUsuarioElementos.setVisible(false);
                 logo.setY(-60);
             }
-        } catch (NumberFormatException | ParseException nfe){
-            nfe.printStackTrace();
+        } catch (NumberFormatException nfe){
+            modelo.createAlert("Cuidado", "Debes introducir un telefono valido (626 574 329)");
+        } catch (ParseException pe) {
+            modelo.createAlert("Cuidado", "Debes introducir una fecha valida");
         }
     }
 
