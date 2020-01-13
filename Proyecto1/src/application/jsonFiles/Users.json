@@ -8,7 +8,13 @@
     "username": "sgomez",
     "password": "d052f03df8a741ca9769026b7772a00c",	//"1fz91VYT"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"crey",
+		"shernandez",
+		"rnieto",
+		"sdiaz",
+      	"pbascuas"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_sgomez.png",
     "telephone" : 912675490,
     "dni" : "06557834M"
@@ -21,7 +27,13 @@
     "username": "jmoreno",
     "password": "bdd79e34eb8efba0b8a3b5a7c7d10d62",		//"0HdJYSAN"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"jrodriguez",
+		"rnieto",
+		"shernandez",
+		"pbascuas",
+      	"sdiaz"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_jmoreno.png",
     "telephone" : 915648938,
     "dni" : "50033072E"
@@ -34,7 +46,13 @@
     "username": "rhernandez",
     "password": "a9c05ee1dd8f689f90545aee8dda7555",	//"hernandez1"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"sarrollo",
+		"salonso",
+		"mutrera",
+		"calonso",
+      	"autrera"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rhernandez.png",
     "telephone" : 914568213,
     "dni" : "70294239Y"
@@ -47,7 +65,13 @@
     "username": "msuarez",
     "password": "7df9ca11eb49513ac74fcb3b2cdc07f5",	//"Cetreria3"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"rcampos",
+		"mutrera",
+		"aalonso",
+		"autrera",
+      	"abaeza"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msuarez.png",
     "telephone" : 913945282,
     "dni" : "65162946J"
@@ -60,7 +84,13 @@
     "username": "rmartin",
     "password": "4527b4881408a7d778b36559abfe8822",	//"trece092000"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"lrodriguez",
+		"cgil",
+		"xhernandez",
+		"pcañizo",
+      	"mrubio"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rmartin.png",
     "telephone" : 914873371,
     "dni" : "47340446Y"
@@ -73,7 +103,13 @@
     "username": "msanchez",
     "password": "b9cc501e935b3e4dd7add33a6cd0a6a1",	//"1309dosmil"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"slopez",
+		"cmontero",
+		"lramos",
+		"fmontero",
+      	"pcanoyra"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msanchez.png",
     "telephone" : 915437229,
     "dni" : "80348373N"
@@ -86,7 +122,13 @@
     "username": "rcaballero",
     "password": "997e26bcc4b31c0220c5058ce3ea8558",	//"13sep2000"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"sgimenez",
+		"lramos",
+		"jlopez",
+		"pcanoyra",
+      	"atendero"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rcaballero.png",
     "telephone" : 916627464,
     "dni" : "28842204C"
@@ -99,7 +141,13 @@
     "username": "rvicario",
     "password": "bcd3b0bcb73fc2b4945bf6a3dafed01a",	//"TrecEsep2000"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"jcabeza",
+		"jlopez",
+		"cmontero",
+		"atendero",
+      	"fmontero"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rvicario.png",
     "telephone" : 911579223,
     "dni" : "19437069E"
@@ -112,7 +160,13 @@
     "username": "mvega",
     "password": "7804bae6c90f7645dcaf0bf9d2b3a14a",	//"mvega"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"pgalindo",
+		"xhernandez",
+		"cgil",
+		"mrubio",
+      	"pcañizo"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mvega.png",
     "telephone" : 917197940,
     "dni" : "41002670H"
@@ -125,7 +179,13 @@
     "username": "mnieto",
     "password": "1e6512345f6c7de0af5363dd339c6112",	//"mnieto"
     "rol": "medico",
-    "relaciones": [],
+    "relaciones": [
+		"miglesias",
+		"aalonso",
+		"salonso",
+		"abaeza",
+      	"calonso"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mnieto.png",
     "telephone" : 910899288,
     "dni" : "74858792W"
@@ -143,7 +203,11 @@
     "username": "crey",
     "password": "e29371b26afe0c2085cf2d782c790ba3",	//"3A9m5Y81"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+		"sgomez",
+		"shernandez",
+		"sdiaz"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_crey.png",
     "telephone" : 689913392,
     "dni" : "74850975M"
@@ -156,7 +220,11 @@
     "username": "jrodriguez",
     "password": "84f1d171953f18ec679c1234fcdc6239",	//"nLQJ5lJo"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+		"jmoreno",
+		"rnieto",
+		"pbascuas"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jrodriguez.png",
     "telephone" : 627949842,
     "dni" : "60230874S"
@@ -169,7 +237,11 @@
     "username": "sarrollo",
     "password": "70b1f6501cbf048e103698743dd7eb95",	//"Eyn&Zm4n"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+		"rhernandez",
+		"salonso",
+		"calonso"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sarrollo.png",
     "telephone" : 641399790,
     "dni" : "35978120W"
@@ -182,7 +254,11 @@
     "username": "lrodriguez",
     "password": "255eef7f000d1f0f2e7b0ff7fc65e2ba",	//"A99sQF$g"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+		"rmartin",
+		"cgil",
+		"pcañizo"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_lrodriguez.png",
     "telephone" : 633781588,
     "dni" : "81853205T"
@@ -195,7 +271,11 @@
     "username": "rcampos",
     "password": "0068fb51e902d168ad974ef09bf70bc5",	//"Dkyo^Bpl"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+		"msuarez",
+		"mutrera",
+		"autrera"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_rcampos.png",
     "telephone" : 619932478,
     "dni" : "47575337K"
@@ -208,7 +288,11 @@
     "username": "slopez",
     "password": "ed728f09f629ca386c1fe9207a2ea046",	//"LjOeIkc!"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+		"msanchez",
+		"cmontero",
+		"fmontero"  
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_slopez.png",
     "telephone" : 684916265,
     "dni" : "95054416Q"
@@ -221,7 +305,11 @@
     "username": "sgimenez",
     "password": "6e93f9349c982171d679a324b0f67bc2",	//"1MI0WZtx"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+		"rcaballero",
+		"lramos",
+		"pcanoyra"  
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sgimenez.png",
     "telephone" : 678077620,
     "dni" : "54442151R"
@@ -234,7 +322,11 @@
     "username": "jcabeza",
     "password": "38012ccf7b3dd291a9cef9c3042e2f3b",	//"Ru9nHS8W"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+		"rvicario",
+		"jlopez",
+		"atendero"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jcabeza.png",
     "telephone" : 635468654,
     "dni" : "21528056X"
@@ -247,7 +339,11 @@
     "username": "pgalindo",
     "password": "9878b8c983fbbae9bf6ba33dc72d7817",	//"cRZjm1me"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+		"mvega",
+		"xhernandez",
+		"mrubio"    
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_pgalindo.png",
     "telephone" : 623589446,
     "dni" : "08737442H"
@@ -260,7 +356,11 @@
     "username": "miglesias",
     "password": "1324d3157a7fb4b93c604bbca156202e",	//"0V72gqmO"
     "rol": "cuidador",
-    "relaciones": [],
+    "relaciones": [
+    	"mnieto",
+		"aalonso",
+		"abaeza"
+    ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_miglesias.png",
     "telephone" : 686528544,
     "dni" : "26617565X"
