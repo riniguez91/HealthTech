@@ -573,6 +573,7 @@ public class controladorPaciente {
         int i = 0;
         // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
         for (Message mensaje : modelo.getMessages()) {
+            // Si no esta leido y el "sender" coincide con el nombre completo del usuario
             if (!mensaje.getRead() && (!mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurname()))) {
                 labelMessagesInicio.add(new Label("- Asunto: " + mensaje.getSubject() + " || De parte de: " + mensaje.getSender()));
                 labelMessagesInicio.get(i).setPrefWidth(1202);

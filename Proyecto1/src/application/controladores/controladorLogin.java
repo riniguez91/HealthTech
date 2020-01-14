@@ -18,6 +18,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
@@ -56,9 +57,6 @@ public class controladorLogin {
     private ImageView fotolgn_1;
 
     @FXML
-    private AnchorPane crearUsuarioElementos;
-
-    @FXML
     private JFXTextField crearNombreTField;
 
     @FXML
@@ -86,9 +84,6 @@ public class controladorLogin {
     private JFXButton crearCuentaBttn;
 
     @FXML
-    private AnchorPane loginElements;
-
-    @FXML
     private JFXTextField usrnameField;
 
     @FXML
@@ -108,6 +103,14 @@ public class controladorLogin {
 
     @FXML
     private Label incorrectFieldLabel;
+
+    @FXML
+    private VBox crearUsuarioElementos;
+
+    @FXML
+    private VBox loginElements;
+
+    
 
     @FXML
     void keyTab(KeyEvent event) {
