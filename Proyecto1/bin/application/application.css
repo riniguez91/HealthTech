@@ -53,7 +53,7 @@
 	-fx-border-color: white;
 	-fx-border-width: 2px;
 	-fx-font-family: Century Gothic;
-	-fx-font-size: 20;
+	-fx-font-size: 14px;
 	-fx-text-fill: white;
 }
 .botones:hover{
