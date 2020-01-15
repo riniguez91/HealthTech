@@ -57,9 +57,6 @@ public class controladorPaciente {
         labelDNIInicio.setText(usuario.getDNI());
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
 
-        // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario
-        panelDatosYMensajesUsuarios.setVisible(false);
-
         // Establecemos la foto del usuario en la pestaña de Inicio
         if (usuario.getImagenPerfil().isEmpty()) {
         	userImageViewInicio.setImage(new Image("@..\\..\\resources\\fotos\\user.png"));
@@ -130,16 +127,13 @@ public class controladorPaciente {
     private JFXButton preguntasfrecuentesbtn;
 
     @FXML
-    private Pane PanePreguntasFrecuentes;
+    private Pane panePreguntasFrecuentes;
 
     @FXML
     private JFXButton atrasbtn;
 
     @FXML
     private JFXTextArea nombresJFXTextArea;
-
-    @FXML
-    private Pane panelDatosYMensajesUsuarios;
 
     @FXML
     private Label Nombre1;
@@ -247,7 +241,7 @@ public class controladorPaciente {
     private JFXButton responderTicketMensajes;
 
     @FXML
-    private Label seleccionaUsuarioUsuarios;
+    private Label seleccionaUsuarioUsuariosLabel;
     
     @FXML
     private DayPage calendario;
@@ -285,23 +279,45 @@ public class controladorPaciente {
     @FXML
     private VBox vboxConversacionMensajesInicio;
 
+    @FXML
+    private VBox seleccionaUsuarioUsuarios;
+
+    @FXML
+    private VBox paneInicio;
+
+    @FXML
+    private VBox imagenVBox;
+
+    @FXML
+    private VBox datosVBox;
+
+    @FXML
+    private VBox mensajeVBox;
+
+    @FXML
+    private VBox cancelarBotonVBox;
+
+    @FXML
+    private VBox generarTicketBotonVBox;
+
 
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
 	void verInicio(ActionEvent event) {
-		PaneInicio.setVisible(true);
-		PanePreguntasFrecuentes.setVisible(false);
+		paneInicio.setVisible(true);
+		panePreguntasFrecuentes.setVisible(false);
 	}
 	@FXML
 	void verPreguntasFrecuentes(ActionEvent event) {
-		PanePreguntasFrecuentes.setVisible(true);
-		PaneInicio.setVisible(false);
+		panePreguntasFrecuentes.setVisible(true);
+		paneInicio.setVisible(false);
 	}
 
     @FXML
     void filterUsersUsuario(KeyEvent event) {
         treeTableViewUsuarios.setPredicate( usuarioTreeItem -> usuarioTreeItem.getValue().getName().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()) ||
-        		usuarioTreeItem.getValue().getSurname().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
+        		usuarioTreeItem.getValue().getSurname().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase())
+                || usuarioTreeItem.getValue().getRolUsuario().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
 	}
 
     @FXML
@@ -385,12 +401,18 @@ public class controladorPaciente {
         // Cambiamos los datos del usuario mientras se haya seleccionado uno
 	    if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) {
             // Comprobamos si el panel de datos de usuario y creacion de mensajes esta visible
-            if (!panelDatosYMensajesUsuarios.isVisible()){
-                panelDatosYMensajesUsuarios.setVisible(true);
+            if (!mensajeVBox.isVisible()){
+                // Hacemos el panel visible
+                imagenVBox.setVisible(true);
+                datosVBox.setVisible(true);
+                mensajeVBox.setVisible(true);
+                cancelarBotonVBox.setVisible(true);
+                generarTicketBotonVBox.setVisible(true);
+
                 seleccionaUsuarioUsuarios.setVisible(false);
             }
             // Si esta visible actualizamos los datos del usuario seleccionado
-            if (panelDatosYMensajesUsuarios.isVisible()) {
+            if (mensajeVBox.isVisible()) {
                 labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
                 labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
                 labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());

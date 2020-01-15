@@ -1,5 +1,4 @@
 [
-  
   {
     "sender": "Susana Díaz Hernández",
     "receiver": "Sara Gómez Hernández",
@@ -54,7 +53,7 @@
     "subject": "Invitación para comer",
     "message": "¿Qué tal vas con la recuperación Susana?\nSi estás mejor podrías venirte a mi casa qeu te invitamos a comer y pasamos la tarde, ¿Te apetece?.",
     "idTicket": "f4344a28-6562-4efb-a566-6947cc3e26d8",
-    "read": false
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
