@@ -563,6 +563,9 @@ public class controladorMedico implements Initializable, MapComponentInitialized
     
     @FXML
     private TextField addressTextField;
+    
+    @FXML
+    private JFXButton buttonActualizarUbicacion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -621,5 +624,10 @@ public class controladorMedico implements Initializable, MapComponentInitialized
             map.setCenter(latLong);
 
         });
+    }
+    
+    @FXML
+    void actualizarUbicacion(ActionEvent event) {
+    	
     }
 }

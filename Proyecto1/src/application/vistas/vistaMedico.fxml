@@ -339,9 +339,10 @@
                                   		<NumberAxis side="LEFT" />
                                 		</yAxis>
                               		</LineChart>
-                              <GoogleMapView layoutX="38.0" layoutY="515.0" prefHeight="444.0" prefWidth="560.0">
+                              <GoogleMapView fx:id="mapView" layoutX="38.0" layoutY="515.0" prefHeight="444.0" prefWidth="560.0">
                                  <children>
-                                    <TextField fx:id="addressTextField" layoutX="200.0" layoutY="15.0" onAction="#addressTextFieldAction" />
+                                    <TextField fx:id="addressTextField" layoutX="200.0" layoutY="15.0" onAction="#addressTextFieldAction" prefHeight="31.0" prefWidth="151.0" promptText="Inserte dirección:" />
+                                    <JFXButton fx:id="buttonActualizarUbicacion" layoutX="390.0" layoutY="15.0" onAction="#actualizarUbicacion" styleClass="botones" text="Actualizar Ubicación" />
                                  </children>
                               </GoogleMapView>
                            		</children>

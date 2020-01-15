@@ -543,6 +543,9 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     
     @FXML
     private TextField addressTextField;
+    
+    @FXML
+    private JFXButton buttonActualizarUbicacion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -601,6 +604,11 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
             map.setCenter(latLong);
 
         });
+    }
+    
+    @FXML
+    void actualizarUbicacion(ActionEvent event) {
+    	
     }
     
 }
