@@ -23,6 +23,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class modelo {
+	
+	// Usuarios
     private List<Usuario> usuarios;
     public List<Usuario> getUsuarios(){
         return this.usuarios;
@@ -30,13 +32,56 @@ public class modelo {
     public void setUsuarios(List<Usuario> usuarios){
         this.usuarios=usuarios;
     }
-
+    
+    // Mensajes
     private List<Message> mensajes;
     public List<Message> getMessages(){
         return this.mensajes;
     }
     public void setMessages(List<Message> messages){
         this.mensajes=messages;
+    }
+    
+    // Sensor de temperatura
+    private List<modSensorTemperatura> datosTemperatura;
+    public List<modSensorTemperatura> getDatosTemperatura(){
+        return this.datosTemperatura;
+    }
+    
+    // Sensor de gas
+    private List<modSensorGas> datosGas;
+    public List<modSensorGas> getDatosGas(){
+        return this.datosGas;
+    }
+    public void setDatosGas(List<modSensorGas> datosGas){
+        this.datosGas=datosGas;
+    }
+    
+    // Sensor GPS
+    private List<modSensorGPS> datosGPS;
+    public List<modSensorGPS> getDatosGPS(){
+        return this.datosGPS;
+    }
+    public void setDatosGPS(List<modSensorGPS> datosGPS){
+        this.datosGPS=datosGPS;
+    }
+    
+    // Sensor de presión
+    private List<modSensorPresion> datosPresion;
+    public List<modSensorPresion> getDatosPresion(){
+        return this.datosPresion;
+    }
+    public void setDatosPresion(List<modSensorPresion> datosPresion){
+        this.datosPresion=datosPresion;
+    }
+    
+    // Sensor Magnético
+    private List<modSensorMagnetico> datosMagnetico;
+    public List<modSensorMagnetico> getDatosMagnetico(){
+        return this.datosMagnetico;
+    }
+    public void setDatosMagnetico(List<modSensorMagnetico> datosMagnetico){
+        this.datosMagnetico=datosMagnetico;
     }
 
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);

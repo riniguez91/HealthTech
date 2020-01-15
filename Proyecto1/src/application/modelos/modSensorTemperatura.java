@@ -7,16 +7,18 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-
 public class modSensorTemperatura {
+	
 	public modSensorTemperatura(){
 		
 	}
+	
 	public modSensorTemperatura(int temperatura, SimpleDateFormat fecha, SimpleDateFormat hora) {
 		this.temperatura=temperatura;
 		this.fecha=fecha;
 		this.hora=hora;
 	}
+	
 	@SerializedName("temperatura")
     @Expose
     private int temperatura;
