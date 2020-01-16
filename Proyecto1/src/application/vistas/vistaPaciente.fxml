@@ -256,12 +256,12 @@
                               </Label>
                            </children>
                         </VBox>
-                        <VBox fx:id="imagenVBox" fillWidth="false" layoutX="630.0" layoutY="20.0" visible="false" AnchorPane.bottomAnchor="765.0" AnchorPane.leftAnchor="630.0" AnchorPane.topAnchor="20.0">
+                        <VBox fx:id="imagenVBox" fillWidth="false" layoutX="630.0" layoutY="20.0" AnchorPane.bottomAnchor="765.0" AnchorPane.leftAnchor="630.0" AnchorPane.topAnchor="20.0">
                            <children>
                                         <ImageView fx:id="userImageViewUsuarios" fitHeight="187.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </VBox>
-                        <VBox fx:id="datosVBox" fillWidth="false" layoutX="476.0" layoutY="-12.0" prefHeight="1076.0" prefWidth="1419.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="476.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-12.0">
+                        <VBox fx:id="datosVBox" fillWidth="false" layoutX="476.0" layoutY="-12.0" prefHeight="1076.0" prefWidth="1419.0" visible="false" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="476.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-12.0">
                            <children>
                               <Separator prefHeight="40.0" prefWidth="760.0" styleClass="separator-black" stylesheets="@../application.css">
                                  <VBox.margin>
