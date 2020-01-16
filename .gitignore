@@ -41,4 +41,4 @@ Proyecto1/Proyecto1.iml
 *.class
 Proyecto1/bin/application/Main.class
 Proecto1/src/UMLProyecto.ucls
-
+*.ucls
