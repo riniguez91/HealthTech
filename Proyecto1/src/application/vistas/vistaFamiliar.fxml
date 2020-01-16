@@ -27,7 +27,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorFamiliar">
     <children>
@@ -301,61 +300,58 @@
 					<content>
                 		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      		<children>
-                        		<Pane prefHeight="1080.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           		<children>
-                              		<Label layoutX="30.0" layoutY="20.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor de Gas:" />
-                             		<Label layoutX="30.0" layoutY="540.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor Magnético:" />
-                              		<StackedBarChart layoutX="65.0" layoutY="70.0">
-                                		<xAxis>
-                                  		<CategoryAxis side="BOTTOM" />
-                                		</xAxis>
-                                		<yAxis>
-                                  		<NumberAxis side="LEFT" />
-                                		</yAxis>
-                              		</StackedBarChart>
-                              		<StackedBarChart layoutX="65.0" layoutY="585.0">
-                                		<xAxis>
-                                  		<CategoryAxis side="BOTTOM" />
-                               		</xAxis>
-                                		<yAxis>
-                                  		<NumberAxis side="LEFT" />
-                                		</yAxis>
-                              		</StackedBarChart>
-                           		</children>
+                        		<Pane layoutX="2.0" prefHeight="1042.0" prefWidth="638.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <JFXTreeTableView fx:id="treeTableViewPacientes" layoutX="9.0" layoutY="39.0" onMouseClicked="#mostrarDatosSensoresPacientes" prefHeight="363.0" prefWidth="598.0" />
+                              <GoogleMapView fx:id="mapView" layoutX="16.0" layoutY="539.0" prefHeight="478.0" prefWidth="607.0">
+                                 <children>
+                                    <TextField fx:id="addressTextField" layoutX="200.0" layoutY="15.0" onAction="#addressTextFieldAction" prefHeight="41.0" prefWidth="151.0" promptText="Introduzca dirección:" />
+                                    <JFXButton fx:id="buttonActualizarUbicacion" layoutX="390.0" layoutY="15.0" onAction="#actualizarUbicacion" prefHeight="31.0" prefWidth="165.0" styleClass="botones" text="Actualizar ubicación" />
+                                 </children>
+                              </GoogleMapView>
+                              <Label layoutX="25.0" layoutY="9.0" prefHeight="49.0" prefWidth="343.0" stylesheets="@../application.css" text="Selecciona un paciente:">
+                                 <font>
+                                    <Font name="Arial Bold" size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
                         		</Pane>
                         		<Separator orientation="VERTICAL" prefHeight="1080.0" AnchorPane.leftAnchor="640.0" />
                         		<Separator orientation="VERTICAL" prefHeight="1080.0" AnchorPane.leftAnchor="1280.0" />
-                        		<Pane prefHeight="1080.0" prefWidth="640.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="640.0">
+                        		<Pane prefHeight="1036.0" prefWidth="640.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="640.0">
                            		<opaqueInsets>
                               		<Insets />
                            		</opaqueInsets>
                            		<children>
-                              		<LineChart layoutX="65.0" layoutY="65.0">
+                              		<LineChart fx:id="graficaTemperatura" layoutX="22.0" layoutY="29.0" prefHeight="436.0" prefWidth="590.0" title="Sensor de temperatura">
                                 		<xAxis>
-                                  		<CategoryAxis side="BOTTOM" />
+                                  		<CategoryAxis label="Tiempo" prefHeight="43.0" prefWidth="504.0" side="BOTTOM" />
                                 		</xAxis>
                                 		<yAxis>
-                                  		<NumberAxis side="LEFT" />
+                                  		<NumberAxis label="Temperatura" side="LEFT" />
                                 		</yAxis>
                               		</LineChart>
-                              <GoogleMapView fx:id="mapView" layoutX="49.0" layoutY="545.0" prefHeight="386.0" prefWidth="552.0">
-                                 <children>
-                                    <TextField fx:id="addressTextField" layoutX="200.0" layoutY="10.0" onAction="#addressTextFieldAction" prefHeight="35.0" prefWidth="158.0" promptText="Inserte dirección" />
-                                 </children></GoogleMapView>
-                              <GoogleMapView fx:id="mapView" layoutX="32.0" layoutY="534.0" prefHeight="420.0" prefWidth="568.0">
-                                 <children>
-                                    <TextField fx:id="addressTextField" layoutX="200.0" layoutY="15.0" onAction="#addressTextFieldAction" prefHeight="41.0" prefWidth="209.0" promptText="Introduzca dirección:" />
-                                 </children>
-                              </GoogleMapView>
+                              		<StackedBarChart fx:id="graficaMagnetico" layoutX="14.0" layoutY="522.0" prefHeight="477.0" prefWidth="600.0" title="Sensor magnetico">
+                                		<xAxis>
+                                  		<CategoryAxis label="Tiempo" side="BOTTOM" />
+                               		</xAxis>
+                                		<yAxis>
+                                  		<NumberAxis label="Abierto/Cerrado" side="LEFT" />
+                                		</yAxis>
+                              		</StackedBarChart>
                            		</children>
                         		</Pane>
-                        		<Pane prefHeight="1080.0" prefWidth="640.0" AnchorPane.leftAnchor="1280.0" AnchorPane.rightAnchor="0.0">
+                        		<Pane prefHeight="1038.0" prefWidth="640.0" AnchorPane.leftAnchor="1280.0" AnchorPane.rightAnchor="0.0">
                            		<children>
-                              		<Label layoutX="30.0" layoutY="20.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor de Presión:" />
-                              		<PieChart layoutX="65.0" layoutY="65.0" />
-                              		<Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoLabel" text="Horas de Sueño." x="80.0" y="550.0" />
-                              		<Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoLabel" text="Horas de Actividad." x="80.0" y="585.0" />
-                              		<Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoLabel" text="Horas Fuera de Casa." x="80.0" y="620.0" />
+                              		<PieChart layoutX="23.0" layoutY="28.0" prefHeight="418.0" prefWidth="590.0" title="Sensor de presion" />
+                              		<StackedBarChart fx:id="graficaGas" layoutX="7.0" layoutY="507.0" prefHeight="485.0" prefWidth="595.0" title="Sensor de gas">
+                                		<xAxis>
+                                  		<CategoryAxis label="Tiempo" side="BOTTOM" />
+                                		</xAxis>
+                                		<yAxis>
+                                  		<NumberAxis label="Gas" side="LEFT" />
+                                		</yAxis>
+                              		</StackedBarChart>
                            		</children>
                         		</Pane>
                         		<Separator prefWidth="200.0" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="520.0" />

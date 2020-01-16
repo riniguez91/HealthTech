@@ -23,6 +23,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class modelo {
+	
+	// Usuarios
     private List<Usuario> usuarios;
     public List<Usuario> getUsuarios(){
         return this.usuarios;
@@ -30,13 +32,59 @@ public class modelo {
     public void setUsuarios(List<Usuario> usuarios){
         this.usuarios=usuarios;
     }
-
+    
+    // Mensajes
     private List<Message> mensajes;
     public List<Message> getMessages(){
         return this.mensajes;
     }
     public void setMessages(List<Message> messages){
         this.mensajes=messages;
+    }
+    
+    // Sensor de temperatura
+    private List<modSensorTemperatura> datosTemperatura;
+    public List<modSensorTemperatura> getDatosTemperatura(){
+        return this.datosTemperatura;
+    }
+    public void setDatosTemperatura(List<modSensorTemperatura> datosTemperatura){
+        this.datosTemperatura=datosTemperatura;
+    }
+    
+    // Sensor de gas
+    private List<modSensorGas> datosGas;
+    public List<modSensorGas> getDatosGas(){
+        return this.datosGas;
+    }
+    public void setDatosGas(List<modSensorGas> datosGas){
+        this.datosGas=datosGas;
+    }
+    
+    // Sensor GPS
+    private List<modSensorGPS> datosGPS;
+    public List<modSensorGPS> getDatosGPS(){
+        return this.datosGPS;
+    }
+    public void setDatosGPS(List<modSensorGPS> datosGPS){
+        this.datosGPS=datosGPS;
+    }
+    
+    // Sensor de presión
+    private List<modSensorPresion> datosPresion;
+    public List<modSensorPresion> getDatosPresion(){
+        return this.datosPresion;
+    }
+    public void setDatosPresion(List<modSensorPresion> datosPresion){
+        this.datosPresion=datosPresion;
+    }
+    
+    // Sensor Magnético
+    private List<modSensorMagnetico> datosMagnetico;
+    public List<modSensorMagnetico> getDatosMagnetico(){
+        return this.datosMagnetico;
+    }
+    public void setDatosMagnetico(List<modSensorMagnetico> datosMagnetico){
+        this.datosMagnetico=datosMagnetico;
     }
 
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -70,6 +118,69 @@ public class modelo {
             br = new BufferedReader(new FileReader(file));
             Type tipoListaMensajes = new TypeToken<List<Message>>(){}.getType();
             setMessages(gson.fromJson(br, tipoListaMensajes));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    public void leerJsonTemperatura(String path){
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            File file = new File(path);
+            br = new BufferedReader(new FileReader(file));
+            Type tipoListaDatosTemperatura = new TypeToken<List<modSensorTemperatura>>(){}.getType();
+            setDatosTemperatura(gson.fromJson(br, tipoListaDatosTemperatura));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    public void leerJsonGas(String path){
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            File file = new File(path);
+            br = new BufferedReader(new FileReader(file));
+            Type tipoListaDatosGas = new TypeToken<List<modSensorGas>>(){}.getType();
+            setDatosGas(gson.fromJson(br, tipoListaDatosGas));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    public void leerJsonMagnetico(String path){
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            File file = new File(path);
+            br = new BufferedReader(new FileReader(file));
+            Type tipoListaDatosMagnetico = new TypeToken<List<modSensorMagnetico>>(){}.getType();
+            setDatosMagnetico(gson.fromJson(br, tipoListaDatosMagnetico));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } finally {

@@ -2,37 +2,30 @@ package application.modelos;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import jdk.nashorn.internal.ir.annotations.Ignore;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-
 
 public class modSensorGas {
-	public modSensorGas(){
-		
-	}
-	public void modeSensorGas(int valor, SimpleDateFormat fecha, SimpleDateFormat hora, boolean alerta ) {
-		this.valor=valor;
-		this.fecha=fecha;
-		this.hora=hora;
-		this.alerta=alerta;
-	}
 	
 	@SerializedName("valor")
     @Expose
     private int valor;
     @SerializedName("fecha")
     @Expose
-    private SimpleDateFormat fecha;		//unicamente mostrará el DD/MM/YY (Dias)
+    private String fecha;		//unicamente mostrará el DD/MM/YY (Dias)
     @SerializedName("hora")
     @Expose
-    private SimpleDateFormat hora;		//unicamente mostrará hh:mm:ss (horas)
+    private String hora;		//unicamente mostrará hh:mm:ss (horas)
     @SerializedName("alerta")
     @Expose
     private boolean alerta;
     
-    
+	public modSensorGas(){
+		
+	}
+	public void modeSensorGas(int valor, String fecha, String hora) {
+		this.valor=valor;
+		this.fecha=fecha;
+		this.hora=hora;
+	}
     
     //GETTERS y SETTERS
     
@@ -44,28 +37,20 @@ public class modSensorGas {
         this.valor = valor;
     }
     
-    public SimpleDateFormat getFecha() {
+    public String getFecha() {
         return fecha;
     }
     
-    public void setFecha(SimpleDateFormat fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
     
-    public SimpleDateFormat getHora() {
+    public String getHora() {
         return hora;
     }
     
-    public void setHora(SimpleDateFormat hora) {
+    public void setHora(String hora) {
         this.hora = hora;
-    }
-    
-    public boolean getAlerta() {
-        return alerta;
-    }
-    
-    public void setAlerta(boolean alerta) {
-        this.alerta = alerta;
     }
 
 }
