@@ -6,13 +6,13 @@
 /* Labels */
 .informationLabel{
 	-fx-text-fill: white;
-	-fx-font-size: 35;
+	-fx-font-size: 25;
 	-fx-font-family: Century Gothic;
 	-fx-font-weight: Bold;
 }
 .tituloLabel{
 	-fx-text-fill: black;
-	-fx-font-size: 60;
+	-fx-font-size: 40;
 	-fx-font-family: Century Gothic;
 	-fx-font-weight: bold;
 }
@@ -32,7 +32,7 @@
 
 .preguntaLabel{
 	-fx-text-fill: black;
-	-fx-font-size: 35;
+	-fx-font-size: 20;
 	-fx-font-family: Century Gothic;
 	-fx-font-weight: Bold;
 }
@@ -65,7 +65,7 @@
     -fx-tree-table-color: #0163af;
     -fx-tree-table-rippler-color : rgba(255, 0, 0, 0.9);
     -fx-font-family: Century Gothic;
-    -fx-font-size: 22px;
+    -fx-font-size: 17px;
 }
 .tree-table-view:focused .tree-table-row-cell:selected {
     -fx-background-color: -fx-tree-table-color  ;

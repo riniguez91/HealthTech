@@ -292,13 +292,19 @@ public class controladorPaciente {
     private VBox datosVBox;
 
     @FXML
-    private VBox mensajeVBox;
+    private HBox generarTicketHBox;
 
     @FXML
-    private VBox cancelarBotonVBox;
+    private VBox seleccionaMensajeVBox;
 
     @FXML
-    private VBox generarTicketBotonVBox;
+    private JFXButton botonResponderTicket;
+
+    @FXML
+    private VBox respuestaTicketVBox;
+
+    @FXML
+    private VBox datosVBoxMensajes;
 
 
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
@@ -343,14 +349,14 @@ public class controladorPaciente {
         JFXTreeTableColumn<usuarioTTView, String> rolCol = new JFXTreeTableColumn<>("Rol");
 
         nombreCol.setCellValueFactory(param -> param.getValue().getValue().getName());
-        nombreCol.setMinWidth(159);
-        nombreCol.setMaxWidth(159);
+        nombreCol.setMinWidth(119);
+        nombreCol.setMaxWidth(119);
         apellidosCol.setCellValueFactory(param -> param.getValue().getValue().getSurname());
-        apellidosCol.setMinWidth(219);
-        apellidosCol.setMaxWidth(219);
+        apellidosCol.setMinWidth(189);
+        apellidosCol.setMaxWidth(189);
         rolCol.setCellValueFactory(param -> param.getValue().getValue().getRolUsuario());
-        rolCol.setMinWidth(189);
-        rolCol.setMaxWidth(189);
+        rolCol.setMinWidth(169);
+        rolCol.setMaxWidth(169);
 
         ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
         // Añadimos los usuarios
@@ -371,14 +377,14 @@ public class controladorPaciente {
         JFXTreeTableColumn<messageTTView, String> asuntoCol = new JFXTreeTableColumn<>("Asunto");
 
         idCol.setCellValueFactory(param -> param.getValue().getValue().getIdTicket());
-        idCol.setMinWidth(189);
-        idCol.setMaxWidth(189);
+        idCol.setMinWidth(129);
+        idCol.setMaxWidth(129);
         senderCol.setCellValueFactory(param -> param.getValue().getValue().getSender());
         senderCol.setMinWidth(189);
         senderCol.setMaxWidth(189);
         asuntoCol.setCellValueFactory(param -> param.getValue().getValue().getSubject());
-        asuntoCol.setMinWidth(189);
-        asuntoCol.setMaxWidth(189);
+        asuntoCol.setMinWidth(159);
+        asuntoCol.setMaxWidth(159);
 
         ObservableList<messageTTView> messages = FXCollections.observableArrayList();
         // Añadimos los mensajes
@@ -401,18 +407,17 @@ public class controladorPaciente {
         // Cambiamos los datos del usuario mientras se haya seleccionado uno
 	    if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) {
             // Comprobamos si el panel de datos de usuario y creacion de mensajes esta visible
-            if (!mensajeVBox.isVisible()){
+            if (!datosVBox.isVisible()){
                 // Hacemos el panel visible
                 imagenVBox.setVisible(true);
                 datosVBox.setVisible(true);
-                mensajeVBox.setVisible(true);
-                cancelarBotonVBox.setVisible(true);
-                generarTicketBotonVBox.setVisible(true);
+                generarTicketHBox.setVisible(true);
+
 
                 seleccionaUsuarioUsuarios.setVisible(false);
             }
             // Si esta visible actualizamos los datos del usuario seleccionado
-            if (mensajeVBox.isVisible()) {
+            if (datosVBox.isVisible()) {
                 labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
                 labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
                 labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
@@ -454,11 +459,11 @@ public class controladorPaciente {
         for (Message mensaje : modelo.getMessages()) {
             if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
                 labelMessages.add(new Label(mensaje.getMessage()));
-                labelMessages.get(i).setPrefWidth(1202);
+                labelMessages.get(i).setPrefWidth(872);
                 labelMessages.get(i).setWrapText(true);
-                labelMessages.get(i).setFont(new Font("Century Gothic", 20));
+                labelMessages.get(i).setFont(new Font("Century Gothic", 17));
                 if (!mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())) {
-                    labelMessages.get(i).setPadding(new Insets(10,13,0,310));
+                    labelMessages.get(i).setPadding(new Insets(10,13,0,150));
                     labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE,new CornerRadii(5,5,5,5,false), Insets.EMPTY)));
                 } else {
                     labelMessages.get(i).setPadding(new Insets(10,310,0,13));
@@ -475,13 +480,13 @@ public class controladorPaciente {
     void mostrarTicketMensajes(MouseEvent event) {
         if (treeTableViewMensajes.getSelectionModel().getSelectedItem() != null) { // Cambiamos los datos del mensaje
             // Comprobamos si el panel de mensajes esta visible
-            if (!mensajePaneMensajes.isVisible())
-                mensajePaneMensajes.setVisible(true);
+            if (!datosVBoxMensajes.isVisible())
+                datosVBoxMensajes.setVisible(true);
 
             // Si presiona un mensaje mientras esta respondiendo a un ticket, se cancela el ticket y se muestra el mensaje seleccionado
-            if (aPaneCreacionTicket.isVisible()) {
-                aPaneCreacionTicket.setVisible(false);
-                aPaneRespuestaTicket.setVisible(true);
+            if (respuestaTicketVBox.isVisible()) {
+                respuestaTicketVBox.setVisible(false);
+                scrollPaneMensajes.setVisible(true);
             }
 
 			// Borramos la conversacion en caso de que hubiese una seleccionada para poder introducir la siguiente
@@ -496,8 +501,8 @@ public class controladorPaciente {
 
 			// Cambiamos el scroll pane para mostrar la lista de mensajes correspondientes al ticket seleccionado
             changeTicketConversation();
-			seleccionaMensajeLabelMensajes.setVisible(false);
-		}
+            seleccionaMensajeVBox.setVisible(false);
+        }
     }
 
     @FXML
@@ -543,8 +548,9 @@ public class controladorPaciente {
 
     @FXML
     void responderTicketMensajes(ActionEvent event) {
-        aPaneRespuestaTicket.setVisible(false);
-	    aPaneCreacionTicket.setVisible(true);
+        scrollPaneMensajes.setVisible(false);
+        botonResponderTicket.setVisible(false);
+	    respuestaTicketVBox.setVisible(true);
     }
 
     @FXML
@@ -565,7 +571,7 @@ public class controladorPaciente {
             updatedMessages.add(msg);
             modelo.setMessages(updatedMessages);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
-            modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente");
+            modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente, por favor compruebelo pinchando donde le indica la tabla");
 
             // Borramos los campos para evitar confusion
             crearMensajeJFXTextAreaMensajes.clear();
@@ -584,8 +590,9 @@ public class controladorPaciente {
     
     @FXML
     void cancelarRespuestaTicket(ActionEvent event) {
-	    aPaneCreacionTicket.setVisible(false);
-	    aPaneRespuestaTicket.setVisible(true);
+	    respuestaTicketVBox.setVisible(false);
+	    scrollPaneMensajes.setVisible(true);
+	    botonResponderTicket.setVisible(true);
     }
 
     public void comprobarMensajesNuevos(){

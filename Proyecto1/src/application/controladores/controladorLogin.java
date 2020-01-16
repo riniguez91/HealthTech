@@ -31,7 +31,6 @@ import application.modelos.modelo;
 public class controladorLogin {
     private modelo modelo;
     private Usuario usuario;
-    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
