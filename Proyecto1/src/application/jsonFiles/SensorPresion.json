@@ -1,0 +1,12 @@
+[
+	{
+	"valor": 16,
+	"durmiendo": "durmiendo",
+	"despierto": "despierto"
+	},
+	{
+	"valor": 7,
+	"durmiendo": "Durmiendo",
+	"despierto": "durmiendo"
+	}
+]

@@ -193,6 +193,27 @@ public class modelo {
             }
         }
     }
+    
+    public void leerJsonPresion(String path){
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            File file = new File(path);
+            br = new BufferedReader(new FileReader(file));
+            Type tipoListaDatosPresion = new TypeToken<List<modSensorPresion>>(){}.getType();
+            setDatosPresion(gson.fromJson(br, tipoListaDatosPresion));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     public int countWordsString(String words){
         int count=0;

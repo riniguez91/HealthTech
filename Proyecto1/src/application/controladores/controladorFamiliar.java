@@ -30,6 +30,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
@@ -40,6 +41,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -69,6 +71,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         modelo.leerJsonTemperatura("./Proyecto1/src/application/jsonFiles/SensorTemp.json");
         modelo.leerJsonGas("./Proyecto1/src/application/jsonFiles/SensorGas.json");
         modelo.leerJsonMagnetico("./Proyecto1/src/application/jsonFiles/SensorMagnetico.json");
+        modelo.leerJsonPresion("./Proyecto1/src/application/jsonFiles/SensorPresion.json");
         // Datos pestaña inicio
         labelNombreInicio.setText(usuario.getName());
         labelApellidosInicio.setText(usuario.getSurname());
@@ -654,6 +657,9 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     @FXML private LineChart<Double, Double> graficaTemperatura;
     @FXML private StackedBarChart<Double, Double> graficaMagnetico;
     @FXML private StackedBarChart<Double, Double> graficaGas;
+    @FXML private PieChart graficaPresion;
+	private final ObservableList<PieChart.Data> detalles = FXCollections.observableArrayList();
+	@FXML private Label horasDurmiendo;
 	
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	@FXML
@@ -676,7 +682,11 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 	    seriesMagnetico.getData().add(new XYChart.Data(magnetico.getHora(), magnetico.getValor()));
 		}
     	graficaMagnetico.getData().addAll(seriesMagnetico);
-        
-    }
-    
+    	//Presion
+		for (modSensorPresion presion : modelo.getDatosPresion()) {
+	    	detalles.addAll(new PieChart.Data(presion.getDespierto(),presion.getValor()));
+	    	horasDurmiendo.setText(presion.getValor()+ "");
+		}  
+		graficaPresion.setData(detalles);
+    }   
 }
