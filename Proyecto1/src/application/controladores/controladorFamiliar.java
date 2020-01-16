@@ -29,9 +29,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -55,10 +54,10 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     private modelo modelo;
     private Usuario usuario;
     public List<Usuario> relatedUsers;
-    private Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    @SuppressWarnings("unused")
+	private Alert alert = new Alert(Alert.AlertType.INFORMATION);
     private List<Label> labelMessages = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
-    private List<Double> datosTemperatura = new ArrayList<>();
 
     public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -68,7 +67,8 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         this.usuario = usuario_;
         modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
         modelo.leerJsonTemperatura("./Proyecto1/src/application/jsonFiles/SensorTemp.json");
-
+        modelo.leerJsonGas("./Proyecto1/src/application/jsonFiles/SensorGas.json");
+        modelo.leerJsonMagnetico("./Proyecto1/src/application/jsonFiles/SensorMagnetico.json");
         // Datos pestaña inicio
         labelNombreInicio.setText(usuario.getName());
         labelApellidosInicio.setText(usuario.getSurname());
@@ -302,7 +302,8 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         }
     }
     
-    public void crearTreeTableViewMensajes() {
+    @SuppressWarnings("unchecked")
+	public void crearTreeTableViewMensajes() {
         JFXTreeTableColumn<messageTTView, String> idCol = new JFXTreeTableColumn<>("ID Ticket");
         JFXTreeTableColumn<messageTTView, String> senderCol = new JFXTreeTableColumn<>("De");
         JFXTreeTableColumn<messageTTView, String> asuntoCol = new JFXTreeTableColumn<>("Asunto");
@@ -333,6 +334,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         treeTableViewMensajes.setShowRoot(false);
     }
     
+	@SuppressWarnings("unchecked")
 	public void crearTreeTableViewUsuarios() {
         JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
         JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
@@ -619,20 +621,10 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     }
     
     // Variables y métodos de los sensores
-    @FXML 
-    private ChoiceBox choiceUsuario;  
-    
-    @FXML 
-    private Button verGraficasUsuarios;
-    
     @FXML
     private JFXTreeTableView<usuarioTTView> treeTableViewPacientes;
     
-    @FXML 
-    void verGraficaUsuariosOnAction(ActionEvent event) {
-    	
-    }
-    
+	@SuppressWarnings("unchecked")
 	public void crearTreeTableViewPacientes() {
         JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
         JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
@@ -659,21 +651,31 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         treeTableViewPacientes.setShowRoot(false);
     }
 	
-    @FXML public LineChart<Double, Double> graficaTemperatura;
-    @FXML private CategoryAxis x;
-    @FXML private NumberAxis y;
+    @FXML private LineChart<Double, Double> graficaTemperatura;
+    @FXML private StackedBarChart<Double, Double> graficaMagnetico;
+    @FXML private StackedBarChart<Double, Double> graficaGas;
 	
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({ "unchecked", "rawtypes" })
 	@FXML
     void mostrarDatosSensoresPacientes(MouseEvent event) {
-    	@SuppressWarnings("rawtypes")
-		XYChart.Series series = new XYChart.Series();
-    	
+    	// Temperatura
+		XYChart.Series seriesTemperatura = new XYChart.Series();
 		for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
-	    series.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
+	    seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
 		}
-    	
-    	graficaTemperatura.getData().addAll(series);
+    	graficaTemperatura.getData().addAll(seriesTemperatura);
+    	// Gas
+		XYChart.Series seriesGas = new XYChart.Series();
+		for (modSensorGas gas : modelo.getDatosGas()) {
+	    seriesGas.getData().add(new XYChart.Data(gas.getHora(), gas.getValor()));
+		}
+    	graficaGas.getData().addAll(seriesGas);
+    	// Magnetico
+		XYChart.Series seriesMagnetico = new XYChart.Series();
+		for (modSensorMagnetico magnetico : modelo.getDatosMagnetico()) {
+	    seriesMagnetico.getData().add(new XYChart.Data(magnetico.getHora(), magnetico.getValor()));
+		}
+    	graficaMagnetico.getData().addAll(seriesMagnetico);
         
     }
     

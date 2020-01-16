@@ -151,6 +151,48 @@ public class modelo {
             }
         }
     }
+    
+    public void leerJsonGas(String path){
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            File file = new File(path);
+            br = new BufferedReader(new FileReader(file));
+            Type tipoListaDatosGas = new TypeToken<List<modSensorGas>>(){}.getType();
+            setDatosGas(gson.fromJson(br, tipoListaDatosGas));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    public void leerJsonMagnetico(String path){
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            File file = new File(path);
+            br = new BufferedReader(new FileReader(file));
+            Type tipoListaDatosMagnetico = new TypeToken<List<modSensorMagnetico>>(){}.getType();
+            setDatosMagnetico(gson.fromJson(br, tipoListaDatosMagnetico));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     public int countWordsString(String words){
         int count=0;

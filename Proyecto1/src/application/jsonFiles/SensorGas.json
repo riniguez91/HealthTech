@@ -1,39 +1,53 @@
 [
 	{
-	"valor": "34522", 
+	"valor": 34522, 
 	"fecha": "12/12/2019",
-	"hora": "00:00:00",
-	"alerta": false 	//mayor que el umbral
+	"hora": "18:20:00"
 	},
 	{
-	"valor": "22342", 
+	"valor": 22342, 
 	"fecha": "12/12/2019",
-	"hora": "00:10:00", 
-	"alerta": false  //valor mayor que el umbral
+	"hora": "18:21:00" 
 	},
 	{
-	"valor": "763200", 
+	"valor": 763200, 
 	"fecha": "12/12/2019",
-	"hora": "00:20:00",
-	"alerta": true 	//mayor que el umbral
+	"hora": "18:22:00"
 	},
 	{
-	"valor": "234674", 
+	"valor": 234674, 
 	"fecha": "12/12/2019",
-	"hora": "00:30:00", 
-	"alerta": false  //valor mayor que el umbral
+	"hora": "18:23:00" 
 	},
 	{
-	"valor": "345222", 
+	"valor": 345222, 
 	"fecha": "12/12/2019",
-	"hora": "00:40:00",
-	"alerta": true 	//mayor que el umbral
+	"hora": "18:24:00"
 	},
 	{
-	"valor": "22342", 
+	"valor": 22342, 
 	"fecha": "12/12/2019",
-	"hora": "00:50:00", 
-	"alerta": false  //valor mayor que el umbral
+	"hora": "18:25:00" 
+	},	
+	{
+	"valor": 345222, 
+	"fecha": "12/12/2019",
+	"hora": "18:26:00"
+	},
+	{
+	"valor": 345222, 
+	"fecha": "12/12/2019",
+	"hora": "18:27:00"
+	},
+	{
+	"valor": 345222, 
+	"fecha": "12/12/2019",
+	"hora": "18:28:00"
+	},
+	{
+	"valor": 345222, 
+	"fecha": "12/12/2019",
+	"hora": "18:29:00"
 	}
 ]
 
