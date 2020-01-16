@@ -29,6 +29,10 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -54,6 +58,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
     private List<Label> labelMessages = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
+    private List<Double> datosTemperatura = new ArrayList<>();
 
     public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -62,6 +67,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         this.modelo = modelo_;
         this.usuario = usuario_;
         modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
+        modelo.leerJsonTemperatura("./Proyecto1/src/application/jsonFiles/SensorTemp.json");
 
         // Datos pestaña inicio
         labelNombreInicio.setText(usuario.getName());
@@ -84,6 +90,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();
         crearTreeTableViewMensajes();
+        crearTreeTableViewPacientes();
     }
   
     @FXML
@@ -609,6 +616,65 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     @FXML
     void actualizarUbicacion(ActionEvent event) {
     	
+    }
+    
+    // Variables y métodos de los sensores
+    @FXML 
+    private ChoiceBox choiceUsuario;  
+    
+    @FXML 
+    private Button verGraficasUsuarios;
+    
+    @FXML
+    private JFXTreeTableView<usuarioTTView> treeTableViewPacientes;
+    
+    @FXML 
+    void verGraficaUsuariosOnAction(ActionEvent event) {
+    	
+    }
+    
+	public void crearTreeTableViewPacientes() {
+        JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
+        JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
+
+        nombreCol.setCellValueFactory(param -> param.getValue().getValue().getName());
+        nombreCol.setMinWidth(189);
+        nombreCol.setMaxWidth(189);
+        apellidosCol.setCellValueFactory(param -> param.getValue().getValue().getSurname());
+        apellidosCol.setMinWidth(189);
+        apellidosCol.setMaxWidth(189);
+
+        ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
+        // Añadimos los usuarios
+        relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
+        for (Usuario user : relatedUsers) {
+        	if(user.getRol().equals("paciente")) {
+        		users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(),user.getBirthday(), user.getAge(), user.getImagenPerfil()));
+        	}
+        }
+
+        TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
+        treeTableViewPacientes.getColumns().setAll(nombreCol, apellidosCol);
+        treeTableViewPacientes.setRoot(root);
+        treeTableViewPacientes.setShowRoot(false);
+    }
+	
+    @FXML public LineChart<Double, Double> graficaTemperatura;
+    @FXML private CategoryAxis x;
+    @FXML private NumberAxis y;
+	
+    @SuppressWarnings("unchecked")
+	@FXML
+    void mostrarDatosSensoresPacientes(MouseEvent event) {
+    	@SuppressWarnings("rawtypes")
+		XYChart.Series series = new XYChart.Series();
+    	
+		for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
+	    series.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
+		}
+    	
+    	graficaTemperatura.getData().addAll(series);
+        
     }
     
 }

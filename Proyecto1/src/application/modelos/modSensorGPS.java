@@ -37,7 +37,6 @@ public class modSensorGPS {
 		this.hora = hora;
 	}
 	
-	
 	// Getters and setters
 	public double getLatitud() {
 		return latitud;

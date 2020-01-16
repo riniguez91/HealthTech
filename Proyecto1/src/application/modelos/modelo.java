@@ -47,6 +47,9 @@ public class modelo {
     public List<modSensorTemperatura> getDatosTemperatura(){
         return this.datosTemperatura;
     }
+    public void setDatosTemperatura(List<modSensorTemperatura> datosTemperatura){
+        this.datosTemperatura=datosTemperatura;
+    }
     
     // Sensor de gas
     private List<modSensorGas> datosGas;
@@ -115,6 +118,27 @@ public class modelo {
             br = new BufferedReader(new FileReader(file));
             Type tipoListaMensajes = new TypeToken<List<Message>>(){}.getType();
             setMessages(gson.fromJson(br, tipoListaMensajes));
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    public void leerJsonTemperatura(String path){
+        Gson gson = new Gson();
+        BufferedReader br = null;
+        try {
+            File file = new File(path);
+            br = new BufferedReader(new FileReader(file));
+            Type tipoListaDatosTemperatura = new TypeToken<List<modSensorTemperatura>>(){}.getType();
+            setDatosTemperatura(gson.fromJson(br, tipoListaDatosTemperatura));
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } finally {
