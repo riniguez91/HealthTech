@@ -127,7 +127,13 @@ public class controladorPaciente {
     private JFXButton preguntasfrecuentesbtn;
 
     @FXML
-    private Pane panePreguntasFrecuentes;
+    private VBox VBox_PreguntasFrecuentes;
+    
+    @FXML
+    private VBox VBox_Separator;
+    
+    @FXML
+    private VBox VBox_PregFrec;
 
     @FXML
     private JFXButton atrasbtn;
@@ -311,12 +317,17 @@ public class controladorPaciente {
 	@FXML
 	void verInicio(ActionEvent event) {
 		paneInicio.setVisible(true);
-		panePreguntasFrecuentes.setVisible(false);
+		VBox_PreguntasFrecuentes.setVisible(false);
+		VBox_PregFrec.setVisible(true);
+		VBox_Separator.setVisible(true);
 	}
 	@FXML
 	void verPreguntasFrecuentes(ActionEvent event) {
-		panePreguntasFrecuentes.setVisible(true);
+		//panePreguntasFrecuentes.setVisible(true);
 		paneInicio.setVisible(false);
+		VBox_PreguntasFrecuentes.setVisible(true);
+		VBox_PregFrec.setVisible(false);
+		VBox_Separator.setVisible(false);
 	}
 
     @FXML

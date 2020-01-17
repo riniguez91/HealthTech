@@ -17,7 +17,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -170,7 +169,39 @@
                               <AgendaView fx:id="prueba" prefHeight="336.0" prefWidth="403.0" />
                            </children>
                         </VBox>
-                        <VBox layoutX="1760.0" prefHeight="36.0" prefWidth="161.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                        <VBox fx:id="VBox_Separator" alignment="CENTER" fillWidth="false" layoutX="527.0" layoutY="60.0" prefHeight="27.0" prefWidth="1387.0" AnchorPane.topAnchor="60.0">
+                           <children>
+                                        <Separator prefHeight="27.0" prefWidth="1297.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin></Separator>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="VBox_PreguntasFrecuentes" prefHeight="1047.0" prefWidth="1360.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="560.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label prefHeight="71.0" prefWidth="760.0" text="Preguntas Frecuentes">
+                                 <font>
+                                    <Font name="Century Gothic Bold" size="69.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="atrasbtn" onAction="#verInicio" prefHeight="44.0" prefWidth="478.0" styleClass="botones" stylesheets="@../application.css" text="Atrás" />
+                              <Label prefHeight="52.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="1. ¿Cómo puedo enviar un mensaje a mi médico?" />
+                              <Label prefHeight="73.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label prefHeight="39.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" wrapText="true" />
+                              <Label prefHeight="38.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña de &quot;Inicio&quot; en la parte inferior izquierda, hay que pulsar el botón&quot;Cerrar Sesión&quot;." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label prefHeight="44.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="3. ¿Puedo buscar un Usuario por su nombre o apellido?" wrapText="true" />
+                              <Label prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: Sí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label prefHeight="41.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="4. ¿Dónde puedo ver todos mis mensajes?" wrapText="true" />
+                              <Label prefHeight="47.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label prefHeight="50.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="5. Ventajas en la lista de Usuarios." wrapText="true" />
+                              <Label prefHeight="50.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="En la lista de usuarios, se pueden ordenar alfabéticamente tanto los nombres, los apellidos y los roles." wrapText="true" />
+                              <Label prefHeight="37.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="6. ¿Dónde puedo ver mis datos personales?" wrapText="true" />
+                              <Label prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Inicio&quot; debajo de la foto de perfil se encuentran todo sus datos personales. " wrapText="true" />
+                              <Label prefHeight="36.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="7. ¿Cómo puedo buscar a un usuario?" wrapText="true" />
+                              <Label prefHeight="63.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Usuarios&quot; una vez seleccionado el usuario de la lista, se mostrará a la derecha de la pantalla toda la información de los datos relativos." textAlignment="JUSTIFY" wrapText="true" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="VBox_PregFrec" layoutX="1760.0" prefHeight="36.0" prefWidth="161.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <JFXButton fx:id="preguntasfrecuentesbtn" minHeight="-Infinity" minWidth="-Infinity" onAction="#verPreguntasFrecuentes" prefHeight="37.0" prefWidth="161.0" styleClass="botones" stylesheets="@../application.css" text="Preguntas Frecuentes" textFill="WHITE">
                                  <font>
@@ -179,38 +210,6 @@
                               </JFXButton>
                            </children>
                         </VBox>
-                        <VBox alignment="CENTER" fillWidth="false" layoutX="527.0" layoutY="60.0" prefHeight="27.0" prefWidth="1387.0" AnchorPane.topAnchor="60.0">
-                           <children>
-                                        <Separator prefHeight="27.0" prefWidth="1297.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin></Separator>
-                           </children>
-                        </VBox>
-                        <Pane fx:id="panePreguntasFrecuentes" prefHeight="1020.0" prefWidth="1920.0" visible="false">
-                           <children>
-                              <Label layoutX="21.0" layoutY="9.0" prefHeight="109.0" prefWidth="742.0" text="Preguntas Frecuentes">
-                                 <font>
-                                    <Font name="Century Gothic Bold" size="69.0" />
-                                 </font>
-                              </Label>
-                              <JFXButton fx:id="atrasbtn" layoutX="442.0" layoutY="949.0" onAction="#verInicio" prefHeight="60.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Atrás" />
-                              <Label layoutX="31.0" layoutY="121.0" prefHeight="52.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="1. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="31.0" layoutY="181.0" prefHeight="73.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="269.0" prefHeight="39.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="326.0" prefHeight="38.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña de &quot;Inicio&quot; en la parte inferior izquierda, hay que pulsar el botón&quot;Cerrar Sesión&quot;." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="369.0" prefHeight="44.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="3. ¿Puedo buscar un Usuario por su nombre o apellido?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="421.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: Sí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="471.0" prefHeight="41.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="4. ¿Dónde puedo ver todos mis mensajes?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="526.0" prefHeight="47.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="571.0" prefHeight="50.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="5. Ventajas en la lista de Usuarios." wrapText="true" />
-                              <Label layoutX="31.0" layoutY="623.0" prefHeight="50.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="En la lista de usuarios, se pueden ordenar alfabéticamente tanto los nombres, los apellidos y los roles." wrapText="true" />
-                              <Label layoutX="31.0" layoutY="671.0" prefHeight="37.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="6. ¿Dónde puedo ver mis datos personales?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="725.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Inicio&quot; debajo de la foto de perfil se encuentran todo sus datos personales. " wrapText="true" />
-                              <Label layoutX="31.0" layoutY="771.0" prefHeight="36.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="7. ¿Cómo puedo buscar a un usuario?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="825.0" prefHeight="63.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Usuarios&quot; una vez seleccionado el usuario de la lista, se mostrará a la derecha de la pantalla toda la información de los datos relativos." textAlignment="JUSTIFY" wrapText="true" />
-                           </children>
-                        </Pane>
                             </children></AnchorPane>
                     </content>
                 </Tab>
