@@ -533,24 +533,6 @@ public class controladorMedico implements Initializable, MapComponentInitialized
 	    aPaneRespuestaTicket.setVisible(true);
     }
     
-    @FXML
-    void AbrirMapa(MouseEvent event) throws IOException {
-    	try{
-    		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/application/vistas/vistaMapa.fxml"));
-    		Parent root1 = (Parent)fxmlLoader.load();
-    		//Nueva ventana vacia
-    		Stage stage = new Stage();
-    		//Metemos al stage la escena leida 
-    		stage.setScene(new Scene(root1));
-    		//Muestra el stage
-    		stage.setTitle("Localización");
-    		stage.show();
-    		 
-    		} catch (Exception e) {
-    			e.printStackTrace();
-		}
-    }
-    
     // Variables y métodos del GoogleMaps
     private GoogleMap map;
     
