@@ -13,6 +13,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -303,7 +304,7 @@
                      		<children>
                         		<Pane layoutX="2.0" prefHeight="1042.0" prefWidth="638.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <JFXTreeTableView fx:id="treeTableViewPacientes" layoutX="9.0" layoutY="39.0" onMouseClicked="#mostrarDatosSensoresPacientes" prefHeight="363.0" prefWidth="598.0" />
+                              <JFXTreeTableView fx:id="treeTableViewPacientes" layoutX="11.0" layoutY="49.0" onMouseClicked="#mostrarDatosSensoresPacientes" prefHeight="363.0" prefWidth="598.0" />
                               <GoogleMapView fx:id="mapView" layoutX="16.0" layoutY="539.0" prefHeight="478.0" prefWidth="607.0">
                                  <children>
                                     <TextField fx:id="addressTextField" layoutX="200.0" layoutY="15.0" onAction="#addressTextFieldAction" prefHeight="41.0" prefWidth="151.0" promptText="Introduzca dirección:" />
@@ -311,6 +312,12 @@
                                  </children>
                               </GoogleMapView>
                               <Label layoutX="25.0" layoutY="9.0" prefHeight="49.0" prefWidth="343.0" stylesheets="@../application.css" text="Selecciona un paciente:">
+                                 <font>
+                                    <Font name="Arial Bold" size="19.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="calendarioSensores" layoutX="201.0" layoutY="435.0" onAction="#mostrarSensoresDia" prefHeight="51.0" prefWidth="293.0" />
+                              <Label layoutX="29.0" layoutY="433.0" prefHeight="49.0" prefWidth="189.0" stylesheets="@../application.css" text="Selecciona un dia:">
                                  <font>
                                     <Font name="Arial Bold" size="19.0" />
                                  </font>

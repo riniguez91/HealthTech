@@ -660,6 +660,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     @FXML private PieChart graficaPresion;
 	private final ObservableList<PieChart.Data> detalles = FXCollections.observableArrayList();
 	@FXML private Label horasDurmiendo;
+	@FXML private DatePicker calendarioSensores;
 	
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	@FXML
@@ -688,5 +689,10 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 	    	horasDurmiendo.setText(presion.getValor()+ "");
 		}  
 		graficaPresion.setData(detalles);
-    }   
+    }  
+    
+    @FXML
+    void mostrarSensoresDia(ActionEvent event) {
+    	// A rellenar
+    }
 }
