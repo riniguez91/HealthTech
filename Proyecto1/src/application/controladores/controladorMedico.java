@@ -28,6 +28,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -43,10 +44,11 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.converter.LocalDateStringConverter;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -55,7 +57,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
-public class controladorMedico {
+public class controladorMedico implements Initializable, MapComponentInitializedListener {
 	
     private modelo modelo;
     private Usuario usuario;
@@ -100,7 +102,7 @@ public class controladorMedico {
         // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();
         crearTreeTableViewMensajes();
-        //crearTreeTableViewPacientes();
+        crearTreeTableViewPacientes();
         
         // Comprobamos mensajes nuevos
         comprobarMensajesNuevos();
@@ -666,5 +668,181 @@ public class controladorMedico {
             labelMessagesInicio.get(0).setFont(new Font("Century Gothic", 26));
             vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(0));
         }
+    }
+    
+    // Variables y métodos del GoogleMaps
+    private GoogleMap map;
+    
+    private GeocodingService geocodingService;
+
+    private StringProperty address = new SimpleStringProperty();
+    
+    @FXML
+    private GoogleMapView mapView;
+    
+    @FXML
+    private TextField addressTextField;
+    
+    @FXML
+    private JFXButton buttonActualizarUbicacion;
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+    	mapView.setKey("AIzaSyABUQnPXeldroN__fhm1LDiZh5sUtkSMBM"); // No usar 
+        mapView.addMapInializedListener(this);
+        address.bind(addressTextField.textProperty());
+    } 
+    
+	@Override
+	public void mapInitialized() {
+	       geocodingService = new GeocodingService();
+	        MapOptions mapOptions = new MapOptions();
+	        
+	        mapOptions.center(new LatLong(40.371830555556, -3.9189527777778))
+	                .mapType(MapTypeIdEnum.ROADMAP)
+	                .overviewMapControl(false)
+	                .panControl(false)
+	                .rotateControl(false)
+	                .scaleControl(false)
+	                .streetViewControl(false)
+	                .zoomControl(false)
+	                .zoom(16);
+
+	        map = mapView.createMap(mapOptions);
+	        
+	        //Añadir un Marker al mapa
+	        MarkerOptions markerOptions = new MarkerOptions();
+
+	        markerOptions.position(new LatLong(40.371830555556, -3.9189527777778) )
+	                    .visible(Boolean.TRUE)
+	                    .title("My Marker");
+
+	        Marker marker = new Marker( markerOptions );
+
+	        map.addMarker(marker);
+	}
+    
+    @FXML
+    public void addressTextFieldAction(ActionEvent event) {
+        geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
+            
+            LatLong latLong = null;
+            
+            if( status == GeocoderStatus.ZERO_RESULTS) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No se encontraron direcciones coincidentes");
+                alert.show();
+                return;
+            } else if( results.length > 1 ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiples resultados encontrados, mostrando el primero.");
+                alert.show();
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            } else {
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            }
+            
+            map.setCenter(latLong);
+
+        });
+    }
+    
+    @FXML
+    void actualizarUbicacion(ActionEvent event) {
+    	
+    }
+    
+    // Variables y métodos de los sensores
+    @FXML
+    private JFXTreeTableView<usuarioTTView> treeTableViewPacientes;
+    
+	@SuppressWarnings("unchecked")
+	public void crearTreeTableViewPacientes() {
+        JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
+        JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
+
+        nombreCol.setCellValueFactory(param -> param.getValue().getValue().getName());
+        nombreCol.setMinWidth(189);
+        nombreCol.setMaxWidth(189);
+        apellidosCol.setCellValueFactory(param -> param.getValue().getValue().getSurname());
+        apellidosCol.setMinWidth(189);
+        apellidosCol.setMaxWidth(189);
+
+        ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
+        // Añadimos los usuarios
+        relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
+        for (Usuario user : relatedUsers) {
+        	if(user.getRol().equals("paciente")) {
+        		users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(),user.getBirthday(), user.getAge(), user.getImagenPerfil()));
+        	}
+        }
+
+        TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
+        treeTableViewPacientes.getColumns().setAll(nombreCol, apellidosCol);
+        treeTableViewPacientes.setRoot(root);
+        treeTableViewPacientes.setShowRoot(false);
+    }
+	
+    @FXML private LineChart<Double, Double> graficaTemperatura;
+    @FXML private StackedBarChart<Double, Double> graficaMagnetico;
+    @FXML private StackedBarChart<Double, Double> graficaGas;
+    @FXML private PieChart graficaPresion;
+	private final ObservableList<PieChart.Data> detalles = FXCollections.observableArrayList();
+	@FXML private Label horasDurmiendo;
+	@FXML private DatePicker calendarioSensores;
+	
+	@FXML
+    void mostrarDatosSensoresPacientes(MouseEvent event) throws ParseException {    	
+    	calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
+    }  
+    
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@FXML
+    void mostrarSensoresDia(ActionEvent event) {
+    	//Limpiamos todas las gráficas
+    	graficaTemperatura.getData().clear();
+    	graficaMagnetico.getData().clear();
+    	graficaGas.getData().clear();
+    	graficaPresion.getData().clear();
+    	detalles.clear();
+    	
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Formato que le daremos a la fecha
+    	calendarioSensores.setConverter(new LocalDateStringConverter(formatter, null)); // Convertimos la fecha del objetos LocalDate con nuestro formato
+
+    	// Temperatura
+		XYChart.Series seriesTemperatura = new XYChart.Series();
+		for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
+			if ((formatter.format(calendarioSensores.getValue()).compareTo(temperatura.getFecha())) == 0) {
+				seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
+			}
+		}
+    	graficaTemperatura.getData().addAll(seriesTemperatura);
+    	
+    	// Magnetico
+		XYChart.Series seriesMagnetico = new XYChart.Series();
+		for (modSensorMagnetico magnetico : modelo.getDatosMagnetico()) {
+			if ((formatter.format(calendarioSensores.getValue()).compareTo(magnetico.getFecha())) == 0) {
+				seriesMagnetico.getData().add(new XYChart.Data(magnetico.getHora(), magnetico.getValor()));
+			}
+		}
+    	graficaMagnetico.getData().addAll(seriesMagnetico);
+    	
+    	// Gas
+		XYChart.Series seriesGas = new XYChart.Series();
+		for (modSensorGas gas : modelo.getDatosGas()) {
+			if ((formatter.format(calendarioSensores.getValue()).compareTo(gas.getFecha())) == 0) {
+			    seriesGas.getData().add(new XYChart.Data(gas.getHora(), gas.getValor()));
+			}
+		}
+    	graficaGas.getData().addAll(seriesGas);
+    	
+    	//Presion
+		for (modSensorPresion presion : modelo.getDatosPresion()) {		
+			if ((formatter.format(calendarioSensores.getValue()).compareTo(presion.getFecha())) == 0) {
+				detalles.addAll(new PieChart.Data(presion.getDurmiendo(),presion.getValor()));
+				detalles.addAll(new PieChart.Data(presion.getDespierto(),(24-presion.getValor())));
+				graficaPresion.setData(detalles);
+				graficaPresion.setLegendSide(Side.LEFT);
+				horasDurmiendo.setText(presion.getValor()+ ""); 	
+			}	
+		}  
     }
 }

@@ -233,6 +233,10 @@ public class controladorLogin {
         }
         slideshow.setCycleCount(Timeline.INDEFINITE);
         slideshow.play();
+        fotolgn_1.fitWidthProperty().bind(rootp.widthProperty());
+        fotolgn_2.fitHeightProperty().bind(rootp.heightProperty());
+        fotolgn_3.fitWidthProperty().bind(rootp.widthProperty());
+        
     }
 
     public void login() throws IOException {

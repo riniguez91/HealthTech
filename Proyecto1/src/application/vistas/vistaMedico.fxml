@@ -7,11 +7,20 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.lynden.gmapsfx.GoogleMapView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -403,6 +412,102 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
+            <Tab fx:id="tabRegistrosMedico" text="                         Registros                         ">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="1046.0" prefWidth="1930.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox prefHeight="1046.0" prefWidth="640.0">
+                                 <children>
+                                    <Label prefHeight="49.0" prefWidth="224.0" stylesheets="@../../../../../../../Desktop/proyecto%20copia/Proyecto1/src/application/application.css" text="Selecciona un paciente:">
+                                       <font>
+                                          <Font name="Arial Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTreeTableView fx:id="treeTableViewPacientes" onMouseClicked="#mostrarDatosSensoresPacientes" prefHeight="383.0" prefWidth="640.0" />
+                                    <HBox prefHeight="55.0" prefWidth="640.0">
+                                       <children>
+                                          <Label prefHeight="51.0" prefWidth="175.0" stylesheets="@../../../../../../../Desktop/proyecto%20copia/Proyecto1/src/application/application.css" text="Selecciona un dia:">
+                                             <font>
+                                                <Font name="Arial Bold" size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <DatePicker fx:id="calendarioSensores" onAction="#mostrarSensoresDia" prefHeight="51.0" prefWidth="293.0" />
+                                       </children>
+                                    </HBox>
+                                    <Label prefHeight="23.0" prefWidth="344.0" text="Solo hay datos los dias 19,20,21 de enero de 2020" />
+                                    <Separator prefWidth="200.0" />
+                                    <GoogleMapView fx:id="mapView" prefHeight="555.0" prefWidth="640.0">
+                                       <children>
+                                          <TextField fx:id="addressTextField" layoutX="200.0" layoutY="15.0" onAction="#addressTextFieldAction" prefHeight="41.0" prefWidth="151.0" promptText="Introduzca dirección:" />
+                                          <JFXButton fx:id="buttonActualizarUbicacion" layoutX="390.0" layoutY="15.0" onAction="#actualizarUbicacion" prefHeight="31.0" prefWidth="165.0" styleClass="botones" text="Actualizar ubicación" />
+                                       </children>
+                                    </GoogleMapView>
+                                 </children>
+                              </VBox>
+                              <Separator orientation="VERTICAL" prefHeight="1080.0" />
+                              <VBox prefHeight="1050.0" prefWidth="640.0">
+                                 <children>
+                                    <LineChart fx:id="graficaTemperatura" prefHeight="640.0" prefWidth="640.0" title="Sensor de temperatura">
+                                       <xAxis>
+                                          <CategoryAxis label="Tiempo" prefHeight="43.0" prefWidth="504.0" side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis label="Temperatura" side="LEFT" />
+                                       </yAxis>
+                                    </LineChart>
+                                    <Separator prefWidth="200.0" />
+                                    <StackedBarChart fx:id="graficaMagnetico" prefHeight="640.0" prefWidth="640.0" title="Sensor magnetico">
+                                       <xAxis>
+                                          <CategoryAxis label="Tiempo" side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis label="Abierto/Cerrado" side="LEFT" />
+                                       </yAxis>
+                                    </StackedBarChart>
+                                 </children>
+                              </VBox>
+                              <Separator orientation="VERTICAL" prefHeight="1080.0" />
+                              <VBox prefHeight="1050.0" prefWidth="640.0">
+                                 <children>
+                                    <PieChart fx:id="graficaPresion" prefHeight="615.0" prefWidth="625.0" title="Horas de sueño" />
+                                    <HBox prefHeight="50.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="35.0" prefWidth="206.0" text="Horas durmiendo:">
+                                             <effect>
+                                                <Blend />
+                                             </effect>
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="horasDurmiendo" prefHeight="35.0" prefWidth="74.0">
+                                             <effect>
+                                                <Blend />
+                                             </effect>
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <StackedBarChart fx:id="graficaGas" prefHeight="615.0" prefWidth="595.0" title="Sensor de gas">
+                                       <xAxis>
+                                          <CategoryAxis label="Tiempo" side="BOTTOM" />
+                                       </xAxis>
+                                       <yAxis>
+                                          <NumberAxis label="Gas" side="LEFT" />
+                                       </yAxis>
+                                    </StackedBarChart>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
                 <Tab fx:id="tabMensajesPaciente" text="                         Mensajes                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">

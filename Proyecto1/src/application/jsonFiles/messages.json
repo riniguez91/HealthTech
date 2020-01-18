@@ -70,5 +70,13 @@
     "message": "Genial!, no te preocupes por la cita, dime donde es la cita, que te recojo y te acompaño, asi volvemos en coche que tardamos menos y no te esfuerazs tanto.",
     "idTicket": "f4344a28-6562-4efb-a566-6947cc3e26d8",
     "read": false
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Sara Gómez Hernández",
+    "subject": "Horario de la siguiente consulta",
+    "message": "hola",
+    "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
+    "read": false
   }
 ]
