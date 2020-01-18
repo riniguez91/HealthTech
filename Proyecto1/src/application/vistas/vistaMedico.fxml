@@ -1,53 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.calendarfx.view.AgendaView?>
 <?import com.calendarfx.view.page.DayPage?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import com.lynden.gmapsfx.GoogleMapView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorMedico">
     <children>
-        <JFXTabPane fx:id="tabPaneMedico" prefHeight="1080.0" prefWidth="1920.0" styleClass="jfx-tab-pane" stylesheets="@../application.css">
-            <tabs>
-                <Tab fx:id="tabInicioMedico" text="                         Inicio                         ">
+      <JFXTabPane fx:id="tabPanePaciente" prefHeight="1080.0" prefWidth="1920.0" styleClass="jfx-tab-pane" stylesheets="@../application.css" tabMaxHeight="30.0" tabMaxWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+              	<Tab fx:id="tabInicioPaciente" text="                         Inicio                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
                             <children>
-                                <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="1051.0" prefWidth="640.0" style="-fx-background-color: #34394c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
+                                <VBox alignment="CENTER" fillWidth="false" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1067.0" prefWidth="560.0" spacing="1.0" style="-fx-background-color: #34394c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-17.0">
                                     <children>
-                                        <ImageView fx:id="userImageViewInicio" fitHeight="407.0" fitWidth="550.0" focusTraversable="true" nodeOrientation="INHERIT">
+                                        <ImageView fx:id="userImageViewInicio" fitHeight="306.0" fitWidth="477.0" focusTraversable="true" nodeOrientation="INHERIT">
                                             <VBox.margin>
-                                                <Insets left="30.0" top="10.0" />
+                                                <Insets bottom="30.0" />
                                             </VBox.margin>
                                         </ImageView>
                                         <Separator prefHeight="65.0" prefWidth="640.0" styleClass="separator-white" stylesheets="@../application.css">
                                  <padding>
                                     <Insets left="25.0" right="25.0" />
                                  </padding></Separator>
-                                        <GridPane prefHeight="400.0" prefWidth="640.0">
+                                        <GridPane prefHeight="418.0" prefWidth="640.0">
                                             <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="538.0" minWidth="10.0" prefWidth="322.66668701171875" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="348.0" minWidth="10.0" prefWidth="317.33331298828125" />
@@ -59,6 +52,8 @@
                                                 <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="59.33331298828125" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="100.66668701171875" minHeight="0.0" prefHeight="65.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="67.0" minHeight="0.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
                                                 <Label fx:id="Nombre" prefHeight="30.0" prefWidth="291.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre:">
@@ -96,338 +91,456 @@
                                           <Insets left="20.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="Rol3" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Edad:" GridPane.rowIndex="5">
+                                    <Label fx:id="Edad" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Edad:" GridPane.rowIndex="5">
                                        <padding>
                                           <Insets left="20.0" />
                                        </padding>
                                     </Label>
                                     <Label fx:id="labelFechaNacimientoInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                     <Label fx:id="labelEdadInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label fx:id="DNI" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="DNI:" GridPane.rowIndex="6">
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="Telefono" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Teléfono:" GridPane.rowIndex="7">
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="labelDNIInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <Label fx:id="labelTelefonoInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                             </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
                                         </GridPane>
                               <Separator prefHeight="65.0" prefWidth="640.0" styleClass="separator-white">
                                  <padding>
-                                    <Insets left="25.0" right="25.0" />
+                                    <Insets bottom="10.0" left="25.0" right="25.0" />
                                  </padding>
                               </Separator>
-                              <JFXButton fx:id="cerrarSesionBtn" alignment="CENTER" onAction="#cerrarSesion" prefHeight="60.0" prefWidth="550.0" style="-fx-border-color: white;" text="Cerrar Sesión" textAlignment="CENTER" textFill="WHITE">
+                              <JFXButton fx:id="cerrarSesionBtn" alignment="CENTER" contentDisplay="CENTER" onAction="#cerrarSesion" prefHeight="20.0" prefWidth="545.0" style="-fx-border-color: white;" text="Cerrar Sesión" textAlignment="CENTER" textFill="WHITE">
                                  <VBox.margin>
-                                    <Insets bottom="60.0" left="40.0" top="50.0" />
+                                    <Insets />
                                  </VBox.margin>
                                  <font>
-                                    <Font name="Century Gothic" size="31.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </JFXButton>
+                              <Separator prefWidth="200.0" visible="false">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Separator>
                                     </children></VBox>
-                                  <Separator layoutX="649.0" layoutY="96.0" prefHeight="27.0" prefWidth="1297.0" />
-                                <Pane fx:id="PaneInicio" layoutX="640.0" prefHeight="1050.0" prefWidth="1294.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <children>
-                                        <Label layoutX="19.0" layoutY="1.0" prefHeight="106.0" prefWidth="709.0" text="RECORDATORIOS">
-                                            <padding>
-                                                <Insets left="20.0" />
-                                            </padding>
-                                 <font>
-                                    <Font name="Century Gothic Bold" size="83.0" />
-                                 </font>
-                                        </Label>
-                                        <Label layoutX="19.0" layoutY="122.0" prefHeight="90.0" prefWidth="1243.0" style="-fx-background-color: white;" styleClass="tituloLabel" stylesheets="@../application.css" text="Comunicación">
-                                 <padding>
-                                    <Insets left="1.0" />
-                                 </padding>
-                                        </Label>
-                              <JFXTextArea fx:id="comunicacionJFXTextArea" layoutX="19.0" layoutY="212.0" prefHeight="123.0" prefWidth="1243.0" promptText="Mensajes nuevos:" style="-fx-background-color: white;">
-                                 <font>
-                                    <Font name="Century Gothic" size="22.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets left="20.0" />
-                                 </padding>
-                              </JFXTextArea>
-                                        <Label layoutX="19.0" layoutY="378.0" prefHeight="90.0" prefWidth="1243.0" style="-fx-background-color: white;" styleClass="tituloLabel" stylesheets="@../application.css" text="Calendario">
-                                 <padding>
-                                    <Insets left="1.0" />
-                                 </padding>
-                                        </Label>
-                              <JFXTextArea fx:id="calendarioJFXTextArea" layoutX="19.0" layoutY="468.0" prefHeight="129.0" prefWidth="1243.0" promptText="La proxima cita es el dia:" style="-fx-background-color: white;">
-                                 <font>
-                                    <Font name="Century Gothic" size="22.0" />
-                                 </font>
-                                 <padding>
-                                    <Insets left="20.0" />
-                                 </padding>
-                              </JFXTextArea>
-                              <JFXButton fx:id="preguntasfrecuentesbtn" layoutX="1041.0" layoutY="-1.0" onAction="#verPreguntasFrecuentes" prefHeight="31.0" prefWidth="240.0" styleClass="botones" stylesheets="@../application.css" text="Preguntas Frecuentes" textFill="WHITE">
-                                 <font>
-                                    <Font name="Century Gothic" size="15.0" />
-                                 </font></JFXButton>
-                                    </children></Pane>
-                        <Pane fx:id="PanePreguntasFrecuentes" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox fx:id="paneInicio" fillWidth="false" layoutX="560.0" prefHeight="1054.0" prefWidth="1335.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="560.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label layoutX="21.0" layoutY="9.0" prefHeight="109.0" prefWidth="742.0" text="Preguntas Frecuentes">
+                                        <Label prefHeight="84.0" prefWidth="453.0" text="RECORDATORIOS">
+                                 <font>
+                                    <Font size="56.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                        </Label>
+                                        <Label prefHeight="58.0" prefWidth="1337.0" style="-fx-background-color: white;" styleClass="tituloLabel" stylesheets="@../application.css" text="Comunicación">
+                                 <padding>
+                                    <Insets left="1.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                        </Label>
+                              <ScrollPane fx:id="scrollPaneMensajesInicio" prefHeight="300.0" prefWidth="1335.0">
+                                 <content>
+                                    <AnchorPane fx:id="conversacionMensajesInicio" prefHeight="300.0" prefWidth="1335.0">
+                                       <children>
+                                          <VBox fx:id="vboxConversacionMensajesInicio" alignment="CENTER" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                                        <Label prefHeight="58.0" prefWidth="1335.0" style="-fx-background-color: white;" styleClass="tituloLabel" stylesheets="@../application.css" text="Calendario">
+                                 <padding>
+                                    <Insets left="1.0" />
+                                 </padding>
+                                        </Label>
+                              <AgendaView fx:id="prueba" prefHeight="336.0" prefWidth="403.0" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="VBox_Separator" alignment="CENTER" fillWidth="false" layoutX="527.0" layoutY="60.0" prefHeight="27.0" prefWidth="1387.0" AnchorPane.topAnchor="60.0">
+                           <children>
+                                        <Separator prefHeight="27.0" prefWidth="1297.0">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin></Separator>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="VBox_PreguntasFrecuentes" prefHeight="1047.0" prefWidth="1360.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="560.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label prefHeight="71.0" prefWidth="760.0" text="Preguntas Frecuentes">
                                  <font>
                                     <Font name="Century Gothic Bold" size="69.0" />
-                                 </font></Label>
-                              <JFXButton fx:id="atrasbtn" layoutX="442.0" layoutY="949.0" onAction="#verInicio" prefHeight="60.0" prefWidth="550.0" styleClass="botones" stylesheets="@../application.css" text="Atrás" />
-                              <Label layoutX="31.0" layoutY="121.0" prefHeight="52.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="1. ¿Cómo puedo enviar un mensaje a mi médico?" />
-                              <Label layoutX="31.0" layoutY="170.0" prefHeight="87.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="269.0" prefHeight="39.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="313.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña de &quot;Inicio&quot; en la parte inferior izquierda, hay que pulsar el botón&quot;Cerrar Sesión&quot;." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="369.0" prefHeight="44.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="3. ¿Puedo buscar un Usuario por su nombre o apellido?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="413.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: Sí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="471.0" prefHeight="41.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="4. ¿Dónde puedo ver todos mis mensajes?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="514.0" prefHeight="47.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos." textAlignment="JUSTIFY" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="571.0" prefHeight="50.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="5. Ventajas en la lista de Usuarios." wrapText="true" />
-                              <Label layoutX="31.0" layoutY="611.0" prefHeight="50.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="En la lista de usuarios, se pueden ordenar alfabéticamente tanto los nombres, los apellidos y los roles." wrapText="true" />
-                              <Label layoutX="31.0" layoutY="671.0" prefHeight="37.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="6. ¿Dónde puedo ver mis datos personales?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="715.0" prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Inicio&quot; debajo de la foto de perfil se encuentran todo sus datos personales. " wrapText="true" />
-                              <Label layoutX="31.0" layoutY="771.0" prefHeight="36.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="7. ¿Cómo puedo buscar a un usuario?" wrapText="true" />
-                              <Label layoutX="31.0" layoutY="815.0" prefHeight="63.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Usuarios&quot; una vez seleccionado el usuario de la lista, se mostrará a la derecha de la pantalla toda la información de los datos relativos." textAlignment="JUSTIFY" wrapText="true" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="atrasbtn" onAction="#verInicio" prefHeight="44.0" prefWidth="478.0" styleClass="botones" stylesheets="@../application.css" text="Atrás" />
+                              <Label prefHeight="52.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="1. ¿Cómo puedo enviar un mensaje a mi médico?" />
+                              <Label prefHeight="73.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; en la parte inferior izquierda hay que pulsar el botón &quot;Crear Nuevo Ticket&quot; ahi te aparece para introducir el destinatario, asunto y mensaje." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label prefHeight="39.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="2. ¿Dónde puedo cerrar sesión?" wrapText="true" />
+                              <Label prefHeight="38.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña de &quot;Inicio&quot; en la parte inferior izquierda, hay que pulsar el botón&quot;Cerrar Sesión&quot;." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label prefHeight="44.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="3. ¿Puedo buscar un Usuario por su nombre o apellido?" wrapText="true" />
+                              <Label prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: Sí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label prefHeight="41.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="4. ¿Dónde puedo ver todos mis mensajes?" wrapText="true" />
+                              <Label prefHeight="47.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Mensajes&quot; sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos." textAlignment="JUSTIFY" wrapText="true" />
+                              <Label prefHeight="50.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="5. Ventajas en la lista de Usuarios." wrapText="true" />
+                              <Label prefHeight="50.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="En la lista de usuarios, se pueden ordenar alfabéticamente tanto los nombres, los apellidos y los roles." wrapText="true" />
+                              <Label prefHeight="37.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="6. ¿Dónde puedo ver mis datos personales?" wrapText="true" />
+                              <Label prefHeight="46.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Inicio&quot; debajo de la foto de perfil se encuentran todo sus datos personales. " wrapText="true" />
+                              <Label prefHeight="36.0" prefWidth="1230.0" styleClass="preguntaLabel" stylesheets="@../application.css" text="7. ¿Cómo puedo buscar a un usuario?" wrapText="true" />
+                              <Label prefHeight="63.0" prefWidth="1230.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" text="Respuesta: En la pestaña &quot;Usuarios&quot; una vez seleccionado el usuario de la lista, se mostrará a la derecha de la pantalla toda la información de los datos relativos." textAlignment="JUSTIFY" wrapText="true" />
                            </children>
-                        </Pane>
+                        </VBox>
+                        <VBox fx:id="VBox_PregFrec" layoutX="1760.0" prefHeight="36.0" prefWidth="161.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <JFXButton fx:id="preguntasfrecuentesbtn" minHeight="-Infinity" minWidth="-Infinity" onAction="#verPreguntasFrecuentes" prefHeight="37.0" prefWidth="161.0" styleClass="botones" stylesheets="@../application.css" text="Preguntas Frecuentes" textFill="WHITE">
+                                 <font>
+                                    <Font name="Century Gothic" size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </VBox>
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabCalendarioMedico" text="                         Calendario                         ">
+                <Tab fx:id="tabCalendarioPaciente" text="                         Calendario                         ">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ced6e0;">
                      <children>
-                        <DayPage layoutX="628.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <DayPage fx:id="calendario" layoutX="437.0" layoutY="290.0" prefHeight="961.0" prefWidth="1900.0" style="-fx-background-color: #ced6e0;" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <JFXButton fx:id="guardarCalendario" layoutX="614.0" layoutY="19.0" onAction="#guardarCalendario" prefHeight="47.0" prefWidth="110.0" styleClass="botones" text="Guardar" />
                      </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabUsuariosMedico" text="                         Usuarios                         ">
+                <Tab fx:id="tabUsuariosPaciente" text="                         Usuarios                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../application.css">
                             <children>
-                        <Label fx:id="seleccionaUsuarioUsuarios" layoutX="1156.0" layoutY="534.0" prefHeight="32.0" prefWidth="303.0" text="Selecciona un usuario">
-                           <font>
-                              <Font name="Segoe UI Emoji" size="28.0" />
-                           </font>
-                        </Label>
-                                <Pane layoutY="14.0" prefHeight="1052.0" prefWidth="640.0" style="-fx-background-color: #34394c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="0.0">
-                                    <children>
-                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="297.0" styleClass="informationLabel" stylesheets="@../application.css" text="Lista de usuarios" />
-                                        <Separator layoutX="-3.0" layoutY="175.0" prefHeight="27.0" prefWidth="641.0" styleClass="separator-white" stylesheets="@../application.css">
+                        <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="1050.0" prefWidth="478.0" style="-fx-background-color: #34394c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" focusColor="WHITE" focusTraversable="false" labelFloat="true" onKeyPressed="#filterUsersUsuario" prefHeight="44.0" prefWidth="574.0" promptText="Buscar usuario" styleClass="textoLabelwhite" stylesheets="@../application.css" unFocusColor="WHITE">
+                                 <VBox.margin>
+                                    <Insets top="40.0" />
+                                 </VBox.margin></JFXTextField>
+                                        <Label alignment="CENTER" prefHeight="51.0" prefWidth="297.0" styleClass="informationLabel" stylesheets="@../application.css" text="Lista de usuarios">
+                                 <VBox.margin>
+                                    <Insets right="250.0" top="20.0" />
+                                 </VBox.margin></Label>
+                                        <Separator prefHeight="27.0" prefWidth="641.0" styleClass="separator-white" stylesheets="@../application.css">
                                  <padding>
                                     <Insets left="10.0" right="10.0" top="10.0" />
                                  </padding></Separator>
-                                        <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
-                              <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" focusColor="WHITE" focusTraversable="false" labelFloat="true" layoutX="29.0" layoutY="61.0" onKeyPressed="#filterUsersUsuario" prefHeight="44.0" prefWidth="574.0" promptText="Buscar usuario" styleClass="textoLabelwhite" stylesheets="@../application.css" unFocusColor="WHITE" />
-                              <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewUsuarios" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarDatosYMensajeUsuarios" prefHeight="764.0" prefWidth="569.0" stylesheets="@../application.css" />
-                                    </children>
-                                </Pane>
-                                <Pane fx:id="panelDatosYMensajesUsuarios" layoutX="653.0" layoutY="71.0" prefHeight="784.0" prefWidth="1267.0" stylesheets="@../application.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <children>
-                                        <Label fx:id="Nombre1" layoutX="532.0" layoutY="82.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Nombre:">
-                                            <font>
-                                                <Font name="System Bold" size="18.0" />
-                                            </font>
+                              <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewUsuarios" onMouseClicked="#mostrarDatosYMensajeUsuarios" prefHeight="810.0" prefWidth="456.0" stylesheets="@../application.css">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="10.0" />
+                                 </VBox.margin></JFXTreeTableView>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="seleccionaUsuarioUsuarios" alignment="CENTER" fillWidth="false" layoutX="1156.0" layoutY="534.0" AnchorPane.bottomAnchor="484.0" AnchorPane.leftAnchor="1156.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="534.0">
+                           <children>
+                              <Label fx:id="seleccionaUsuarioUsuariosLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="303.0" text="Selecciona un usuario">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="28.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="imagenVBox" fillWidth="false" layoutX="630.0" layoutY="20.0" AnchorPane.bottomAnchor="765.0" AnchorPane.leftAnchor="630.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                                        <ImageView fx:id="userImageViewUsuarios" fitHeight="187.0" fitWidth="270.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="datosVBox" fillWidth="false" layoutX="476.0" layoutY="-12.0" prefHeight="1076.0" prefWidth="1419.0" visible="false" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="476.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-12.0">
+                           <children>
+                              <Separator prefHeight="40.0" prefWidth="760.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <VBox.margin>
+                                    <Insets left="400.0" />
+                                 </VBox.margin>
+                              </Separator>
+                              <GridPane prefHeight="225.0" prefWidth="750.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                              <Label fx:id="Apellidos1" prefHeight="45.0" prefWidth="430.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Apellidos:" GridPane.rowIndex="1">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </Label>
+                                              <Label fx:id="ID1" prefHeight="45.0" prefWidth="430.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:" GridPane.rowIndex="2">
+                                                  <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                  </font>
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                              </Label>
+                                              <Label fx:id="Nombre1" prefHeight="45.0" prefWidth="430.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Nombre:">
+                                                  <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                  </font>
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                              </Label>
+                                              <Label fx:id="Rol1" prefHeight="45.0" prefWidth="430.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Tipo de Usuario (Rol):" GridPane.rowIndex="3">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </Label>
+                                              <Label fx:id="ID11" prefHeight="45.0" prefWidth="430.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Edad:" GridPane.rowIndex="4">
+                                                  <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                  </font>
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                              </Label>
+                                              <Label fx:id="labelNombreUsuarios" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1">
+                                                  <font>
+                                                      <Font name="System Bold" size="18.0" />
+                                                  </font>
+                                              </Label>
+                                              <Label fx:id="labelApellidosUsuarios" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                              <Label fx:id="labelFechaNacimientoUsuarios" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                  <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                  </font>
+                                              </Label>
+                                              <Label fx:id="labelRolUsuarios" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                              <Label fx:id="labelEdadUsuarios" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                  <font>
+                                                      <Font name="System Bold" size="12.0" />
+                                                  </font>
+                                              </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="400.0" />
+                                 </VBox.margin>
+                              </GridPane>
+                              <Separator prefHeight="40.0" prefWidth="760.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <VBox.margin>
+                                    <Insets left="400.0" />
+                                 </VBox.margin>
+                              </Separator>
+                                        <Separator prefHeight="61.0" prefWidth="1297.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Separator>
+                              <GridPane alignment="CENTER" prefHeight="85.0" prefWidth="1240.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="613.33349609375" minWidth="10.0" prefWidth="331.6669921875" />
+                                  <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="982.3330078125" minWidth="10.0" prefWidth="893.3330078125" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                              <Label prefHeight="124.0" prefWidth="331.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:" />
+                                    <Label prefHeight="41.0" prefWidth="373.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Destinatario:" GridPane.rowIndex="1" />
+                                    <JFXTextField fx:id="destinatarioJFXTextFieldUsuarios" prefHeight="44.0" prefWidth="894.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <JFXTextField fx:id="asuntoJFXTextFieldUsuarios" prefHeight="59.0" prefWidth="894.0" style="-fx-background-color: white;" GridPane.columnIndex="1" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
                                  <padding>
-                                    <Insets left="5.0" />
+                                    <Insets left="15.0" />
                                  </padding>
-                                        </Label>
-                                        <Label fx:id="Apellidos1" layoutX="532.0" layoutY="126.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Apellidos:">
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding></Label>
-                                        <Label fx:id="ID1" layoutX="532.0" layoutY="215.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:">
-                                            <font>
-                                                <Font name="System Bold" size="12.0" />
-                                            </font>
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding>
-                                        </Label>
-                                        <Label fx:id="Rol1" layoutX="532.0" layoutY="170.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Tipo de Usuario (Rol):">
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding></Label>
-                                        <Label fx:id="ID11" layoutX="532.0" layoutY="259.0" prefHeight="45.0" prefWidth="400.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Edad:">
-                                            <font>
-                                                <Font name="System Bold" size="12.0" />
-                                            </font>
-                                 <padding>
-                                    <Insets left="5.0" />
-                                 </padding>
-                                        </Label>
-                                        <ImageView fx:id="userImageViewUsuarios" fitHeight="257.0" fitWidth="193.0" layoutX="103.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
-                                        <Separator layoutX="-9.0" layoutY="347.0" prefHeight="61.0" prefWidth="1297.0" styleClass="separator-black" stylesheets="@../application.css">
-                                 <padding>
-                                    <Insets left="20.0" right="20.0" />
-                                 </padding></Separator>
-                                        <Label fx:id="labelNombreUsuarios" layoutX="932.0" layoutY="82.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css">
-                                            <font>
-                                                <Font name="System Bold" size="18.0" />
-                                            </font>
-                                        </Label>
-                                        <Label fx:id="labelApellidosUsuarios" layoutX="932.0" layoutY="126.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                                        <Label fx:id="labelFechaNacimientoUsuarios" layoutX="932.0" layoutY="215.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css">
-                                            <font>
-                                                <Font name="System Bold" size="12.0" />
-                                            </font>
-                                        </Label>
-                                        <Label fx:id="labelRolUsuarios" layoutX="931.0" layoutY="170.0" prefHeight="45.0" prefWidth="251.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                                        <Label fx:id="labelEdadUsuarios" layoutX="932.0" layoutY="259.0" prefHeight="45.0" prefWidth="250.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css">
-                                            <font>
-                                                <Font name="System Bold" size="12.0" />
-                                            </font>
-                                        </Label>
-                                        <Label layoutX="22.0" layoutY="396.0" prefHeight="67.0" prefWidth="238.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:" />
-                                        <Label layoutX="22.0" layoutY="529.0" prefHeight="67.0" prefWidth="1235.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Mensaje" />
-                              <JFXButton layoutX="849.0" layoutY="963.0" onAction="#enviarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Generar ticket nuevo" />
-                              <JFXTextArea fx:id="mensajeJFXTextFieldUsuarios" layoutX="22.0" layoutY="596.0" prefHeight="348.0" prefWidth="1235.0" promptText="Escriba su mensaje" styleClass="textoArea" stylesheets="@../application.css">
+                              </GridPane>
+                                        <Label prefHeight="44.0" prefWidth="1225.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Mensaje">
+                                 <VBox.margin>
+                                    <Insets left="15.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <JFXTextArea fx:id="mensajeJFXTextFieldUsuarios" prefHeight="353.0" prefWidth="1225.0" promptText=" Escriba su mensaje..." styleClass="textoArea" stylesheets="@../application.css">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="17.0" />
-                                 </font></JFXTextArea>
-                              <JFXTextField fx:id="asuntoJFXTextFieldUsuarios" layoutX="260.0" layoutY="396.0" prefHeight="67.0" prefWidth="998.0" promptText="Introducir el asunto del mensaje." style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <Label layoutX="22.0" layoutY="463.0" prefHeight="67.0" prefWidth="236.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Destinatario:" />
-                              <JFXTextField fx:id="destinatarioJFXTextFieldUsuarios" editable="false" layoutX="256.0" layoutY="463.0" prefHeight="67.0" prefWidth="1002.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <JFXButton fx:id="botonCancelarMensajesUsuarios" layoutX="28.0" layoutY="963.0" onAction="#cancelarMensajeUsuarios" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar ticket">
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="15.0" />
+                                 </VBox.margin>
+                              </JFXTextArea>
+                              <JFXButton fx:id="botonCancelarMensajesUsuarios" onAction="#cancelarMensajeUsuarios" prefHeight="34.0" prefWidth="216.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar ticket">
                                  <font>
                                     <Font name="Segoe UI Emoji" size="12.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="5.0" />
+                                 </VBox.margin>
                               </JFXButton>
-                                    </children>
-                                </Pane>
+                           </children>
+                        </VBox>
+                        <HBox fx:id="generarTicketHBox" alignment="BASELINE_RIGHT" fillHeight="false" layoutX="997.0" layoutY="855.0" prefHeight="34.0" prefWidth="732.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="997.0" AnchorPane.rightAnchor="191.0">
+                           <children>
+                              <JFXButton onAction="#enviarMensajeUsuarios" prefHeight="34.0" prefWidth="531.0" styleClass="botones" stylesheets="@../application.css" text="Generar ticket nuevo">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                        </HBox>
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabRegistrosPaciente" text="                         Registros                         ">
-              		<content>
-                		<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     		<children>
-                        		<Pane prefHeight="1080.0" prefWidth="640.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           		<children>
-                              		<Label layoutX="30.0" layoutY="20.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor de Gas:" />
-                             		<Label layoutX="30.0" layoutY="540.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor Magnético:" />
-                              		<StackedBarChart layoutX="65.0" layoutY="70.0">
-                                		<xAxis>
-                                  		<CategoryAxis side="BOTTOM" />
-                                		</xAxis>
-                                		<yAxis>
-                                  		<NumberAxis side="LEFT" />
-                                		</yAxis>
-                              		</StackedBarChart>
-                              		<StackedBarChart layoutX="65.0" layoutY="585.0">
-                                		<xAxis>
-                                  		<CategoryAxis side="BOTTOM" />
-                               		</xAxis>
-                                		<yAxis>
-                                  		<NumberAxis side="LEFT" />
-                                		</yAxis>
-                              		</StackedBarChart>
-                           		</children>
-                        		</Pane>
-                        		<Separator orientation="VERTICAL" prefHeight="1080.0" AnchorPane.leftAnchor="640.0" />
-                        		<Separator orientation="VERTICAL" prefHeight="1080.0" AnchorPane.leftAnchor="1280.0" />
-                        		<Pane prefHeight="1080.0" prefWidth="640.0" AnchorPane.leftAnchor="640.0" AnchorPane.rightAnchor="640.0">
-                           		<opaqueInsets>
-                              		<Insets />
-                           		</opaqueInsets>
-                           		<children>
-                              		<Label layoutX="30.0" layoutY="20.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor de Temperatura:" />
-                              		<LineChart layoutX="65.0" layoutY="65.0">
-                                		<xAxis>
-                                  		<CategoryAxis side="BOTTOM" />
-                                		</xAxis>
-                                		<yAxis>
-                                  		<NumberAxis side="LEFT" />
-                                		</yAxis>
-                              		</LineChart>
-                              <GoogleMapView fx:id="mapView" layoutX="38.0" layoutY="515.0" prefHeight="444.0" prefWidth="560.0">
-                                 <children>
-                                    <TextField fx:id="addressTextField" layoutX="200.0" layoutY="15.0" onAction="#addressTextFieldAction" prefHeight="31.0" prefWidth="151.0" promptText="Inserte dirección:" />
-                                    <JFXButton fx:id="buttonActualizarUbicacion" layoutX="390.0" layoutY="15.0" onAction="#actualizarUbicacion" styleClass="botones" text="Actualizar Ubicación" />
-                                 </children>
-                              </GoogleMapView>
-                           		</children>
-                        		</Pane>
-                        		<Pane prefHeight="1080.0" prefWidth="640.0" AnchorPane.leftAnchor="1280.0" AnchorPane.rightAnchor="0.0">
-                           		<children>
-                              		<Label layoutX="30.0" layoutY="20.0" styleClass="informationLabel" stylesheets="@../application.css" text="Sensor de Presión:" />
-                              		<PieChart layoutX="65.0" layoutY="65.0" />
-                              		<Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoLabel" text="Horas de Sueño." x="80.0" y="550.0" />
-                              		<Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoLabel" text="Horas de Actividad." x="80.0" y="585.0" />
-                              		<Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="textoLabel" text="Horas Fuera de Casa." x="80.0" y="620.0" />
-                           		</children>
-                        		</Pane>
-                        		<Separator prefWidth="200.0" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1280.0" AnchorPane.topAnchor="520.0" />
-                     		</children></AnchorPane>
-              		</content>
-            	</Tab>
-                <Tab fx:id="tabMensajesMedico" text="                         Mensajes                         ">
+                <Tab fx:id="tabMensajesPaciente" text="                         Mensajes                         ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Pane prefHeight="1052.0" prefWidth="640.0" style="-fx-background-color: #34394c;">
-                                    <children>
-                                        <Label layoutX="55.0" layoutY="122.0" prefHeight="51.0" prefWidth="308.0" styleClass="informationLabel" stylesheets="@../application.css" text="Lista de mensajes" />
-                                        <Separator layoutX="10.0" layoutY="175.0" prefHeight="27.0" prefWidth="628.0">
-                                 <padding>
-                                    <Insets left="10.0" right="10.0" />
-                                 </padding></Separator>
-                                        <Separator layoutX="623.0" layoutY="4.0" orientation="VERTICAL" prefHeight="1046.0" prefWidth="38.0" />
-                              <JFXTextField fx:id="filtrarMensajeTFieldMensajes" focusColor="WHITE" labelFloat="true" layoutX="29.0" layoutY="61.0" prefHeight="44.0" prefWidth="574.0" promptText="Buscar mensaje" styleClass="textoLabelwhite" stylesheets="@../application.css" unFocusColor="WHITE" />
-                              <JFXTreeTableView fx:id="treeTableViewMensajes" layoutX="34.0" layoutY="210.0" onMouseClicked="#mostrarTicketMensajes" prefHeight="764.0" prefWidth="569.0" />
-                                    </children>
-                                </Pane>
-                        <AnchorPane fx:id="mensajePaneMensajes" layoutX="642.0" layoutY="80.0" maxHeight="947.0" prefHeight="947.0" prefWidth="1230.0">
+                        <VBox fx:id="seleccionaMensajeVBox" alignment="CENTER" fillWidth="false" layoutX="1156.0" layoutY="534.0" AnchorPane.bottomAnchor="484.0" AnchorPane.leftAnchor="1156.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="534.0">
                            <children>
-                                      <Label layoutX="20.0" prefHeight="67.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:">
-                                          <padding>
-                                              <Insets left="10.0" />
-                                          </padding>
-                                      </Label>
-                                      <Label layoutX="20.0" layoutY="201.0" prefHeight="67.0" prefWidth="1210.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Mensaje">
-                                          <padding>
-                                              <Insets left="10.0" />
-                                          </padding>
-                                      </Label>
-                                      <Label layoutX="20.0" layoutY="67.0" prefHeight="67.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Destinatario:">
-                                          <padding>
-                                              <Insets left="10.0" />
-                                          </padding>
-                                      </Label>
-                              <JFXTextField fx:id="asuntoJFXTextFieldMensajes" editable="false" layoutX="250.0" prefHeight="67.0" prefWidth="980.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <JFXTextField fx:id="destinatarioJFXTextFieldMensajes" editable="false" layoutX="250.0" layoutY="67.0" prefHeight="67.0" prefWidth="980.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <Label layoutX="20.0" layoutY="134.0" prefHeight="67.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="ID Ticket:">
-                                 <padding>
-                                    <Insets left="10.0" />
-                                 </padding>
+                              <Label fx:id="seleccionaMensajeLabelMensajes" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="303.0" text="Seleccione un mensaje">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="28.0" />
+                                 </font>
                               </Label>
-                              <JFXTextField fx:id="idTicketJFXTextFieldMensajes" editable="false" layoutX="250.0" layoutY="134.0" prefHeight="67.0" prefWidth="980.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" />
-                              <AnchorPane fx:id="aPaneRespuestaTicket" layoutX="20.0" layoutY="289.0" visible="false">
-                                 <children>
-                                    <ScrollPane fx:id="scrollPaneMensajes" hbarPolicy="NEVER" prefHeight="588.0" prefWidth="1202.0">
-                                       <content>
-                                          <AnchorPane fx:id="conversacionMensajes">
-                                             <children>
-                                                <VBox fx:id="vboxConversacionMensajes" />
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </ScrollPane>
-                                    <JFXButton fx:id="responderTicketMensajes" layoutX="795.0" layoutY="594.0" onAction="#responderTicketMensajes" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Responder al ticket" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane fx:id="aPaneCreacionTicket" layoutX="20.0" layoutY="289.0" visible="false">
-                                 <children>
-                                    <JFXTextArea fx:id="crearMensajeJFXTextAreaMensajes" prefHeight="588.0" prefWidth="1202.0" promptText="Escriba aqui su mensaje" styleClass="textoArea" stylesheets="@../application.css" />
-                                    <JFXButton fx:id="cancelarRespuestaTicketBtn" layoutX="45.0" layoutY="597.0" onAction="#cancelarRespuestaTicket" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar ticket" />
-                                    <JFXButton fx:id="crearMensajeResponderTicketBttnMensajes" layoutX="793.0" layoutY="594.0" onAction="#crearMensajeYResponderTicket" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Responder al ticket" />
-                                 </children>
-                              </AnchorPane>
                            </children>
-                        </AnchorPane>
-                        <Label fx:id="seleccionaMensajeLabelMensajes" layoutX="1156.0" layoutY="534.0" prefHeight="32.0" prefWidth="303.0" text="Selecciona un mensaje">
-                           <font>
-                              <Font name="Segoe UI Emoji" size="28.0" />
-                           </font>
-                        </Label>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="1050.0" prefWidth="478.0" style="-fx-background-color: #34394c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <JFXTextField fx:id="filtrarMensajeTFieldMensajes" focusColor="WHITE" focusTraversable="false" labelFloat="true" onKeyPressed="#filterTicketsMensajes" prefHeight="44.0" prefWidth="574.0" promptText="Buscar mensaje" styleClass="textoLabelwhite" stylesheets="@../application.css" unFocusColor="WHITE">
+                                 <VBox.margin>
+                                    <Insets top="40.0" />
+                                 </VBox.margin>
+                              </JFXTextField>
+                              <Label alignment="CENTER" prefHeight="51.0" prefWidth="297.0" styleClass="informationLabel" stylesheets="@../application.css" text="Lista de mensajes">
+                                 <VBox.margin>
+                                    <Insets right="250.0" top="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Separator prefHeight="27.0" prefWidth="641.0" styleClass="separator-white" stylesheets="@../application.css">
+                                 <padding>
+                                    <Insets left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </Separator>
+                              <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewMensajes" onMouseClicked="#mostrarTicketMensajes" prefHeight="810.0" prefWidth="456.0" stylesheets="@../application.css">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="10.0" />
+                                 </VBox.margin>
+                              </JFXTreeTableView>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="datosVBoxMensajes" fillWidth="false" layoutX="480.0" prefHeight="1076.0" prefWidth="1419.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="480.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Separator prefHeight="40.0" prefWidth="760.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <VBox.margin>
+                                    <Insets left="15.0" />
+                                 </VBox.margin>
+                              </Separator>
+                              <GridPane prefHeight="225.0" prefWidth="850.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="415.0" minWidth="10.0" prefWidth="207.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="643.0" minWidth="10.0" prefWidth="643.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label fx:id="Apellidos11" prefHeight="56.0" prefWidth="461.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Destinatario:" GridPane.rowIndex="1">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="ID11" prefHeight="56.0" prefWidth="487.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="ID Ticket:" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="Nombre11" prefHeight="57.0" prefWidth="443.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="Rol11" prefHeight="56.0" prefWidth="525.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Mensaje" GridPane.rowIndex="3">
+                                       <padding>
+                                          <Insets left="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label prefHeight="56.0" prefWidth="675.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <JFXTextField fx:id="asuntoJFXTextFieldMensajes" prefHeight="219.0" prefWidth="375.0" style="-fx-background-color: white;" GridPane.columnIndex="1" />
+                                    <JFXTextField fx:id="destinatarioJFXTextFieldMensajes" prefHeight="231.0" prefWidth="375.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <JFXTextField fx:id="idTicketJFXTextFieldMensajes" prefHeight="125.0" prefWidth="375.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="15.0" />
+                                 </VBox.margin>
+                              </GridPane>
+                              <Separator prefHeight="40.0" prefWidth="760.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <VBox.margin>
+                                    <Insets left="15.0" />
+                                 </VBox.margin>
+                              </Separator>
+                              <Separator prefHeight="61.0" prefWidth="1297.0" styleClass="separator-black" stylesheets="@../application.css">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Separator>
+                              <ScrollPane fx:id="scrollPaneMensajes" hbarPolicy="NEVER" prefHeight="446.0" prefWidth="872.0" vbarPolicy="NEVER">
+                                 <content>
+                                    <AnchorPane fx:id="conversacionMensajes" prefHeight="446.0" prefWidth="872.0">
+                                       <children>
+                                          <VBox fx:id="vboxConversacionMensajes" alignment="CENTER" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                              <JFXButton fx:id="botonResponderTicket" onAction="#responderTicketMensajes" prefHeight="34.0" prefWidth="216.0" styleClass="botones" stylesheets="@../application.css" text="Responder ticket">
+                                 <font>
+                                    <Font name="Segoe UI Emoji" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="630.0" top="5.0" />
+                                 </VBox.margin>
+                              </JFXButton>
+                           </children>
+                        </VBox>
+                        <VBox fx:id="respuestaTicketVBox" fillWidth="false" layoutX="495.0" layoutY="353.0" prefHeight="682.0" prefWidth="864.0" visible="false" AnchorPane.bottomAnchor="15.0" AnchorPane.topAnchor="250.0">
+                           <children>
+                              <JFXTextArea fx:id="crearMensajeJFXTextAreaMensajes" prefHeight="551.0" prefWidth="852.0" promptText="Escriba aqui su mensaje" styleClass="textoArea" stylesheets="@../application.css" VBox.vgrow="ALWAYS" />
+                              <HBox fillHeight="false" maxWidth="874.0" prefHeight="49.0" prefWidth="852.0" spacing="380.0">
+                                 <children>
+                                    <JFXButton fx:id="cancelarRespuestaTicketBtn" onAction="#cancelarRespuestaTicket" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar ticket" />
+                                    <JFXButton fx:id="crearMensajeResponderTicketBttnMensajes" onAction="#crearMensajeYResponderTicket" prefHeight="41.0" prefWidth="408.0" styleClass="botones" stylesheets="@../application.css" text="Responder al ticket" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
                             </children></AnchorPane>
                     </content>
                 </Tab>
-            </tabs>
-        </JFXTabPane>
+         </tabs>
+      </JFXTabPane>
     </children>
 </AnchorPane>
