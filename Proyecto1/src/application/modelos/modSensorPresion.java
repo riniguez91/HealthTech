@@ -14,16 +14,12 @@ public class modSensorPresion {
     @SerializedName("despierto")
     @Expose
     private String despierto;
-    @SerializedName("fecha")
-    @Expose
-    private String fecha;
     
     // Constructor
-	public modSensorPresion(int valor, String durmiendo, String fecha) {
+	public modSensorPresion(int valor, String durmiendo) {
 		super();
 		this.valor = valor;
 		this.durmiendo = durmiendo;
-		this.fecha = fecha;
 	}
 	
 	// Getters and setters
@@ -47,13 +43,7 @@ public class modSensorPresion {
 	public void setDespierto(String despierto) {
 		this.despierto = despierto;
 	}
-
-	public String getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
-	}
     
+    
+
 }
