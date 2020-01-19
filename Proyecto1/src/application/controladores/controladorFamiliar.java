@@ -42,9 +42,13 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.converter.LocalDateStringConverter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 
 import java.io.IOException;
@@ -546,7 +550,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    	mapView.setKey("AIzaSyABUQnPXeldroN__fhm1LDiZh5sUtkSMBM"); // No usar 
+//    	mapView.setKey("AIzaSyABUQnPXeldroN__fhm1LDiZh5sUtkSMBM"); // No usar 
         mapView.addMapInializedListener(this);
         address.bind(addressTextField.textProperty());
     } 
@@ -647,61 +651,59 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 	@FXML private Label horasDurmiendo;
 	@FXML private DatePicker calendarioSensores;
 	
-    @SuppressWarnings({ "unchecked", "rawtypes" })
 	@FXML
-    void mostrarDatosSensoresPacientes(MouseEvent event) throws ParseException {
-    	Date objDate = new Date();
-    	String strDateFormat = "yyyy-MM-dd";
-        SimpleDateFormat objSFD = new SimpleDateFormat(strDateFormat); 
-//        System.out.println("Fecha del sistema: " + objSFD.format(objDate));  
+    void mostrarDatosSensoresPacientes(MouseEvent event) throws ParseException {    	
+    	calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
+    }  
+    
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@FXML
+    void mostrarSensoresDia(ActionEvent event) {
+    	//Limpiamos todas las gráficas
+    	graficaTemperatura.getData().clear();
+    	graficaMagnetico.getData().clear();
+    	graficaGas.getData().clear();
+    	graficaPresion.getData().clear();
+    	detalles.clear();
+    	
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Formato que le daremos a la fecha
+    	calendarioSensores.setConverter(new LocalDateStringConverter(formatter, null)); // Convertimos la fecha del objetos LocalDate con nuestro formato
+
     	// Temperatura
 		XYChart.Series seriesTemperatura = new XYChart.Series();
 		for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
-//			System.out.println("Fecha del JSON: " + temperatura.getFecha());
-			if ((objSFD.format(objDate).compareTo(temperatura.getFecha())) == 0) {
+			if ((formatter.format(calendarioSensores.getValue()).compareTo(temperatura.getFecha())) == 0) {
 				seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
 			}
 		}
     	graficaTemperatura.getData().addAll(seriesTemperatura);
-    	// Gas
-		XYChart.Series seriesGas = new XYChart.Series();
-		for (modSensorGas gas : modelo.getDatosGas()) {
-	    seriesGas.getData().add(new XYChart.Data(gas.getHora(), gas.getValor()));
-		}
-    	graficaGas.getData().addAll(seriesGas);
+    	
     	// Magnetico
 		XYChart.Series seriesMagnetico = new XYChart.Series();
 		for (modSensorMagnetico magnetico : modelo.getDatosMagnetico()) {
-	    seriesMagnetico.getData().add(new XYChart.Data(magnetico.getHora(), magnetico.getValor()));
+			if ((formatter.format(calendarioSensores.getValue()).compareTo(magnetico.getFecha())) == 0) {
+				seriesMagnetico.getData().add(new XYChart.Data(magnetico.getHora(), magnetico.getValor()));
+			}
 		}
     	graficaMagnetico.getData().addAll(seriesMagnetico);
-    	//Presion
-		for (modSensorPresion presion : modelo.getDatosPresion()) {
-	    	detalles.addAll(new PieChart.Data(presion.getDespierto(),presion.getValor()));
-	    	horasDurmiendo.setText(presion.getValor()+ "");
-		}  
-		graficaPresion.setData(detalles);
-    }  
-    
-    @SuppressWarnings("unchecked")
-	@FXML
-    void mostrarSensoresDia(ActionEvent event) {
-    	String fechaString = calendarioSensores.getEditor().getText();
-    	System.out.println("Fecha del calendario: "+fechaString);
-    	System.out.println(calendarioSensores.getValue());
-    	Date objDate = new Date();
-    	String strDateFormat = "yyyy-MM-dd";
-        SimpleDateFormat objSFD = new SimpleDateFormat(strDateFormat); 
-        System.out.println("Fecha del sistema: " + objSFD.format(objDate));
-    	// Temperatura
-		@SuppressWarnings("rawtypes")
-		XYChart.Series seriesTemperatura = new XYChart.Series();
-		for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
-//			System.out.println("Fecha del JSON: " + temperatura.getFecha());
-//			if ((objSFD.format(objDate).compareTo(temperatura.getFecha())) == 0) {
-//				seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
-//			}
-		}
     	
+    	// Gas
+		XYChart.Series seriesGas = new XYChart.Series();
+		for (modSensorGas gas : modelo.getDatosGas()) {
+			if ((formatter.format(calendarioSensores.getValue()).compareTo(gas.getFecha())) == 0) {
+			    seriesGas.getData().add(new XYChart.Data(gas.getHora(), gas.getValor()));
+			}
+		}
+    	graficaGas.getData().addAll(seriesGas);
+    	
+    	//Presion
+		for (modSensorPresion presion : modelo.getDatosPresion()) {		
+			if ((formatter.format(calendarioSensores.getValue()).compareTo(presion.getFecha())) == 0) {
+				detalles.addAll(new PieChart.Data(presion.getDurmiendo(),presion.getValor()));
+				detalles.addAll(new PieChart.Data(presion.getDespierto(),(24-presion.getValor())));
+				graficaPresion.setData(detalles);
+				horasDurmiendo.setText(presion.getValor()+ ""); 	
+			}	
+		}  
     }
 }

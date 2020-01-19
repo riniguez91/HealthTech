@@ -1,20 +1,20 @@
 [
 	{
-	"valor": 16,
-	"durmiendo": "durmiendo",
-	"despierto": "despierto",
-	"fecha": "19/01/2020"
+	"valor": 8,
+	"fecha": "2020-01-19",
+	"durmiendo": "Durmiendo",
+	"despierto": "Despierto"
 	},
 	{
-	"valor":15,
+	"valor":9,
+	"fecha": "2020-01-20",
 	"durmiendo": "Durmiendo",
-	"despierto": "Despierto",
-	"fecha": "20/01/2020"
+	"despierto": "Despierto"
 	},
 	{
-	"valor": 14,
+	"valor": 7,
+	"fecha": "2020-01-21",
 	"durmiendo": "Durmiendo",
-	"despierto": "Despierto",
-	"fecha": "22/01/2020"
+	"despierto": "Despierto"
 	}
 ]

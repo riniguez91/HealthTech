@@ -24,10 +24,10 @@ public class modSensorTemperatura {
     private int temperatura;
     @SerializedName("fecha")
     @Expose
-    private String fecha;		//unicamente mostrará el DD/MM/YY (Dias)
+    private String fecha;
     @SerializedName("hora")
     @Expose
-    private String hora;		//unicamente mostrará hh:mm:ss (horas)
+    private String hora;
     
     //Getters y Setters
     public int getTemperatura() {
