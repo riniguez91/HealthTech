@@ -2,11 +2,19 @@
 	{
 	"valor": 16,
 	"durmiendo": "durmiendo",
-	"despierto": "despierto"
+	"despierto": "despierto",
+	"fecha": "19/01/2020"
 	},
 	{
-	"valor": 7,
+	"valor":15,
 	"durmiendo": "Durmiendo",
-	"despierto": "durmiendo"
+	"despierto": "Despierto",
+	"fecha": "20/01/2020"
+	},
+	{
+	"valor": 14,
+	"durmiendo": "Durmiendo",
+	"despierto": "Despierto",
+	"fecha": "22/01/2020"
 	}
 ]

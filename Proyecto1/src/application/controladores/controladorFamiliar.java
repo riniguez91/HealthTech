@@ -41,8 +41,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import java.io.IOException;
 import java.net.URL;
@@ -646,11 +649,18 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 	
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	@FXML
-    void mostrarDatosSensoresPacientes(MouseEvent event) {
+    void mostrarDatosSensoresPacientes(MouseEvent event) throws ParseException {
+    	Date objDate = new Date();
+    	String strDateFormat = "yyyy-MM-dd";
+        SimpleDateFormat objSFD = new SimpleDateFormat(strDateFormat); 
+//        System.out.println("Fecha del sistema: " + objSFD.format(objDate));  
     	// Temperatura
 		XYChart.Series seriesTemperatura = new XYChart.Series();
 		for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
-	    seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
+//			System.out.println("Fecha del JSON: " + temperatura.getFecha());
+			if ((objSFD.format(objDate).compareTo(temperatura.getFecha())) == 0) {
+				seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
+			}
 		}
     	graficaTemperatura.getData().addAll(seriesTemperatura);
     	// Gas
@@ -673,8 +683,25 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 		graficaPresion.setData(detalles);
     }  
     
-    @FXML
+    @SuppressWarnings("unchecked")
+	@FXML
     void mostrarSensoresDia(ActionEvent event) {
-    	// A rellenar
+    	String fechaString = calendarioSensores.getEditor().getText();
+    	System.out.println("Fecha del calendario: "+fechaString);
+    	System.out.println(calendarioSensores.getValue());
+    	Date objDate = new Date();
+    	String strDateFormat = "yyyy-MM-dd";
+        SimpleDateFormat objSFD = new SimpleDateFormat(strDateFormat); 
+        System.out.println("Fecha del sistema: " + objSFD.format(objDate));
+    	// Temperatura
+		@SuppressWarnings("rawtypes")
+		XYChart.Series seriesTemperatura = new XYChart.Series();
+		for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
+//			System.out.println("Fecha del JSON: " + temperatura.getFecha());
+//			if ((objSFD.format(objDate).compareTo(temperatura.getFecha())) == 0) {
+//				seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
+//			}
+		}
+    	
     }
 }
