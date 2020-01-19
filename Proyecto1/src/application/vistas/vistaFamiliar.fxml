@@ -317,6 +317,7 @@
                                     <Font name="Arial Bold" size="19.0" />
                                  </font>
                               </Label>
+                              <Label layoutX="173.0" layoutY="483.0" prefHeight="23.0" prefWidth="347.0" text="Solo hay datos los dias 19,20,21 de enero de 2020" />
                            </children>
                         		</Pane>
                         		<Separator orientation="VERTICAL" prefHeight="1080.0" AnchorPane.leftAnchor="640.0" />
@@ -346,7 +347,7 @@
                         		</Pane>
                         		<Pane prefHeight="1038.0" prefWidth="640.0" AnchorPane.leftAnchor="1280.0" AnchorPane.rightAnchor="0.0">
                            		<children>
-                              		<PieChart fx:id="graficaPresion" layoutX="23.0" layoutY="28.0" prefHeight="385.0" prefWidth="590.0" title="Sensor de presion" />
+                              		<PieChart fx:id="graficaPresion" layoutX="23.0" layoutY="28.0" prefHeight="385.0" prefWidth="590.0" title="Horas de sueño" />
                               		<StackedBarChart fx:id="graficaGas" layoutX="7.0" layoutY="507.0" prefHeight="485.0" prefWidth="595.0" title="Sensor de gas">
                                 		<xAxis>
                                   		<CategoryAxis label="Tiempo" side="BOTTOM" />
