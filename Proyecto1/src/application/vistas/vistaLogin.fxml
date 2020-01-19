@@ -30,7 +30,7 @@
                 <Image url="@../../resources/fotos/FotoLogin1.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="logo" fitHeight="588.0" fitWidth="1007.0" layoutX="-113.0" layoutY="-60.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="573.8389282226562" AnchorPane.leftAnchor="-113.0" AnchorPane.rightAnchor="1026.0" AnchorPane.topAnchor="-60.0">
+        <ImageView fx:id="logo" fitHeight="446.0" fitWidth="823.0" layoutX="-33.0" layoutY="-127.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="761.0" AnchorPane.leftAnchor="-33.0" AnchorPane.rightAnchor="1159.7239379882812" AnchorPane.topAnchor="-127.0">
             <image>
                 <Image url="@../../resources/fotos/Logo.png" />
             </image>
