@@ -4,7 +4,7 @@ displaying this info on a user-friendly application using java fx.
 We'll introduce actual sensor data from real sensors in the near future.
 
 ## Authors
- * Ramon Iñiguez - github.com/riniguez91
- * Victor Hernandeaz - github.com/victor00hs
- * Ruben Ortiz - github.com/RubenOrtizNieto
+ * Ramón Íñiguez - github.com/riniguez91
+ * Víctor Hernández - github.com/victor00hs
+ * Rubén Ortiz - github.com/RubenOrtizNieto
  * Pedro Navarro - github.com/pdroCN
