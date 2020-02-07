@@ -420,7 +420,7 @@
                            <children>
                               <VBox prefHeight="1046.0" prefWidth="640.0">
                                  <children>
-                                    <Label prefHeight="49.0" prefWidth="224.0" stylesheets="@../../../../../../../Desktop/proyecto%20copia/Proyecto1/src/application/application.css" text="Selecciona un paciente:">
+                                    <Label prefHeight="42.0" prefWidth="280.0" styleClass="textoLabel" stylesheets="@../application.css" text="Selecciona un paciente:">
                                        <font>
                                           <Font name="Arial Bold" size="19.0" />
                                        </font>
@@ -428,7 +428,7 @@
                                     <JFXTreeTableView fx:id="treeTableViewPacientes" onMouseClicked="#mostrarDatosSensoresPacientes" prefHeight="383.0" prefWidth="640.0" />
                                     <HBox prefHeight="55.0" prefWidth="640.0">
                                        <children>
-                                          <Label prefHeight="51.0" prefWidth="175.0" stylesheets="@../../../../../../../Desktop/proyecto%20copia/Proyecto1/src/application/application.css" text="Selecciona un dia:">
+                                          <Label prefHeight="51.0" prefWidth="175.0" styleClass="textoLabel" stylesheets="@../application.css" text="Selecciona un dia:">
                                              <font>
                                                 <Font name="Arial Bold" size="19.0" />
                                              </font>
@@ -449,7 +449,7 @@
                               <Separator orientation="VERTICAL" prefHeight="1080.0" />
                               <VBox prefHeight="1050.0" prefWidth="640.0">
                                  <children>
-                                    <LineChart fx:id="graficaTemperatura" prefHeight="640.0" prefWidth="640.0" title="Sensor de temperatura">
+                                    <LineChart fx:id="graficaTemperatura" prefHeight="640.0" prefWidth="640.0" styleClass="graphs" stylesheets="@../application.css" title="Sensor de temperatura">
                                        <xAxis>
                                           <CategoryAxis label="Tiempo" prefHeight="43.0" prefWidth="504.0" side="BOTTOM" />
                                        </xAxis>
@@ -458,7 +458,7 @@
                                        </yAxis>
                                     </LineChart>
                                     <Separator prefWidth="200.0" />
-                                    <StackedBarChart fx:id="graficaMagnetico" prefHeight="640.0" prefWidth="640.0" title="Sensor magnetico">
+                                    <StackedBarChart fx:id="graficaMagnetico" prefHeight="640.0" prefWidth="640.0" styleClass="graphs" stylesheets="@../application.css" title="Sensor magnetico">
                                        <xAxis>
                                           <CategoryAxis label="Tiempo" side="BOTTOM" />
                                        </xAxis>
@@ -471,18 +471,24 @@
                               <Separator orientation="VERTICAL" prefHeight="1080.0" />
                               <VBox prefHeight="1050.0" prefWidth="640.0">
                                  <children>
-                                    <PieChart fx:id="graficaPresion" prefHeight="615.0" prefWidth="625.0" title="Horas de sueño" />
+                                    <PieChart fx:id="graficaPresion" prefHeight="536.0" prefWidth="636.0" styleClass="graphs" stylesheets="@../application.css" title="Horas de sueño" />
                                     <HBox prefHeight="50.0" prefWidth="200.0">
                                        <children>
-                                          <Label prefHeight="35.0" prefWidth="206.0" text="Horas durmiendo:">
+                                          <Label prefHeight="35.0" prefWidth="206.0" styleClass="graphs" stylesheets="@../application.css" text="Horas durmiendo:">
                                              <effect>
                                                 <Blend />
                                              </effect>
                                              <font>
                                                 <Font size="24.0" />
                                              </font>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <padding>
+                                                <Insets left="30.0" />
+                                             </padding>
                                           </Label>
-                                          <Label fx:id="horasDurmiendo" prefHeight="35.0" prefWidth="74.0">
+                                          <Label fx:id="horasDurmiendo" prefHeight="23.0" prefWidth="128.0" styleClass="graphs" stylesheets="@../application.css">
                                              <effect>
                                                 <Blend />
                                              </effect>
@@ -492,7 +498,8 @@
                                           </Label>
                                        </children>
                                     </HBox>
-                                    <StackedBarChart fx:id="graficaGas" prefHeight="615.0" prefWidth="595.0" title="Sensor de gas">
+                                    <Separator prefWidth="200.0" />
+                                    <StackedBarChart fx:id="graficaGas" prefHeight="556.0" prefWidth="636.0" styleClass="graphs" stylesheets="@../application.css" title="Sensor de gas">
                                        <xAxis>
                                           <CategoryAxis label="Tiempo" side="BOTTOM" />
                                        </xAxis>
