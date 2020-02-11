@@ -670,6 +670,7 @@ public class controladorMedico implements Initializable, MapComponentInitialized
         }
     }
     
+    // MAPA
     // Variables y métodos del GoogleMaps
     private GoogleMap map;
     
@@ -685,6 +686,12 @@ public class controladorMedico implements Initializable, MapComponentInitialized
     
     @FXML
     private JFXButton buttonActualizarUbicacion;
+    
+    @FXML
+    private JFXButton buttonUbicacionCasa;
+    
+    @FXML
+    private JFXTreeTableView<usuarioTTView> treeTableViewPacientesMapa;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -750,6 +757,17 @@ public class controladorMedico implements Initializable, MapComponentInitialized
     	
     }
     
+    @FXML
+    void verUbicacionCasa(ActionEvent event) {
+    	
+    }
+    
+	@FXML
+    void mostrarDatosMapaPacientes(MouseEvent event) throws ParseException {    	
+    	calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
+    } 
+    
+	// SENSORES
     // Variables y métodos de los sensores
     @FXML
     private JFXTreeTableView<usuarioTTView> treeTableViewPacientes;
@@ -776,9 +794,14 @@ public class controladorMedico implements Initializable, MapComponentInitialized
         }
 
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
+        // Sensores
         treeTableViewPacientes.getColumns().setAll(nombreCol, apellidosCol);
         treeTableViewPacientes.setRoot(root);
         treeTableViewPacientes.setShowRoot(false);
+        // Mapa
+        treeTableViewPacientesMapa.getColumns().setAll(nombreCol, apellidosCol);
+        treeTableViewPacientesMapa.setRoot(root);
+        treeTableViewPacientesMapa.setShowRoot(false);
     }
 	
     @FXML private LineChart<Double, Double> graficaTemperatura;

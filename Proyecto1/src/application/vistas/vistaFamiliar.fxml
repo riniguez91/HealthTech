@@ -26,6 +26,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -34,7 +35,7 @@
     <children>
       <JFXTabPane fx:id="tabPanePaciente" prefHeight="1080.0" prefWidth="1920.0" styleClass="jfx-tab-pane" stylesheets="@../application.css" tabMaxHeight="30.0" tabMaxWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
-              	<Tab fx:id="tabInicioPaciente" text="                         Inicio                         ">
+              	<Tab fx:id="tabInicioPaciente" text="               Inicio               ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
                             <children>
@@ -222,7 +223,7 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabCalendarioPaciente" text="                         Calendario                         ">
+                <Tab fx:id="tabCalendarioPaciente" text="               Calendario               ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ced6e0;">
                      <children>
@@ -231,7 +232,7 @@
                      </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabUsuariosPaciente" text="                         Usuarios                         ">
+                <Tab fx:id="tabUsuariosPaciente" text="               Usuarios               ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../application.css">
                             <children>
@@ -412,7 +413,7 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-            <Tab fx:id="tabRegistrosFamiliar" text="                         Registros                         ">
+            <Tab fx:id="tabRegistrosFamiliar" text="               Registros               ">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -438,12 +439,6 @@
                                     </HBox>
                                     <Label prefHeight="23.0" prefWidth="344.0" text="Solo hay datos los dias 19,20,21 de enero de 2020" />
                                     <Separator prefWidth="200.0" />
-                                    <GoogleMapView fx:id="mapView" prefHeight="555.0" prefWidth="640.0">
-                                       <children>
-                                          <TextField fx:id="addressTextField" layoutX="200.0" layoutY="15.0" onAction="#addressTextFieldAction" prefHeight="41.0" prefWidth="151.0" promptText="Introduzca dirección:" />
-                                          <JFXButton fx:id="buttonActualizarUbicacion" layoutX="390.0" layoutY="15.0" onAction="#actualizarUbicacion" prefHeight="31.0" prefWidth="165.0" styleClass="botones" text="Actualizar ubicación" />
-                                       </children>
-                                    </GoogleMapView>
                                  </children>
                               </VBox>
                               <Separator orientation="VERTICAL" prefHeight="1080.0" />
@@ -515,10 +510,10 @@
                   </AnchorPane>
                </content>
             </Tab>
-                <Tab fx:id="tabMensajesPaciente" text="                         Mensajes                         ">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
+            <Tab fx:id="tabMensajesPaciente" text="                Mensajes                   ">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
                         <VBox fx:id="seleccionaMensajeVBox" alignment="CENTER" fillWidth="false" layoutX="1156.0" layoutY="534.0" AnchorPane.bottomAnchor="484.0" AnchorPane.leftAnchor="1156.0" AnchorPane.rightAnchor="461.0" AnchorPane.topAnchor="534.0">
                            <children>
                               <Label fx:id="seleccionaMensajeLabelMensajes" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="303.0" text="Seleccione un mensaje">
@@ -576,7 +571,7 @@
                                           <Insets left="5.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="ID11" prefHeight="56.0" prefWidth="487.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="ID Ticket:" GridPane.rowIndex="2">
+                                    <Label fx:id="ID111" prefHeight="56.0" prefWidth="487.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="ID Ticket:" GridPane.rowIndex="2">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -649,9 +644,48 @@
                               </HBox>
                            </children>
                         </VBox>
-                            </children></AnchorPane>
-                    </content>
-                </Tab>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabRegistrosFamiliar1" text="               Localización               ">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="1080.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox prefHeight="1050.0" prefWidth="500.0">
+                                 <children>
+                                    <Label prefHeight="42.0" prefWidth="280.0" styleClass="textoLabel" stylesheets="@../application.css" text="Selecciona un paciente:">
+                                       <font>
+                                          <Font name="Arial Bold" size="19.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXTreeTableView fx:id="treeTableViewPacientesMapa" onMouseClicked="#mostrarDatosMapaPacientes" prefHeight="1013.0" prefWidth="400.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="1050.0" prefWidth="1435.0">
+                                 <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="addressTextField" onAction="#addressTextFieldAction" prefHeight="60.0" prefWidth="250.0" promptText="Introduzca dirección:" />
+                                          <JFXButton fx:id="buttonActualizarUbicacion" onAction="#actualizarUbicacion" prefHeight="60.0" prefWidth="250.0" styleClass="botones" text="Ubicacion Paciente" />
+                                          <JFXButton fx:id="buttonUbicacionCasa" onAction="#verUbicacionCasa" prefHeight="60.0" prefWidth="250.0" styleClass="botones" text="Ubicacion Casa" />
+                                       </children>
+                                    </HBox>
+                                    <Pane prefHeight="1016.0" prefWidth="1428.0">
+                                       <children>
+                                          <GoogleMapView fx:id="mapView" layoutX="8.0" layoutY="6.0" prefHeight="968.0" prefWidth="1408.0" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
          </tabs>
       </JFXTabPane>
     </children>
