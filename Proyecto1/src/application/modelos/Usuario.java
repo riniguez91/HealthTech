@@ -12,15 +12,16 @@ public class Usuario {
 
     }
 
-    public Usuario(String name, String surname, String birthday, String username, Integer telephone, String dni, String password, String rol){
-        this.name=name;
-        this.surname=surname;
-        this.birthday=birthday;
-        this.username=username;
-        this.telephone=telephone;
-        this.dni=dni;
-        this.password=password;
-        this.rol=rol;
+    public Usuario(String name, String surname, String birthday, String username, Integer telephone, String dni, String password, String rol, String domicilio){
+        this.name = name;
+        this.surname = surname;
+        this.birthday = birthday;
+        this.username = username;
+        this.telephone = telephone;
+        this.dni = dni;
+        this.password = password;
+        this.rol = rol;
+        this.domicilio = domicilio;
     }
 
     @SerializedName("name")
@@ -53,6 +54,9 @@ public class Usuario {
     @SerializedName("dni")
     @Expose
     private String dni;
+    @SerializedName("domicilio")
+    @Expose
+    private String domicilio;
     
     private List<String> relaciones;
 
@@ -136,12 +140,22 @@ public class Usuario {
     public void setTelephone(Integer telephone) {
         this.telephone = telephone;
     }
-    
-    public String getDNI() {
-        return dni;
-    }
 
-    public void setDNI(String dni) {
-        this.dni = dni;
-    }
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public String getDomicilio() {
+		return domicilio;
+	}
+
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
+	}
+    
+    
 }

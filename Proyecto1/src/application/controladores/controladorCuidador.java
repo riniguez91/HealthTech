@@ -54,7 +54,7 @@ public class controladorCuidador {
         labelUsernameInicio.setText(usuario.getUsername());
         labelFechaNacimientoInicio.setText(usuario.getBirthday());
         labelEdadInicio.setText(usuario.getAge() + "");
-        labelDNIInicio.setText(usuario.getDNI());
+        labelDNIInicio.setText(usuario.getDni());
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
 
         // Establecemos la foto del usuario en la pestaña de Inicio

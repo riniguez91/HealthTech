@@ -86,7 +86,7 @@ public class controladorMedico implements Initializable, MapComponentInitialized
         labelUsernameInicio.setText(usuario.getUsername());
         labelFechaNacimientoInicio.setText(usuario.getBirthday());
         labelEdadInicio.setText(usuario.getAge() + "");
-        labelDNIInicio.setText(usuario.getDNI());
+        labelDNIInicio.setText(usuario.getDni());
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
 
         // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario

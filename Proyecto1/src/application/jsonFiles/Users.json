@@ -385,7 +385,8 @@
     ],
     "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_shernandez.png",
     "telephone" : 664206782,
-    "dni" : "54348163Z"
+    "dni" : "54348163Z",
+    "domicilio" : "Avenida Villaviciosa 36"
   },
   {
     "name": "Rosa",

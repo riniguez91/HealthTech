@@ -71,6 +71,11 @@
                <font>
                   <Font name="Segoe UI Emoji" size="14.0" />
                </font></JFXTextField>
+            <JFXTextField fx:id="crearDomicilioTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Escriba la dirección de su domicilio">
+               <font>
+                  <Font name="Segoe UI Emoji" size="14.0" />
+               </font>
+            </JFXTextField>
             <JFXButton fx:id="crearCuentaBttn" alignment="CENTER" minWidth="50.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" text="Crear cuenta">
                <VBox.margin>
                   <Insets top="20.0" />

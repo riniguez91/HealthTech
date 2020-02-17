@@ -86,8 +86,9 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         labelUsernameInicio.setText(usuario.getUsername());
         labelFechaNacimientoInicio.setText(usuario.getBirthday());
         labelEdadInicio.setText(usuario.getAge() + "");
-        labelDNIInicio.setText(usuario.getDNI());
+        labelDNIInicio.setText(usuario.getDni());
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
+        labelDomicilioInicio.setText(usuario.getDomicilio() + "");
 
         // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario
         //panelDatosYMensajesUsuarios.setVisible(false);
@@ -122,6 +123,9 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 
     @FXML
     private Label Rol;
+    
+    @FXML
+    private Label Domicilio;
 
     @FXML
     private Label labelNombreInicio;
@@ -146,6 +150,9 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 
     @FXML
     private Label labelTelefonoInicio;
+    
+    @FXML
+    private Label labelDomicilioInicio;
     
     @FXML
     private JFXButton cerrarSesionBtn;

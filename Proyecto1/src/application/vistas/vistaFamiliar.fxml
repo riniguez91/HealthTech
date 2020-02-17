@@ -64,6 +64,7 @@
                                     <RowConstraints maxHeight="67.0" minHeight="0.0" prefHeight="67.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
                                                 <Label fx:id="Nombre" prefHeight="30.0" prefWidth="291.0" styleClass="informationLabel" stylesheets="@../application.css" text="Nombre:">
@@ -108,18 +109,24 @@
                                     </Label>
                                     <Label fx:id="labelFechaNacimientoInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                     <Label fx:id="labelEdadInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label fx:id="Domicilio" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Domicilio:" GridPane.rowIndex="7">
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </Label>
                                     <Label fx:id="DNI" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="DNI:" GridPane.rowIndex="6">
                                        <padding>
                                           <Insets left="20.0" />
                                        </padding>
                                     </Label>
-                                    <Label fx:id="Telefono" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Teléfono:" GridPane.rowIndex="7">
+                                    <Label fx:id="Telefono" prefHeight="45.0" prefWidth="400.0" styleClass="informationLabel" stylesheets="@../application.css" text="Teléfono:" GridPane.rowIndex="8">
                                        <padding>
                                           <Insets left="20.0" />
                                        </padding>
                                     </Label>
                                     <Label fx:id="labelDNIInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <Label fx:id="labelTelefonoInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <Label fx:id="labelDomicilioInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <Label fx:id="labelTelefonoInicio" prefHeight="25.0" prefWidth="350.0" styleClass="textoLabelwhite" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                                             </children>
                                  <VBox.margin>
                                     <Insets />
