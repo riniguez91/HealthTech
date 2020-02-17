@@ -727,11 +727,11 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 	        //Añadir un Marker al mapa
 	        MarkerOptions markerOptions = new MarkerOptions();
 
-	        markerOptions.position(new LatLong(40.371830555556, -3.9189527777778) )
+	        markerOptions.position(new LatLong(40.371830555556, -3.9189527777778))
 	                    .visible(Boolean.TRUE)
-	                    .title("My Marker");
+	                    .title("MarKer Ubicación");
 
-	        Marker marker = new Marker( markerOptions );
+	        Marker marker = new Marker(markerOptions);
 
 	        map.addMarker(marker);
 	}
@@ -761,12 +761,41 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     
     @FXML
     void actualizarUbicacion(ActionEvent event) {
-    	
+        map.setCenter(new LatLong(40.371830555556, -3.9189527777778));
     }
     
     @FXML
     void verUbicacionCasa(ActionEvent event) {
-    	
+        geocodingService.geocode(usuario.getDomicilio(), (GeocodingResult[] results, GeocoderStatus status) -> {
+        	
+            LatLong latLong = null;
+            
+            if( status == GeocoderStatus.ZERO_RESULTS) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No se encontraron direcciones coincidentes");
+                alert.show();
+                return;
+            } else if( results.length > 1 ) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ubicación de la casa: "+usuario.getDomicilio());
+                alert.show();
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            } else {
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            }
+            
+	        //Añadir un Marker al mapa
+	        MarkerOptions markerOptions = new MarkerOptions();
+
+	        markerOptions.position(latLong)
+	                    .visible(Boolean.TRUE)
+	                    .title("MarKer Ubicación");
+
+	        Marker marker = new Marker(markerOptions);
+
+	        map.addMarker(marker);
+            
+            map.setCenter(latLong);
+
+        });
     }
     
 	@FXML
