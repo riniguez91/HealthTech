@@ -774,7 +774,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
                 Alert alert = new Alert(Alert.AlertType.ERROR, "No se encontraron direcciones coincidentes");
                 alert.show();
                 return;
-            } else if( results.length > 1 ) {
+            } else if( results.length >= 1 ) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ubicación de la casa: "+usuario.getDomicilio());
                 alert.show();
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
@@ -797,11 +797,6 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
 
         });
     }
-    
-	@FXML
-    void mostrarDatosMapaPacientes(MouseEvent event) throws ParseException {    	
-    	calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
-    }  
     
 	// SENSORES
     // Variables y métodos de los sensores
