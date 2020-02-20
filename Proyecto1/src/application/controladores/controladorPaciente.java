@@ -312,7 +312,6 @@ public class controladorPaciente {
     @FXML
     private VBox datosVBoxMensajes;
 
-
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
 	void verInicio(ActionEvent event) {
@@ -321,6 +320,7 @@ public class controladorPaciente {
 		VBox_PregFrec.setVisible(true);
 		VBox_Separator.setVisible(true);
 	}
+
 	@FXML
 	void verPreguntasFrecuentes(ActionEvent event) {
 		//panePreguntasFrecuentes.setVisible(true);
@@ -330,31 +330,37 @@ public class controladorPaciente {
 		VBox_Separator.setVisible(false);
 	}
 
+    public void setMsgAsRead() {
+        // Cambiamos el mensaje como leido si no lo estaba
+        if (!treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getRead().get()) {
+            for (Message msg : modelo.getMessages()) {
+                // Compramos el mensaje que corresponde con el ID del mensaje y la persona que lo tiene que recibir (receiver)
+                if (msg.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()) &&
+                        msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurname())){
+                    msg.setRead(true);
+
+                    // Lo marcamos como leido en el JSON de mensajes
+                    modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
+
+                    // Actualizamos la lista de mensajes
+                    modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
+
+                    // Borramos el mensaje de la pestaña Recordatorios
+                    comprobarMensajesNuevos();
+                    break;
+                }
+            }
+        }
+    }
+
     @FXML
     void filterUsersUsuario(KeyEvent event) {
         treeTableViewUsuarios.setPredicate( usuarioTreeItem -> usuarioTreeItem.getValue().getName().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()) ||
-        		usuarioTreeItem.getValue().getSurname().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase())
+                usuarioTreeItem.getValue().getSurname().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase())
                 || usuarioTreeItem.getValue().getRolUsuario().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
-	}
-
-    @FXML
-    void filterTicketsMensajes(KeyEvent event) {
-        treeTableViewMensajes.setPredicate( mensajeTreeItem -> mensajeTreeItem.getValue().getSubject().get().toLowerCase().startsWith(filtrarMensajeTFieldMensajes.getText().toLowerCase()) ||
-                mensajeTreeItem.getValue().getIdTicket().get().startsWith(filtrarMensajeTFieldMensajes.getText()));
     }
 
-    @FXML
-    void cancelarMensajeUsuarios(ActionEvent event) {
-	    if (asuntoJFXTextFieldUsuarios.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
-            modelo.createAlert("Informacion", "Primero debe introducir un asunto o un mensaje");
-        }
-	    else {
-            asuntoJFXTextFieldUsuarios.clear();
-            mensajeJFXTextFieldUsuarios.clear();
-        }
-    }
-
-	public void crearTreeTableViewUsuarios() {
+    public void crearTreeTableViewUsuarios() {
         JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
         JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
         JFXTreeTableColumn<usuarioTTView, String> rolCol = new JFXTreeTableColumn<>("Rol");
@@ -380,6 +386,12 @@ public class controladorPaciente {
         treeTableViewUsuarios.getColumns().setAll(nombreCol, apellidosCol, rolCol);
         treeTableViewUsuarios.setRoot(root);
         treeTableViewUsuarios.setShowRoot(false);
+    }
+
+    @FXML
+    void filterTicketsMensajes(KeyEvent event) {
+        treeTableViewMensajes.setPredicate( mensajeTreeItem -> mensajeTreeItem.getValue().getSubject().get().toLowerCase().startsWith(filtrarMensajeTFieldMensajes.getText().toLowerCase()) ||
+                mensajeTreeItem.getValue().getIdTicket().get().startsWith(filtrarMensajeTFieldMensajes.getText()));
     }
 
     public void crearTreeTableViewMensajes() {
@@ -411,7 +423,7 @@ public class controladorPaciente {
         treeTableViewMensajes.getColumns().setAll(idCol, senderCol, asuntoCol);
         treeTableViewMensajes.setRoot(root);
         treeTableViewMensajes.setShowRoot(false);
-        }
+    }
 
     @FXML
     void mostrarDatosYMensajeUsuarios(MouseEvent event) {
@@ -437,29 +449,6 @@ public class controladorPaciente {
                 destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
                         + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
                 userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getImagenPerfil().get()));
-            }
-        }
-    }
-
-    public void setMsgAsRead() {
-        // Cambiamos el mensaje como leido si no lo estaba
-        if (!treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getRead().get()) {
-            for (Message msg : modelo.getMessages()) {
-                // Compramos el mensaje que corresponde con el ID del mensaje y la persona que lo tiene que recibir (receiver)
-                if (msg.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()) &&
-                        msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurname())){
-                    msg.setRead(true);
-
-                    // Lo marcamos como leido en el JSON de mensajes
-                    modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
-
-                    // Actualizamos la lista de mensajes
-                    modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
-
-                    // Borramos el mensaje de la pestaña Recordatorios
-                    comprobarMensajesNuevos();
-                    break;
-                }
             }
         }
     }
@@ -547,24 +536,6 @@ public class controladorPaciente {
     }
 
     @FXML
-    void cerrarSesion(ActionEvent event) throws IOException {
-        Stage stageBttnBelongsTo = (Stage) cerrarSesionBtn.getScene().getWindow();
-        FXMLLoader loaderLogin = new FXMLLoader(getClass().getResource("/application/vistas/vistaLogin.fxml"));
-        Parent rootLogin;
-        rootLogin = loaderLogin.load();
-        controladorLogin contrLogin = loaderLogin.getController();
-        contrLogin.initModelo(modelo,usuario);
-        stageBttnBelongsTo.setScene(new Scene(rootLogin));
-    }
-
-    @FXML
-    void responderTicketMensajes(ActionEvent event) {
-        scrollPaneMensajes.setVisible(false);
-        botonResponderTicket.setVisible(false);
-	    respuestaTicketVBox.setVisible(true);
-    }
-
-    @FXML
     void crearMensajeYResponderTicket(ActionEvent event) {
         if (crearMensajeJFXTextAreaMensajes.getText().isEmpty()){
             modelo.createAlert("Cuidado", "Debes de poner un mensaje");
@@ -587,23 +558,6 @@ public class controladorPaciente {
             // Borramos los campos para evitar confusion
             crearMensajeJFXTextAreaMensajes.clear();
         }
-    }
-    
-    @FXML
-    void guardarCalendario(ActionEvent event) {
-	    if (calendario.getAgendaView().getListView().getItems().size() != 0) {
-            prueba.getListView().setItems(calendario.getAgendaView().getListView().getItems());
-            modelo.createAlert("Informacion", "El evento se ha añadido correctamente");
-        } else {
-            modelo.createAlert("Informacion", "Primero debe de añadir un evento al calendario");
-        }
-    }
-    
-    @FXML
-    void cancelarRespuestaTicket(ActionEvent event) {
-	    respuestaTicketVBox.setVisible(false);
-	    scrollPaneMensajes.setVisible(true);
-	    botonResponderTicket.setVisible(true);
     }
 
     public void comprobarMensajesNuevos(){
@@ -632,6 +586,52 @@ public class controladorPaciente {
             labelMessagesInicio.get(0).setFont(new Font("Century Gothic", 26));
             vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(0));
         }
+    }
+
+    @FXML
+    void cancelarMensajeUsuarios(ActionEvent event) {
+        if (asuntoJFXTextFieldUsuarios.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
+            modelo.createAlert("Informacion", "Primero debe introducir un asunto o un mensaje");
+        }
+        else {
+            asuntoJFXTextFieldUsuarios.clear();
+            mensajeJFXTextFieldUsuarios.clear();
+        }
+    }
+
+    @FXML
+    void responderTicketMensajes(ActionEvent event) {
+        scrollPaneMensajes.setVisible(false);
+        botonResponderTicket.setVisible(false);
+        respuestaTicketVBox.setVisible(true);
+    }
+
+    @FXML
+    void cancelarRespuestaTicket(ActionEvent event) {
+        respuestaTicketVBox.setVisible(false);
+        scrollPaneMensajes.setVisible(true);
+        botonResponderTicket.setVisible(true);
+    }
+
+    @FXML
+    void guardarCalendario(ActionEvent event) {
+        if (calendario.getAgendaView().getListView().getItems().size() != 0) {
+            prueba.getListView().setItems(calendario.getAgendaView().getListView().getItems());
+            modelo.createAlert("Informacion", "El evento se ha añadido correctamente");
+        } else {
+            modelo.createAlert("Informacion", "Primero debe de añadir un evento al calendario");
+        }
+    }
+
+    @FXML
+    void cerrarSesion(ActionEvent event) throws IOException {
+        Stage stageBttnBelongsTo = (Stage) cerrarSesionBtn.getScene().getWindow();
+        FXMLLoader loaderLogin = new FXMLLoader(getClass().getResource("/application/vistas/vistaLogin.fxml"));
+        Parent rootLogin;
+        rootLogin = loaderLogin.load();
+        controladorLogin contrLogin = loaderLogin.getController();
+        contrLogin.initModelo(modelo,usuario);
+        stageBttnBelongsTo.setScene(new Scene(rootLogin));
     }
 }
 
