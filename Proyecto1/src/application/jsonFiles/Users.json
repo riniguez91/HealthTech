@@ -1,23 +1,22 @@
 [
-//MEDICOS  
   {
     "name": "Sara",
     "surname": "Gómez Hernández",
     "age": 39,
     "birthday": "03/01/1980",
     "username": "sgomez",
-    "password": "d052f03df8a741ca9769026b7772a00c",	//"1fz91VYT"
+    "password": "d052f03df8a741ca9769026b7772a00c",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_sgomez.png",
+    "telephone": 912675490,
+    "dni": "06557834M",
     "relaciones": [
-		"crey",
-		"shernandez",
-		"rnieto",
-		"sdiaz",
-      	"pbascuas"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_sgomez.png",
-    "telephone" : 912675490,
-    "dni" : "06557834M"
+      "crey",
+      "shernandez",
+      "rnieto",
+      "sdiaz",
+      "pbascuas"
+    ]
   },
   {
     "name": "Jose",
@@ -25,37 +24,37 @@
     "age": 46,
     "birthday": "26/11/1972",
     "username": "jmoreno",
-    "password": "bdd79e34eb8efba0b8a3b5a7c7d10d62",		//"0HdJYSAN"
+    "password": "bdd79e34eb8efba0b8a3b5a7c7d10d62",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_jmoreno.png",
+    "telephone": 915648938,
+    "dni": "50033072E",
     "relaciones": [
-		"jrodriguez",
-		"rnieto",
-		"shernandez",
-		"pbascuas",
-      	"sdiaz"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_jmoreno.png",
-    "telephone" : 915648938,
-    "dni" : "50033072E"
+      "jrodriguez",
+      "rnieto",
+      "shernandez",
+      "pbascuas",
+      "sdiaz"
+    ]
   },
-{
+  {
     "name": "Ramero",
     "surname": "Hernández Fernández",
     "age": 41,
     "birthday": "18/01/1978",
     "username": "rhernandez",
-    "password": "a9c05ee1dd8f689f90545aee8dda7555",	//"hernandez1"
+    "password": "a9c05ee1dd8f689f90545aee8dda7555",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_rhernandez.png",
+    "telephone": 914568213,
+    "dni": "70294239Y",
     "relaciones": [
-		"sarrollo",
-		"salonso",
-		"mutrera",
-		"calonso",
-      	"autrera"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rhernandez.png",
-    "telephone" : 914568213,
-    "dni" : "70294239Y"
+      "sarrollo",
+      "salonso",
+      "mutrera",
+      "calonso",
+      "autrera"
+    ]
   },
   {
     "name": "María",
@@ -63,18 +62,18 @@
     "age": 53,
     "birthday": "17/07/1966",
     "username": "msuarez",
-    "password": "7df9ca11eb49513ac74fcb3b2cdc07f5",	//"Cetreria3"
+    "password": "7df9ca11eb49513ac74fcb3b2cdc07f5",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_msuarez.png",
+    "telephone": 913945282,
+    "dni": "65162946J",
     "relaciones": [
-		"rcampos",
-		"mutrera",
-		"aalonso",
-		"autrera",
-      	"abaeza"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msuarez.png",
-    "telephone" : 913945282,
-    "dni" : "65162946J"
+      "rcampos",
+      "mutrera",
+      "aalonso",
+      "autrera",
+      "abaeza"
+    ]
   },
   {
     "name": "Rosa",
@@ -82,18 +81,18 @@
     "age": 37,
     "birthday": "18/09/1982",
     "username": "rmartin",
-    "password": "4527b4881408a7d778b36559abfe8822",	//"trece092000"
+    "password": "4527b4881408a7d778b36559abfe8822",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_rmartin.png",
+    "telephone": 914873371,
+    "dni": "47340446Y",
     "relaciones": [
-		"lrodriguez",
-		"cgil",
-		"xhernandez",
-		"pcañizo",
-      	"mrubio"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rmartin.png",
-    "telephone" : 914873371,
-    "dni" : "47340446Y"
+      "lrodriguez",
+      "cgil",
+      "xhernandez",
+      "pcañizo",
+      "mrubio"
+    ]
   },
   {
     "name": "Mar",
@@ -101,18 +100,18 @@
     "age": 39,
     "birthday": "18/03/1980",
     "username": "msanchez",
-    "password": "b9cc501e935b3e4dd7add33a6cd0a6a1",	//"1309dosmil"
+    "password": "b9cc501e935b3e4dd7add33a6cd0a6a1",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_msanchez.png",
+    "telephone": 915437229,
+    "dni": "80348373N",
     "relaciones": [
-		"slopez",
-		"cmontero",
-		"lramos",
-		"fmontero",
-      	"pcanoyra"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_msanchez.png",
-    "telephone" : 915437229,
-    "dni" : "80348373N"
+      "slopez",
+      "cmontero",
+      "lramos",
+      "fmontero",
+      "pcanoyra"
+    ]
   },
   {
     "name": "Rafael",
@@ -120,18 +119,18 @@
     "age": 33,
     "birthday": "10/07/1986",
     "username": "rcaballero",
-    "password": "997e26bcc4b31c0220c5058ce3ea8558",	//"13sep2000"
+    "password": "997e26bcc4b31c0220c5058ce3ea8558",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_rcaballero.png",
+    "telephone": 916627464,
+    "dni": "28842204C",
     "relaciones": [
-		"sgimenez",
-		"lramos",
-		"jlopez",
-		"pcanoyra",
-      	"atendero"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rcaballero.png",
-    "telephone" : 916627464,
-    "dni" : "28842204C"
+      "sgimenez",
+      "lramos",
+      "jlopez",
+      "pcanoyra",
+      "atendero"
+    ]
   },
   {
     "name": "Rodrigo",
@@ -139,18 +138,18 @@
     "age": 44,
     "birthday": "17/07/1975",
     "username": "rvicario",
-    "password": "bcd3b0bcb73fc2b4945bf6a3dafed01a",	//"TrecEsep2000"
+    "password": "bcd3b0bcb73fc2b4945bf6a3dafed01a",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_rvicario.png",
+    "telephone": 911579223,
+    "dni": "19437069E",
     "relaciones": [
-		"jcabeza",
-		"jlopez",
-		"cmontero",
-		"atendero",
-      	"fmontero"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_rvicario.png",
-    "telephone" : 911579223,
-    "dni" : "19437069E"
+      "jcabeza",
+      "jlopez",
+      "cmontero",
+      "atendero",
+      "fmontero"
+    ]
   },
   {
     "name": "Mariana",
@@ -158,18 +157,18 @@
     "age": 39,
     "birthday": "20/09/1980",
     "username": "mvega",
-    "password": "7804bae6c90f7645dcaf0bf9d2b3a14a",	//"mvega"
+    "password": "7804bae6c90f7645dcaf0bf9d2b3a14a",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_mvega.png",
+    "telephone": 917197940,
+    "dni": "41002670H",
     "relaciones": [
-		"pgalindo",
-		"xhernandez",
-		"cgil",
-		"mrubio",
-      	"pcañizo"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mvega.png",
-    "telephone" : 917197940,
-    "dni" : "41002670H"
+      "pgalindo",
+      "xhernandez",
+      "cgil",
+      "mrubio",
+      "pcañizo"
+    ]
   },
   {
     "name": "Marina",
@@ -177,40 +176,35 @@
     "age": 41,
     "birthday": "20/10/1978",
     "username": "mnieto",
-    "password": "1e6512345f6c7de0af5363dd339c6112",	//"mnieto"
+    "password": "1e6512345f6c7de0af5363dd339c6112",
     "rol": "medico",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\medico_mnieto.png",
+    "telephone": 910899288,
+    "dni": "74858792W",
     "relaciones": [
-		"miglesias",
-		"aalonso",
-		"salonso",
-		"abaeza",
-      	"calonso"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\medico_mnieto.png",
-    "telephone" : 910899288,
-    "dni" : "74858792W"
+      "miglesias",
+      "aalonso",
+      "salonso",
+      "abaeza",
+      "calonso"
+    ]
   },
-  
-  
-//CUIDADORES
-  
-  
   {
     "name": "Catalina",
     "surname": "Rey Rodríguez",
     "age": 35,
     "birthday": "03/06/1984",
     "username": "crey",
-    "password": "e29371b26afe0c2085cf2d782c790ba3",	//"3A9m5Y81"
+    "password": "e29371b26afe0c2085cf2d782c790ba3",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_crey.png",
+    "telephone": 689913392,
+    "dni": "74850975M",
     "relaciones": [
-		"sgomez",
-		"shernandez",
-		"sdiaz"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_crey.png",
-    "telephone" : 689913392,
-    "dni" : "74850975M"
+      "sgomez",
+      "shernandez",
+      "sdiaz"
+    ]
   },
   {
     "name": "Juan",
@@ -218,16 +212,16 @@
     "age": 26,
     "birthday": "14/10/1993",
     "username": "jrodriguez",
-    "password": "84f1d171953f18ec679c1234fcdc6239",	//"nLQJ5lJo"
+    "password": "84f1d171953f18ec679c1234fcdc6239",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_jrodriguez.png",
+    "telephone": 627949842,
+    "dni": "60230874S",
     "relaciones": [
-		"jmoreno",
-		"rnieto",
-		"pbascuas"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jrodriguez.png",
-    "telephone" : 627949842,
-    "dni" : "60230874S"
+      "jmoreno",
+      "rnieto",
+      "pbascuas"
+    ]
   },
   {
     "name": "Sebastián",
@@ -235,16 +229,16 @@
     "age": 26,
     "birthday": "20/09/1993",
     "username": "sarrollo",
-    "password": "70b1f6501cbf048e103698743dd7eb95",	//"Eyn&Zm4n"
+    "password": "70b1f6501cbf048e103698743dd7eb95",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_sarrollo.png",
+    "telephone": 641399790,
+    "dni": "35978120W",
     "relaciones": [
-		"rhernandez",
-		"salonso",
-		"calonso"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sarrollo.png",
-    "telephone" : 641399790,
-    "dni" : "35978120W"
+      "rhernandez",
+      "salonso",
+      "calonso"
+    ]
   },
   {
     "name": "Lola",
@@ -252,16 +246,16 @@
     "age": 32,
     "birthday": "05/04/1987",
     "username": "lrodriguez",
-    "password": "255eef7f000d1f0f2e7b0ff7fc65e2ba",	//"A99sQF$g"
+    "password": "255eef7f000d1f0f2e7b0ff7fc65e2ba",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_lrodriguez.png",
+    "telephone": 633781588,
+    "dni": "81853205T",
     "relaciones": [
-		"rmartin",
-		"cgil",
-		"pcañizo"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_lrodriguez.png",
-    "telephone" : 633781588,
-    "dni" : "81853205T"
+      "rmartin",
+      "cgil",
+      "pcañizo"
+    ]
   },
   {
     "name": "Ramona",
@@ -269,16 +263,16 @@
     "age": 32,
     "birthday": "02/11/1987",
     "username": "rcampos",
-    "password": "0068fb51e902d168ad974ef09bf70bc5",	//"Dkyo^Bpl"
+    "password": "0068fb51e902d168ad974ef09bf70bc5",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_rcampos.png",
+    "telephone": 619932478,
+    "dni": "47575337K",
     "relaciones": [
-		"msuarez",
-		"mutrera",
-		"autrera"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_rcampos.png",
-    "telephone" : 619932478,
-    "dni" : "47575337K"
+      "msuarez",
+      "mutrera",
+      "autrera"
+    ]
   },
   {
     "name": "Susana",
@@ -286,16 +280,16 @@
     "age": 29,
     "birthday": "20/10/1990",
     "username": "slopez",
-    "password": "ed728f09f629ca386c1fe9207a2ea046",	//"LjOeIkc!"
+    "password": "ed728f09f629ca386c1fe9207a2ea046",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_slopez.png",
+    "telephone": 684916265,
+    "dni": "95054416Q",
     "relaciones": [
-		"msanchez",
-		"cmontero",
-		"fmontero"  
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_slopez.png",
-    "telephone" : 684916265,
-    "dni" : "95054416Q"
+      "msanchez",
+      "cmontero",
+      "fmontero"
+    ]
   },
   {
     "name": "Sara",
@@ -303,16 +297,16 @@
     "age": 25,
     "birthday": "17/11/1994",
     "username": "sgimenez",
-    "password": "6e93f9349c982171d679a324b0f67bc2",	//"1MI0WZtx"
+    "password": "6e93f9349c982171d679a324b0f67bc2",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_sgimenez.png",
+    "telephone": 678077620,
+    "dni": "54442151R",
     "relaciones": [
-		"rcaballero",
-		"lramos",
-		"pcanoyra"  
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_sgimenez.png",
-    "telephone" : 678077620,
-    "dni" : "54442151R"
+      "rcaballero",
+      "lramos",
+      "pcanoyra"
+    ]
   },
   {
     "name": "Juan",
@@ -320,16 +314,16 @@
     "age": 22,
     "birthday": "17/10/1997",
     "username": "jcabeza",
-    "password": "38012ccf7b3dd291a9cef9c3042e2f3b",	//"Ru9nHS8W"
+    "password": "38012ccf7b3dd291a9cef9c3042e2f3b",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_jcabeza.png",
+    "telephone": 635468654,
+    "dni": "21528056X",
     "relaciones": [
-		"rvicario",
-		"jlopez",
-		"atendero"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_jcabeza.png",
-    "telephone" : 635468654,
-    "dni" : "21528056X"
+      "rvicario",
+      "jlopez",
+      "atendero"
+    ]
   },
   {
     "name": "Pedro",
@@ -337,16 +331,16 @@
     "age": 22,
     "birthday": "01/06/1997",
     "username": "pgalindo",
-    "password": "9878b8c983fbbae9bf6ba33dc72d7817",	//"cRZjm1me"
+    "password": "9878b8c983fbbae9bf6ba33dc72d7817",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_pgalindo.png",
+    "telephone": 623589446,
+    "dni": "08737442H",
     "relaciones": [
-		"mvega",
-		"xhernandez",
-		"mrubio"    
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_pgalindo.png",
-    "telephone" : 623589446,
-    "dni" : "08737442H"
+      "mvega",
+      "xhernandez",
+      "mrubio"
+    ]
   },
   {
     "name": "Mario",
@@ -354,39 +348,33 @@
     "age": 39,
     "birthday": "13/04/1980",
     "username": "miglesias",
-    "password": "1324d3157a7fb4b93c604bbca156202e",	//"0V72gqmO"
+    "password": "1324d3157a7fb4b93c604bbca156202e",
     "rol": "cuidador",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\cuidador_miglesias.png",
+    "telephone": 686528544,
+    "dni": "26617565X",
     "relaciones": [
-    	"mnieto",
-		"aalonso",
-		"abaeza"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\cuidador_miglesias.png",
-    "telephone" : 686528544,
-    "dni" : "26617565X"
+      "mnieto",
+      "aalonso",
+      "abaeza"
+    ]
   },
-  
-  
-//FAMILIARES
-  
-  
   {
     "name": "Sancho",
     "surname": "Hernández Díaz",
     "age": 49,
     "birthday": "23/10/1970",
     "username": "shernandez",
-    "password": "dc5f7df336c3f1e0bb167d3bbd3b5d1f",	//"aiM1RJI9"
+    "password": "dc5f7df336c3f1e0bb167d3bbd3b5d1f",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_shernandez.png",
+    "telephone": 664206782,
+    "dni": "54348163Z",
     "relaciones": [
-    	"sgomez", 
-    	"crey",
-    	"sdiaz"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_shernandez.png",
-    "telephone" : 664206782,
-    "dni" : "54348163Z",
-    "domicilio" : "Avenida Villaviciosa 36"
+      "sgomez",
+      "crey",
+      "sdiaz"
+    ]
   },
   {
     "name": "Rosa",
@@ -394,16 +382,16 @@
     "age": 30,
     "birthday": "21/02/1989",
     "username": "rnieto",
-    "password": "3d44b835510f266f3d6a08c0f1b10625",	//"6ixzYoW8"
+    "password": "3d44b835510f266f3d6a08c0f1b10625",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_rnieto.png",
+    "telephone": 686117347,
+    "dni": "81836494X",
     "relaciones": [
-		"sgomez",
-		"crey",
-		"pbascuas"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_rnieto.png",
-    "telephone" : 686117347,
-    "dni" : "81836494X"
+      "sgomez",
+      "crey",
+      "pbascuas"
+    ]
   },
   {
     "name": "Sofia",
@@ -411,16 +399,16 @@
     "age": 30,
     "birthday": "12/05/1989",
     "username": "salonso",
-    "password": "ed203e94f7e3a57b621b752a7a7818e9",	//"salonso"
+    "password": "ed203e94f7e3a57b621b752a7a7818e9",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_salonso.png",
+    "telephone": 695614343,
+    "dni": "78665571M",
     "relaciones": [
-      	"rhernandez",
-      	"sarrollo",
-      	"calonso"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_salonso.png",
-    "telephone" : 695614343,
-    "dni" : "78665571M"
+      "rhernandez",
+      "sarrollo",
+      "calonso"
+    ]
   },
   {
     "name": "Marta",
@@ -428,16 +416,16 @@
     "age": 24,
     "birthday": "12/05/1995",
     "username": "mutrera",
-    "password": "65b372aa81091eb6995e511916f2eb94",	//"mutrera"
+    "password": "65b372aa81091eb6995e511916f2eb94",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_mutrera.png",
+    "telephone": 697823254,
+    "dni": "21920774A",
     "relaciones": [
-      	"msuarez",
-      	"rcampos",
-      	"autrera"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_mutrera.png",
-    "telephone" : 697823254,
-    "dni" : "21920774A"
+      "msuarez",
+      "rcampos",
+      "autrera"
+    ]
   },
   {
     "name": "Clara",
@@ -445,16 +433,16 @@
     "age": 50,
     "birthday": "02/12/1969",
     "username": "cgil",
-    "password": "a228d5b52f3fabab936aaa757467eebb",	//"cgil"
+    "password": "a228d5b52f3fabab936aaa757467eebb",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_cgil.png",
+    "telephone": 622290811,
+    "dni": "34357675E",
     "relaciones": [
-      	"rmartín",
-      	"lrodriguez",
-      	"pcañizo"	
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_cgil.png",
-    "telephone" : 622290811,
-    "dni" : "34357675E"
+      "rmartín",
+      "lrodriguez",
+      "pcañizo"
+    ]
   },
   {
     "name": "Claudia",
@@ -462,34 +450,33 @@
     "age": 30,
     "birthday": "25/07/1989",
     "username": "cmontero",
-    "password": "c328464ff6cb09d925879e498b836437",	//"cmontero"
+    "password": "c328464ff6cb09d925879e498b836437",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_cmontero.png",
+    "telephone": 646326997,
+    "dni": "39357371R",
     "relaciones": [
-      	"msanchez",
-      	"slopez",
-      	"fmontero"
-    ],
-    
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_cmontero.png",
-    "telephone" : 646326997,
-    "dni" : "39357371R"
-  },  
+      "msanchez",
+      "slopez",
+      "fmontero"
+    ]
+  },
   {
     "name": "Lucía",
     "surname": "Ramos Sanz",
     "age": 50,
     "birthday": "20/11/1969",
     "username": "lramos",
-    "password": "87332577e431b8fbb728257385ef78ea",	//"lramos"
+    "password": "87332577e431b8fbb728257385ef78ea",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_lramos.png",
+    "telephone": 622641434,
+    "dni": "22636909X",
     "relaciones": [
-      	"rcaballero",
-      	"sgimenez",
-      	"canoyra"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_lramos.png",
-    "telephone" : 622641434,
-    "dni" : "22636909X"
+      "rcaballero",
+      "sgimenez",
+      "canoyra"
+    ]
   },
   {
     "name": "José",
@@ -497,16 +484,16 @@
     "age": 30,
     "birthday": "21/05/1989",
     "username": "jlopez",
-    "password": "cbe1ba534465de78cea731b2ba3e571e",	//"jlopez"
+    "password": "cbe1ba534465de78cea731b2ba3e571e",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_jlopez.png",
+    "telephone": 669252481,
+    "dni": "69577789Y",
     "relaciones": [
-      	"rvicario",
-      	"jcabeza",
-      	"atendero"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_jlopez.png",
-    "telephone" : 669252481,
-    "dni" : "69577789Y"
+      "rvicario",
+      "jcabeza",
+      "atendero"
+    ]
   },
   {
     "name": "Xavier",
@@ -514,17 +501,16 @@
     "age": 24,
     "birthday": "21/05/1995",
     "username": "xhernandez",
-    "password": "289a60cdb6e80d06b3b9c17bb80d5020",	//"xhernandez"
+    "password": "289a60cdb6e80d06b3b9c17bb80d5020",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_xhernandez.png",
+    "telephone": 672737479,
+    "dni": "63498572B",
     "relaciones": [
-      	"mvega",
-      	"pgalindo",
-      	"mrubio"
-		
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_xhernandez.png",
-    "telephone" : 672737479,
-    "dni" : "63498572B"
+      "mvega",
+      "pgalindo",
+      "mrubio"
+    ]
   },
   {
     "name": "Anabel",
@@ -532,39 +518,35 @@
     "age": 39,
     "birthday": "21/05/1980",
     "username": "aalonso",
-    "password": "8ca16b819ab0995e7ca208f34304c8ea",	//"aalonso"
+    "password": "8ca16b819ab0995e7ca208f34304c8ea",
     "rol": "familiar",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\familiar_aalonso.png",
+    "telephone": 668801165,
+    "dni": "47925795M",
     "relaciones": [
-		"mnieto",
-      	"miglesias",
-      	"abaeza"		
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\familiar_aalonso.png",
-    "telephone" : 668801165,
-    "dni" : "47925795M"
+      "mnieto",
+      "miglesias",
+      "abaeza"
+    ]
   },
-  
-  
-//PACIENTES
-  
-  
   {
     "name": "Carlos",
     "surname": "Alonso Martinez",
     "age": 71,
     "birthday": "01/01/1948",
     "username": "calonso",
-    "password": "1d3639bd07f2708e2b2be21409360ad0",	//"calonso"
+    "password": "1d3639bd07f2708e2b2be21409360ad0",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_calonso.png",
+    "telephone": 629389579,
+    "dni": "38267589M",
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
-      	"rhernandez",
-      	"sarrollo",
-      	"miglesias",
-      	"salonso"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_calonso.png",
-    "telephone" : 629389579,
-    "dni" : "38267589M"
+      "rhernandez",
+      "sarrollo",
+      "miglesias",
+      "salonso"
+    ]
   },
   {
     "name": "Paco",
@@ -572,17 +554,18 @@
     "age": 60,
     "birthday": "01/03/1959",
     "username": "pcañizo",
-    "password": "f8449abe7ded08a5c6038b78756d3421",	//"pcañizo"
+    "password": "f8449abe7ded08a5c6038b78756d3421",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_pcañizo.png",
+    "telephone": 630593239,
+    "dni": "31571473V",
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
-      	"rmartin",
-      	"lrodriguez",
-      	"pgalindo",
-      	"cgil"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pcañizo.png",
-    "telephone" : 630593239,
-    "dni" : "31571473V"
+      "rmartin",
+      "lrodriguez",
+      "pgalindo",
+      "cgil"
+    ]
   },
   {
     "name": "Federico",
@@ -590,17 +573,18 @@
     "age": 80,
     "birthday": "12/05/1939",
     "username": "fmontero",
-    "password": "9665d803bdfe594da7a7830d445a0d68",	//"fmontero"
+    "password": "9665d803bdfe594da7a7830d445a0d68",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_fmontero.png",
+    "telephone": 676424593,
+    "dni": "68909593Y",
+    "domicilio": "Avenida Villaviciosa 36",    
     "relaciones": [
-      	"msanchez",
-      	"slopez",
-      	"jcabeza",
-      	"cmontero"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_fmontero.png",
-    "telephone" : 676424593,
-    "dni" : "68909593Y"
+      "msanchez",
+      "slopez",
+      "jcabeza",
+      "cmontero"
+    ]
   },
   {
     "name": "Patricia",
@@ -608,17 +592,18 @@
     "age": 77,
     "birthday": "15/12/1942",
     "username": "pcanoyra",
-    "password": "7b942d686f5eebfebd15d449e4afd00d",	//"pcanoyra"
+    "password": "7b942d686f5eebfebd15d449e4afd00d",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_pcanoyra.png",
+    "telephone": 602898152,
+    "dni": "87540508R",
+    "domicilio": "Avenida Villaviciosa 36",    
     "relaciones": [
-      	"rcaballero",
-      	"sgimenez",
-      	"crey",
-      	"lramos"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pcanoyra.png",
-    "telephone" : 602898152,
-    "dni" : "87540508R"
+      "rcaballero",
+      "sgimenez",
+      "crey",
+      "lramos"
+    ]
   },
   {
     "name": "Andrea",
@@ -626,17 +611,18 @@
     "age": 77,
     "birthday": "06/07/1942",
     "username": "atendero",
-    "password": "89c8e6d1f6b3455c4b1135a2a8d52c30",	//"atendero"
+    "password": "89c8e6d1f6b3455c4b1135a2a8d52c30",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_atendero.png",
+    "telephone": 636352999,
+    "dni": "91990667M",
+    "domicilio": "Avenida Villaviciosa 36",    
     "relaciones": [
-      	"rvicario",
-      	"jcabeza",
-      	"sgimenez",
-      	"jlopez"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_atendero.png",
-    "telephone" : 636352999,
-    "dni" : "91990667M"
+      "rvicario",
+      "jcabeza",
+      "sgimenez",
+      "jlopez"
+    ]
   },
   {
     "name": "Marta",
@@ -644,17 +630,18 @@
     "age": 72,
     "birthday": "06/10/1947",
     "username": "mrubio",
-    "password": "a5deb7139a95624aab3bec23072972e5",	//"mrubio"
+    "password": "a5deb7139a95624aab3bec23072972e5",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_mrubio.png",
+    "telephone": 680688471,
+    "dni": "67690543W",
+    "domicilio": "Avenida Villaviciosa 36",    
     "relaciones": [
-      	"mvega",
-      	"pgalindo",
-      	"slopez",
-      	"xhernandez"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_mrubio.png",
-    "telephone" : 680688471,
-    "dni" : "67690543W"
+      "mvega",
+      "pgalindo",
+      "slopez",
+      "xhernandez"
+    ]
   },
   {
     "name": "Andres",
@@ -662,17 +649,18 @@
     "age": 76,
     "birthday": "15/09/1943",
     "username": "abaeza",
-    "password": "d0c50d633f987433e2f9e26c1d4d36f0",	//"abaeza"
+    "password": "d0c50d633f987433e2f9e26c1d4d36f0",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_abaeza.png",
+    "telephone": 696912581,
+    "dni": "55598745V",
+    "domicilio": "Avenida Villaviciosa 36",    
     "relaciones": [
-      	"mnieto",
-      	"miglesias",
-      	"lrodriguez",
-      	"aalonso"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_abaeza.png",
-    "telephone" : 696912581,
-    "dni" : "55598745V"
+      "mnieto",
+      "miglesias",
+      "lrodriguez",
+      "aalonso"
+    ]
   },
   {
     "name": "Ana",
@@ -680,17 +668,18 @@
     "age": 84,
     "birthday": "15/05/1935",
     "username": "autrera",
-    "password": "17c1bc870f3877a408a7a821d530b1d3",	//"autrera"
+    "password": "17c1bc870f3877a408a7a821d530b1d3",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_autrera.png",
+    "telephone": 677831648,
+    "dni": "76217516R",
+    "domicilio": "Avenida Villaviciosa 36",    
     "relaciones": [
-      	"msuarez",
-      	"rcampos",
-      	"sarrollo",
-      	"mutrera"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_autrera.png",
-    "telephone" : 677831648,
-    "dni" : "76217516R"
+      "msuarez",
+      "rcampos",
+      "sarrollo",
+      "mutrera"
+    ]
   },
   {
     "name": "Susana",
@@ -698,17 +687,18 @@
     "age": 70,
     "birthday": "12/01/1949",
     "username": "sdiaz",
-    "password": "7941d3e63ea0578290660b6482db33af",	//"qKMSgMvp"
+    "password": "7941d3e63ea0578290660b6482db33af",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_sdiaz.png",
+    "telephone": 655376023,
+    "domicilio": "Avenida Villaviciosa 36",
+    "dni": "52388913L",
     "relaciones": [
-      	"sgomez",
-      	"crey",
-      	"jrodriguez",
-      	"shernandez"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_sdiaz.png",
-    "telephone" : 655376023,
-    "dni" : "52388913L"
+      "sgomez",
+      "crey",
+      "jrodriguez",
+      "shernandez"
+    ]
   },
   {
     "name": "Pedro",
@@ -716,16 +706,17 @@
     "age": 82,
     "birthday": "20/04/1937",
     "username": "pbascuas",
-    "password": "6a7f3dfe57030d3544c6636a4446fe8b",	//"0A8ycTm4"
+    "password": "6a7f3dfe57030d3544c6636a4446fe8b",
     "rol": "paciente",
+    "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_pbascuas.png",
+    "telephone": 662541232,
+    "domicilio": "Avenida Villaviciosa 36",    
+    "dni": "51632090B",
     "relaciones": [
-		"jmoreno",
-		"jrodriguez",
-		"rcampos",
-      	"rnieto"
-    ],
-    "imagenPerfil" : "@..\\..\\resources\\fotos\\paciente_pbascuas.png",
-    "telephone" : 662541232,
-    "dni" : "51632090B"
+      "jmoreno",
+      "jrodriguez",
+      "rcampos",
+      "rnieto"
+    ]
   }
 ]

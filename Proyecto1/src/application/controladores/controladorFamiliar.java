@@ -89,6 +89,9 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         labelDNIInicio.setText(usuario.getDni());
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
         labelDomicilioInicio.setText(usuario.getDomicilio() + "");
+        
+        // Añadimos los usuarios relacionados
+        relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
 
         // Escondemos los datos de usuario y la funcionalidad de mandar mensajes hasta que se seleccione un usuario
         //panelDatosYMensajesUsuarios.setVisible(false);
@@ -414,8 +417,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         rolCol.setMaxWidth(169);
 
         ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
-        // Añadimos los usuarios
-        relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
+      
         for (Usuario user : relatedUsers) {
             users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(),user.getBirthday(), user.getAge(), user.getImagenPerfil()));
         }
@@ -450,6 +452,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
                 messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket(),mensaje.getRead()));
                 uniqueIDS.add(mensaje.getIdTicket());
             }
+            
         });
 
         TreeItem<messageTTView> root = new RecursiveTreeItem<>(messages, RecursiveTreeObject::getChildren);
@@ -766,37 +769,48 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     
     @FXML
     void verUbicacionCasa(ActionEvent event) {
-        geocodingService.geocode(usuario.getDomicilio(), (GeocodingResult[] results, GeocoderStatus status) -> {
-        	
-            LatLong latLong = null;
-            
-            if( status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No se encontraron direcciones coincidentes");
-                alert.show();
-                return;
-            } else if( results.length >= 1 ) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ubicación de la casa: "+usuario.getDomicilio());
-                alert.show();
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-            } else {
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-            }
-            
-	        //Añadir un Marker al mapa
-	        MarkerOptions markerOptions = new MarkerOptions();
+    	for (Usuario user : relatedUsers) {
+    		System.out.println(user.getName());
+    		if (user.getName().equals(treeTableViewPacientes.getSelectionModel().getSelectedItem().getValue().getName().get())) {
+    			//user.getDomicilio()
+    	        geocodingService.geocode(user.getDomicilio(), (GeocodingResult[] results, GeocoderStatus status) -> {
+    	        	
+    	            LatLong latLong = null;
+    	            
+    	            if( status == GeocoderStatus.ZERO_RESULTS) {
+    	                Alert alert = new Alert(Alert.AlertType.ERROR, "No se encontraron direcciones coincidentes");
+    	                alert.show();
+    	                return;
+    	            } else if( results.length >= 1 ) {
+    	                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ubicación de la casa: "+usuario.getDomicilio());
+    	                alert.show();
+    	                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+    	            } else {
+    	                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+    	            }
+    	            
+    		        //Añadir un Marker al mapa
+    		        MarkerOptions markerOptions = new MarkerOptions();
 
-	        markerOptions.position(latLong)
-	                    .visible(Boolean.TRUE)
-	                    .title("MarKer Ubicación");
+    		        markerOptions.position(latLong)
+    		                    .visible(Boolean.TRUE)
+    		                    .title("MarKer Ubicación");
 
-	        Marker marker = new Marker(markerOptions);
+    		        Marker marker = new Marker(markerOptions);
 
-	        map.addMarker(marker);
-            
-            map.setCenter(latLong);
+    		        map.addMarker(marker);
+    	            
+    	            map.setCenter(latLong);
 
-        });
+    	        });
+    		}
+    	}
     }
+    
+	@FXML
+    void mostrarDatosMapaPacientes(MouseEvent event) throws ParseException {    	
+    	calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
+    }  
     
 	// SENSORES
     // Variables y métodos de los sensores
