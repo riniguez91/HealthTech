@@ -31,6 +31,8 @@ import application.modelos.modelo;
 public class controladorLogin {
     private modelo modelo;
     private Usuario usuario;
+    private String nUsuario;
+
 
     public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -39,6 +41,11 @@ public class controladorLogin {
         this.modelo = modelo_;
         this.usuario = usuario_;
         modelo.leerJson("./Proyecto1/src/application/jsonFiles/Users.json");
+        if (!checkBox.isSelected()) {
+        	nUsuario = usrnameField.getText();
+        	usrnameField.setText(nUsuario);
+        	}
+       
     }
     @FXML
     private AnchorPane rootp;
@@ -114,8 +121,6 @@ public class controladorLogin {
 
     @FXML
     private VBox vboxIncorrectLabel;
-
-    
 
     @FXML
     void keyTab(KeyEvent event) {
@@ -243,9 +248,16 @@ public class controladorLogin {
     }
 
     public void login() throws IOException {
+    	//String nUsuario;
+        
         for (Usuario usuario: modelo.getUsuarios()){
             if (usrnameField.getText().equals(usuario.getUsername()) && modelo.encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
                 Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
+                // Recordar username
+                if (checkBox.isSelected()) {
+                	nUsuario=usuario.getUsername();
+                	checkBox.setSelected(true);
+                }
                 switch(usuario.getRol()){
                     case "medico":
                         FXMLLoader loaderMedico = new FXMLLoader(getClass().getResource("/application/vistas/vistaMedico.fxml"));
