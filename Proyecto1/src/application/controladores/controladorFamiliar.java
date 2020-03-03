@@ -769,45 +769,45 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
     
     @FXML
     void verUbicacionCasa(ActionEvent event) {
-    	for (Usuario user : relatedUsers) {
-    		System.out.println(user.getRol());
-        	if(user.getRol().equals("paciente")) {
-        		if (user.getName().equals(treeTableViewPacientes.getSelectionModel().getSelectedItem().getValue().getName().get())) {
-        			
-        			//user.getDomicilio()
-        	        geocodingService.geocode(user.getDomicilio(), (GeocodingResult[] results, GeocoderStatus status) -> {
-        	        	
-        	            LatLong latLong = null;
-        	            
-        	            if( status == GeocoderStatus.ZERO_RESULTS) {
-        	                Alert alert = new Alert(Alert.AlertType.ERROR, "No se encontraron direcciones coincidentes");
-        	                alert.show();
-        	                return;
-        	            } else if( results.length >= 1 ) {
-        	                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ubicación de la casa: "+usuario.getDomicilio());
-        	                alert.show();
-        	                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-        	            } else {
-        	                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-        	            }
-        	            
-        		        //Añadir un Marker al mapa
-        		        MarkerOptions markerOptions = new MarkerOptions();
-
-        		        markerOptions.position(latLong)
-        		                    .visible(Boolean.TRUE)
-        		                    .title("MarKer Ubicación");
-
-        		        Marker marker = new Marker(markerOptions);
-
-        		        map.addMarker(marker);
-        	            
-        	            map.setCenter(latLong);
-
-        	        });
-        		}
-        	}
-    	}
+//    	for (Usuario user : relatedUsers) {
+//    		System.out.println(user.getRol());
+//        	if(user.getRol().equals("paciente")) {
+//        		if (user.getName().equals(treeTableViewPacientes.getSelectionModel().getSelectedItem().getValue().getName().get())) {
+//        			
+//        			//user.getDomicilio()
+//        	        geocodingService.geocode(user.getDomicilio(), (GeocodingResult[] results, GeocoderStatus status) -> {
+//        	        	
+//        	            LatLong latLong = null;
+//        	            
+//        	            if( status == GeocoderStatus.ZERO_RESULTS) {
+//        	                Alert alert = new Alert(Alert.AlertType.ERROR, "No se encontraron direcciones coincidentes");
+//        	                alert.show();
+//        	                return;
+//        	            } else if( results.length >= 1 ) {
+//        	                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Ubicación de la casa: "+usuario.getDomicilio());
+//        	                alert.show();
+//        	                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+//        	            } else {
+//        	                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+//        	            }
+//        	            
+//        		        //Añadir un Marker al mapa
+//        		        MarkerOptions markerOptions = new MarkerOptions();
+//
+//        		        markerOptions.position(latLong)
+//        		                    .visible(Boolean.TRUE)
+//        		                    .title("MarKer Ubicación");
+//
+//        		        Marker marker = new Marker(markerOptions);
+//
+//        		        map.addMarker(marker);
+//        	            
+//        	            map.setCenter(latLong);
+//
+//        	        });
+//        		}
+//        	}
+//    	}
     }
     
 	@FXML
