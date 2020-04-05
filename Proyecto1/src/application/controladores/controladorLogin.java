@@ -120,9 +120,6 @@ public class controladorLogin {
     private VBox loginElements;
 
     @FXML
-    private VBox vboxIncorrectLabel;
-
-    @FXML
     void keyTab(KeyEvent event) {
         if (event.getCode() == KeyCode.TAB){
             pswdField.setFocusTraversable(true);
@@ -137,16 +134,6 @@ public class controladorLogin {
     @FXML
     public void onEnter(ActionEvent event) throws IOException{
         login();
-    }
-    
-    @FXML
-    public void onEnterNombreDeUsuario(ActionEvent event) throws IOException {
-    	if (pswdField.getText() != null && (usrnameField.getText().equals(usuario.getUsername()) && modelo.encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword()))) {
-    		incorrectFieldLabel.setText("Introduzca una contraseña");
-    		incorrectFieldLabel.setVisible(true);
-		} else {
-			login();
-		}
     }
 
     @FXML
@@ -247,9 +234,8 @@ public class controladorLogin {
         
     }
 
+    // CAMBIAR FOR LOOP A UN WHILE
     public void login() throws IOException {
-    	//String nUsuario;
-        
         for (Usuario usuario: modelo.getUsuarios()){
             if (usrnameField.getText().equals(usuario.getUsername()) && modelo.encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
                 Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
@@ -290,7 +276,7 @@ public class controladorLogin {
                 }
                 break;
             }
-            vboxIncorrectLabel.setVisible(true);
+            incorrectFieldLabel.setVisible(true);
         }
     }
 }

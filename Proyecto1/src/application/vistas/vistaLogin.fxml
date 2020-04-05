@@ -10,6 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -30,118 +31,131 @@
                 <Image url="@../../resources/fotos/FotoLogin1.jpg" />
             </image>
         </ImageView>
-        <ImageView fx:id="logo" fitHeight="446.0" fitWidth="823.0" layoutX="-33.0" layoutY="-127.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="761.0" AnchorPane.leftAnchor="-33.0" AnchorPane.rightAnchor="1159.7239379882812" AnchorPane.topAnchor="-127.0">
-            <image>
-                <Image url="@../../resources/fotos/Logo.png" />
-            </image>
-        </ImageView>
-      <VBox fx:id="crearUsuarioElementos" alignment="CENTER" fillWidth="false" layoutX="65.0" prefHeight="1080.0" prefWidth="565.0" spacing="20.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="0.0">
+      <HBox layoutX="-7.0" layoutY="8.0" prefHeight="1069.0" prefWidth="1937.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="8.0">
          <children>
-            <JFXTextField fx:id="crearNombreTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="crearApellidosTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Apellidos">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="crearUsernameTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre de usuario">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="crearPasswordTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Contraseña">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="crearCumpleTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Fecha de nacimiento? dd/M/yyyy">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="crearDNITField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="DNI">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField fx:id="crearTelefonoTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Número de teléfono">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font>
-            </JFXTextField>
-            <JFXTextField fx:id="crearRolTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Medico, cuidador, paciente o familiar?">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font></JFXTextField>
-            <JFXTextField fx:id="crearDomicilioTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Escriba la dirección de su domicilio">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font>
-            </JFXTextField>
-            <JFXButton fx:id="crearCuentaBttn" alignment="CENTER" minWidth="50.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" text="Crear cuenta">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin></JFXButton>
-            <Hyperlink fx:id="cancelarCrecionHyperLink" onMouseClicked="#cancelarCreacion" style="-fx-border-width: 0;" text="Cancelar accion y volver" textFill="#4059a9">
-               <font>
-                  <Font name="Segoe UI Emoji" size="14.0" />
-               </font>
-            </Hyperlink>
-         </children>
-         <padding>
-            <Insets left="10.0" top="260.0" />
-         </padding>
-      </VBox>
-      <VBox fx:id="loginElements" alignment="CENTER" fillWidth="false" layoutX="121.0" layoutY="489.0" prefHeight="407.0" prefWidth="481.0" spacing="20.0" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="121.0" AnchorPane.topAnchor="489.0">
-         <children>
-              <JFXTextField fx:id="usrnameField" focusTraversable="false" labelFloat="true" onAction="#onEnterNombreDeUsuario" onKeyPressed="#keyTab" prefHeight="60.0" prefWidth="452.0" promptText="Introduzca nombre de usuario:" unFocusColor="#4059a9">
-                  <font>
-                      <Font name="Segoe UI Emoji" size="18.0" />
-                  </font>
-               <VBox.margin>
-                  <Insets bottom="20.0" />
-               </VBox.margin>
-              </JFXTextField>
-              <JFXPasswordField fx:id="pswdField" focusTraversable="false" labelFloat="true" onAction="#onEnter" prefHeight="60.0" prefWidth="452.0" promptText="Introduzca la contraseña:" unFocusColor="#4059a9">
-                  <font>
-                      <Font name="Segoe UI Emoji" size="18.0" />
-                  </font>
-               <VBox.margin>
-                  <Insets bottom="10.0" />
-               </VBox.margin>
-              </JFXPasswordField>
-              <JFXCheckBox fx:id="checkBox" focusTraversable="false" prefHeight="12.0" prefWidth="220.0" text="Recordar nombre de usuario">
-                  <font>
-                      <Font size="13.0" />
-                  </font>
-               <VBox.margin>
-                  <Insets left="275.0" />
-               </VBox.margin>
+            <VBox fx:id="loginElements" alignment="CENTER" fillWidth="false" prefHeight="204.0" prefWidth="481.0" spacing="10.0">
+               <children>
+                    <ImageView fx:id="logo" fitHeight="240.0" fitWidth="390.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@../../resources/fotos/Logo.png" />
+                        </image>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                    </ImageView>
+                    <JFXTextField fx:id="usrnameField" focusTraversable="false" labelFloat="true" onKeyPressed="#keyTab" prefHeight="60.0" prefWidth="452.0" promptText="Introduzca nombre de usuario:" unFocusColor="#4059a9">
+                        <font>
+                            <Font name="Segoe UI Emoji" size="18.0" />
+                        </font>
+                     <VBox.margin>
+                        <Insets top="80.0" />
+                     </VBox.margin>
+                    </JFXTextField>
+                    <JFXPasswordField fx:id="pswdField" focusTraversable="false" labelFloat="true" onAction="#onEnter" prefHeight="60.0" prefWidth="452.0" promptText="Introduzca la contraseña:" unFocusColor="#4059a9">
+                        <font>
+                            <Font name="Segoe UI Emoji" size="18.0" />
+                        </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="25.0" />
+                     </VBox.margin>
+                    </JFXPasswordField>
+                    <JFXCheckBox fx:id="checkBox" focusTraversable="false" prefHeight="12.0" prefWidth="220.0" text="Recordar nombre de usuario">
+                        <font>
+                            <Font size="13.0" />
+                        </font>
+                     <VBox.margin>
+                        <Insets left="275.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets top="15.0" />
+                     </padding>
+                    </JFXCheckBox>
+                    <JFXButton fx:id="loginButton" focusTraversable="false" minHeight="50.0" onAction="#defaultBtn" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" styleClass="botones" text="Iniciar sesion">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                    </JFXButton>
+                  <Hyperlink fx:id="accountHyperLink" alignment="CENTER" onAction="#mostrarCreacionUsuario" prefHeight="23.0" prefWidth="272.0" style="-fx-border-width: 0;" text="No tienes una cuenta? Crea una " textFill="#4059a9" wrapText="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label fx:id="incorrectFieldLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="5.0" prefWidth="452.0" text="Nombre de usuario o contraseña incorrectos, intentelo de nuevo" textFill="#c92222" visible="false">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <HBox.margin>
+                  <Insets left="150.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox fx:id="crearUsuarioElementos" alignment="CENTER" fillWidth="false" prefHeight="1080.0" prefWidth="565.0" spacing="20.0" visible="false">
+               <children>
+                  <JFXTextField fx:id="crearNombreTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="crearApellidosTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Apellidos">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="crearUsernameTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Nombre de usuario">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="crearPasswordTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Contraseña">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="crearCumpleTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Fecha de nacimiento? dd/M/yyyy">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="crearDNITField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="DNI">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="crearTelefonoTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Número de teléfono">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="crearRolTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="¿Medico, cuidador, paciente o familiar?">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="crearDomicilioTField" minWidth="300.0" prefHeight="60.0" prefWidth="452.0" promptText="Escriba la dirección de su domicilio">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXButton fx:id="crearCuentaBttn" alignment="CENTER" minWidth="50.0" onAction="#crearUsuario" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" text="Crear cuenta">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <Hyperlink fx:id="cancelarCrecionHyperLink" onMouseClicked="#cancelarCreacion" style="-fx-border-width: 0;" text="Cancelar accion y volver" textFill="#4059a9">
+                     <font>
+                        <Font name="Segoe UI Emoji" size="14.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
                <padding>
-                  <Insets top="15.0" />
+                  <Insets left="10.0" top="260.0" />
                </padding>
-              </JFXCheckBox>
-              <JFXButton fx:id="loginButton" focusTraversable="false" minHeight="50.0" onAction="#defaultBtn" prefHeight="60.0" prefWidth="342.74" style="-fx-background-color: #60C7C1;" styleClass="botones" text="Iniciar sesion">
-                  <font>
-                      <Font size="18.0" />
-                  </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-              </JFXButton>
-            <Hyperlink fx:id="accountHyperLink" alignment="CENTER" onAction="#mostrarCreacionUsuario" prefHeight="23.0" prefWidth="272.0" style="-fx-border-width: 0;" text="No tienes una cuenta? Crea una " textFill="#4059a9" wrapText="true">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Hyperlink>
+            </VBox>
          </children>
-      </VBox>
-      <VBox fx:id="vboxIncorrectLabel" alignment="CENTER" fillWidth="false" layoutX="135.0" layoutY="884.0" prefHeight="5.0" prefWidth="452.0" visible="false" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="135.0" AnchorPane.topAnchor="884.0">
-         <children>
-            <Label fx:id="incorrectFieldLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="5.0" prefWidth="452.0" text="Nombre de usuario o contraseña incorrectos, intentelo de nuevo" textFill="#c92222" VBox.vgrow="ALWAYS">
-               <font>
-                  <Font name="Segoe UI Emoji" size="15.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
+      </HBox>
     </children>
 </AnchorPane>
