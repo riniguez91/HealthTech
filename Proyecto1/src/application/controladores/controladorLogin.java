@@ -133,10 +133,10 @@ public class controladorLogin {
     }
     
     @FXML
-    public void onEnter(ActionEvent event) throws IOException{
-        ConexionBBDD cbbdd = new ConexionBBDD("//2.139.176.212:3306/pr_healthtech?user=pr_healthtech&password=Jamboneitor123");
-        cbbdd.sentenciaSQL("INSERT INTO pr_healthrech.users (DNI, Telephone, Name, Surnames, DOB, User, Password, Photo) VALUES(`05944306W`, `564203654`, `Ramon`," +
-                "`Peter Panda`,`2010-12-02`, `Cuidador`, `JAmbonetiro`, NULL)");
+    public void onEnter(ActionEvent event) throws IOException{ // "//2.139.176.212:3306/pr_healthtech?user=pr_healthtech&password=Jamboneitor123"
+        ConexionBBDD cbbdd = new ConexionBBDD();
+        cbbdd.sentenciaSQL("INSERT INTO users (DNI, Telephone, Name, Surnames, DOB, User, Password, Photo) VALUES (\"05944306W\", \"565420365\", \"Ramon\"," +
+                "\"Peter Panda\", \"2010-12-02\", \"Cuidador\", MD5(\"JAmbonetir\"), NULL)");
         login();
     }
 
