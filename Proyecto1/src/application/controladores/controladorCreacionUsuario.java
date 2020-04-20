@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import java.text.ParseException;
 
 public class controladorCreacionUsuario {
-    private application.modelos.modelo modelo;
+    private modelo modelo;
 
     public void initModelo(modelo modelo_) {
         if (this.modelo != null) {

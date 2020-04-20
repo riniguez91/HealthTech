@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="900.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.vistas.VistaCreacionUsuario">
+<AnchorPane prefHeight="900.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorCreacionUsuario">
    <children>
       <HBox prefHeight="900.0" prefWidth="565.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -66,7 +65,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </JFXButton>
-                  <Hyperlink fx:id="cancelarCrecionHyperLink" onMouseClicked="#cancelarCreacion" style="-fx-border-width: 0;" text="Cancelar accion y volver" textFill="#4059a9">
+                  <Hyperlink fx:id="cancelarCrecionHyperLink" style="-fx-border-width: 0;" text="Cancelar accion y volver" textFill="#4059a9">
                      <font>
                         <Font name="Segoe UI Emoji" size="14.0" />
                      </font>
