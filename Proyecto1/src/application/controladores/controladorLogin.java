@@ -1,6 +1,5 @@
 package application.controladores;
 
-import application.modelos.ConexionBBDD;
 import com.jfoenix.controls.*;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -8,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.animation.FadeTransition;
@@ -22,9 +20,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
 import java.io.IOException;
 import java.text.ParseException;
-
 
 import application.modelos.Usuario;
 import application.modelos.modelo;
@@ -46,79 +44,55 @@ public class controladorLogin {
         	nUsuario = usrnameField.getText();
         	usrnameField.setText(nUsuario);
         	}
-       
     }
-    @FXML
-    private AnchorPane rootp;
 
-    @FXML
-    private ImageView logo;
+    @FXML private AnchorPane rootp;
 
-    @FXML
-    private ImageView fotolgn_3;
+    @FXML private ImageView logo;
 
-    @FXML
-    private ImageView fotolgn_2;
+    @FXML private ImageView fotolgn_3;
 
-    @FXML
-    private ImageView fotolgn_1;
+    @FXML private ImageView fotolgn_2;
 
-    @FXML
-    private JFXTextField crearNombreTField;
+    @FXML private ImageView fotolgn_1;
 
-    @FXML
-    private JFXTextField crearApellidosTField;
+    @FXML private JFXTextField crearNombreTField;
 
-    @FXML
-    private JFXTextField crearCumpleTField;
+    @FXML private JFXTextField crearApellidosTField;
 
-    @FXML
-    private JFXTextField crearUsernameTField;
+    @FXML private JFXTextField crearCumpleTField;
 
-    @FXML
-    private JFXTextField crearPasswordTField;
+    @FXML private JFXTextField crearUsernameTField;
 
-    @FXML
-    private JFXTextField crearRolTField;
+    @FXML private JFXTextField crearPasswordTField;
+
+    @FXML private JFXTextField crearRolTField;
     
-    @FXML
-    private JFXTextField crearDNITField;
+    @FXML private JFXTextField crearDNITField;
 
-    @FXML
-    private JFXTextField crearTelefonoTField;
+    @FXML private JFXTextField crearTelefonoTField;
     
-    @FXML
-    private JFXTextField crearDomicilioTField;
+    @FXML private JFXTextField crearDomicilioTField;
     
-    @FXML
-    private JFXButton crearCuentaBttn;
+    @FXML private JFXButton crearCuentaBttn;
 
-    @FXML
-    private JFXTextField usrnameField;
+    @FXML private JFXTextField usrnameField;
 
-    @FXML
-    private JFXPasswordField pswdField;
+    @FXML private JFXPasswordField pswdField;
 
-    @FXML
-    private JFXCheckBox checkBox;
+    @FXML private JFXCheckBox checkBox;
 
-    @FXML
-    private JFXButton loginButton;
+    @FXML private JFXButton loginButton;
 
-    @FXML
-    private Hyperlink accountHyperLink;
+    @FXML private Hyperlink accountHyperLink;
 
-    @FXML
-    private Hyperlink cancelarCrecionHyperLink;
+    @FXML private Hyperlink cancelarCrecionHyperLink;
 
-    @FXML
-    private Label incorrectFieldLabel;
+    @FXML private Label incorrectFieldLabel;
 
-    @FXML
-    private VBox crearUsuarioElementos;
+    @FXML private VBox crearUsuarioElementos;
 
-    @FXML
-    private VBox loginElements;
+    @FXML private VBox loginElements;
 
     @FXML
     void keyTab(KeyEvent event) {
@@ -134,27 +108,35 @@ public class controladorLogin {
     
     @FXML
     public void onEnter(ActionEvent event) throws IOException{ // "//2.139.176.212:3306/pr_healthtech?user=pr_healthtech&password=Jamboneitor123"
-        ConexionBBDD cbbdd = new ConexionBBDD();
-        cbbdd.sentenciaSQL("INSERT INTO users (DNI, Telephone, Name, Surnames, DOB, User, Password, Photo) VALUES (\"05944306W\", \"565420365\", \"Ramon\"," +
-                "\"Peter Panda\", \"2010-12-02\", \"Cuidador\", MD5(\"JAmbonetir\"), NULL)");
         login();
     }
 
     @FXML
-    void mostrarCreacionUsuario(ActionEvent event) {
-        if (incorrectFieldLabel.isVisible()){
+    void mostrarCreacionUsuario(ActionEvent event) throws IOException {
+        /*if (incorrectFieldLabel.isVisible()){
             incorrectFieldLabel.setVisible(false);
         }
         loginElements.setVisible(false);
-        crearUsuarioElementos.setVisible(true);
-        logo.setY(-125);
+        crearUsuarioElementos.setVisible(true);*/
+
+        // Cargamos 2nda escena
+        FXMLLoader loaderCreacionUsuario = new FXMLLoader(getClass().getResource("/application/vistas/vistaCreacionUsuario.fxml"));
+        Parent rootCreacionUsuario = loaderCreacionUsuario.load();
+
+        // Cojemos el controlador de la 2nd escena
+        controladorCreacionUsuario controladorCU = loaderCreacionUsuario.getController();
+        controladorCU.initModelo(modelo);
+
+        // Display stage
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootCreacionUsuario));
+        stage.show();
     }
 
     @FXML
     void cancelarCreacion(MouseEvent event) {
         crearUsuarioElementos.setVisible(false);
         loginElements.setVisible(true);
-        logo.setY(-30);
     }
 
     @FXML
@@ -196,7 +178,6 @@ public class controladorLogin {
                 modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/Users.json", modelo.getUsuarios(),false);
                 loginElements.setVisible(true);
                 crearUsuarioElementos.setVisible(false);
-                logo.setY(-60);
             }
         } catch (NumberFormatException nfe){
             modelo.createAlert("Cuidado", "Debes introducir un telefono valido (626 574 329)");
@@ -277,10 +258,10 @@ public class controladorLogin {
                         contrCuidador.initModelo(modelo,usuario);
                         stageBttnBelongsTo.setScene(new Scene(rootCuidador));
                         break;
-                }
+                } // switch
                 break;
-            }
+            } // if
             incorrectFieldLabel.setVisible(true);
-        }
-    }
+        } // for
+    } // login
 }

@@ -79,6 +79,7 @@ public class controladorFamiliar implements Initializable, MapComponentInitializ
         modelo.leerJsonGas("./Proyecto1/src/application/jsonFiles/SensorGas.json");
         modelo.leerJsonMagnetico("./Proyecto1/src/application/jsonFiles/SensorMagnetico.json");
         modelo.leerJsonPresion("./Proyecto1/src/application/jsonFiles/SensorPresion.json");
+
         // Datos pestaña inicio
         labelNombreInicio.setText(usuario.getName());
         labelApellidosInicio.setText(usuario.getSurname());
