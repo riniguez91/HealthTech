@@ -12,12 +12,13 @@ import javafx.stage.Stage;
 public class controladorResponderTicket {
     private modelo modelo;
     private controladorPaciente cp;
-    
-    public void initModelo(modelo modelo_) {
+
+    public void initModelo(modelo modelo_, controladorPaciente cp_) {
         if (this.modelo != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }
         this.modelo = modelo_;
+        this.cp = cp_;
     }
     
     @FXML private VBox respuestaTicketVBox;
@@ -28,10 +29,14 @@ public class controladorResponderTicket {
 
     @FXML private JFXButton crearMensajeResponderTicketBttnMensajes;
 
+    private void closeScene(){
+        Stage stageBttnBelongsTo = (Stage) cancelarRespuestaTicketBtn.getScene().getWindow();
+        stageBttnBelongsTo.close();
+    }
+
     @FXML 
     void cancelarRespuestaTicket(ActionEvent event) {
-    	Stage stageBttnBelongsTo = (Stage) cancelarRespuestaTicketBtn.getScene().getWindow();
-        stageBttnBelongsTo.close();
+    	closeScene();
     }
 
     @FXML
@@ -39,8 +44,8 @@ public class controladorResponderTicket {
     	if (crearMensajeJFXTextAreaMensajes.getText().isEmpty()){
             modelo.createAlert("Cuidado", "Debes de poner un mensaje");
     	} else {
-    		cp=new controladorPaciente();
     		cp.crearMensajeYResponderTicket(crearMensajeJFXTextAreaMensajes.getText());
+    		closeScene();
     	}
     }
     

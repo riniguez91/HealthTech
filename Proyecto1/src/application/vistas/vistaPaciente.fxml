@@ -386,7 +386,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                        <Label fx:id="seleccionaMensajeLabelMensajes" layoutX="1050.0" layoutY="460.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="303.0" text="Seleccione un mensaje">
+                        <Label fx:id="seleccionaMensajeLabelMensajes" alignment="CENTER" layoutX="498.0" layoutY="500.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="1421.0" text="Seleccione un mensaje" AnchorPane.leftAnchor="498.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="500.0">
                            <font>
                               <Font name="Segoe UI Emoji" size="28.0" />
                            </font>
@@ -419,15 +419,15 @@
                               </VBox>
                               <VBox fx:id="datosVBoxMensajes" fillWidth="false" prefHeight="1050.0" prefWidth="1487.0" visible="false">
                                  <children>
-                                    <Separator prefHeight="40.0" prefWidth="1488.0" styleClass="separator-black" stylesheets="@../application.css">
+                                    <Separator prefHeight="40.0" prefWidth="1402.0" styleClass="separator-black" stylesheets="@../application.css">
                                        <VBox.margin>
-                                          <Insets left="15.0" />
+                                          <Insets left="10.0" />
                                        </VBox.margin>
                                     </Separator>
-                                    <GridPane prefHeight="225.0" prefWidth="1413.0">
+                                    <GridPane prefHeight="225.0" prefWidth="1380.0">
                                        <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="772.6669921875" minWidth="10.0" prefWidth="717.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="713.3330078125" minWidth="10.0" prefWidth="696.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="811.0" minWidth="10.0" prefWidth="180.33349609375" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1263.3330078125" minWidth="10.0" prefWidth="1228.66650390625" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -436,12 +436,12 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Label fx:id="Apellidos11" prefHeight="56.0" prefWidth="660.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Destinatario:" GridPane.rowIndex="1">
+                                          <Label prefHeight="56.0" prefWidth="660.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Destinatario:" GridPane.rowIndex="1">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <Label fx:id="ID11" prefHeight="56.0" prefWidth="660.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="ID Ticket:" GridPane.rowIndex="2">
+                                          <Label prefHeight="56.0" prefWidth="660.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="ID Ticket:" GridPane.rowIndex="2">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font>
@@ -449,7 +449,7 @@
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <Label fx:id="Nombre11" prefHeight="57.0" prefWidth="660.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:">
+                                          <Label prefHeight="57.0" prefWidth="659.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Asunto:">
                                              <font>
                                                 <Font name="System Bold" size="18.0" />
                                              </font>
@@ -457,23 +457,23 @@
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <Label fx:id="Rol11" prefHeight="56.0" prefWidth="660.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Mensaje" GridPane.rowIndex="3">
+                                          <Label prefHeight="56.0" prefWidth="660.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Mensaje" GridPane.rowIndex="3">
                                              <padding>
                                                 <Insets left="5.0" />
                                              </padding>
                                           </Label>
-                                          <Label prefHeight="56.0" prefWidth="712.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Label prefHeight="56.0" prefWidth="1245.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                           <JFXTextField fx:id="asuntoJFXTextFieldMensajes" prefHeight="219.0" prefWidth="375.0" style="-fx-background-color: white;" GridPane.columnIndex="1" />
                                           <JFXTextField fx:id="destinatarioJFXTextFieldMensajes" prefHeight="231.0" prefWidth="375.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <JFXTextField fx:id="idTicketJFXTextFieldMensajes" prefHeight="56.0" prefWidth="682.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                        </children>
                                        <VBox.margin>
-                                          <Insets left="15.0" />
+                                          <Insets left="25.0" />
                                        </VBox.margin>
                                     </GridPane>
-                                    <Separator prefHeight="40.0" prefWidth="1418.0" styleClass="separator-black" stylesheets="@../application.css">
+                                    <Separator prefHeight="40.0" prefWidth="1402.0" styleClass="separator-black" stylesheets="@../application.css">
                                        <VBox.margin>
-                                          <Insets left="15.0" />
+                                          <Insets left="10.0" />
                                        </VBox.margin>
                                     </Separator>
                                     <Separator prefHeight="61.0" prefWidth="1477.0" styleClass="separator-black" stylesheets="@../application.css">
@@ -481,7 +481,7 @@
                                           <Insets />
                                        </VBox.margin>
                                     </Separator>
-                                    <ScrollPane fx:id="scrollPaneMensajes" hbarPolicy="NEVER" prefHeight="540.0" prefWidth="1428.0" vbarPolicy="NEVER">
+                                    <ScrollPane fx:id="scrollPaneMensajes" fitToHeight="true" fitToWidth="true" prefHeight="623.0" prefWidth="1391.0">
                                        <content>
                                           <AnchorPane fx:id="conversacionMensajes" prefHeight="540.0" prefWidth="1426.0">
                                              <children>

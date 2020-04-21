@@ -39,13 +39,15 @@ public class controladorPaciente {
     private List<Label> labelMessagesInicio = new ArrayList<>();
     private List<Label> labelFAQ = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
+    private controladorPaciente cp;
 
-    public void initModelo(modelo modelo_, Usuario usuario_){
+    public void initModelo(modelo modelo_, Usuario usuario_, controladorPaciente cp_){
         if (this.modelo != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }
         this.modelo = modelo_;
         this.usuario = usuario_;
+        this.cp = cp_;
         modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
 
         aniadirPreguntasFrecuentes();
@@ -142,6 +144,8 @@ public class controladorPaciente {
     @FXML
     private JFXButton guardarCalendario;
 
+    // // -------------------- Tab Usuarios --------------------
+
     @FXML
     private Tab tabUsuariosPaciente;
 
@@ -211,66 +215,29 @@ public class controladorPaciente {
     @FXML
     private HBox generarTicketHBox;
 
-    @FXML
-    private Tab tabMensajesPaciente;
+    // -------------------- Tab Mensajes --------------------
 
-    @FXML
-    private VBox seleccionaMensajeVBox;
+    @FXML private Tab tabMensajesPaciente;
 
-    @FXML
-    private Label seleccionaMensajeLabelMensajes;
+    @FXML private Label seleccionaMensajeLabelMensajes;
 
-    @FXML
-    private JFXTextField filtrarMensajeTFieldMensajes;
+    @FXML private JFXTextField filtrarMensajeTFieldMensajes;
 
-    @FXML
-    private JFXTreeTableView<messageTTView> treeTableViewMensajes;
+    @FXML private JFXTreeTableView<messageTTView> treeTableViewMensajes;
 
-    @FXML
-    private VBox datosVBoxMensajes;
+    @FXML private VBox datosVBoxMensajes;
 
-    @FXML
-    private Label Apellidos11;
+    @FXML private JFXTextField asuntoJFXTextFieldMensajes;
 
-    @FXML
-    private Label Nombre11;
+    @FXML private JFXTextField destinatarioJFXTextFieldMensajes;
 
-    @FXML
-    private Label Rol11;
+    @FXML private JFXTextField idTicketJFXTextFieldMensajes;
 
-    @FXML
-    private JFXTextField asuntoJFXTextFieldMensajes;
+    @FXML private ScrollPane scrollPaneMensajes;
 
-    @FXML
-    private JFXTextField destinatarioJFXTextFieldMensajes;
+    @FXML private AnchorPane conversacionMensajes;
 
-    @FXML
-    private JFXTextField idTicketJFXTextFieldMensajes;
-
-    @FXML
-    private ScrollPane scrollPaneMensajes;
-
-    @FXML
-    private AnchorPane conversacionMensajes;
-
-    @FXML
-    private VBox vboxConversacionMensajes;
-
-    @FXML
-    private JFXButton botonResponderTicket;
-
-    @FXML
-    private VBox respuestaTicketVBox;
-
-    @FXML
-    private JFXTextArea crearMensajeJFXTextAreaMensajes;
-
-    @FXML
-    private JFXButton cancelarRespuestaTicketBtn;
-
-    @FXML
-    private JFXButton crearMensajeResponderTicketBttnMensajes;
-
+    @FXML private VBox vboxConversacionMensajes;
 
 
     // -------------------- Metodos tab Inicio --------------------
@@ -512,7 +479,7 @@ public class controladorPaciente {
         for (Message mensaje : modelo.getMessages()) {
             if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
                 labelMessages.add(new Label(mensaje.getMessage()));
-                labelMessages.get(i).setPrefWidth(872);
+                labelMessages.get(i).setPrefWidth(scrollPaneMensajes.getPrefWidth()-10);
                 labelMessages.get(i).setWrapText(true);
                 labelMessages.get(i).setFont(new Font("Century Gothic", 17));
                 if (!mensaje.getSender().equals(usuario.getName()+" "+usuario.getSurname())) {
@@ -536,12 +503,6 @@ public class controladorPaciente {
             if (!datosVBoxMensajes.isVisible())
                 datosVBoxMensajes.setVisible(true);
 
-            // Si presiona un mensaje mientras esta respondiendo a un ticket, se cancela el ticket y se muestra el mensaje seleccionado
-            if (respuestaTicketVBox.isVisible()) {
-                respuestaTicketVBox.setVisible(false);
-                scrollPaneMensajes.setVisible(true);
-            }
-
 			// Borramos la conversacion en caso de que hubiese una seleccionada para poder introducir la siguiente
 			labelMessages.clear();
 			vboxConversacionMensajes.getChildren().clear();
@@ -554,7 +515,6 @@ public class controladorPaciente {
 
 			// Cambiamos el scroll pane para mostrar la lista de mensajes correspondientes al ticket seleccionado
             changeTicketConversation();
-            seleccionaMensajeVBox.setVisible(false);
         }
     } // mostrarTicketMensajes()
 
@@ -601,18 +561,20 @@ public class controladorPaciente {
     } // crearMensajeYResponderTicket()
 
     @FXML
-    void responderTicketMensajes(ActionEvent event) {
-        scrollPaneMensajes.setVisible(false);
-        botonResponderTicket.setVisible(false);
-        respuestaTicketVBox.setVisible(true);
-    } // responderTicketMensajes()
+    void responderTicketMensajes(ActionEvent event) throws IOException {
+        // Cargamos 2nda escena
+        FXMLLoader loaderResponderTicket = new FXMLLoader(getClass().getResource("/application/vistas/vistaEnviarMensaje.fxml"));
+        Parent rootResponderTicket = loaderResponderTicket.load();
 
-    @FXML
-    void cancelarRespuestaTicket(ActionEvent event) {
-        respuestaTicketVBox.setVisible(false);
-        scrollPaneMensajes.setVisible(true);
-        botonResponderTicket.setVisible(true);
-    } // cancelarRespuestaTicket()
+        // Cojemos el controlador de la 2nd escena
+        controladorResponderTicket controladorCU = loaderResponderTicket.getController();
+        controladorCU.initModelo(modelo, cp);
+
+        // Display stage
+        Stage stage = new Stage();
+        stage.setScene(new Scene(rootResponderTicket));
+        stage.show();
+    } // responderTicketMensajes()
 
     // -------------------- Fin metodos tab Mensajes --------------------
 

@@ -53,7 +53,7 @@
     "subject": "Invitación para comer",
     "message": "¿Qué tal vas con la recuperación Susana?\nSi estás mejor podrías venirte a mi casa qeu te invitamos a comer y pasamos la tarde, ¿Te apetece?.",
     "idTicket": "f4344a28-6562-4efb-a566-6947cc3e26d8",
-    "read": false
+    "read": true
   },
   {
     "sender": "Susana Díaz Hernández",
@@ -77,6 +77,22 @@
     "subject": "Horario de la siguiente consulta",
     "message": "hola",
     "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
+    "read": false
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Catalina Rey Rodríguez",
+    "subject": "Salir a dar un paseo",
+    "message": "El victor es un jambocepticon de cuidado",
+    "idTicket": "12fb5e31-135e-4dd7-8ccb-966da76ae5ef",
+    "read": false
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Catalina Rey Rodríguez",
+    "subject": "Salir a dar un paseo",
+    "message": "Vaya jambomuteador el ruben",
+    "idTicket": "12fb5e31-135e-4dd7-8ccb-966da76ae5ef",
     "read": false
   }
 ]
