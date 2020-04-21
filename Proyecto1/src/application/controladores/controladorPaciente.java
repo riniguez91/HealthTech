@@ -581,16 +581,12 @@ public class controladorPaciente {
         }
     } // setMsgAsRead()
 
-    @FXML
-    void crearMensajeYResponderTicket(ActionEvent event) {
-        if (crearMensajeJFXTextAreaMensajes.getText().isEmpty()){
-            modelo.createAlert("Cuidado", "Debes de poner un mensaje");
-        }
-        else {
+    
+    public void crearMensajeYResponderTicket(String mensaje) {
             Message msg = new Message(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSender().get(),
                                       treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get(),
                                       treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get(),
-                                      crearMensajeJFXTextAreaMensajes.getText(),
+                                      mensaje,
                                       treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get(),
                                       false
             );
@@ -601,9 +597,7 @@ public class controladorPaciente {
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
             modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente, por favor compruebelo pinchando donde le indica la tabla");
 
-            // Borramos los campos para evitar confusion
-            crearMensajeJFXTextAreaMensajes.clear();
-        }
+
     } // crearMensajeYResponderTicket()
 
     @FXML
