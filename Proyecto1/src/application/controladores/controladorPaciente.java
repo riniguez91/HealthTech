@@ -37,6 +37,7 @@ public class controladorPaciente {
     public List<Usuario> relatedUsers;
     private List<Label> labelMessages = new ArrayList<>();
     private List<Label> labelMessagesInicio = new ArrayList<>();
+    private List<Label> labelPreguntasFrecuentes = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
 
     public void initModelo(modelo modelo_, Usuario usuario_){
@@ -46,6 +47,8 @@ public class controladorPaciente {
         this.modelo = modelo_;
         this.usuario = usuario_;
         modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
+
+        aniadirPreguntasFrecuentes();
 
         // Datos pestaña inicio
         labelNombreInicio.setText(usuario.getName());
@@ -72,245 +75,191 @@ public class controladorPaciente {
         comprobarMensajesNuevos();
     }
 
-    @FXML
-    private ImageView User;
+    // Tab Inicio
+    @FXML private ImageView User;
 
-    @FXML
-    private Label Nombre;
+    @FXML private Label Nombre;
 
-    @FXML
-    private Label Apellidos;
+    @FXML private Label Apellidos;
 
-    @FXML
-    private Label ID;
+    @FXML private Label ID;
 
-    @FXML
-    private Label Rol;
+    @FXML private Label Rol;
 
-    @FXML
-    private Label labelNombreInicio;
+    @FXML private Label labelNombreInicio;
 
-    @FXML
-    private Label labelApellidosInicio;
+    @FXML private Label labelApellidosInicio;
 
-    @FXML
-    private Label labelUsernameInicio;
+    @FXML private Label labelUsernameInicio;
 
-    @FXML
-    private Label labelRolInicio;
+    @FXML private Label labelRolInicio;
     
-    @FXML
-    private Label labelFechaNacimientoInicio;
+    @FXML private Label labelFechaNacimientoInicio;
 
-    @FXML
-    private Label labelEdadInicio;
+    @FXML private Label labelEdadInicio;
 
-    @FXML
-    private Label labelDNIInicio;
+    @FXML private Label labelDNIInicio;
 
-    @FXML
-    private Label labelTelefonoInicio;
+    @FXML private Label labelTelefonoInicio;
     
-    @FXML
-    private JFXButton cerrarSesionBtn;
+    @FXML private JFXButton cerrarSesionBtn;
 
-    @FXML
-    private Pane PaneInicio;
+    @FXML private VBox vboxPreguntasFrecuentes;
 
-    @FXML
-    private JFXTextArea comunicacionJFXTextArea;
+    @FXML private ScrollPane scrollPaneFAQ;
 
-    @FXML
-    private JFXTextArea calendarioJFXTextArea;
 
-    @FXML
-    private JFXButton preguntasfrecuentesbtn;
+    @FXML private Pane PaneInicio;
 
-    @FXML
-    private VBox VBox_PreguntasFrecuentes;
+    @FXML private JFXTextArea comunicacionJFXTextArea;
+
+    @FXML private JFXTextArea calendarioJFXTextArea;
+
+    @FXML private JFXButton preguntasfrecuentesbtn;
+
+    @FXML private VBox VBox_PreguntasFrecuentes;
     
-    @FXML
-    private VBox VBox_Separator;
+    @FXML private VBox VBox_Separator;
     
-    @FXML
-    private VBox VBox_PregFrec;
+    @FXML private VBox VBox_PregFrec;
 
-    @FXML
-    private JFXButton atrasbtn;
+    @FXML private JFXButton atrasbtn;
 
-    @FXML
-    private JFXTextArea nombresJFXTextArea;
+    @FXML private JFXTextArea nombresJFXTextArea;
 
-    @FXML
-    private Label Nombre1;
+    @FXML private Label Nombre1;
 
-    @FXML
-    private JFXTextArea crearMensajeJFXTextAreaMensajes;
+    @FXML private JFXTextArea crearMensajeJFXTextAreaMensajes;
 
-    @FXML
-    private Label Apellidos1;
+    @FXML private Label Apellidos1;
 
-    @FXML
-    private Label ID1;
+    @FXML private Label ID1;
 
-    @FXML
-    private Label Rol1;
+    @FXML private Label Rol1;
 
-    @FXML
-    private Label ID11;
+    @FXML private Label ID11;
 
-    @FXML
-    private Label labelNombreUsuarios;
+    @FXML private Label labelNombreUsuarios;
 
-    @FXML
-    private Label labelApellidosUsuarios;
+    @FXML private Label labelApellidosUsuarios;
 
-    @FXML
-    private Label labelFechaNacimientoUsuarios;
+    @FXML private Label labelFechaNacimientoUsuarios;
 
-    @FXML
-    private JFXTextField filtrarUsuarioTFieldUsuarios;
+    @FXML private JFXTextField filtrarUsuarioTFieldUsuarios;
 
-    @FXML
-    private Label labelRolUsuarios;
+    @FXML private Label labelRolUsuarios;
 
-    @FXML
-    private Label seleccionaMensajeLabelMensajes;
+    @FXML private Label seleccionaMensajeLabelMensajes;
 
-    @FXML
-    private Label labelEdadUsuarios;
+    @FXML private Label labelEdadUsuarios;
 
-    @FXML
-    private JFXTextArea mensajeJFXTextFieldUsuarios;
+    @FXML private JFXTextArea mensajeJFXTextFieldUsuarios;
 
-    @FXML
-    private JFXTextField asuntoJFXTextFieldUsuarios;
+    @FXML private JFXTextField asuntoJFXTextFieldUsuarios;
 
-    @FXML
-    private JFXButton cancelarTicketbtn;
+    @FXML private JFXButton cancelarTicketbtn;
 
-    @FXML
-    private JFXTextArea mensajesJFXTextArea;
+    @FXML private JFXTextArea mensajesJFXTextArea;
 
-    @FXML
-    private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
+    @FXML private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
 
-    @FXML
-    private Tab tabInicioPaciente;
+    @FXML private Tab tabInicioPaciente;
 
-    @FXML
-    private Tab tabCalendarioPaciente;
+    @FXML private Tab tabCalendarioPaciente;
 
-    @FXML
-    private Tab tabUsuariosPaciente;
+    @FXML private Tab tabUsuariosPaciente;
 
-    @FXML
-    private Tab tabMensajesPaciente;
+    @FXML private Tab tabMensajesPaciente;
 
-    @FXML
-    private JFXTabPane tabPanePaciente;
+    @FXML private JFXTabPane tabPanePaciente;
 
-    @FXML
-    private JFXTextField destinatarioJFXTextFieldUsuarios;
+    @FXML private JFXTextField destinatarioJFXTextFieldUsuarios;
 
-    @FXML
-    private JFXTreeTableView<messageTTView> treeTableViewMensajes;
+    @FXML private JFXTreeTableView<messageTTView> treeTableViewMensajes;
 
-    @FXML
-    private ScrollPane scrollPaneMensajes;
+    @FXML private ScrollPane scrollPaneMensajes;
 
-    @FXML
-    private JFXTextField filtrarMensajeTFieldMensajes;
+    @FXML private JFXTextField filtrarMensajeTFieldMensajes;
 
-    @FXML
-    private JFXButton botonCancelarMensajesUsuarios;
+    @FXML private JFXButton botonCancelarMensajesUsuarios;
 
-    @FXML
-    private AnchorPane mensajePaneMensajes;
+    @FXML private AnchorPane mensajePaneMensajes;
 
-    @FXML
-    private JFXTextField destinatarioJFXTextFieldMensajes;
+    @FXML private JFXTextField destinatarioJFXTextFieldMensajes;
 
-    @FXML
-    private JFXTextField asuntoJFXTextFieldMensajes;
+    @FXML private JFXTextField asuntoJFXTextFieldMensajes;
 
-    @FXML
-    private JFXTextField idTicketJFXTextFieldMensajes;
+    @FXML private JFXTextField idTicketJFXTextFieldMensajes;
 
-    @FXML
-    private AnchorPane conversacionMensajes;
+    @FXML private AnchorPane conversacionMensajes;
 
-    @FXML
-    private VBox vboxConversacionMensajes;
+    @FXML private VBox vboxConversacionMensajes;
 
-    @FXML
-    private JFXButton responderTicketMensajes;
+    @FXML private JFXButton responderTicketMensajes;
 
-    @FXML
-    private Label seleccionaUsuarioUsuariosLabel;
+    @FXML private Label seleccionaUsuarioUsuariosLabel;
     
-    @FXML
-    private DayPage calendario;
+    @FXML private DayPage calendario;
     
-    @FXML
-    private JFXButton guardarCalendario;
+    @FXML private JFXButton guardarCalendario;
 
-    @FXML
-    private JFXButton crearMensajeResponderTicketBttnMensajes;
+    @FXML private JFXButton crearMensajeResponderTicketBttnMensajes;
     
-    @FXML
-    private JFXButton cancelarRespuestaTicketBtn;
+    @FXML private JFXButton cancelarRespuestaTicketBtn;
 
-    @FXML
-    private ImageView userImageViewUsuarios;
+    @FXML private ImageView userImageViewUsuarios;
 
-    @FXML
-    private ImageView userImageViewInicio;
+    @FXML private ImageView userImageViewInicio;
 
-    @FXML
-    private AnchorPane aPaneCreacionTicket;
+    @FXML private AnchorPane aPaneCreacionTicket;
 
-    @FXML
-    private AnchorPane aPaneRespuestaTicket;
+    @FXML private AnchorPane aPaneRespuestaTicket;
 
-    @FXML
-    private AgendaView prueba;
+    @FXML private AgendaView prueba;
 
-    @FXML
-    private ScrollPane scrollPaneMensajesInicio;
+    @FXML private ScrollPane scrollPaneMensajesInicio;
 
-    @FXML
-    private AnchorPane conversacionMensajesInicio;
+    @FXML private AnchorPane conversacionMensajesInicio;
 
-    @FXML
-    private VBox vboxConversacionMensajesInicio;
+    @FXML private VBox vboxConversacionMensajesInicio;
 
-    @FXML
-    private VBox seleccionaUsuarioUsuarios;
+    @FXML private VBox seleccionaUsuarioUsuarios;
 
-    @FXML
-    private VBox paneInicio;
+    @FXML private VBox paneInicio;
 
-    @FXML
-    private VBox imagenVBox;
+    @FXML private VBox imagenVBox;
 
-    @FXML
-    private VBox datosVBox;
+    @FXML private VBox datosVBox;
 
-    @FXML
-    private HBox generarTicketHBox;
+    @FXML private HBox generarTicketHBox;
 
-    @FXML
-    private VBox seleccionaMensajeVBox;
+    @FXML private VBox seleccionaMensajeVBox;
 
-    @FXML
-    private JFXButton botonResponderTicket;
+    @FXML private JFXButton botonResponderTicket;
 
-    @FXML
-    private VBox respuestaTicketVBox;
+    @FXML private VBox respuestaTicketVBox;
 
-    @FXML
-    private VBox datosVBoxMensajes;
+    @FXML private VBox datosVBoxMensajes;
+
+    // Metodos tab Inicio
+
+    public void aniadirPreguntasFrecuentes(){
+        int i = 0;
+        String[] preguntasYRespuestas = {"1. ¿Cómo puedo enviar un mensaje a mi médico?\n En la pestaña \"Mensajes\" en la parte inferior izquierda hay que pulsar el botón \"Crear Nuevo Ticket\" ahi te aparece para introducir el destinatario, asunto y mensaje."
+                ,"2. ¿Dónde puedo cerrar sesión?\nEn la pestaña de \"Inicio\" en la parte inferior izquierda, hay que pulsar el botón\"Cerrar Sesión\"."
+        ,"3. ¿Puedo buscar un Usuario por su nombre o apellido?\nSí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido."
+        ,"4. ¿Dónde puedo ver todos mis mensajes?\nEn la pestaña \"Mensajes\" sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos."};
+        for (String PyR : preguntasYRespuestas) {
+            labelPreguntasFrecuentes.add(new Label(PyR));
+            labelPreguntasFrecuentes.get(i).setPrefWidth(940);
+            labelPreguntasFrecuentes.get(i).setWrapText(true);
+            labelPreguntasFrecuentes.get(i).setFont(new Font("Century Gothic", 20));
+            labelPreguntasFrecuentes.get(i).setPadding(new Insets(0,0,0,20));
+            vboxPreguntasFrecuentes.getChildren().add(labelPreguntasFrecuentes.get(i));
+            vboxPreguntasFrecuentes.setSpacing(15);
+            i++;
+        }
+    }
 
     //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
 	@FXML
@@ -565,12 +514,10 @@ public class controladorPaciente {
         labelMessagesInicio.clear();
         vboxConversacionMensajesInicio.getChildren().clear();
         int i = 0;
-        System.out.println("oh");
         // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
         for (Message mensaje : modelo.getMessages()) {
             // Si no esta leido y el "sender" coincide con el nombre completo del usuario
             if (!mensaje.getRead() && (mensaje.getReceiver().equals(usuario.getName() + " " + usuario.getSurname()))) {
-                System.out.println(mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurname()));
                 labelMessagesInicio.add(new Label("- Asunto: " + mensaje.getSubject() + " || De parte de: " + mensaje.getSender()));
                 labelMessagesInicio.get(i).setPrefWidth(1202);
                 labelMessagesInicio.get(i).setWrapText(true);

@@ -578,7 +578,7 @@
     "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_fmontero.png",
     "telephone": 676424593,
     "dni": "68909593Y",
-    "domicilio": "Avenida Villaviciosa 36",    
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
       "msanchez",
       "slopez",
@@ -597,7 +597,7 @@
     "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_pcanoyra.png",
     "telephone": 602898152,
     "dni": "87540508R",
-    "domicilio": "Avenida Villaviciosa 36",    
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
       "rcaballero",
       "sgimenez",
@@ -616,7 +616,7 @@
     "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_atendero.png",
     "telephone": 636352999,
     "dni": "91990667M",
-    "domicilio": "Avenida Villaviciosa 36",    
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
       "rvicario",
       "jcabeza",
@@ -635,7 +635,7 @@
     "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_mrubio.png",
     "telephone": 680688471,
     "dni": "67690543W",
-    "domicilio": "Avenida Villaviciosa 36",    
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
       "mvega",
       "pgalindo",
@@ -654,7 +654,7 @@
     "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_abaeza.png",
     "telephone": 696912581,
     "dni": "55598745V",
-    "domicilio": "Avenida Villaviciosa 36",    
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
       "mnieto",
       "miglesias",
@@ -673,7 +673,7 @@
     "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_autrera.png",
     "telephone": 677831648,
     "dni": "76217516R",
-    "domicilio": "Avenida Villaviciosa 36",    
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
       "msuarez",
       "rcampos",
@@ -691,8 +691,8 @@
     "rol": "paciente",
     "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_sdiaz.png",
     "telephone": 655376023,
-    "domicilio": "Avenida Villaviciosa 36",
     "dni": "52388913L",
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
       "sgomez",
       "crey",
@@ -710,8 +710,8 @@
     "rol": "paciente",
     "imagenPerfil": "@..\\..\\resources\\fotos\\paciente_pbascuas.png",
     "telephone": 662541232,
-    "domicilio": "Avenida Villaviciosa 36",    
     "dni": "51632090B",
+    "domicilio": "Avenida Villaviciosa 36",
     "relaciones": [
       "jmoreno",
       "jrodriguez",

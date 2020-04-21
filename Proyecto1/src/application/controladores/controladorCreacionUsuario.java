@@ -7,7 +7,9 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.text.ParseException;
 
@@ -82,7 +84,10 @@ public class controladorCreacionUsuario {
                 newUser.setAge(modelo.calculateAge(newUser.getBirthday())); // throws ParseException
                 modelo.getUsuarios().add(newUser);
                 modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/Users.json", modelo.getUsuarios(),false);
-                crearUsuarioElementos.setVisible(false);
+
+                // Cerramos escena
+                Stage stageBttnBelongsTo = (Stage) crearCuentaBttn.getScene().getWindow();
+                stageBttnBelongsTo.close();
             }
         } catch (NumberFormatException nfe){
             modelo.createAlert("Cuidado", "Debes introducir un telefono valido (626 574 329)");
@@ -90,4 +95,10 @@ public class controladorCreacionUsuario {
             modelo.createAlert("Cuidado", "Debes introducir una fecha valida");
         }
     } // crearUsuario
+
+    @FXML
+    void cerrarEscena(MouseEvent event) {
+        Stage stageBttnBelongsTo = (Stage) crearCuentaBttn.getScene().getWindow();
+        stageBttnBelongsTo.close();
+    }
 }
