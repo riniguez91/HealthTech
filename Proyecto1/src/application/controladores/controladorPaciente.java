@@ -37,7 +37,7 @@ public class controladorPaciente {
     public List<Usuario> relatedUsers;
     private List<Label> labelMessages = new ArrayList<>();
     private List<Label> labelMessagesInicio = new ArrayList<>();
-    private List<Label> labelPreguntasFrecuentes = new ArrayList<>();
+    private List<Label> labelFAQ = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
 
     public void initModelo(modelo modelo_, Usuario usuario_){
@@ -75,8 +75,13 @@ public class controladorPaciente {
         comprobarMensajesNuevos();
     }
 
-    // Tab Inicio
-    @FXML private ImageView User;
+    // -------------------- Tab Inicio --------------------
+
+    @FXML private JFXTabPane tabPanePaciente;
+
+    @FXML private Tab tabInicioPaciente;
+
+    @FXML private ImageView userImageViewInicio;
 
     @FXML private Label Nombre;
 
@@ -93,129 +98,24 @@ public class controladorPaciente {
     @FXML private Label labelUsernameInicio;
 
     @FXML private Label labelRolInicio;
-    
+
+    @FXML private Label FechaNacimiento;
+
+    @FXML private Label Edad;
+
     @FXML private Label labelFechaNacimientoInicio;
 
     @FXML private Label labelEdadInicio;
 
+    @FXML private Label DNI;
+
+    @FXML private Label Telefono;
+
     @FXML private Label labelDNIInicio;
 
     @FXML private Label labelTelefonoInicio;
-    
+
     @FXML private JFXButton cerrarSesionBtn;
-
-    @FXML private VBox vboxPreguntasFrecuentes;
-
-    @FXML private ScrollPane scrollPaneFAQ;
-
-
-    @FXML private Pane PaneInicio;
-
-    @FXML private JFXTextArea comunicacionJFXTextArea;
-
-    @FXML private JFXTextArea calendarioJFXTextArea;
-
-    @FXML private JFXButton preguntasfrecuentesbtn;
-
-    @FXML private VBox VBox_PreguntasFrecuentes;
-    
-    @FXML private VBox VBox_Separator;
-    
-    @FXML private VBox VBox_PregFrec;
-
-    @FXML private JFXButton atrasbtn;
-
-    @FXML private JFXTextArea nombresJFXTextArea;
-
-    @FXML private Label Nombre1;
-
-    @FXML private JFXTextArea crearMensajeJFXTextAreaMensajes;
-
-    @FXML private Label Apellidos1;
-
-    @FXML private Label ID1;
-
-    @FXML private Label Rol1;
-
-    @FXML private Label ID11;
-
-    @FXML private Label labelNombreUsuarios;
-
-    @FXML private Label labelApellidosUsuarios;
-
-    @FXML private Label labelFechaNacimientoUsuarios;
-
-    @FXML private JFXTextField filtrarUsuarioTFieldUsuarios;
-
-    @FXML private Label labelRolUsuarios;
-
-    @FXML private Label seleccionaMensajeLabelMensajes;
-
-    @FXML private Label labelEdadUsuarios;
-
-    @FXML private JFXTextArea mensajeJFXTextFieldUsuarios;
-
-    @FXML private JFXTextField asuntoJFXTextFieldUsuarios;
-
-    @FXML private JFXButton cancelarTicketbtn;
-
-    @FXML private JFXTextArea mensajesJFXTextArea;
-
-    @FXML private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
-
-    @FXML private Tab tabInicioPaciente;
-
-    @FXML private Tab tabCalendarioPaciente;
-
-    @FXML private Tab tabUsuariosPaciente;
-
-    @FXML private Tab tabMensajesPaciente;
-
-    @FXML private JFXTabPane tabPanePaciente;
-
-    @FXML private JFXTextField destinatarioJFXTextFieldUsuarios;
-
-    @FXML private JFXTreeTableView<messageTTView> treeTableViewMensajes;
-
-    @FXML private ScrollPane scrollPaneMensajes;
-
-    @FXML private JFXTextField filtrarMensajeTFieldMensajes;
-
-    @FXML private JFXButton botonCancelarMensajesUsuarios;
-
-    @FXML private AnchorPane mensajePaneMensajes;
-
-    @FXML private JFXTextField destinatarioJFXTextFieldMensajes;
-
-    @FXML private JFXTextField asuntoJFXTextFieldMensajes;
-
-    @FXML private JFXTextField idTicketJFXTextFieldMensajes;
-
-    @FXML private AnchorPane conversacionMensajes;
-
-    @FXML private VBox vboxConversacionMensajes;
-
-    @FXML private JFXButton responderTicketMensajes;
-
-    @FXML private Label seleccionaUsuarioUsuariosLabel;
-    
-    @FXML private DayPage calendario;
-    
-    @FXML private JFXButton guardarCalendario;
-
-    @FXML private JFXButton crearMensajeResponderTicketBttnMensajes;
-    
-    @FXML private JFXButton cancelarRespuestaTicketBtn;
-
-    @FXML private ImageView userImageViewUsuarios;
-
-    @FXML private ImageView userImageViewInicio;
-
-    @FXML private AnchorPane aPaneCreacionTicket;
-
-    @FXML private AnchorPane aPaneRespuestaTicket;
-
-    @FXML private AgendaView prueba;
 
     @FXML private ScrollPane scrollPaneMensajesInicio;
 
@@ -223,25 +123,157 @@ public class controladorPaciente {
 
     @FXML private VBox vboxConversacionMensajesInicio;
 
-    @FXML private VBox seleccionaUsuarioUsuarios;
+    @FXML private AgendaView agendaViewInicio;
 
-    @FXML private VBox paneInicio;
+    @FXML private ScrollPane scrollPaneFAQ;
 
-    @FXML private VBox imagenVBox;
+    @FXML private AnchorPane apaneFAQ;
 
-    @FXML private VBox datosVBox;
+    @FXML private VBox vboxFAQ;
 
-    @FXML private HBox generarTicketHBox;
+    // -------------------- Tab Calendario --------------------
 
-    @FXML private VBox seleccionaMensajeVBox;
+    @FXML
+    private Tab tabCalendarioPaciente;
 
-    @FXML private JFXButton botonResponderTicket;
+    @FXML
+    private DayPage calendario;
 
-    @FXML private VBox respuestaTicketVBox;
+    @FXML
+    private JFXButton guardarCalendario;
 
-    @FXML private VBox datosVBoxMensajes;
+    @FXML
+    private Tab tabUsuariosPaciente;
 
-    // Metodos tab Inicio
+    @FXML
+    private JFXTextField filtrarUsuarioTFieldUsuarios;
+
+    @FXML
+    private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
+
+    @FXML
+    private VBox seleccionaUsuarioUsuarios;
+
+    @FXML
+    private Label seleccionaUsuarioUsuariosLabel;
+
+    @FXML
+    private VBox imagenVBox;
+
+    @FXML
+    private ImageView userImageViewUsuarios;
+
+    @FXML
+    private VBox datosVBox;
+
+    @FXML
+    private Label Apellidos1;
+
+    @FXML
+    private Label ID1;
+
+    @FXML
+    private Label Nombre1;
+
+    @FXML
+    private Label Rol1;
+
+    @FXML
+    private Label ID11;
+
+    @FXML
+    private Label labelNombreUsuarios;
+
+    @FXML
+    private Label labelApellidosUsuarios;
+
+    @FXML
+    private Label labelFechaNacimientoUsuarios;
+
+    @FXML
+    private Label labelRolUsuarios;
+
+    @FXML
+    private Label labelEdadUsuarios;
+
+    @FXML
+    private JFXTextField destinatarioJFXTextFieldUsuarios;
+
+    @FXML
+    private JFXTextField asuntoJFXTextFieldUsuarios;
+
+    @FXML
+    private JFXTextArea mensajeJFXTextFieldUsuarios;
+
+    @FXML
+    private JFXButton botonCancelarMensajesUsuarios;
+
+    @FXML
+    private HBox generarTicketHBox;
+
+    @FXML
+    private Tab tabMensajesPaciente;
+
+    @FXML
+    private VBox seleccionaMensajeVBox;
+
+    @FXML
+    private Label seleccionaMensajeLabelMensajes;
+
+    @FXML
+    private JFXTextField filtrarMensajeTFieldMensajes;
+
+    @FXML
+    private JFXTreeTableView<messageTTView> treeTableViewMensajes;
+
+    @FXML
+    private VBox datosVBoxMensajes;
+
+    @FXML
+    private Label Apellidos11;
+
+    @FXML
+    private Label Nombre11;
+
+    @FXML
+    private Label Rol11;
+
+    @FXML
+    private JFXTextField asuntoJFXTextFieldMensajes;
+
+    @FXML
+    private JFXTextField destinatarioJFXTextFieldMensajes;
+
+    @FXML
+    private JFXTextField idTicketJFXTextFieldMensajes;
+
+    @FXML
+    private ScrollPane scrollPaneMensajes;
+
+    @FXML
+    private AnchorPane conversacionMensajes;
+
+    @FXML
+    private VBox vboxConversacionMensajes;
+
+    @FXML
+    private JFXButton botonResponderTicket;
+
+    @FXML
+    private VBox respuestaTicketVBox;
+
+    @FXML
+    private JFXTextArea crearMensajeJFXTextAreaMensajes;
+
+    @FXML
+    private JFXButton cancelarRespuestaTicketBtn;
+
+    @FXML
+    private JFXButton crearMensajeResponderTicketBttnMensajes;
+
+
+
+    // -------------------- Metodos tab Inicio --------------------
 
     public void aniadirPreguntasFrecuentes(){
         int i = 0;
@@ -250,64 +282,85 @@ public class controladorPaciente {
         ,"3. ¿Puedo buscar un Usuario por su nombre o apellido?\nSí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido."
         ,"4. ¿Dónde puedo ver todos mis mensajes?\nEn la pestaña \"Mensajes\" sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos."};
         for (String PyR : preguntasYRespuestas) {
-            labelPreguntasFrecuentes.add(new Label(PyR));
-            labelPreguntasFrecuentes.get(i).setPrefWidth(940);
-            labelPreguntasFrecuentes.get(i).setWrapText(true);
-            labelPreguntasFrecuentes.get(i).setFont(new Font("Century Gothic", 20));
-            labelPreguntasFrecuentes.get(i).setPadding(new Insets(0,0,0,20));
-            vboxPreguntasFrecuentes.getChildren().add(labelPreguntasFrecuentes.get(i));
-            vboxPreguntasFrecuentes.setSpacing(15);
+            labelFAQ.add(new Label(PyR));
+            labelFAQ.get(i).setPrefWidth(940);
+            labelFAQ.get(i).setWrapText(true);
+            labelFAQ.get(i).setFont(new Font("Century Gothic", 20));
+            labelFAQ.get(i).setPadding(new Insets(0,0,0,20));
+            vboxFAQ.getChildren().add(labelFAQ.get(i));
+            vboxFAQ.setSpacing(15);
             i++;
         }
-    }
+    } // aniadirPreguntasFrecuentes()
 
-    //Pestaña Inicio para ver y ocultar PreguntasFrecuentes
-	@FXML
-	void verInicio(ActionEvent event) {
-		paneInicio.setVisible(true);
-		VBox_PreguntasFrecuentes.setVisible(false);
-		VBox_PregFrec.setVisible(true);
-		VBox_Separator.setVisible(true);
-	}
-
-	@FXML
-	void verPreguntasFrecuentes(ActionEvent event) {
-		//panePreguntasFrecuentes.setVisible(true);
-		paneInicio.setVisible(false);
-		VBox_PreguntasFrecuentes.setVisible(true);
-		VBox_PregFrec.setVisible(false);
-		VBox_Separator.setVisible(false);
-	}
-
-    public void setMsgAsRead() {
-        // Cambiamos el mensaje como leido si no lo estaba
-        if (!treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getRead().get()) {
-            for (Message msg : modelo.getMessages()) {
-                // Compramos el mensaje que corresponde con el ID del mensaje y la persona que lo tiene que recibir (receiver)
-                if (msg.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()) &&
-                        msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurname())){
-                    msg.setRead(true);
-
-                    // Lo marcamos como leido en el JSON de mensajes
-                    modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
-
-                    // Actualizamos la lista de mensajes
-                    modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
-
-                    // Borramos el mensaje de la pestaña Recordatorios
-                    comprobarMensajesNuevos();
-                    break;
-                }
+    public void comprobarMensajesNuevos(){
+        // Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
+        labelMessagesInicio.clear();
+        vboxConversacionMensajesInicio.getChildren().clear();
+        int i = 0;
+        // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
+        for (Message mensaje : modelo.getMessages()) {
+            // Si no esta leido y el "sender" coincide con el nombre completo del usuario
+            if (!mensaje.getRead() && (mensaje.getReceiver().equals(usuario.getName() + " " + usuario.getSurname()))) {
+                labelMessagesInicio.add(new Label("- Asunto: " + mensaje.getSubject() + " || De parte de: " + mensaje.getSender()));
+                labelMessagesInicio.get(i).setPrefWidth(1202);
+                labelMessagesInicio.get(i).setWrapText(true);
+                labelMessagesInicio.get(i).setFont(new Font("Century Gothic", 26));
+                labelMessagesInicio.get(i).setPadding(new Insets(0,0,0,20));
+                vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(i));
+                vboxConversacionMensajesInicio.setSpacing(15);
+                i++;
             }
         }
+        if (labelMessagesInicio.size()==0){
+            labelMessagesInicio.add(new Label(" - No tiene mensajes nuevos"));
+            labelMessagesInicio.get(0).setFont(new Font("Century Gothic", 26));
+            vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(0));
+        }
+    } // comprobarMensajesNuevos()
+
+    @FXML
+    void cerrarSesion(ActionEvent event) throws IOException {
+        Stage stageBttnBelongsTo = (Stage) cerrarSesionBtn.getScene().getWindow();
+        FXMLLoader loaderLogin = new FXMLLoader(getClass().getResource("/application/vistas/vistaLogin.fxml"));
+        Parent rootLogin;
+        rootLogin = loaderLogin.load();
+        controladorLogin contrLogin = loaderLogin.getController();
+        contrLogin.initModelo(modelo,usuario);
+        stageBttnBelongsTo.setScene(new Scene(rootLogin));
+    } // cerrarSesion()
+
+    // -------------------- Fin metodos Tab inicio --------------------
+
+
+
+
+
+    // -------------------- Metodos tab Calendario --------------------
+
+    @FXML
+    void guardarCalendario(ActionEvent event) {
+        if (calendario.getAgendaView().getListView().getItems().size() != 0) {
+            agendaViewInicio.getListView().setItems(calendario.getAgendaView().getListView().getItems());
+            modelo.createAlert("Informacion", "El evento se ha añadido correctamente");
+        } else {
+            modelo.createAlert("Informacion", "Primero debe de añadir un evento al calendario");
+        }
     }
+    // -------------------- Fin metodos tab Calendario --------------------
+
+
+
+
+
+    // -------------------- Metodos tab Usuarios --------------------
 
     @FXML
     void filterUsersUsuario(KeyEvent event) {
         treeTableViewUsuarios.setPredicate( usuarioTreeItem -> usuarioTreeItem.getValue().getName().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()) ||
                 usuarioTreeItem.getValue().getSurname().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase())
                 || usuarioTreeItem.getValue().getRolUsuario().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
-    }
+    } // filterUserUsuario()
 
     public void crearTreeTableViewUsuarios() {
         JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
@@ -335,13 +388,90 @@ public class controladorPaciente {
         treeTableViewUsuarios.getColumns().setAll(nombreCol, apellidosCol, rolCol);
         treeTableViewUsuarios.setRoot(root);
         treeTableViewUsuarios.setShowRoot(false);
-    }
+    } // crearTreeTableViewUsuarios()
+
+    @FXML
+    void mostrarDatosYMensajeUsuarios(MouseEvent event) {
+        // Cambiamos los datos del usuario mientras se haya seleccionado uno
+        if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) {
+            // Comprobamos si el panel de datos de usuario y creacion de mensajes esta visible
+            if (!datosVBox.isVisible()){
+                // Hacemos el panel visible
+                imagenVBox.setVisible(true);
+                datosVBox.setVisible(true);
+                generarTicketHBox.setVisible(true);
+
+
+                seleccionaUsuarioUsuarios.setVisible(false);
+            }
+            // Si esta visible actualizamos los datos del usuario seleccionado
+            if (datosVBox.isVisible()) {
+                labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
+                labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
+                labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
+                labelFechaNacimientoUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getBirthday().get());
+                labelEdadUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAge().get()+"");
+                destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
+                        + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
+                userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getImagenPerfil().get()));
+            }
+        }
+    } // mostrarDatosYMensajeUsuarios()
+
+    @FXML
+    void enviarMensajeUsuarios(ActionEvent event) {
+        if (asuntoJFXTextFieldUsuarios.getText().isEmpty()) {
+            modelo.createAlert("Cuidado", "Debes de poner un asunto");
+        }
+        else if (mensajeJFXTextFieldUsuarios.getText().isEmpty()) {
+            modelo.createAlert("Cuidado", "Debes de poner un mensaje");
+        }
+        else {
+            UUID uniqueKey = UUID.randomUUID();
+            Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
+                    + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
+                    uniqueKey.toString(), false);
+            List<Message> updatedMessages = modelo.getMessages();
+            updatedMessages.add(msg);
+            modelo.setMessages(updatedMessages);
+            modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
+            modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente");
+            // Borramos los campos para evitar confusion
+            asuntoJFXTextFieldUsuarios.clear();
+            mensajeJFXTextFieldUsuarios.clear();
+
+            // Actualizamos la lista de mensajes
+            treeTableViewMensajes.getRoot().getChildren().add(new TreeItem<>(new messageTTView(msg.getSender(), msg.getReceiver(), msg.getSubject(),
+                    msg.getMessage(), msg.getIdTicket(), msg.getRead())));
+            // Junto a los mensajes no leidos
+            comprobarMensajesNuevos();
+        }
+    } // enviarMensajeUsuarios()
+
+    @FXML
+    void cancelarMensajeUsuarios(ActionEvent event) {
+        if (asuntoJFXTextFieldUsuarios.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
+            modelo.createAlert("Informacion", "Primero debe introducir un asunto o un mensaje");
+        }
+        else {
+            asuntoJFXTextFieldUsuarios.clear();
+            mensajeJFXTextFieldUsuarios.clear();
+        }
+    } // cancelarMensajeUsuarios()
+
+    // -------------------- Fin metodos tab Usuarios --------------------
+
+
+
+
+
+    // -------------------- Metodos tab Mensajes --------------------
 
     @FXML
     void filterTicketsMensajes(KeyEvent event) {
         treeTableViewMensajes.setPredicate( mensajeTreeItem -> mensajeTreeItem.getValue().getSubject().get().toLowerCase().startsWith(filtrarMensajeTFieldMensajes.getText().toLowerCase()) ||
                 mensajeTreeItem.getValue().getIdTicket().get().startsWith(filtrarMensajeTFieldMensajes.getText()));
-    }
+    } // filterTicketsMensajes()
 
     public void crearTreeTableViewMensajes() {
         JFXTreeTableColumn<messageTTView, String> idCol = new JFXTreeTableColumn<>("ID Ticket");
@@ -372,35 +502,9 @@ public class controladorPaciente {
         treeTableViewMensajes.getColumns().setAll(idCol, senderCol, asuntoCol);
         treeTableViewMensajes.setRoot(root);
         treeTableViewMensajes.setShowRoot(false);
-    }
-
-    @FXML
-    void mostrarDatosYMensajeUsuarios(MouseEvent event) {
-        // Cambiamos los datos del usuario mientras se haya seleccionado uno
-	    if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) {
-            // Comprobamos si el panel de datos de usuario y creacion de mensajes esta visible
-            if (!datosVBox.isVisible()){
-                // Hacemos el panel visible
-                imagenVBox.setVisible(true);
-                datosVBox.setVisible(true);
-                generarTicketHBox.setVisible(true);
+    } // createTreeTableViewMensajes()
 
 
-                seleccionaUsuarioUsuarios.setVisible(false);
-            }
-            // Si esta visible actualizamos los datos del usuario seleccionado
-            if (datosVBox.isVisible()) {
-                labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
-                labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
-                labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
-                labelFechaNacimientoUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getBirthday().get());
-                labelEdadUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAge().get()+"");
-                destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
-                        + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
-                userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getImagenPerfil().get()));
-            }
-        }
-    }
 
     public void changeTicketConversation() {
         // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
@@ -423,7 +527,7 @@ public class controladorPaciente {
                 i++;
             }
         }
-    }
+    } // changeTicketConversation()
 
     @FXML
     void mostrarTicketMensajes(MouseEvent event) {
@@ -452,37 +556,30 @@ public class controladorPaciente {
             changeTicketConversation();
             seleccionaMensajeVBox.setVisible(false);
         }
-    }
+    } // mostrarTicketMensajes()
 
-    @FXML
-    void enviarMensajeUsuarios(ActionEvent event) {
-        if (asuntoJFXTextFieldUsuarios.getText().isEmpty()) {
-            modelo.createAlert("Cuidado", "Debes de poner un asunto");
-        }
-        else if (mensajeJFXTextFieldUsuarios.getText().isEmpty()) {
-            modelo.createAlert("Cuidado", "Debes de poner un mensaje");
-        }
-        else {
-            UUID uniqueKey = UUID.randomUUID();
-            Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()+ " "
-                        + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
-                        uniqueKey.toString(), false);
-            List<Message> updatedMessages = modelo.getMessages();
-            updatedMessages.add(msg);
-            modelo.setMessages(updatedMessages);
-            modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
-            modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente");
-            // Borramos los campos para evitar confusion
-            asuntoJFXTextFieldUsuarios.clear();
-            mensajeJFXTextFieldUsuarios.clear();
+    public void setMsgAsRead() {
+        // Cambiamos el mensaje como leido si no lo estaba
+        if (!treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getRead().get()) {
+            for (Message msg : modelo.getMessages()) {
+                // Compramos el mensaje que corresponde con el ID del mensaje y la persona que lo tiene que recibir (receiver)
+                if (msg.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()) &&
+                        msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurname())){
+                    msg.setRead(true);
 
-            // Actualizamos la lista de mensajes
-            treeTableViewMensajes.getRoot().getChildren().add(new TreeItem<>(new messageTTView(msg.getSender(), msg.getReceiver(), msg.getSubject(),
-                                                                                                msg.getMessage(), msg.getIdTicket(), msg.getRead())));
-            // Junto a los mensajes no leidos
-            comprobarMensajesNuevos();
+                    // Lo marcamos como leido en el JSON de mensajes
+                    modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
+
+                    // Actualizamos la lista de mensajes
+                    modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
+
+                    // Borramos el mensaje de la pestaña Recordatorios
+                    comprobarMensajesNuevos();
+                    break;
+                }
+            }
         }
-    }
+    } // setMsgAsRead()
 
     @FXML
     void crearMensajeYResponderTicket(ActionEvent event) {
@@ -507,78 +604,23 @@ public class controladorPaciente {
             // Borramos los campos para evitar confusion
             crearMensajeJFXTextAreaMensajes.clear();
         }
-    }
-
-    public void comprobarMensajesNuevos(){
-        // Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
-        labelMessagesInicio.clear();
-        vboxConversacionMensajesInicio.getChildren().clear();
-        int i = 0;
-        // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
-        for (Message mensaje : modelo.getMessages()) {
-            // Si no esta leido y el "sender" coincide con el nombre completo del usuario
-            if (!mensaje.getRead() && (mensaje.getReceiver().equals(usuario.getName() + " " + usuario.getSurname()))) {
-                labelMessagesInicio.add(new Label("- Asunto: " + mensaje.getSubject() + " || De parte de: " + mensaje.getSender()));
-                labelMessagesInicio.get(i).setPrefWidth(1202);
-                labelMessagesInicio.get(i).setWrapText(true);
-                labelMessagesInicio.get(i).setFont(new Font("Century Gothic", 26));
-                labelMessagesInicio.get(i).setPadding(new Insets(0,0,0,20));
-                vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(i));
-                vboxConversacionMensajesInicio.setSpacing(15);
-                i++;
-            }
-        }
-        if (labelMessagesInicio.size()==0){
-            labelMessagesInicio.add(new Label(" - No tiene mensajes nuevos"));
-            labelMessagesInicio.get(0).setFont(new Font("Century Gothic", 26));
-            vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(0));
-        }
-    }
-
-    @FXML
-    void cancelarMensajeUsuarios(ActionEvent event) {
-        if (asuntoJFXTextFieldUsuarios.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
-            modelo.createAlert("Informacion", "Primero debe introducir un asunto o un mensaje");
-        }
-        else {
-            asuntoJFXTextFieldUsuarios.clear();
-            mensajeJFXTextFieldUsuarios.clear();
-        }
-    }
+    } // crearMensajeYResponderTicket()
 
     @FXML
     void responderTicketMensajes(ActionEvent event) {
         scrollPaneMensajes.setVisible(false);
         botonResponderTicket.setVisible(false);
         respuestaTicketVBox.setVisible(true);
-    }
+    } // responderTicketMensajes()
 
     @FXML
     void cancelarRespuestaTicket(ActionEvent event) {
         respuestaTicketVBox.setVisible(false);
         scrollPaneMensajes.setVisible(true);
         botonResponderTicket.setVisible(true);
-    }
+    } // cancelarRespuestaTicket()
 
-    @FXML
-    void guardarCalendario(ActionEvent event) {
-        if (calendario.getAgendaView().getListView().getItems().size() != 0) {
-            prueba.getListView().setItems(calendario.getAgendaView().getListView().getItems());
-            modelo.createAlert("Informacion", "El evento se ha añadido correctamente");
-        } else {
-            modelo.createAlert("Informacion", "Primero debe de añadir un evento al calendario");
-        }
-    }
+    // -------------------- Fin metodos tab Mensajes --------------------
 
-    @FXML
-    void cerrarSesion(ActionEvent event) throws IOException {
-        Stage stageBttnBelongsTo = (Stage) cerrarSesionBtn.getScene().getWindow();
-        FXMLLoader loaderLogin = new FXMLLoader(getClass().getResource("/application/vistas/vistaLogin.fxml"));
-        Parent rootLogin;
-        rootLogin = loaderLogin.load();
-        controladorLogin contrLogin = loaderLogin.getController();
-        contrLogin.initModelo(modelo,usuario);
-        stageBttnBelongsTo.setScene(new Scene(rootLogin));
-    }
-}
+} // controladorPaciente
 

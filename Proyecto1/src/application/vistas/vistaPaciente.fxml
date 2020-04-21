@@ -168,7 +168,7 @@
                                     </Label>
                                     <HBox prefWidth="1335.0">
                                        <children>
-                                          <AgendaView fx:id="prueba" prefHeight="461.0" prefWidth="398.0" />
+                                          <AgendaView fx:id="agendaViewInicio" prefHeight="461.0" prefWidth="398.0" />
                                           <Separator orientation="VERTICAL" prefHeight="200.0">
                                              <HBox.margin>
                                                 <Insets />
@@ -176,9 +176,9 @@
                                           </Separator>
                                           <ScrollPane fx:id="scrollPaneFAQ" fitToHeight="true" fitToWidth="true" prefHeight="461.0" prefWidth="967.0">
                                              <content>
-                                                <AnchorPane fx:id="conversacionMensajesInicio1" prefHeight="372.0" prefWidth="1335.0">
+                                                <AnchorPane fx:id="apaneFAQ" prefHeight="372.0" prefWidth="1335.0">
                                                    <children>
-                                                      <VBox fx:id="vboxPreguntasFrecuentes" alignment="CENTER" />
+                                                      <VBox fx:id="vboxFAQ" alignment="CENTER" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>
