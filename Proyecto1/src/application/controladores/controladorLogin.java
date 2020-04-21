@@ -140,11 +140,28 @@ public class controladorLogin {
         
     }
 
+    public void cargarVistaGeneral(Usuario usuario) throws IOException {
+        Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
+        FXMLLoader loaderPaciente = new FXMLLoader(getClass().getResource("/application/vistas/vistaPaciente.fxml"));
+        Parent rootPaciente = loaderPaciente.load();
+        controladorPaciente contrPaciente = loaderPaciente.getController();
+        contrPaciente.initModelo(modelo,usuario, contrPaciente);
+        stageBttnBelongsTo.setScene(new Scene(rootPaciente));
+    }
+
+    public void cargarVistaDetallada(Usuario usuario) throws IOException {
+        Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
+        FXMLLoader loaderMedico = new FXMLLoader(getClass().getResource("/application/vistas/vistaMedico.fxml"));
+        Parent rootMedico = loaderMedico.load();
+        controladorMedico contrMedico = loaderMedico.getController();
+        contrMedico.initModelo(modelo,usuario);
+        stageBttnBelongsTo.setScene(new Scene(rootMedico));
+    }
+
     // CAMBIAR FOR LOOP A UN WHILE
     public void login() throws IOException {
         for (Usuario usuario: modelo.getUsuarios()){
             if (usrnameField.getText().equals(usuario.getUsername()) && modelo.encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
-                Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
                 // Recordar username
                 if (checkBox.isSelected()) {
                 	nUsuario=usuario.getUsername();
@@ -152,32 +169,12 @@ public class controladorLogin {
                 }
                 switch(usuario.getRol()){
                     case "medico":
-                        FXMLLoader loaderMedico = new FXMLLoader(getClass().getResource("/application/vistas/vistaMedico.fxml"));
-                        Parent rootMedico = loaderMedico.load();
-                        controladorMedico contrMedico = loaderMedico.getController();
-                        contrMedico.initModelo(modelo,usuario);
-                        stageBttnBelongsTo.setScene(new Scene(rootMedico));
+                    case "familiar":
+                        cargarVistaDetallada(usuario);
                         break;
                     case "paciente":
-                        FXMLLoader loaderPaciente = new FXMLLoader(getClass().getResource("/application/vistas/vistaPaciente.fxml"));
-                        Parent rootPaciente = loaderPaciente.load();
-                        controladorPaciente contrPaciente = loaderPaciente.getController();
-                        contrPaciente.initModelo(modelo,usuario, contrPaciente);
-                        stageBttnBelongsTo.setScene(new Scene(rootPaciente));
-                        break;
-                    case "familiar":
-                        FXMLLoader loaderFamiliar = new FXMLLoader(getClass().getResource("/application/vistas/vistaFamiliar.fxml"));
-                        Parent rootFamiliar = loaderFamiliar.load();
-                        controladorFamiliar contrFamiliar = loaderFamiliar.getController();
-                        contrFamiliar.initModelo(modelo,usuario);
-                        stageBttnBelongsTo.setScene(new Scene(rootFamiliar));
-                        break;
                     case "cuidador":
-                        FXMLLoader loaderCuidador = new FXMLLoader(getClass().getResource("/application/vistas/vistaCuidador.fxml"));
-                        Parent rootCuidador = loaderCuidador.load();
-                        controladorCuidador contrCuidador = loaderCuidador.getController();
-                        contrCuidador.initModelo(modelo,usuario);
-                        stageBttnBelongsTo.setScene(new Scene(rootCuidador));
+                        cargarVistaGeneral(usuario);
                         break;
                 } // switch
                 break;

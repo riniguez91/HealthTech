@@ -543,21 +543,19 @@ public class controladorPaciente {
 
     
     public void crearMensajeYResponderTicket(String mensaje) {
-            Message msg = new Message(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSender().get(),
-                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get(),
-                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get(),
-                                      mensaje,
-                                      treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get(),
-                                      false
-            );
+        Message msg = new Message(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSender().get(),
+                                  treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get(),
+                                  treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get(),
+                                  mensaje,
+                                  treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get(),
+                              false
+        );
 
-            List<Message> updatedMessages = modelo.getMessages();
-            updatedMessages.add(msg);
-            modelo.setMessages(updatedMessages);
-            modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
-            modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente, por favor compruebelo pinchando donde le indica la tabla");
-
-
+        List<Message> updatedMessages = modelo.getMessages();
+        updatedMessages.add(msg);
+        modelo.setMessages(updatedMessages);
+        modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(),false);
+        modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente, por favor compruebelo pinchando donde le indica la tabla");
     } // crearMensajeYResponderTicket()
 
     @FXML
