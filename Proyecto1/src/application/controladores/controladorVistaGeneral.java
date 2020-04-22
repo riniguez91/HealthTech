@@ -408,6 +408,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
                         + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
                 userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getImagenPerfil().get()));
+
+                // Reseteamos el campo de asunto y textfield en caso de que el usuario no cancelo la respuesta
+                asuntoJFXTextFieldUsuarios.clear();
+                mensajeJFXTextFieldUsuarios.clear();
             }
         }
     } // mostrarDatosYMensajeUsuarios()
