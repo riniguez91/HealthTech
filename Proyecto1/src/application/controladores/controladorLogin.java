@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
@@ -15,14 +14,12 @@ import javafx.animation.SequentialTransition;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.text.ParseException;
 
 import application.modelos.Usuario;
 import application.modelos.modelo;
@@ -140,15 +137,6 @@ public class controladorLogin {
         
     }
 
-    public void cargarVistaGeneral(Usuario usuario) throws IOException {
-        Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
-        FXMLLoader loaderPaciente = new FXMLLoader(getClass().getResource("/application/vistas/vistaPaciente.fxml"));
-        Parent rootPaciente = loaderPaciente.load();
-        controladorPaciente contrPaciente = loaderPaciente.getController();
-        contrPaciente.initModelo(modelo,usuario, contrPaciente);
-        stageBttnBelongsTo.setScene(new Scene(rootPaciente));
-    }
-
     public void cargarVistaDetallada(Usuario usuario) throws IOException {
         Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
         FXMLLoader loaderMedico = new FXMLLoader(getClass().getResource("/application/vistas/vistaMedico.fxml"));
@@ -167,6 +155,7 @@ public class controladorLogin {
                 	nUsuario=usuario.getUsername();
                 	checkBox.setSelected(true);
                 }
+                Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
                 switch(usuario.getRol()){
                     case "medico":
                     case "familiar":
@@ -174,7 +163,15 @@ public class controladorLogin {
                         break;
                     case "paciente":
                     case "cuidador":
-                        cargarVistaGeneral(usuario);
+                        // FXML Loader and Parent
+                        FXMLLoader loaderVistaGeneral = new FXMLLoader(getClass().getResource("/application/vistas/vistaGeneral.fxml"));
+                        Parent rootVistaGeneral = loaderVistaGeneral.load();
+
+                        // Controllers
+                        controladorVistaGeneral controladorVistaGeneral = loaderVistaGeneral.getController();
+                        controladorVistaGeneral.initModelo(modelo,usuario, controladorVistaGeneral);
+
+                        stageBttnBelongsTo.setScene(new Scene(rootVistaGeneral));
                         break;
                 } // switch
                 break;

@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class controladorPaciente {
+public class controladorVistaGeneral {
 		
     private modelo modelo;
     private Usuario usuario;
@@ -39,9 +39,9 @@ public class controladorPaciente {
     private List<Label> labelMessagesInicio = new ArrayList<>();
     private List<Label> labelFAQ = new ArrayList<>();
     private List<String> uniqueIDS = new ArrayList<>();
-    private controladorPaciente cp;
+    private controladorVistaGeneral cp;
 
-    public void initModelo(modelo modelo_, Usuario usuario_, controladorPaciente cp_){
+    public void initModelo(modelo modelo_, Usuario usuario_, controladorVistaGeneral cp_){
         if (this.modelo != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }
@@ -85,14 +85,6 @@ public class controladorPaciente {
 
     @FXML private ImageView userImageViewInicio;
 
-    @FXML private Label Nombre;
-
-    @FXML private Label Apellidos;
-
-    @FXML private Label ID;
-
-    @FXML private Label Rol;
-
     @FXML private Label labelNombreInicio;
 
     @FXML private Label labelApellidosInicio;
@@ -101,17 +93,9 @@ public class controladorPaciente {
 
     @FXML private Label labelRolInicio;
 
-    @FXML private Label FechaNacimiento;
-
-    @FXML private Label Edad;
-
     @FXML private Label labelFechaNacimientoInicio;
 
     @FXML private Label labelEdadInicio;
-
-    @FXML private Label DNI;
-
-    @FXML private Label Telefono;
 
     @FXML private Label labelDNIInicio;
 
@@ -150,40 +134,19 @@ public class controladorPaciente {
     private Tab tabUsuariosPaciente;
 
     @FXML
+    private Label seleccionaUsuarioLabel;
+
+    @FXML
     private JFXTextField filtrarUsuarioTFieldUsuarios;
 
     @FXML
     private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
 
     @FXML
-    private VBox seleccionaUsuarioUsuarios;
-
-    @FXML
-    private Label seleccionaUsuarioUsuariosLabel;
-
-    @FXML
-    private VBox imagenVBox;
+    private VBox datosUsuarioVBox;
 
     @FXML
     private ImageView userImageViewUsuarios;
-
-    @FXML
-    private VBox datosVBox;
-
-    @FXML
-    private Label Apellidos1;
-
-    @FXML
-    private Label ID1;
-
-    @FXML
-    private Label Nombre1;
-
-    @FXML
-    private Label Rol1;
-
-    @FXML
-    private Label ID11;
 
     @FXML
     private Label labelNombreUsuarios;
@@ -210,10 +173,13 @@ public class controladorPaciente {
     private JFXTextArea mensajeJFXTextFieldUsuarios;
 
     @FXML
-    private JFXButton botonCancelarMensajesUsuarios;
+    private HBox generarTicketHBox;
 
     @FXML
-    private HBox generarTicketHBox;
+    private JFXButton cancelarTicketBttnMensajes;
+
+    @FXML
+    private JFXButton crearTicketBttnMensajes;
 
     // -------------------- Tab Mensajes --------------------
 
@@ -358,21 +324,16 @@ public class controladorPaciente {
     } // crearTreeTableViewUsuarios()
 
     @FXML
-    void mostrarDatosYMensajeUsuarios(MouseEvent event) {
+    void mostrarDatosUsuarios(MouseEvent event) {
         // Cambiamos los datos del usuario mientras se haya seleccionado uno
         if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) {
             // Comprobamos si el panel de datos de usuario y creacion de mensajes esta visible
-            if (!datosVBox.isVisible()){
-                // Hacemos el panel visible
-                imagenVBox.setVisible(true);
-                datosVBox.setVisible(true);
-                generarTicketHBox.setVisible(true);
-
-
-                seleccionaUsuarioUsuarios.setVisible(false);
+            if (!datosUsuarioVBox.isVisible()){
+                datosUsuarioVBox.setVisible(true);
+                seleccionaUsuarioLabel.setVisible(false);
             }
             // Si esta visible actualizamos los datos del usuario seleccionado
-            if (datosVBox.isVisible()) {
+            if (datosUsuarioVBox.isVisible()) {
                 labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
                 labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
                 labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
@@ -386,7 +347,7 @@ public class controladorPaciente {
     } // mostrarDatosYMensajeUsuarios()
 
     @FXML
-    void enviarMensajeUsuarios(ActionEvent event) {
+    void crearTicket(ActionEvent event) {
         if (asuntoJFXTextFieldUsuarios.getText().isEmpty()) {
             modelo.createAlert("Cuidado", "Debes de poner un asunto");
         }
@@ -416,7 +377,7 @@ public class controladorPaciente {
     } // enviarMensajeUsuarios()
 
     @FXML
-    void cancelarMensajeUsuarios(ActionEvent event) {
+    void cancelarTicket(ActionEvent event) {
         if (asuntoJFXTextFieldUsuarios.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()){
             modelo.createAlert("Informacion", "Primero debe introducir un asunto o un mensaje");
         }
@@ -576,5 +537,5 @@ public class controladorPaciente {
 
     // -------------------- Fin metodos tab Mensajes --------------------
 
-} // controladorPaciente
+} // controladorVistaGeneral
 

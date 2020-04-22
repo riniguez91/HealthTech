@@ -94,5 +94,21 @@
     "message": "Vaya jambomuteador el ruben",
     "idTicket": "12fb5e31-135e-4dd7-8ccb-966da76ae5ef",
     "read": false
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Juan Rodríguez Fernández",
+    "subject": "Probando creacion ticket 22/04/20",
+    "message": "Que pasa jambocepticon",
+    "idTicket": "b123c08c-a318-4b9b-b69b-aac45d5afac9",
+    "read": false
+  },
+  {
+    "sender": "Susana Díaz Hernández",
+    "receiver": "Juan Rodríguez Fernández",
+    "subject": "Probando creacion ticket 22/04/20",
+    "message": "Aqui estamos jambocepticon",
+    "idTicket": "b123c08c-a318-4b9b-b69b-aac45d5afac9",
+    "read": false
   }
 ]

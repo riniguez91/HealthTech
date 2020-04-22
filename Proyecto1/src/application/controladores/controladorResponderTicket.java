@@ -11,9 +11,9 @@ import javafx.stage.Stage;
 
 public class controladorResponderTicket {
     private modelo modelo;
-    private controladorPaciente cp;
+    private controladorVistaGeneral cp;
 
-    public void initModelo(modelo modelo_, controladorPaciente cp_) {
+    public void initModelo(modelo modelo_, controladorVistaGeneral cp_) {
         if (this.modelo != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }

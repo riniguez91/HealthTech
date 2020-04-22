@@ -41,7 +41,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="application.controladores.controladorPaciente" project="proyecto1-techhealth" 
+  <class id="5" language="java" name="application.controladores.controladorVistaGeneral" project="proyecto1-techhealth"
     file="/proyecto1-techhealth/Proyecto1/src/application/controladores/controladorPaciente.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="60" width="173" x="548" y="-97"/>    
