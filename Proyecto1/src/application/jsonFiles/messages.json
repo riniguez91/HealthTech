@@ -5,7 +5,7 @@
     "subject": "Horario de la siguiente consulta",
     "message": "Hola doctora,?\n¿Cuándo vamos a tener la siguiente consulta sobre las nuevas actividades de la recuperación?",
     "idTicket": "ba1841e2-395b-4012-bd31-29c95df55773",
-    "read": false
+    "read": true
   },
   {
     "sender": "Sara Gómez Hernández",

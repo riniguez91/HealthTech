@@ -19,7 +19,7 @@ public class controladorResponderTicket {
         }
         this.modelo = modelo_;
         this.cp = cp_;
-    }
+    } // initModelo()
     
     @FXML private VBox respuestaTicketVBox;
 
@@ -32,7 +32,7 @@ public class controladorResponderTicket {
     private void closeScene(){
         Stage stageBttnBelongsTo = (Stage) cancelarRespuestaTicketBtn.getScene().getWindow();
         stageBttnBelongsTo.close();
-    }
+    } // closeScene()
 
     @FXML 
     void cancelarRespuestaTicket(ActionEvent event) {
@@ -47,6 +47,6 @@ public class controladorResponderTicket {
     		cp.crearMensajeYResponderTicket(crearMensajeJFXTextAreaMensajes.getText());
     		closeScene();
     	}
-    }
+    } // crearMensajeYResponderTicket()
     
 }

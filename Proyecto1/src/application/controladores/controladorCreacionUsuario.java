@@ -21,7 +21,7 @@ public class controladorCreacionUsuario {
             throw new IllegalStateException("Model can only be initialized once");
         }
         this.modelo = modelo_;
-    }
+    } // initModelo()
 
     @FXML private VBox crearUsuarioElementos;
 
@@ -100,5 +100,6 @@ public class controladorCreacionUsuario {
     void cerrarEscena(MouseEvent event) {
         Stage stageBttnBelongsTo = (Stage) crearCuentaBttn.getScene().getWindow();
         stageBttnBelongsTo.close();
-    }
-}
+    } // cerrarEscena()
+
+} // controladorCreacionUsuario
