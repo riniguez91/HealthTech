@@ -34,9 +34,9 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorVistaGeneral">
     <children>
-      <JFXTabPane fx:id="tabPanePaciente" prefHeight="1080.0" prefWidth="1920.0" styleClass="jfx-tab-pane" stylesheets="@../application.css" tabMaxHeight="30.0" tabMaxWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <JFXTabPane fx:id="tabPaneGeneral" prefHeight="1080.0" prefWidth="1920.0" styleClass="jfx-tab-pane" stylesheets="@../application.css" tabMaxHeight="30.0" tabMaxWidth="450.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
-              	<Tab fx:id="tabInicioPaciente" text="               Inicio               ">
+              	<Tab fx:id="tabInicio" text="               Inicio               ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="243.0" prefWidth="277.0">
                             <children>
@@ -202,7 +202,7 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabCalendarioPaciente" text="               Calendario               ">
+                <Tab fx:id="tabCalendario" text="               Calendario               ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ced6e0;">
                      <children>
@@ -211,7 +211,7 @@
                      </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabUsuariosPaciente" text="               Usuarios               ">
+                <Tab fx:id="tabUsuarios" text="               Usuarios               ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@../application.css">
                      <children>
@@ -410,7 +410,7 @@
                      </children></AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabMensajesPaciente" text="               Mensajes               ">
+                <Tab fx:id="tabMensajes" text="               Mensajes               ">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -539,7 +539,7 @@
                             </children></AnchorPane>
                     </content>
                 </Tab>
-            <Tab fx:id="tabRegistrosMedico" text="               Registros               ">
+            <Tab fx:id="tabRegistros" text="               Registros               ">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -552,7 +552,7 @@
                                           <Font name="Arial Bold" size="19.0" />
                                        </font>
                                     </Label>
-                                    <JFXTreeTableView fx:id="treeTableViewPacientes" onMouseClicked="#mostrarDatosSensoresPacientes" prefHeight="383.0" prefWidth="640.0" />
+                                    <JFXTreeTableView fx:id="treeTableViewRegistros" onMouseClicked="#mostrarDatosSensoresPacientes" prefHeight="383.0" prefWidth="640.0" />
                                     <HBox prefHeight="55.0" prefWidth="640.0">
                                        <children>
                                           <Label prefHeight="51.0" prefWidth="175.0" styleClass="textoLabel" stylesheets="@../application.css" text="Selecciona un dia:">
@@ -636,7 +636,7 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="tabRegistrosFamiliar1" text="               Localización               ">
+            <Tab fx:id="tabLocalizacion" text="               Localización               ">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -649,7 +649,7 @@
                                           <Font name="Arial Bold" size="19.0" />
                                        </font>
                                     </Label>
-                                    <JFXTreeTableView fx:id="treeTableViewPacientesMapa" onMouseClicked="#mostrarDatosMapaPacientes" prefHeight="1013.0" prefWidth="400.0" />
+                                    <JFXTreeTableView fx:id="treeTableViewLocalizacion" onMouseClicked="#mostrarDatosMapaPacientes" prefHeight="1013.0" prefWidth="400.0" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="1050.0" prefWidth="1435.0">
@@ -657,7 +657,7 @@
                                     <HBox prefHeight="100.0" prefWidth="200.0">
                                        <children>
                                           <TextField fx:id="addressTextField" onAction="#addressTextFieldAction" prefHeight="60.0" prefWidth="250.0" promptText="Introduzca dirección:" />
-                                          <JFXButton fx:id="buttonActualizarUbicacion" onAction="#actualizarUbicacion" prefHeight="60.0" prefWidth="250.0" styleClass="botones" text="Ubicacion Paciente" />
+                                          <JFXButton fx:id="buttonActualizarUbicacion" onAction="#ubicacionPaciente" prefHeight="60.0" prefWidth="250.0" styleClass="botones" text="Ubicacion Paciente" />
                                           <JFXButton fx:id="buttonUbicacionCasa" onAction="#verUbicacionCasa" prefHeight="60.0" prefWidth="250.0" styleClass="botones" text="Ubicacion Casa" />
                                        </children>
                                     </HBox>

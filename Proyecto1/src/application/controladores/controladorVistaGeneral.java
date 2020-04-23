@@ -101,169 +101,162 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         // Comprobamos mensajes nuevos
         comprobarMensajesNuevos();
 
-        if (tipoVista.equals("general"))
-            tabInicioPaciente.getTabPane().getTabs().remove(4, 6);
-
-        crearTreeTableViewPacientes();
+        if (tipoVista.equals("general")) tabPaneGeneral.getTabs().remove(4, 6);
     }
 
     // -------------------- Tab Inicio --------------------
 
-    @FXML
-    private JFXTabPane tabPanePaciente;
+    @FXML private JFXTabPane tabPaneGeneral;
 
-    @FXML
-    private Tab tabInicioPaciente;
+    @FXML private Tab tabInicio;
 
-    @FXML
-    private ImageView userImageViewInicio;
+    @FXML private ImageView userImageViewInicio;
 
-    @FXML
-    private Label labelNombreInicio;
+    @FXML private Label labelNombreInicio;
 
-    @FXML
-    private Label labelApellidosInicio;
+    @FXML private Label labelApellidosInicio;
 
-    @FXML
-    private Label labelUsernameInicio;
+    @FXML private Label labelUsernameInicio;
 
-    @FXML
-    private Label labelRolInicio;
+    @FXML private Label labelRolInicio;
 
-    @FXML
-    private Label labelFechaNacimientoInicio;
+    @FXML private Label labelFechaNacimientoInicio;
 
-    @FXML
-    private Label labelEdadInicio;
+    @FXML private Label labelEdadInicio;
 
-    @FXML
-    private Label labelDNIInicio;
+    @FXML private Label labelDNIInicio;
 
-    @FXML
-    private Label labelTelefonoInicio;
+    @FXML private Label labelTelefonoInicio;
 
-    @FXML
-    private JFXButton cerrarSesionBtn;
+    @FXML private JFXButton cerrarSesionBtn;
 
-    @FXML
-    private ScrollPane scrollPaneMensajesInicio;
+    @FXML private ScrollPane scrollPaneMensajesInicio;
 
-    @FXML
-    private AnchorPane conversacionMensajesInicio;
+    @FXML private AnchorPane conversacionMensajesInicio;
 
-    @FXML
-    private VBox vboxConversacionMensajesInicio;
+    @FXML private VBox vboxConversacionMensajesInicio;
 
-    @FXML
-    private AgendaView agendaViewInicio;
+    @FXML private AgendaView agendaViewInicio;
 
-    @FXML
-    private ScrollPane scrollPaneFAQ;
+    @FXML private ScrollPane scrollPaneFAQ;
 
-    @FXML
-    private AnchorPane apaneFAQ;
+    @FXML private AnchorPane apaneFAQ;
 
-    @FXML
-    private VBox vboxFAQ;
+    @FXML private VBox vboxFAQ;
+
 
     // -------------------- Tab Calendario --------------------
 
-    @FXML
-    private Tab tabCalendarioPaciente;
+    @FXML private Tab tabCalendario;
 
-    @FXML
-    private DayPage calendario;
+    @FXML private DayPage calendario;
 
-    @FXML
-    private JFXButton guardarCalendario;
+    @FXML private JFXButton guardarCalendario;
+
 
     // // -------------------- Tab Usuarios --------------------
 
-    @FXML
-    private Tab tabUsuariosPaciente;
+    @FXML private Tab tabUsuarios;
 
-    @FXML
-    private Label seleccionaUsuarioLabel;
+    @FXML private Label seleccionaUsuarioLabel;
 
-    @FXML
-    private JFXTextField filtrarUsuarioTFieldUsuarios;
+    @FXML private JFXTextField filtrarUsuarioTFieldUsuarios;
 
-    @FXML
-    private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
+    @FXML private JFXTreeTableView<usuarioTTView> treeTableViewUsuarios;
 
-    @FXML
-    private VBox datosUsuarioVBox;
+    @FXML private VBox datosUsuarioVBox;
 
-    @FXML
-    private ImageView userImageViewUsuarios;
+    @FXML private ImageView userImageViewUsuarios;
 
-    @FXML
-    private Label labelNombreUsuarios;
+    @FXML private Label labelNombreUsuarios;
 
-    @FXML
-    private Label labelApellidosUsuarios;
+    @FXML private Label labelApellidosUsuarios;
 
-    @FXML
-    private Label labelFechaNacimientoUsuarios;
+    @FXML private Label labelFechaNacimientoUsuarios;
 
-    @FXML
-    private Label labelRolUsuarios;
+    @FXML private Label labelRolUsuarios;
 
-    @FXML
-    private Label labelEdadUsuarios;
+    @FXML private Label labelEdadUsuarios;
 
-    @FXML
-    private JFXTextField destinatarioJFXTextFieldUsuarios;
+    @FXML private JFXTextField destinatarioJFXTextFieldUsuarios;
 
-    @FXML
-    private JFXTextField asuntoJFXTextFieldUsuarios;
+    @FXML private JFXTextField asuntoJFXTextFieldUsuarios;
 
-    @FXML
-    private JFXTextArea mensajeJFXTextFieldUsuarios;
+    @FXML private JFXTextArea mensajeJFXTextFieldUsuarios;
 
-    @FXML
-    private HBox generarTicketHBox;
+    @FXML private HBox generarTicketHBox;
 
-    @FXML
-    private JFXButton cancelarTicketBttnMensajes;
+    @FXML private JFXButton cancelarTicketBttnMensajes;
 
-    @FXML
-    private JFXButton crearTicketBttnMensajes;
+    @FXML private JFXButton crearTicketBttnMensajes;
+
 
     // -------------------- Tab Mensajes --------------------
 
-    @FXML
-    private Tab tabMensajesPaciente;
+    @FXML private Tab tabMensajes;
 
-    @FXML
-    private Label seleccionaMensajeLabelMensajes;
+    @FXML private Label seleccionaMensajeLabelMensajes;
 
-    @FXML
-    private JFXTextField filtrarMensajeTFieldMensajes;
+    @FXML private JFXTextField filtrarMensajeTFieldMensajes;
 
-    @FXML
-    private JFXTreeTableView<messageTTView> treeTableViewMensajes;
+    @FXML private JFXTreeTableView<messageTTView> treeTableViewMensajes;
 
-    @FXML
-    private VBox datosVBoxMensajes;
+    @FXML private VBox datosVBoxMensajes;
 
-    @FXML
-    private JFXTextField asuntoJFXTextFieldMensajes;
+    @FXML private JFXTextField asuntoJFXTextFieldMensajes;
 
-    @FXML
-    private JFXTextField destinatarioJFXTextFieldMensajes;
+    @FXML private JFXTextField destinatarioJFXTextFieldMensajes;
 
-    @FXML
-    private JFXTextField idTicketJFXTextFieldMensajes;
+    @FXML private JFXTextField idTicketJFXTextFieldMensajes;
 
-    @FXML
-    private ScrollPane scrollPaneMensajes;
+    @FXML private ScrollPane scrollPaneMensajes;
 
-    @FXML
-    private AnchorPane conversacionMensajes;
+    @FXML private AnchorPane conversacionMensajes;
 
-    @FXML
-    private VBox vboxConversacionMensajes;
+    @FXML private VBox vboxConversacionMensajes;
+
+
+    // -------------------- Tab Registros --------------------
+
+    @FXML private Tab tabRegistros;
+
+    @FXML private JFXTreeTableView<usuarioTTView> treeTableViewRegistros;
+
+    @FXML private DatePicker calendarioSensores;
+
+    @FXML private LineChart<Double, Double> graficaTemperatura;
+
+    @FXML private StackedBarChart<Double, Double> graficaMagnetico;
+
+    @FXML private PieChart graficaPresion;
+
+    @FXML private Label horasDurmiendo;
+
+    @FXML private StackedBarChart<Double, Double> graficaGas;
+
+    private final ObservableList<PieChart.Data> detalles = FXCollections.observableArrayList();
+
+    // -------------------- Tab Localizacion --------------------
+
+    @FXML private Tab tabLocalizacion;
+
+    @FXML private JFXTreeTableView<usuarioTTView> treeTableViewLocalizacion;
+
+    @FXML private TextField addressTextField;
+
+    @FXML private JFXButton buttonActualizarUbicacion;
+
+    @FXML private JFXButton buttonUbicacionCasa;
+
+    @FXML private GoogleMapView mapView;
+
+    private GoogleMap map;
+
+    private GeocodingService geocodingService;
+
+    private final StringProperty address = new SimpleStringProperty();
+
+
 
 
     // -------------------- Metodos tab Inicio --------------------
@@ -384,9 +377,22 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         }
 
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
+
+        // TTV Usuarios
         treeTableViewUsuarios.getColumns().setAll(nombreCol, apellidosCol, rolCol);
         treeTableViewUsuarios.setRoot(root);
         treeTableViewUsuarios.setShowRoot(false);
+
+        // TTV Registros
+        treeTableViewRegistros.getColumns().setAll(nombreCol, apellidosCol);
+        treeTableViewRegistros.setRoot(root);
+        treeTableViewRegistros.setShowRoot(false);
+
+        // TTV Localizacion
+        treeTableViewLocalizacion.getColumns().setAll(nombreCol, apellidosCol);
+        treeTableViewLocalizacion.setRoot(root);
+        treeTableViewLocalizacion.setShowRoot(false);
+
     } // crearTreeTableViewUsuarios()
 
     @FXML
@@ -432,6 +438,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             modelo.setMessages(updatedMessages);
             modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
             modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente");
+
             // Borramos los campos para evitar confusion
             asuntoJFXTextFieldUsuarios.clear();
             mensajeJFXTextFieldUsuarios.clear();
@@ -613,154 +620,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
 
 
-    // --------------------------- QUITAR ------------------------------------
-
-    // MAPA
-    // Variables y métodos del GoogleMaps
-    private GoogleMap map;
-
-    private GeocodingService geocodingService;
-
-    private StringProperty address = new SimpleStringProperty();
-
-    @FXML
-    private GoogleMapView mapView;
-
-    @FXML
-    private TextField addressTextField;
-
-    @FXML
-    private JFXButton buttonActualizarUbicacion;
-
-    @FXML
-    private JFXButton buttonUbicacionCasa;
-
-    @FXML
-    private JFXTreeTableView<usuarioTTView> treeTableViewPacientesMapa;
-
-    public void initialize(URL url, ResourceBundle rb) {
-        mapView.setKey("AIzaSyABUQnPXeldroN__fhm1LDiZh5sUtkSMBM"); // No usar
-        mapView.addMapInializedListener(this);
-        address.bind(addressTextField.textProperty());
-    }
-
-    @Override
-    public void mapInitialized() {
-        geocodingService = new GeocodingService();
-        MapOptions mapOptions = new MapOptions();
-
-        mapOptions.center(new LatLong(40.371830555556, -3.9189527777778))
-                .mapType(MapTypeIdEnum.ROADMAP)
-                .overviewMapControl(false)
-                .panControl(false)
-                .rotateControl(false)
-                .scaleControl(false)
-                .streetViewControl(false)
-                .zoomControl(false)
-                .zoom(16);
-
-        map = mapView.createMap(mapOptions);
-
-        //Añadir un Marker al mapa
-        MarkerOptions markerOptions = new MarkerOptions();
-
-        markerOptions.position(new LatLong(40.371830555556, -3.9189527777778))
-                .visible(Boolean.TRUE)
-                .title("My Marker");
-
-        Marker marker = new Marker(markerOptions);
-
-        map.addMarker(marker);
-    }
-
-    @FXML
-    public void addressTextFieldAction(ActionEvent event) {
-        geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
-
-            LatLong latLong = null;
-
-            if (status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No se encontraron direcciones coincidentes");
-                alert.show();
-                return;
-            } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiples resultados encontrados, mostrando el primero.");
-                alert.show();
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-            } else {
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-            }
-
-            map.setCenter(latLong);
-
-        });
-    }
-
-    @FXML
-    void actualizarUbicacion(ActionEvent event) {
-
-    }
-
-    @FXML
-    void verUbicacionCasa(ActionEvent event) {
-
-    }
-
-    @FXML
-    void mostrarDatosMapaPacientes(MouseEvent event) throws ParseException {
-        calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
-    }
-
-    // SENSORES
-    // Variables y métodos de los sensores
-    @FXML
-    private JFXTreeTableView<usuarioTTView> treeTableViewPacientes;
-
-    @SuppressWarnings("unchecked")
-    public void crearTreeTableViewPacientes() {
-        JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
-        JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
-
-        nombreCol.setCellValueFactory(param -> param.getValue().getValue().getName());
-        nombreCol.setMinWidth(189);
-        nombreCol.setMaxWidth(189);
-        apellidosCol.setCellValueFactory(param -> param.getValue().getValue().getSurname());
-        apellidosCol.setMinWidth(189);
-        apellidosCol.setMaxWidth(189);
-
-        ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
-        // Añadimos los usuarios
-        relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
-        for (Usuario user : relatedUsers) {
-            if (user.getRol().equals("paciente")) {
-                users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(), user.getBirthday(), user.getAge(), user.getImagenPerfil()));
-            }
-        }
-
-        TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
-        // Sensores
-        treeTableViewPacientes.getColumns().setAll(nombreCol, apellidosCol);
-        treeTableViewPacientes.setRoot(root);
-        treeTableViewPacientes.setShowRoot(false);
-        // Mapa
-        treeTableViewPacientesMapa.getColumns().setAll(nombreCol, apellidosCol);
-        treeTableViewPacientesMapa.setRoot(root);
-        treeTableViewPacientesMapa.setShowRoot(false);
-    }
-
-    @FXML
-    private LineChart<Double, Double> graficaTemperatura;
-    @FXML
-    private StackedBarChart<Double, Double> graficaMagnetico;
-    @FXML
-    private StackedBarChart<Double, Double> graficaGas;
-    @FXML
-    private PieChart graficaPresion;
-    private final ObservableList<PieChart.Data> detalles = FXCollections.observableArrayList();
-    @FXML
-    private Label horasDurmiendo;
-    @FXML
-    private DatePicker calendarioSensores;
+    // -------------------- Metodos tab Registros --------------------
 
     @FXML
     void mostrarDatosSensoresPacientes(MouseEvent event) throws ParseException {
@@ -818,6 +678,74 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             }
         }
     }
+
+    // ---------------------------- Tab Localizacion --------------------------------
+
+    @FXML
+    void ubicacionPaciente(ActionEvent event) {
+
+    }
+
+    @FXML
+    void verUbicacionCasa(ActionEvent event) {
+
+    }
+
+    @FXML
+    void mostrarDatosMapaPacientes(MouseEvent event) throws ParseException {
+        calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
+    }
+
+    public void initialize(URL url, ResourceBundle rb) {
+        mapView.setKey("AIzaSyABUQnPXeldroN__fhm1LDiZh5sUtkSMBM"); // No usar
+        mapView.addMapInializedListener(this);
+        address.bind(addressTextField.textProperty());
+    }
+
+    @Override
+    public void mapInitialized() {
+        geocodingService = new GeocodingService();
+        MapOptions mapOptions = new MapOptions();
+
+        mapOptions.center(new LatLong(40.371830555556, -3.9189527777778))
+                .mapType(MapTypeIdEnum.ROADMAP)
+                .overviewMapControl(false)
+                .panControl(false)
+                .rotateControl(false)
+                .scaleControl(false)
+                .streetViewControl(false)
+                .zoomControl(false)
+                .zoom(16);
+
+        map = mapView.createMap(mapOptions);
+
+        // Añadir un Marker al mapa
+        MarkerOptions markerOptions = new MarkerOptions();
+
+        markerOptions.position(new LatLong(40.371830555556, -3.9189527777778))
+                .visible(Boolean.TRUE)
+                .title("My Marker");
+
+        Marker marker = new Marker(markerOptions);
+        map.addMarker(marker);
+    }
+
+    @FXML
+    public void addressTextFieldAction(ActionEvent event) {
+        geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
+            LatLong latLong;
+
+            // No hubo resultados
+            if (status == GeocoderStatus.ZERO_RESULTS) modelo.createAlert("Error", "No se encontraron direcciones coincidentes");
+
+            if (results.length > 1) modelo.createAlert("Informacion", "Multiples resultados encontrados, mostrando el primero.");
+
+            latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            map.setCenter(latLong);
+        });
+    }
+
+    // -------------------- Fin metodos tab Localizacion --------------------
 
 } // controladorVistaGeneral
 
