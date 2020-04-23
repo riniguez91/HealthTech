@@ -1,50 +1,53 @@
 package application.modelos;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.util.List;
 
 public class Usuario {
-    public Usuario(){
+    
+
+	public Usuario(){
 
     }
 
-    public Usuario(String name, String surname, String birthday, String username, Integer telephone, String dni, String password, String rol, String domicilio){
-        this.name = name;
-        this.surname = surname;
-        this.birthday = birthday;
-        this.username = username;
-        this.telephone = telephone;
-        this.dni = dni;
-        this.password = password;
-        this.rol = rol;
-        this.domicilio = domicilio;
+    public Usuario(Integer ID_User, String Name, String Surnames, String DOB, String User, String Password, String Rol, String Photo,  Integer Telephone, String Adress, String DNI){
+        this.ID_User = ID_User;
+    	this.Name = Name;
+        this.Surnames = Surnames;
+        this.DOB = DOB;
+        this.User = User;
+        this.Password = Password;
+        this.Rol = Rol;
+        this.Photo = Photo;
+        this.Telephone = Telephone;
+        this.Adress = Adress;
+        this.DNI = DNI;
+    
     }
+    
+    private Integer ID_User;
+    
+    private String Name;
 
-    private String name;
-
-    private String surname;
+    private String Surnames;
 
     private Integer age;
 
-    private String birthday;
+    private String DOB;
 
-    private String username;
+    private String User;
 
-    private String password;
+    private String Password;
 
-    private String rol;
+    private String Rol;
 
-    private String imagenPerfil;
+    private String Photo;
 
-    private Integer telephone;
+    private Integer Telephone;
 
-    private String dni;
+    private String DNI;
 
-    private String domicilio;
+    private String Adress;
     
     private List<String> relaciones;
 
@@ -58,21 +61,6 @@ public class Usuario {
         this.relaciones = relaciones;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
 
     public Integer getAge() {
         return age;
@@ -82,69 +70,95 @@ public class Usuario {
         this.age = age;
     }
 
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public String getImagenPerfil() {
-        return imagenPerfil;
-    }
-
-    public void setImagenPerfil(String imagenPerfil) {
-        this.imagenPerfil = imagenPerfil;
-    }
-    
-    public Integer getTelephone() {
-        return telephone;
-    }
-
-    public void setTelephone(Integer telephone) {
-        this.telephone = telephone;
-    }
-
-	public String getDni() {
-		return dni;
+	public Integer getID_User() {
+		return ID_User;
 	}
 
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setID_User(Integer iD_User) {
+		ID_User = iD_User;
 	}
 
-	public String getDomicilio() {
-		return domicilio;
+	public String getName() {
+		return Name;
 	}
 
-	public void setDomicilio(String domicilio) {
-		this.domicilio = domicilio;
+	public void setName(String name) {
+		Name = name;
 	}
+
+	public String getSurnames() {
+		return Surnames;
+	}
+
+	public void setSurnames(String surnames) {
+		Surnames = surnames;
+	}
+
+	public String getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(String dOB) {
+		DOB = dOB;
+	}
+
+	public String getUser() {
+		return User;
+	}
+
+	public void setUser(String user) {
+		User = user;
+	}
+
+	public String getPassword() {
+		return Password;
+	}
+
+	public void setPassword(String password) {
+		Password = password;
+	}
+
+	public String getRol() {
+		return Rol;
+	}
+
+	public void setRol(String rol) {
+		Rol = rol;
+	}
+
+	public String getPhoto() {
+		return Photo;
+	}
+
+	public void setPhoto(String photo) {
+		Photo = photo;
+	}
+
+	public Integer getTelephone() {
+		return Telephone;
+	}
+
+	public void setTelephone(Integer telephone) {
+		Telephone = telephone;
+	}
+
+	public String getDNI() {
+		return DNI;
+	}
+
+	public void setDNI(String dNI) {
+		DNI = dNI;
+	}
+
+	public String getAdress() {
+		return Adress;
+	}
+
+	public void setAdress(String adress) {
+		Adress = adress;
+	}
+
+   
     
     
 }
