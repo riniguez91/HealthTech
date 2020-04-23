@@ -157,7 +157,7 @@ public class controladorLogin {
                 usuario = new Usuario(rs.getString("Name"), rs.getString("Surnames"), rs.getString("DOB"), rs.getString("User")
                 , rs.getInt("Telephone"), rs.getString("DNI"), "pepe", rs.getString("Rol"), rs.getString("Adress"));
                 usuario.setAge(modelo.calculateAge(rs.getString("DOB")));
-                usuario.setImagenPerfil(rs.getString("Photo"));
+                usuario.setPhoto(rs.getString("Photo"));
                 switch(usuario.getRol()){
                     case "medico":
                     case "familiar":

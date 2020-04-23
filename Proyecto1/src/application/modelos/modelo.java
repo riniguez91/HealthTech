@@ -272,7 +272,7 @@ public class modelo {
 		} else {
 			for (Usuario users : usuarios) {
 	            for (int i = 0;i<usuario.getRelaciones().size();i++){
-	                if (users.getUsername().equals(usuario.getRelaciones().get(i))){
+	                if (users.getUser().equals(usuario.getRelaciones().get(i))){
 	                    assert false;
 	                    finalUsers.add(users);
 	                }
@@ -340,7 +340,7 @@ public class modelo {
 
     public boolean checkUniqueUsername(List<Usuario> usuarios, String username) {
         for (Usuario user : usuarios) {
-            if (user.getUsername().equals(username)) {
+            if (user.getUser().equals(username)) {
                 return false;
             }
         }

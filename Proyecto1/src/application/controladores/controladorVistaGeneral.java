@@ -78,19 +78,19 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         // Datos pestaña inicio
         labelNombreInicio.setText(usuario.getName());
-        labelApellidosInicio.setText(usuario.getSurname());
+        labelApellidosInicio.setText(usuario.getSurnames());
         labelRolInicio.setText(usuario.getRol());
-        labelUsernameInicio.setText(usuario.getUsername());
-        labelFechaNacimientoInicio.setText(usuario.getBirthday());
+        labelUsernameInicio.setText(usuario.getUser());
+        labelFechaNacimientoInicio.setText(usuario.getDOB());
         labelEdadInicio.setText(usuario.getAge() + "");
-        labelDNIInicio.setText(usuario.getDni());
+        labelDNIInicio.setText(usuario.getDNI());
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
 
         // Establecemos la foto del usuario en la pestaña de Inicio
-        if (usuario.getImagenPerfil().isEmpty())
+        if (usuario.getPhoto().isEmpty())
             userImageViewInicio.setImage(new Image("@..\\..\\resources\\fotos\\user.png"));
         else
-            userImageViewInicio.setImage(new Image(usuario.getImagenPerfil()));
+            userImageViewInicio.setImage(new Image(usuario.getPhoto()));
 
         // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();
@@ -291,7 +291,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
         for (Message mensaje : modelo.getMessages()) {
             // Si no esta leido y el "sender" coincide con el nombre completo del usuario
-            if (!mensaje.getRead() && (mensaje.getReceiver().equals(usuario.getName() + " " + usuario.getSurname()))) {
+            if (!mensaje.getRead() && (mensaje.getReceiver().equals(usuario.getName() + " " + usuario.getSurnames()))) {
                 labelMessagesInicio.add(new Label("- Asunto: " + mensaje.getSubject() + " || De parte de: " + mensaje.getSender()));
                 labelMessagesInicio.get(i).setPrefWidth(1202);
                 labelMessagesInicio.get(i).setWrapText(true);
@@ -377,7 +377,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         // Añadimos los usuarios
         List<Usuario> relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
         for (Usuario user : relatedUsers) {
-            users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(), user.getBirthday(), user.getAge(), user.getImagenPerfil()));
+            users.add(new usuarioTTView(user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto()));
         }
 
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
@@ -434,7 +434,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             modelo.createAlert("Cuidado", "Debes de poner un mensaje");
         } else {
             UUID uniqueKey = UUID.randomUUID();
-            Message msg = new Message(usuario.getName() + " " + usuario.getSurname(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
+            Message msg = new Message(usuario.getName() + " " + usuario.getSurnames(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
                     + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
                     uniqueKey.toString(), false);
             List<Message> updatedMessages = modelo.getMessages();
@@ -500,8 +500,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         ObservableList<messageTTView> messages = FXCollections.observableArrayList();
         // Añadimos los mensajes
         modelo.getMessages().forEach(mensaje -> {
-            if (!uniqueIDS.contains(mensaje.getIdTicket()) && (mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurname())
-                    || mensaje.getReceiver().equals(usuario.getName() + " " + usuario.getSurname()))) {
+            if (!uniqueIDS.contains(mensaje.getIdTicket()) && (mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurnames())
+                    || mensaje.getReceiver().equals(usuario.getName() + " " + usuario.getSurnames()))) {
                 messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket(), mensaje.getRead()));
                 uniqueIDS.add(mensaje.getIdTicket());
             }
@@ -523,7 +523,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 labelMessages.get(i).setPrefWidth(scrollPaneMensajes.getPrefWidth() - 10);
                 labelMessages.get(i).setWrapText(true);
                 labelMessages.get(i).setFont(new Font("Century Gothic", 17));
-                if (!mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurname())) {
+                if (!mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurnames())) {
                     labelMessages.get(i).setPadding(new Insets(10, 13, 0, 150));
                     labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5, 5, 5, 5, false), Insets.EMPTY)));
                 } else {
@@ -565,7 +565,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             for (Message msg : modelo.getMessages()) {
                 // Compramos el mensaje que corresponde con el ID del mensaje y la persona que lo tiene que recibir (receiver)
                 if (msg.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()) &&
-                        msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurname())) {
+                        msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurnames())) {
                     msg.setRead(true);
 
                     // Lo marcamos como leido en el JSON de mensajes
