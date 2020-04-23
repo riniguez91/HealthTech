@@ -9,6 +9,7 @@ public class ConexionBBDD {
     Connection c = null;
     Statement stmt = null;
     PreparedStatement pstm = null;
+    ResultSet rs;
 
     // public ConexionBBDD(String path) { BBDDName = path; };
 
@@ -46,5 +47,21 @@ public class ConexionBBDD {
             return false;
         }
         return true;
+    }
+
+    public ResultSet resultSetSQL(String sql, String username, String password) {
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            pstm = c.prepareStatement(sql);
+            pstm.setString(1, username);
+            pstm.setString(2, password);
+            rs = pstm.executeQuery();
+            pstm.close();
+            c.close();
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+            return null;
+        }
+        return rs;
     }
 }

@@ -1,5 +1,6 @@
 package application.controladores;
 
+import application.modelos.ConexionBBDD;
 import com.jfoenix.controls.*;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -20,6 +21,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.ParseException;
 
 import application.modelos.Usuario;
 import application.modelos.modelo;
@@ -143,15 +147,17 @@ public class controladorLogin {
 
     } // cargarVista()
 
-    // CAMBIAR FOR LOOP A UN WHILE
-    public void login() throws IOException {
-        for (Usuario usuario: modelo.getUsuarios()){
-            if (usrnameField.getText().equals(usuario.getUsername()) && modelo.encriptaEnMD5(pswdField.getText()).equals(usuario.getPassword())){
-                // Recordar username
-                if (checkBox.isSelected()) {
-                	nUsuario=usuario.getUsername();
-                	checkBox.setSelected(true);
-                }
+    public void login() {
+        try {
+            ConexionBBDD c = new ConexionBBDD();
+            ResultSet rs = c.resultSetSQL("SELECT * \n" +
+                    "FROM users\n" +
+                    "WHERE users.User = ? AND users.Password = MD5(?)", usrnameField.getText(), pswdField.getText());
+            if (rs.next()) {
+                usuario = new Usuario(rs.getString("Name"), rs.getString("Surnames"), rs.getString("DOB"), rs.getString("User")
+                , rs.getInt("Telephone"), rs.getString("DNI"), "pepe", rs.getString("Rol"), rs.getString("Adress"));
+                usuario.setAge(modelo.calculateAge(rs.getString("DOB")));
+                usuario.setImagenPerfil(rs.getString("Photo"));
                 switch(usuario.getRol()){
                     case "medico":
                     case "familiar":
@@ -159,14 +165,15 @@ public class controladorLogin {
                         break;
                     case "paciente":
                     case "cuidador":
-                        // FXML Loader and Parent
                         cargarVista(usuario, "general");
                         break;
                 }
-                break;
             }
             incorrectFieldLabel.setVisible(true);
         }
-    } // login()
+        catch (SQLException | IOException | ParseException sqle) {
+            System.out.println(sqle.getMessage());
+        }
+    }
 
 } // controladorLogin

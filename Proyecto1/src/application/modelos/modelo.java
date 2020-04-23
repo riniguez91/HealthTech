@@ -254,7 +254,7 @@ public class modelo {
     }
 
     public int calculateAge(String dOB) throws ParseException {
-        DateFormat parseFormat = new SimpleDateFormat("dd/M/yyyy");
+        DateFormat parseFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date dt = parseFormat.parse(dOB);
         ZoneId defaultZoneId = ZoneId.systemDefault();
         Instant instant = dt.toInstant();

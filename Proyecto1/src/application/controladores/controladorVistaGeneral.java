@@ -54,11 +54,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     private modelo modelo;
     private Usuario usuario;
-    public List<Usuario> relatedUsers;
-    private List<Label> labelMessages = new ArrayList<>();
-    private List<Label> labelMessagesInicio = new ArrayList<>();
-    private List<Label> labelFAQ = new ArrayList<>();
-    private List<String> uniqueIDS = new ArrayList<>();
+    private final List<Label> labelMessages = new ArrayList<>();
+    private final List<Label> labelMessagesInicio = new ArrayList<>();
+    private final List<Label> labelFAQ = new ArrayList<>();
+    private final List<String> uniqueIDS = new ArrayList<>();
     private controladorVistaGeneral cp;
 
     public void initModelo(modelo modelo_, Usuario usuario_, controladorVistaGeneral cp_, String tipoVista) {
@@ -88,11 +87,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
 
         // Establecemos la foto del usuario en la pestaña de Inicio
-        if (usuario.getImagenPerfil().isEmpty()) {
+        if (usuario.getImagenPerfil().isEmpty())
             userImageViewInicio.setImage(new Image("@..\\..\\resources\\fotos\\user.png"));
-        } else {
+        else
             userImageViewInicio.setImage(new Image(usuario.getImagenPerfil()));
-        }
 
         // Creamos las listas de usuarios y mensajes
         crearTreeTableViewUsuarios();
@@ -145,6 +143,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     @FXML private VBox vboxFAQ;
 
 
+
     // -------------------- Tab Calendario --------------------
 
     @FXML private Tab tabCalendario;
@@ -152,6 +151,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     @FXML private DayPage calendario;
 
     @FXML private JFXButton guardarCalendario;
+
 
 
     // // -------------------- Tab Usuarios --------------------
@@ -191,6 +191,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     @FXML private JFXButton crearTicketBttnMensajes;
 
 
+
     // -------------------- Tab Mensajes --------------------
 
     @FXML private Tab tabMensajes;
@@ -216,6 +217,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     @FXML private VBox vboxConversacionMensajes;
 
 
+
     // -------------------- Tab Registros --------------------
 
     @FXML private Tab tabRegistros;
@@ -235,6 +237,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     @FXML private StackedBarChart<Double, Double> graficaGas;
 
     private final ObservableList<PieChart.Data> detalles = FXCollections.observableArrayList();
+
+
 
     // -------------------- Tab Localizacion --------------------
 
@@ -371,7 +375,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
         // Añadimos los usuarios
-        relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
+        List<Usuario> relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
         for (Usuario user : relatedUsers) {
             users.add(new usuarioTTView(user.getName(), user.getSurname(), user.getRol(), user.getBirthday(), user.getAge(), user.getImagenPerfil()));
         }

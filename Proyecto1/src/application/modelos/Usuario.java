@@ -24,41 +24,31 @@ public class Usuario {
         this.domicilio = domicilio;
     }
 
-    @SerializedName("name")
-    @Expose
     private String name;
-    @SerializedName("surname")
-    @Expose
+
     private String surname;
-    @SerializedName("age")
-    @Expose
+
     private Integer age;
-    @SerializedName("birthday")
-    @Expose
+
     private String birthday;
-    @SerializedName("username")
-    @Expose
+
     private String username;
-    @SerializedName("password")
-    @Expose
+
     private String password;
-    @SerializedName("rol")
-    @Expose
+
     private String rol;
-    @SerializedName("imagenPerfil")
-    @Expose
+
     private String imagenPerfil;
-    @SerializedName("telephone")
-    @Expose
+
     private Integer telephone;
-    @SerializedName("dni")
-    @Expose
+
     private String dni;
-    @SerializedName("domicilio")
-    @Expose
+
     private String domicilio;
     
     private List<String> relaciones;
+
+    // Metodos
 
     public List<String> getRelaciones() {
         return relaciones;
@@ -67,7 +57,6 @@ public class Usuario {
     public void setRelaciones(List<String> relaciones) {
         this.relaciones = relaciones;
     }
-
 
     public String getName() {
         return name;
