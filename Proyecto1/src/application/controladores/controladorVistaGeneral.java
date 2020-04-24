@@ -374,10 +374,18 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         rolCol.setMaxWidth(169);
 
         ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
+
         // Añadimos los usuarios
-        List<Usuario> relatedUsers = modelo.userInRelatedUsers(modelo.getUsuarios(), usuario);
-        for (Usuario user : relatedUsers) {
+        int i = 0;
+        for (Usuario user : modelo.usuariosRelacionados(usuario)) {
             users.add(new usuarioTTView(user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto()));
+            /*System.out.println(users.get(i).getName().get());
+            System.out.println(users.get(i).getSurname().get());
+            System.out.println(users.get(i).getRolUsuario().get());
+            System.out.println(users.get(i).getBirthday().get());
+            System.out.println(users.get(i).getAge().get());
+            System.out.println(users.get(i).getImagenPerfil().get());
+            i++;*/
         }
 
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
@@ -401,6 +409,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     @FXML
     void mostrarDatosUsuarios(MouseEvent event) {
+        System.out.println(treeTableViewUsuarios.getSelectionModel().isEmpty());
         // Cambiamos los datos del usuario mientras se haya seleccionado uno
         if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) {
             // Comprobamos si el panel de datos de usuario y creacion de mensajes esta visible
@@ -498,6 +507,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         asuntoCol.setMaxWidth(159);
 
         ObservableList<messageTTView> messages = FXCollections.observableArrayList();
+
         // Añadimos los mensajes
         modelo.getMessages().forEach(mensaje -> {
             if (!uniqueIDS.contains(mensaje.getIdTicket()) && (mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurnames())

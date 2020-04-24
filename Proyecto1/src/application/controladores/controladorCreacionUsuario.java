@@ -1,5 +1,6 @@
 package application.controladores;
 
+import application.modelos.ConexionBBDD;
 import application.modelos.Usuario;
 import application.modelos.modelo;
 import com.jfoenix.controls.JFXButton;
@@ -12,6 +13,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class controladorCreacionUsuario {
     private modelo modelo;
@@ -58,32 +61,30 @@ public class controladorCreacionUsuario {
                         "Debes introducir unos apellidos válidos, que consista de dos palabras.");
             } else if (crearUsernameTField.getText().length() > 16 || modelo.countWordsString(crearUsernameTField.getText()) >1) {
                 modelo.createAlert("Cuidado",
-                        "Debes introducir una única palabra de longitud máxima 16, que consista de letras y/o numeros (riniguez91).");
-            } else if (!modelo.checkUniqueUsername(modelo.getUsuarios(), crearUsernameTField.getText())) {
-                modelo.createAlert("Cuidado", "Ese nombre ya ha sido elegido, porfavor escoja otro");
+                        "Debes introducir una única palabra de longitud máxima 16, que consista de letras y/o numeros (pepe27).");
             } else if (crearPasswordTField.getText().isEmpty()) {
                 modelo.createAlert("Cuidado", "Porfavor rellene el campo de contraseña");
             } else if (crearCumpleTField.getText().length() != 10) {
                 modelo.createAlert("Cuidado",
-                        "Debes introducir una fecha válida (27/10/1989).");
+                        "Debes introducir una fecha válida (27-10-1989).");
             } else if (modelo.validarDNI(crearDNITField.getText())) { //validarDNI(crearDNITField.getText().length()) != 9)
                 modelo.createAlert("Cuidado",
                         "Debes introducir un DNI válido. (8 digitos y 1 letra).");
             } else if (crearTelefonoTField.getText().length() != 9) {
                 Integer.parseInt(crearTelefonoTField.getText()); // Comprobamos
                 modelo.createAlert("Cuidado",
-                        "Debes introducir un número de teléfono valido de 9 dígitos (628638442).");
+                        "Debes introducir un número de teléfono valido de 9 dígitos (654987123).");
             } else if (!modelo.checkRol(crearRolTField.getText())) {
                 modelo.createAlert("Cuidado",
                         "Debes introducir un rol válido, que consista de una sola palabra (médico, cuidador, paciente, familiar).");
-            } else
-            {
-                Usuario newUser = new Usuario(crearNombreTField.getText(), crearApellidosTField.getText(), crearCumpleTField.getText(),
-                        crearUsernameTField.getText(), Integer.parseInt(crearTelefonoTField.getText()), crearDNITField.getText(),
-                        modelo.encriptaEnMD5(crearPasswordTField.getText()), crearRolTField.getText(), crearDomicilioTField.getText());
-                newUser.setAge(modelo.calculateAge(newUser.getDOB())); // throws ParseException
-                modelo.getUsuarios().add(newUser);
-                modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/Users.json", modelo.getUsuarios(),false);
+            } else {
+                ConexionBBDD c = new ConexionBBDD();
+                String sentenciaSQL = "INSERT INTO users (`Name`, `Surnames`, `DOB`, `User`, `Password`, `Rol`, `Photo`, `Telephone`, `Adress`, `DNI`) \n" +
+                            "VALUE (?, ?, ?, ?, MD5(?), ?, DEFAULT, ?, ?, ?);";
+                Date dob_util = new SimpleDateFormat("yyyy-MM-dd").parse(crearCumpleTField.getText());
+                java.sql.Date dob = new java.sql.Date(dob_util.getTime()); // Casteamos de java.util.Date a java.sql.Date mediante el metodo .getTime()
+                c.insertUserRS(sentenciaSQL, crearNombreTField.getText(), crearApellidosTField.getText(), dob,  crearUsernameTField.getText(), crearPasswordTField.getText(),
+                        crearRolTField.getText(), Integer.parseInt(crearTelefonoTField.getText()), crearDomicilioTField.getText(), crearDNITField.getText());
 
                 // Cerramos escena
                 Stage stageBttnBelongsTo = (Stage) crearCuentaBttn.getScene().getWindow();
@@ -92,7 +93,7 @@ public class controladorCreacionUsuario {
         } catch (NumberFormatException nfe){
             modelo.createAlert("Cuidado", "Debes introducir un telefono valido (626 574 329)");
         } catch (ParseException pe) {
-            modelo.createAlert("Cuidado", "Debes introducir una fecha valida");
+            modelo.createAlert("Cuidado", "Debe introducir la fecha en formato yyyy-MM-dd");
         }
     } // crearUsuario
 
