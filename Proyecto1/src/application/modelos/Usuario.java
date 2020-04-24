@@ -22,8 +22,7 @@ public class Usuario {
         this.Telephone = Telephone;
         this.Adress = Adress;
         this.DNI = DNI;
-    
-    }
+	}
     
     private Integer ID_User;
     

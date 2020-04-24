@@ -239,11 +239,7 @@
                                           <Insets left="10.0" right="10.0" top="10.0" />
                                        </padding>
                                     </Separator>
-                                    <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewUsuarios" onMouseClicked="#mostrarDatosUsuarios" prefHeight="810.0" prefWidth="456.0" stylesheets="@../application.css">
-                                       <VBox.margin>
-                                          <Insets bottom="20.0" top="10.0" />
-                                       </VBox.margin>
-                                    </JFXTreeTableView>
+                                    <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewUsuarios" onMouseClicked="#mostrarDatosUsuarios" prefHeight="810.0" prefWidth="456.0" stylesheets="@../application.css" />
                                  </children>
                               </VBox>
                               <VBox fx:id="datosUsuarioVBox" fillWidth="false" prefHeight="1076.0" prefWidth="1419.0" visible="false">

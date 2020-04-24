@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Arrays;
+import java.util.Vector;
 
 import application.modelos.Usuario;
 import application.modelos.modelo;
@@ -150,14 +152,16 @@ public class controladorLogin {
     public void login() {
         try {
             ConexionBBDD c = new ConexionBBDD();
-            ResultSet rs = c.resultSetSQL("SELECT * \n" +
+            ResultSet rs = c.loginRS("SELECT * \n" +
                     "FROM users\n" +
                     "WHERE users.User = ? AND users.Password = MD5(?)", usrnameField.getText(), pswdField.getText());
+
             if (rs.next()) {
-                usuario = new Usuario(rs.getString("Name"), rs.getString("Surnames"), rs.getString("DOB"), rs.getString("User")
-                , rs.getInt("Telephone"), rs.getString("DNI"), "pepe", rs.getString("Rol"), rs.getString("Adress"));
+                usuario = new Usuario(rs.getInt("ID_User"), rs.getString("Name"), rs.getString("Surnames"), rs.getString("DOB"), rs.getString("User")
+                                     ,rs.getString("Password"), rs.getString("Rol"), rs.getString("Photo"), rs.getInt("Telephone"), rs.getString("Adress"),
+                                      rs.getString("DNI"));
                 usuario.setAge(modelo.calculateAge(rs.getString("DOB")));
-                usuario.setPhoto(rs.getString("Photo"));
+
                 switch(usuario.getRol()){
                     case "medico":
                     case "familiar":

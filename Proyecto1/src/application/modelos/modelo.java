@@ -9,6 +9,8 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,11 +18,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.util.*;
 
 public class modelo {
 	
@@ -345,5 +343,38 @@ public class modelo {
             }
         }
         return true;
+    }
+
+    public ArrayList<Usuario> usuariosRelacionados(Usuario usuario) { // pac-cuid, pac-fam, pac-med, cuid-pac, cuid-med, cuid-fam,
+        ArrayList<Usuario> cuidadores = new ArrayList<>(); // , familiares, medicos = new Vector<>();
+        try {
+            ConexionBBDD c = new ConexionBBDD();
+
+            switch (usuario.getRol()){
+                case "paciente":
+                    Vector<Integer> relatedUTable1 = c.relatedUserIDS(usuario, "paciente-cuidador", "ID_Paciente_C", "ID_Cuidador_P");
+                    // Vector<Integer> relatedUTable2 = c.relatedUserIDS(usuario, "paciente-familiar", "ID_Paciente_C", "ID_Familiar_P");
+                    // Vector<Integer> relatedUTable3 = c.relatedUserIDS(usuario, "paciente-medico", "ID_Paciente_C", "ID_Medico_P");
+
+                    for (int i : relatedUTable1){
+                        ResultSet rs = c.selectUserFromID(i);
+                        if (rs.next()) {
+                            Usuario user = new Usuario(rs.getInt("ID_User"), rs.getString("Name"), rs.getString("Surnames"), rs.getString("DOB"), rs.getString("User")
+                                    ,rs.getString("Password"), rs.getString("Rol"), rs.getString("Photo"), rs.getInt("Telephone"), rs.getString("Adress"),
+                                    rs.getString("DNI"));
+                            user.setAge(this.calculateAge(rs.getString("DOB")));
+                            cuidadores.add(user);
+
+                        }
+                    }
+
+            }
+
+            // Vector<Integer> ru2 = c2.relatedUserIDS(usuario, "paciente-cuidador", "ID_Cuidador_P", "ID_Paciente_C");
+            
+        } catch(SQLException | ParseException slqe) {
+            System.out.println("Error xd");
+        }
+        return cuidadores;
     }
 }
