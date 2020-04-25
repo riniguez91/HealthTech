@@ -588,7 +588,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
 
     public void crearMensajeYResponderTicket(String mensaje) {
-        Message msg = new Message(usuario.getID_User(), treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiverID().get(),
+        Message msg = new Message(usuario.getID_User(),
+                usuario.getID_User() == treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSenderID().get() ?
+                        treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiverID().get() :
+                        treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSenderID().get(),
                 treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get(),
                 mensaje,
                 treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get(),
