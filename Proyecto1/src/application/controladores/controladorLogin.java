@@ -41,7 +41,7 @@ public class controladorLogin {
         }
         this.modelo = modelo_;
         this.usuario = usuario_;
-        modelo.leerJson("./Proyecto1/src/application/jsonFiles/Users.json");
+
         if (!checkBox.isSelected()) {
         	nUsuario = usrnameField.getText();
         	usrnameField.setText(nUsuario);

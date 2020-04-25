@@ -1,6 +1,7 @@
 package application.modelos;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class ConexionBBDD {
@@ -103,4 +104,90 @@ public class ConexionBBDD {
         }
         return rs;
     }
-}
+
+    public void insertarMensaje(String ID_Ticket, String message, String subject, int ID_User_Sender, int ID_User_Receiver) {
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String s = "INSERT INTO enviar_mensaje (ID_Ticket, Message, Subject, Is_Read, ID_User_Sender, ID_User_Receiver) \n" +
+                    "VALUES (?, ?, ?, 0, ?, ?);";
+            pstm = c.prepareStatement(s);
+
+            pstm.setString(1, ID_Ticket);
+            pstm.setString(2, message);
+            pstm.setString(3, subject);
+            pstm.setInt(4, ID_User_Sender);
+            pstm.setInt(5, ID_User_Receiver);
+            pstm.executeQuery();
+
+            pstm.close();
+            c.close();
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+    }
+
+    public Vector<Message> getMensajesDeUsuario(int ID_User) {
+        Vector<Message> mensajes = new Vector<>();
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String s = "SELECT * FROM enviar_mensaje WHERE `enviar_mensaje`.ID_User_Sender = ? OR `enviar_mensaje`.ID_User_Receiver = ?";
+            pstm = c.prepareStatement(s);
+
+            pstm.setInt(1, ID_User);
+            pstm.setInt(2, ID_User);
+
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                mensajes.add(new Message(rs.getInt("PK_Ticket"), rs.getInt("ID_User_Sender"), rs.getInt("ID_User_Receiver"),
+                        rs.getString("Subject"), rs.getString("Message"), rs.getString("ID_Ticket"),
+                        rs.getBoolean("Is_Read")));
+            }
+            pstm.close();
+            c.close();
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+        return mensajes;
+    }
+
+    public Vector<Message> getMensajesDeTicket(String ID_Ticket) {
+        Vector<Message> messgesInTicket = new Vector<>();
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String s = "SELECT * FROM enviar_mensaje WHERE `enviar_mensaje`.ID_Ticket = ?";
+            pstm = c.prepareStatement(s);
+
+            pstm.setString(1, ID_Ticket);
+
+            rs = pstm.executeQuery();
+            while (rs.next())
+                messgesInTicket.add(new Message(rs.getInt("PK_Ticket"), rs.getInt("ID_User_Sender"), rs.getInt("ID_User_Receiver"),
+                        rs.getString("Subject"), rs.getString("Message"), rs.getString("ID_Ticket"),
+                        rs.getBoolean("Is_Read")));
+
+            pstm.close();
+            c.close();
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+        return messgesInTicket;
+    }
+
+    public void setMsgAsRead(Message msg) {
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String s = "UPDATE pr_healthtech.enviar_mensaje SET Is_Read = 1 WHERE PK_Ticket = ?";
+
+            pstm = c.prepareStatement(s);
+            pstm.setInt(1, msg.getPK_Ticket());
+
+            pstm.executeQuery();
+
+            pstm.close();
+            c.close();
+        } catch(SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+    }
+
+} // ConexionBBDD()

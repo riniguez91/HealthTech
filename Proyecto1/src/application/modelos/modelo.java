@@ -88,27 +88,6 @@ public class modelo {
 
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-    public void leerJson(String path){
-        Gson gson = new Gson();
-        BufferedReader br = null;
-        try {
-            File file = new File(path);
-            br = new BufferedReader(new FileReader(file));
-            Type tipoListaUsuarios = new TypeToken<List<Usuario>>(){}.getType();
-            setUsuarios(gson.fromJson(br, tipoListaUsuarios));
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     public void leerJsonMensajes(String path){
         Gson gson = new Gson();
         BufferedReader br = null;
@@ -264,23 +243,6 @@ public class modelo {
         return p.getYears();
     }
 
-    public List<Usuario> userInRelatedUsers(List<Usuario> usuarios, Usuario usuario){
-        List<Usuario> finalUsers = new ArrayList<>();
-        if (usuario.getRelaciones() == null) {
-        	return finalUsers;
-		} else {
-			for (Usuario users : usuarios) {
-	            for (int i = 0;i<usuario.getRelaciones().size();i++){
-	                if (users.getUser().equals(usuario.getRelaciones().get(i))){
-	                    assert false;
-	                    finalUsers.add(users);
-	                }
-	            }
-			}
-			return finalUsers;
-        }
-    }
-
     public void createAlert(String header, String body) {
         alert.setHeaderText(header);
         alert.setContentText(body);
@@ -379,7 +341,7 @@ public class modelo {
         return usuariosRelacionados;
     }
 
-    public ArrayList<Usuario> crearAListRolUsuario(Vector<Integer> rt, ArrayList<Usuario> alu, ConexionBBDD c) throws SQLException, ParseException {
+    public ArrayList<Usuario> crearArrListRolUsuario(Vector<Integer> rt, ArrayList<Usuario> alu, ConexionBBDD c) throws SQLException, ParseException {
         for (int i : rt){
             ResultSet rs = c.selectUserFromID(i);
             if (rs.next()) {
@@ -401,8 +363,8 @@ public class modelo {
         Vector<Integer> relatedUTable2 = c.relatedUserIDS(usuario, tabla2, FK1_t2, FK2_t2);
         Vector<Integer> relatedUTable3 = c.relatedUserIDS(usuario, tabla3, FK1_t3, FK2_t3);
 
-        usuariosRelacionados = crearAListRolUsuario(relatedUTable1, usuariosRelacionados, c);
-        usuariosRelacionados = crearAListRolUsuario(relatedUTable2, usuariosRelacionados, c);
-        crearAListRolUsuario(relatedUTable3, usuariosRelacionados, c);
+        usuariosRelacionados = crearArrListRolUsuario(relatedUTable1, usuariosRelacionados, c);
+        usuariosRelacionados = crearArrListRolUsuario(relatedUTable2, usuariosRelacionados, c);
+        crearArrListRolUsuario(relatedUTable3, usuariosRelacionados, c);
     }
 }

@@ -491,9 +491,9 @@
                                              </padding>
                                           </Label>
                                           <Label prefHeight="56.0" prefWidth="1245.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <JFXTextField fx:id="asuntoJFXTextFieldMensajes" prefHeight="219.0" prefWidth="375.0" style="-fx-background-color: white;" GridPane.columnIndex="1" />
-                                          <JFXTextField fx:id="destinatarioJFXTextFieldMensajes" prefHeight="231.0" prefWidth="375.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <JFXTextField fx:id="idTicketJFXTextFieldMensajes" prefHeight="56.0" prefWidth="682.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <JFXTextField fx:id="asuntoJFXTextFieldMensajes" editable="false" prefHeight="219.0" prefWidth="375.0" style="-fx-background-color: white;" GridPane.columnIndex="1" />
+                                          <JFXTextField fx:id="destinatarioJFXTextFieldMensajes" editable="false" prefHeight="231.0" prefWidth="375.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <JFXTextField fx:id="idTicketJFXTextFieldMensajes" editable="false" prefHeight="56.0" prefWidth="682.0" style="-fx-background-color: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                        </children>
                                        <VBox.margin>
                                           <Insets left="25.0" />

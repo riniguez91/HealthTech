@@ -42,13 +42,12 @@ import javafx.util.converter.LocalDateStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.UUID;
+import java.util.*;
 
 public class controladorVistaGeneral implements Initializable, MapComponentInitializedListener {
 
@@ -57,8 +56,9 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     private final List<Label> labelMessages = new ArrayList<>();
     private final List<Label> labelMessagesInicio = new ArrayList<>();
     private final List<Label> labelFAQ = new ArrayList<>();
-    private final List<String> uniqueIDS = new ArrayList<>();
+    private final List<String> uniqueMessageIDS = new ArrayList<>();
     private controladorVistaGeneral cp;
+    private final ConexionBBDD conexionBBDD = new ConexionBBDD();
 
     public void initModelo(modelo modelo_, Usuario usuario_, controladorVistaGeneral cp_, String tipoVista) {
         if (this.modelo != null) {
@@ -68,11 +68,13 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         this.usuario = usuario_;
         this.cp = cp_;
 
-        modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
+        modelo.setMessages(conexionBBDD.getMensajesDeUsuario(usuario.getID_User()));
+
+        /*modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
         modelo.leerJsonTemperatura("./Proyecto1/src/application/jsonFiles/SensorTemp.json");
         modelo.leerJsonGas("./Proyecto1/src/application/jsonFiles/SensorGas.json");
         modelo.leerJsonMagnetico("./Proyecto1/src/application/jsonFiles/SensorMagnetico.json");
-        modelo.leerJsonPresion("./Proyecto1/src/application/jsonFiles/SensorPresion.json");
+        modelo.leerJsonPresion("./Proyecto1/src/application/jsonFiles/SensorPresion.json");*/
 
         aniadirPreguntasFrecuentes();
 
@@ -289,20 +291,28 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         // Borramos la conversacion en casa de que hubiese una seleccionada para poder introducir la siguiente
         labelMessagesInicio.clear();
         vboxConversacionMensajesInicio.getChildren().clear();
-        int i = 0;
-        // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
-        for (Message mensaje : modelo.getMessages()) {
-            // Si no esta leido y el "sender" coincide con el nombre completo del usuario
-            if (!mensaje.getRead() && (mensaje.getReceiver().equals(usuario.getName() + " " + usuario.getSurnames()))) {
-                labelMessagesInicio.add(new Label("- Asunto: " + mensaje.getSubject() + " || De parte de: " + mensaje.getSender()));
-                labelMessagesInicio.get(i).setPrefWidth(1202);
-                labelMessagesInicio.get(i).setWrapText(true);
-                labelMessagesInicio.get(i).setFont(new Font("Century Gothic", 26));
-                labelMessagesInicio.get(i).setPadding(new Insets(0, 0, 0, 20));
-                vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(i));
-                vboxConversacionMensajesInicio.setSpacing(15);
-                i++;
+        try {
+            int i = 0;
+            // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
+            for (Message mensaje : modelo.getMessages()) {
+                // Si no esta leido y el senderID coincide con el del usuario
+                if (!mensaje.getRead() && mensaje.getReceiverID() == usuario.getID_User()) {
+                    // fds
+                    ResultSet sender = conexionBBDD.selectUserFromID(mensaje.getSenderID());
+                    sender.next(); // Sabemos que si que habra un resultado
+                    labelMessagesInicio.add(new Label("- Asunto: " + mensaje.getSubject() + " || De parte de: " + sender.getString("Name")
+                            + " " + sender.getString("Surnames")));
+                    labelMessagesInicio.get(i).setPrefWidth(1202);
+                    labelMessagesInicio.get(i).setWrapText(true);
+                    labelMessagesInicio.get(i).setFont(new Font("Century Gothic", 26));
+                    labelMessagesInicio.get(i).setPadding(new Insets(0, 0, 0, 20));
+                    vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(i));
+                    vboxConversacionMensajesInicio.setSpacing(15);
+                    i++;
+                }
             }
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
         if (labelMessagesInicio.size() == 0) {
             labelMessagesInicio.add(new Label(" - No tiene mensajes nuevos"));
@@ -379,7 +389,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         // Añadimos los usuarios
         for (Usuario user : modelo.usuariosRelacionados(usuario))
-            users.add(new usuarioTTView(user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto()));
+            users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto()));
 
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
 
@@ -389,6 +399,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         ttv.getColumns().add(2, rolCol);
         ttv.setRoot(root);
     } // crearTreeTableViewUsuarios()
+
 
     @FXML
     void mostrarDatosUsuarios(MouseEvent event) {
@@ -425,13 +436,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             modelo.createAlert("Cuidado", "Debes de poner un mensaje");
         } else {
             UUID uniqueKey = UUID.randomUUID();
-            Message msg = new Message(usuario.getName() + " " + usuario.getSurnames(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
-                    + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(), asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(),
-                    uniqueKey.toString(), false);
-            List<Message> updatedMessages = modelo.getMessages();
-            updatedMessages.add(msg);
-            modelo.setMessages(updatedMessages);
-            modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
+            Message msg = new Message(usuario.getID_User(), treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                                      asuntoJFXTextFieldUsuarios.getText(), mensajeJFXTextFieldUsuarios.getText(), uniqueKey.toString(), false);
+
+            conexionBBDD.insertarMensaje(msg.getIdTicket(), msg.getMessage(), msg.getSubject(), msg.getSenderID(), msg.getReceiverID());
             modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente");
 
             // Borramos los campos para evitar confusion
@@ -439,8 +447,11 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             mensajeJFXTextFieldUsuarios.clear();
 
             // Actualizamos la lista de mensajes
-            treeTableViewMensajes.getRoot().getChildren().add(new TreeItem<>(new messageTTView(msg.getSender(), msg.getReceiver(), msg.getSubject(),
-                    msg.getMessage(), msg.getIdTicket(), msg.getRead())));
+            treeTableViewMensajes.getRoot().getChildren().add(new TreeItem<>(new messageTTView(msg.getSenderID(), msg.getReceiverID(),
+                                                               usuario.getName() + usuario.getSurnames(),
+                                                               treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()
+                                                                       + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(),
+                                                               msg.getSubject(), msg.getMessage(), msg.getIdTicket(), msg.getRead())));
             // Junto a los mensajes no leidos
             comprobarMensajesNuevos();
         }
@@ -491,43 +502,28 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         ObservableList<messageTTView> messages = FXCollections.observableArrayList();
 
         // Añadimos los mensajes
-        modelo.getMessages().forEach(mensaje -> {
-            if (!uniqueIDS.contains(mensaje.getIdTicket()) && (mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurnames())
-                    || mensaje.getReceiver().equals(usuario.getName() + " " + usuario.getSurnames()))) {
-                messages.add(new messageTTView(mensaje.getSender(), mensaje.getReceiver(), mensaje.getSubject(), mensaje.getMessage(), mensaje.getIdTicket(), mensaje.getRead()));
-                uniqueIDS.add(mensaje.getIdTicket());
+        try {
+            for (Message msg : modelo.getMessages() ) {
+                if (!uniqueMessageIDS.contains(msg.getIdTicket())) { // Comprobamos que solo añadimos el ticket, no la conversacion entera
+                    ResultSet sender = conexionBBDD.selectUserFromID(msg.getSenderID()), receiver = conexionBBDD.selectUserFromID(msg.getReceiverID());
+                    if (sender.next() && receiver.next()) { // Si hay un mensaje
+                        messages.add(new messageTTView(msg.getSenderID(), msg.getReceiverID(), sender.getString("Name") + " " + sender.getString("Surnames"),
+                                receiver.getString("Name") + " " + receiver.getString("Surnames"), msg.getSubject(), msg.getMessage(), msg.getIdTicket(),
+                                msg.getRead()));
+                        uniqueMessageIDS.add(msg.getIdTicket());
+                    }
+                }
             }
-        });
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
 
         TreeItem<messageTTView> root = new RecursiveTreeItem<>(messages, RecursiveTreeObject::getChildren);
-        treeTableViewMensajes.getColumns().setAll(idCol, senderCol, asuntoCol);
+        treeTableViewMensajes.getColumns().add(idCol);
+        treeTableViewMensajes.getColumns().add(senderCol);
+        treeTableViewMensajes.getColumns().add(asuntoCol);
         treeTableViewMensajes.setRoot(root);
-        treeTableViewMensajes.setShowRoot(false);
     } // createTreeTableViewMensajes()
-
-
-    public void changeTicketConversation() {
-        // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
-        int i = 0;
-        for (Message mensaje : modelo.getMessages()) {
-            if (mensaje.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get())) {
-                labelMessages.add(new Label(mensaje.getMessage()));
-                labelMessages.get(i).setPrefWidth(scrollPaneMensajes.getPrefWidth() - 10);
-                labelMessages.get(i).setWrapText(true);
-                labelMessages.get(i).setFont(new Font("Century Gothic", 17));
-                if (!mensaje.getSender().equals(usuario.getName() + " " + usuario.getSurnames())) {
-                    labelMessages.get(i).setPadding(new Insets(10, 13, 0, 150));
-                    labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5, 5, 5, 5, false), Insets.EMPTY)));
-                } else {
-                    labelMessages.get(i).setPadding(new Insets(10, 310, 0, 13));
-                    labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.WHEAT, new CornerRadii(5, 5, 5, 5, false), Insets.EMPTY)));
-                }
-                vboxConversacionMensajes.getChildren().add(labelMessages.get(i));
-                vboxConversacionMensajes.setSpacing(15);
-                i++;
-            }
-        }
-    } // changeTicketConversation()
 
     @FXML
     void mostrarTicketMensajes(MouseEvent event) {
@@ -543,51 +539,68 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             destinatarioJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get());
             idTicketJFXTextFieldMensajes.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get());
 
+            // Cojemos todos los mensajes pertenecientes a un ticket
+            Vector<Message> messagesInATicket = conexionBBDD.getMensajesDeTicket(idTicketJFXTextFieldMensajes.getText());
+
             // Marcamos el mensaje como leido
-            setMsgAsRead();
+            setMsgAsRead(messagesInATicket);
 
             // Cambiamos el scroll pane para mostrar la lista de mensajes correspondientes al ticket seleccionado
-            changeTicketConversation();
+            changeTicketConversation(messagesInATicket);
         }
     } // mostrarTicketMensajes()
 
-    public void setMsgAsRead() {
+    public void setMsgAsRead(Vector<Message> messages) {
         // Cambiamos el mensaje como leido si no lo estaba
-        if (!treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getRead().get()) {
-            for (Message msg : modelo.getMessages()) {
-                // Compramos el mensaje que corresponde con el ID del mensaje y la persona que lo tiene que recibir (receiver)
-                if (msg.getIdTicket().equals(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()) &&
-                        msg.getReceiver().equals(usuario.getName() + " " + usuario.getSurnames())) {
-                    msg.setRead(true);
-
-                    // Lo marcamos como leido en el JSON de mensajes
-                    modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
-
-                    // Actualizamos la lista de mensajes
-                    modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
-
-                    // Borramos el mensaje de la pestaña Recordatorios
-                    comprobarMensajesNuevos();
-                    break;
-                }
-            }
+        for (Message msg : messages) {
+            if (!msg.getRead())
+                conexionBBDD.setMsgAsRead(msg);
         }
+
+        // Actualizamos la lista de mensajes
+        modelo.setMessages(conexionBBDD.getMensajesDeUsuario(usuario.getID_User()));
+
+        // Borramos el mensaje de la pestaña recordatorios
+        comprobarMensajesNuevos();
+
     } // setMsgAsRead()
+
+    public void changeTicketConversation(Vector<Message> messages) {
+        // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
+        int i = 0;
+        for (Message mensaje : messages) {
+            labelMessages.add(new Label(mensaje.getMessage()));
+            labelMessages.get(i).setPrefWidth(scrollPaneMensajes.getPrefWidth() - 10);
+            labelMessages.get(i).setWrapText(true);
+            labelMessages.get(i).setFont(new Font("Century Gothic", 17));
+            if (mensaje.getSenderID() == usuario.getID_User()) {
+                labelMessages.get(i).setPadding(new Insets(10, 310, 0, 13));
+                labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.WHEAT, new CornerRadii(5, 5, 5, 5, false), Insets.EMPTY)));
+            } else {
+                labelMessages.get(i).setPadding(new Insets(10, 13, 0, 150));
+                labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5, 5, 5, 5, false), Insets.EMPTY)));
+            }
+            vboxConversacionMensajes.getChildren().add(labelMessages.get(i));
+            vboxConversacionMensajes.setSpacing(15);
+            i++;
+        }
+    } // changeTicketConversation()
 
 
     public void crearMensajeYResponderTicket(String mensaje) {
-        Message msg = new Message(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSender().get(),
-                treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiver().get(),
+        Message msg = new Message(usuario.getID_User(), treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getReceiverID().get(),
                 treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSubject().get(),
                 mensaje,
                 treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get(),
                 false
         );
-
+        // Actualizamos los mensajes
         List<Message> updatedMessages = modelo.getMessages();
         updatedMessages.add(msg);
         modelo.setMessages(updatedMessages);
-        modelo.serializarAJson("./Proyecto1/src/application/jsonFiles/messages.json", modelo.getMessages(), false);
+
+        // Insertamos el mensaje en la BBDD
+        conexionBBDD.insertarMensaje(msg.getIdTicket(), msg.getMessage(), msg.getSubject(), msg.getSenderID(), msg.getReceiverID());
         modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente, por favor compruebelo pinchando donde le indica la tabla");
     } // crearMensajeYResponderTicket()
 

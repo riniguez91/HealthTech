@@ -4,41 +4,48 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Message {
-    public Message(String sender, String receiver, String subject, String message, String idTicket, boolean read){
-        this.sender = sender;
-        this.receiver = receiver;
+    public Message(int PK_Ticket, int senderID, int receiverID, String subject, String message, String idTicket, boolean read){
+        this.PK_Ticket = PK_Ticket;
+        this.senderID = senderID;
+        this.receiverID = receiverID;
         this.subject = subject;
         this.message = message;
         this.idTicket = idTicket;
         this.read = read;
     }
 
-    @SerializedName("sender")
-    @Expose
-    private String sender;
-    @SerializedName("receiver")
-    @Expose
-    private String receiver;
-    @SerializedName("subject")
-    @Expose
+    public Message(int senderID, int receiverID, String subject, String message, String idTicket, boolean read){
+        this.senderID = senderID;
+        this.receiverID = receiverID;
+        this.subject = subject;
+        this.message = message;
+        this.idTicket = idTicket;
+        this.read = read;
+    }
+
+    private int PK_Ticket;
+
+    private int senderID;
+
+    private int receiverID;
+
     private String subject;
-    @SerializedName("message")
-    @Expose
+
     private String message;
-    @SerializedName("idTicket")
-    @Expose
-    private String idTicket;
-    @SerializedName("read")
-    @Expose
+
+    private final String idTicket;
+
     private boolean read;
 
-    public String getSender() { return sender; }
+    public int getPK_Ticket() { return this.PK_Ticket; }
 
-    public void setSender(String sender) { this.sender = sender; }
+    public int getSenderID() { return senderID; }
 
-    public String getReceiver() { return receiver; }
+    public void setSenderID(int senderID) { this.senderID = senderID; }
 
-    public void setReceiver(String receiver) { this.receiver = receiver; }
+    public int getReceiverID() { return receiverID; }
+
+    public void setReceiverID(int receiverID) { this.receiverID = receiverID; }
 
     public String getSubject() { return subject; }
 
