@@ -47,6 +47,20 @@
 	-fx-font-size: 28;
 }
 
+.LabelAdmin{
+	-fx-text-fill: black;
+	-fx-font-size: 25;
+	-fx-font-family: Century Gothic;
+	-fx-font-weight: Bold;
+}
+
+.LabelTextoAdmin{
+	-fx-text-fill: black;
+	-fx-font-size: 25;
+	-fx-font-family: Century Gothic;
+	-fx-font-weight: Normal;
+}
+
 /* Botones */
 .botones{
 	-fx-background-color: #34394c;

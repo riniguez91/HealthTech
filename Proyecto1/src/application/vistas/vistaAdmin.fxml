@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="seleccionaUsuarioLabel" alignment="CENTER" layoutX="156.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="290.0" text="Seleccione un usuario" AnchorPane.bottomAnchor="358.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="660.0" AnchorPane.topAnchor="350.0">
+         <font>
+            <Font name="Segoe UI Emoji" size="28.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="740.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox fx:id="VBoxInformacion" prefHeight="740.0" prefWidth="1031.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="277.0" prefWidth="801.0">
+                     <children>
+                        <ImageView fx:id="userImageViewUsuarios" fitHeight="310.0" fitWidth="349.0" pickOnBounds="true">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../../resources/fotos/cuidador_jrodriguez.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <Separator prefHeight="22.0" prefWidth="801.0" styleClass="separator-black" stylesheets="@../application.css" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Separator>
+                  <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="322.0" prefWidth="1200.0">
+                     <columnConstraints>
+                        <ColumnConstraints maxWidth="625.0" minWidth="10.0" prefWidth="228.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="772.33349609375" minWidth="10.0" prefWidth="559.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Apellidos:" GridPane.rowIndex="2">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Fecha Nacimiento:" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Nombre:" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Rol:" GridPane.rowIndex="6">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Usuario:" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="labelNombreUsuarios" prefHeight="29.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelApellidosUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="labelFechaNacimientoUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelRolUsuarios" prefHeight="32.0" prefWidth="1300.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="labelEdadUsuarios" prefHeight="32.0" prefWidth="1147.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="ID Usuario:" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Contraseña:" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Foto perfil:" GridPane.rowIndex="7">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Teléfono:" GridPane.rowIndex="8">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Dirección:" GridPane.rowIndex="9">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="DNI:" GridPane.rowIndex="10">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="labelIDUsuarios" prefHeight="32.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelRolUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelFotoUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelTelefonoUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDireccionUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDNIUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Relaciones:" GridPane.rowIndex="11">
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="labelRelacionesUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" right="10.0" />
+                     </VBox.margin>
+                  </GridPane>
+                  <Separator prefHeight="30.0" prefWidth="801.0" styleClass="separator-black" stylesheets="@../application.css" />
+                  <HBox alignment="BOTTOM_CENTER" maxWidth="1076.0" prefHeight="42.0" prefWidth="1076.0" spacing="100.0">
+                     <children>
+                        <JFXButton fx:id="EliminarUsuarioBtn" contentDisplay="RIGHT" prefHeight="41.0" prefWidth="310.0" styleClass="botones" stylesheets="@../application.css" text="Eliminar Usuario">
+                           <padding>
+                              <Insets right="1.0" />
+                           </padding>
+                        </JFXButton>
+                        <JFXButton fx:id="GuardarCambiosBtn" onAction="#cancelarRespuestaTicket" prefHeight="41.0" prefWidth="310.0" styleClass="botones" stylesheets="@../application.css" text="Guardar Cambios" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children></VBox>
+            <VBox fx:id="VBoxUsuarios" alignment="CENTER" fillWidth="false" prefHeight="740.0" prefWidth="630.0" spacing="10.0" style="-fx-background-color: #34394c;" HBox.hgrow="ALWAYS">
+               <children>
+                  <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" focusColor="WHITE" focusTraversable="false" labelFloat="true" onKeyPressed="#filterUsersUsuario" prefHeight="43.0" prefWidth="989.0" promptText="Buscar usuario" styleClass="textoLabelwhite" stylesheets="@../application.css" unFocusColor="WHITE" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </JFXTextField>
+                  <Label prefHeight="43.0" prefWidth="1002.0" styleClass="informationLabel" stylesheets="@../application.css" text="Lista de usuarios" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Separator prefHeight="27.0" prefWidth="999.0" styleClass="separator-white" stylesheets="@../application.css" VBox.vgrow="ALWAYS">
+                     <padding>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </Separator>
+                  <JFXTreeTableView id="tree-table-view" fx:id="treeTableViewUsuarios" onMouseClicked="#mostrarDatosUsuarios" prefHeight="538.0" prefWidth="966.0" stylesheets="@../application.css" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="40.0" right="40.0" top="10.0" />
+                     </VBox.margin>
+                  </JFXTreeTableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
