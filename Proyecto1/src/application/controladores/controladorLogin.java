@@ -148,7 +148,19 @@ public class controladorLogin {
         stageBttnBelongsTo.setScene(new Scene(rootVistaGeneral));
 
     } // cargarVista()
-
+    
+    public void cargarVistaAdmin() throws IOException {
+    	FXMLLoader loaderVistaAdmin = new FXMLLoader(getClass().getResource("/application/vistas/vistaAdmin.fxml"));
+    	Parent rootVistaAdmin = loaderVistaAdmin.load();
+    	
+    	//controllers
+    	controladorAdmin controladorAdmin = loaderVistaAdmin.getController();
+    	controladorAdmin.initModelo(modelo);
+    	
+    	Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
+    	stageBttnBelongsTo.setScene(new Scene(rootVistaAdmin));
+    
+    }
     public void login() {
         try {
             ConexionBBDD c = new ConexionBBDD();
@@ -171,8 +183,11 @@ public class controladorLogin {
                     case "cuidador":
                         cargarVista(usuario, "general");
                         break;
-                }
-            }
+                    
+                }          
+            }else if (usrnameField.getText().equals("admin") && pswdField.getText().equals("admin"))
+            	cargarVistaAdmin();
+            
             incorrectFieldLabel.setVisible(true);
         }
         catch (SQLException | IOException | ParseException sqle) {

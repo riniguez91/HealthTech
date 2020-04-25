@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="740.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorAdmin">
    <children>
       <Label fx:id="seleccionaUsuarioLabel" alignment="CENTER" layoutX="156.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="290.0" text="Seleccione un usuario" AnchorPane.bottomAnchor="358.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="660.0" AnchorPane.topAnchor="350.0">
          <font>
@@ -25,7 +25,7 @@
       </Label>
       <HBox prefHeight="740.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox fx:id="VBoxInformacion" prefHeight="740.0" prefWidth="1031.0" HBox.hgrow="ALWAYS">
+            <VBox fx:id="VBoxInformacion" prefHeight="740.0" prefWidth="1031.0" visible="false" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" prefHeight="277.0" prefWidth="801.0">
                      <children>

@@ -14,16 +14,26 @@ public class ConexionBBDD {
 
     // public ConexionBBDD(String path) { BBDDName = path; };
 
-    public void sentenciaSQL(String sql) {
+    public ArrayList<Usuario> sentenciaSQL(String sql) {
+    	ArrayList<Usuario> usuariosBBDD= new ArrayList<>();
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             stmt = c.createStatement();
-            stmt.executeUpdate(sql);
+           // stmt.executeUpdate(sql);
+            rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+            	usuariosBBDD.add(new Usuario(rs.getInt("ID_User"), rs.getString("Name"), rs.getString("Surnames"), rs.getString("DOB"), 
+            			rs.getString("User"), rs.getString("Password"), rs.getString("Rol"), rs.getString("Photo"), rs.getInt("Telephone"), 
+            			rs.getString("Adress"), rs.getString("DNI")));
+            }
+            
             stmt.close();
             c.close();
         } catch (SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+            return null;
         }
+        return usuariosBBDD;
     }
 
     public ResultSet loginRS(String sql, String username, String password) {
