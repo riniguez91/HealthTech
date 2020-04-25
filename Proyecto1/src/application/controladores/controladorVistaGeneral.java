@@ -93,7 +93,9 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             userImageViewInicio.setImage(new Image(usuario.getPhoto()));
 
         // Creamos las listas de usuarios y mensajes
-        crearTreeTableViewUsuarios();
+        crearTreeTableView(treeTableViewUsuarios);
+        crearTreeTableView(treeTableViewRegistros);
+        crearTreeTableView(treeTableViewLocalizacion);
         crearTreeTableViewMensajes();
 
         // Comprobamos mensajes nuevos
@@ -358,58 +360,38 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 || usuarioTreeItem.getValue().getRolUsuario().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
     } // filterUserUsuario()
 
-    public void crearTreeTableViewUsuarios() {
+    public void crearTreeTableView(TreeTableView<usuarioTTView> ttv) {
         JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
         JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
         JFXTreeTableColumn<usuarioTTView, String> rolCol = new JFXTreeTableColumn<>("Rol");
 
         nombreCol.setCellValueFactory(param -> param.getValue().getValue().getName());
-        nombreCol.setMinWidth(119);
-        nombreCol.setMaxWidth(119);
+        nombreCol.setMinWidth(129);
+        nombreCol.setMaxWidth(129);
         apellidosCol.setCellValueFactory(param -> param.getValue().getValue().getSurname());
         apellidosCol.setMinWidth(189);
         apellidosCol.setMaxWidth(189);
         rolCol.setCellValueFactory(param -> param.getValue().getValue().getRolUsuario());
-        rolCol.setMinWidth(169);
-        rolCol.setMaxWidth(169);
+        rolCol.setMinWidth(159);
+        rolCol.setMaxWidth(159);
 
         ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
 
         // Añadimos los usuarios
-        int i = 0;
-        for (Usuario user : modelo.usuariosRelacionados(usuario)) {
+        for (Usuario user : modelo.usuariosRelacionados(usuario))
             users.add(new usuarioTTView(user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto()));
-            /*System.out.println(users.get(i).getName().get());
-            System.out.println(users.get(i).getSurname().get());
-            System.out.println(users.get(i).getRolUsuario().get());
-            System.out.println(users.get(i).getBirthday().get());
-            System.out.println(users.get(i).getAge().get());
-            System.out.println(users.get(i).getImagenPerfil().get());
-            i++;*/
-        }
 
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
 
         // TTV Usuarios
-        treeTableViewUsuarios.getColumns().setAll(nombreCol, apellidosCol, rolCol);
-        treeTableViewUsuarios.setRoot(root);
-        treeTableViewUsuarios.setShowRoot(false);
-
-        // TTV Registros
-        treeTableViewRegistros.getColumns().setAll(nombreCol, apellidosCol);
-        treeTableViewRegistros.setRoot(root);
-        treeTableViewRegistros.setShowRoot(false);
-
-        // TTV Localizacion
-        treeTableViewLocalizacion.getColumns().setAll(nombreCol, apellidosCol);
-        treeTableViewLocalizacion.setRoot(root);
-        treeTableViewLocalizacion.setShowRoot(false);
-
+        ttv.getColumns().add(0, nombreCol);
+        ttv.getColumns().add(1, apellidosCol);
+        ttv.getColumns().add(2, rolCol);
+        ttv.setRoot(root);
     } // crearTreeTableViewUsuarios()
 
     @FXML
     void mostrarDatosUsuarios(MouseEvent event) {
-        System.out.println(treeTableViewUsuarios.getSelectionModel().isEmpty());
         // Cambiamos los datos del usuario mientras se haya seleccionado uno
         if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) {
             // Comprobamos si el panel de datos de usuario y creacion de mensajes esta visible

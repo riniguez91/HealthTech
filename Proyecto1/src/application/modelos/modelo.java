@@ -19,6 +19,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.List;
 
 public class modelo {
 	
@@ -346,35 +347,62 @@ public class modelo {
     }
 
     public ArrayList<Usuario> usuariosRelacionados(Usuario usuario) { // pac-cuid, pac-fam, pac-med, cuid-pac, cuid-med, cuid-fam,
-        ArrayList<Usuario> cuidadores = new ArrayList<>(); // , familiares, medicos = new Vector<>();
+        ArrayList<Usuario> usuariosRelacionados = new ArrayList<>();
         try {
             ConexionBBDD c = new ConexionBBDD();
 
             switch (usuario.getRol()){
                 case "paciente":
-                    Vector<Integer> relatedUTable1 = c.relatedUserIDS(usuario, "paciente-cuidador", "ID_Paciente_C", "ID_Cuidador_P");
-                    // Vector<Integer> relatedUTable2 = c.relatedUserIDS(usuario, "paciente-familiar", "ID_Paciente_C", "ID_Familiar_P");
-                    // Vector<Integer> relatedUTable3 = c.relatedUserIDS(usuario, "paciente-medico", "ID_Paciente_C", "ID_Medico_P");
-
-                    for (int i : relatedUTable1){
-                        ResultSet rs = c.selectUserFromID(i);
-                        if (rs.next()) {
-                            Usuario user = new Usuario(rs.getInt("ID_User"), rs.getString("Name"), rs.getString("Surnames"), rs.getString("DOB"), rs.getString("User")
-                                    ,rs.getString("Password"), rs.getString("Rol"), rs.getString("Photo"), rs.getInt("Telephone"), rs.getString("Adress"),
-                                    rs.getString("DNI"));
-                            user.setAge(this.calculateAge(rs.getString("DOB")));
-                            cuidadores.add(user);
-
-                        }
-                    }
-
+                    caseUserRelated(c, usuario, usuariosRelacionados, "paciente-cuidador", "ID_Paciente_C", "ID_Cuidador_P",
+                                    "paciente-familiar", "ID_Paciente_F", "ID_Familiar_P", "paciente-medico", "ID_Paciente_M",
+                                    "ID_Medico_P");
+                    break;
+                case "medico":
+                    caseUserRelated(c, usuario, usuariosRelacionados, "paciente-medico", "ID_Medico_P", "ID_Paciente_M",
+                                    "medico-familiar", "ID_Medico_F", "ID_Familiar_M", "medico-cuidador", "ID_Medico_C",
+                                    "ID_Cuidador_M");
+                    break;
+                case "cuidador":
+                    caseUserRelated(c, usuario, usuariosRelacionados, "paciente-cuidador", "ID_Cuidador_P", "ID_Paciente_C",
+                                    "cuidador-familiar", "ID_Cuidador_F", "ID_Familiar_C", "medico-cuidador", "ID_Cuidador_M",
+                                    "ID_Medico_C");
+                    break;
+                case "familiar":
+                    caseUserRelated(c, usuario, usuariosRelacionados, "paciente-familiar", "ID_Familiar_P", "ID_Paciente_F",
+                                    "medico-familiar", "ID_Familiar_M", "ID_Medico_F", "cuidador-familiar", "ID_Familiar_C",
+                                    "ID_Cuidador_F");
+                    break;
             }
-
-            // Vector<Integer> ru2 = c2.relatedUserIDS(usuario, "paciente-cuidador", "ID_Cuidador_P", "ID_Paciente_C");
-            
-        } catch(SQLException | ParseException slqe) {
-            System.out.println("Error xd");
+        } catch(SQLException | ParseException sqle) {
+            System.out.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
-        return cuidadores;
+        return usuariosRelacionados;
+    }
+
+    public ArrayList<Usuario> crearAListRolUsuario(Vector<Integer> rt, ArrayList<Usuario> alu, ConexionBBDD c) throws SQLException, ParseException {
+        for (int i : rt){
+            ResultSet rs = c.selectUserFromID(i);
+            if (rs.next()) {
+                Usuario user = new Usuario(rs.getInt("ID_User"), rs.getString("Name"), rs.getString("Surnames"), rs.getString("DOB"), rs.getString("User")
+                        ,rs.getString("Password"), rs.getString("Rol"), rs.getString("Photo"), rs.getInt("Telephone"), rs.getString("Adress"),
+                        rs.getString("DNI"));
+                user.setAge(this.calculateAge(rs.getString("DOB")));
+                alu.add(user);
+            }
+        }
+        return alu;
+    }
+
+    public void caseUserRelated(ConexionBBDD c, Usuario usuario, ArrayList<Usuario> usuariosRelacionados, String tabla1, String FK1_t1,
+                                String FK2_t1, String tabla2, String FK1_t2, String FK2_t2, String tabla3, String FK1_t3, String FK2_t3)
+                                throws SQLException, ParseException {
+
+        Vector<Integer> relatedUTable1 = c.relatedUserIDS(usuario, tabla1, FK1_t1, FK2_t1);
+        Vector<Integer> relatedUTable2 = c.relatedUserIDS(usuario, tabla2, FK1_t2, FK2_t2);
+        Vector<Integer> relatedUTable3 = c.relatedUserIDS(usuario, tabla3, FK1_t3, FK2_t3);
+
+        usuariosRelacionados = crearAListRolUsuario(relatedUTable1, usuariosRelacionados, c);
+        usuariosRelacionados = crearAListRolUsuario(relatedUTable2, usuariosRelacionados, c);
+        crearAListRolUsuario(relatedUTable3, usuariosRelacionados, c);
     }
 }

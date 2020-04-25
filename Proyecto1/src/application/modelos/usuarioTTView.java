@@ -7,12 +7,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class usuarioTTView extends RecursiveTreeObject<usuarioTTView> {
-    private StringProperty name;
-    private StringProperty surname;
-    private StringProperty rol;
-    private StringProperty birthday;
-    private IntegerProperty age;
-    private StringProperty imagenPerfil;
+    private final StringProperty name;
+    private final StringProperty surname;
+    private final StringProperty rol;
+    private final StringProperty birthday;
+    private final IntegerProperty age;
+    private final StringProperty imagenPerfil;
 
     public usuarioTTView(String name, String surname, String rol, String birthday, Integer age, String imagenPerfil){
         this.name = new SimpleStringProperty(name);
