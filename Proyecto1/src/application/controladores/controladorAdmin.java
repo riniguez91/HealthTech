@@ -107,12 +107,14 @@ public class controladorAdmin{
         
         // Añadimos los usuarios
         ConexionBBDD c = new ConexionBBDD();
-        for (Usuario user : c.sentenciaSQL("SELECT * FROM users ;"))
+        for (Usuario user : c.sentenciaSQL("SELECT * FROM users"))
 			try {
-				users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), modelo.calculateAge(user.getDOB()), user.getPhoto()));
-			} catch (ParseException e) {
+				users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), modelo.calculateAge(user.getDOB()),
+											user.getPhoto()));
+				
+			} catch (ParseException pe) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				pe.printStackTrace();
 			}
         
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
