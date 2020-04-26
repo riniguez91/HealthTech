@@ -816,6 +816,29 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     
     @FXML
     void ubicacionPaciente(ActionEvent event) {
+    	LatLong latlong = null;
+        String sentenciaGPS = "SELECT sensor_GPS.*\n" +
+                "FROM sensor_GPS\n" +
+                "INNER JOIN sensores ON sensor_GPS.Sensores_ID3 = sensores.ID_Sensor\n" +
+                "INNER JOIN users ON sensores.Users_ID1 = users.ID_User\n" +
+                "WHERE users.ID_User = ? AND sensores.`Type` = ?";
+        
+        for (sensor sg : conexionBBDD.leerDatosSensorGPS(treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getID_User().get(), "GPS" , sentenciaGPS)  ) {
+        	latlong = new LatLong (sg.getLatitude(), sg.getLongitude());
+        	map.setCenter(latlong);
+        }
+        
+        // Añadir un Marker al mapa de la casa
+        MarkerOptions markerOptions = new MarkerOptions();
+        
+        markerOptions.position(latlong)
+                .visible(Boolean.TRUE)
+                .title("Ubicacion en tiempo real de "+ treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getName().get()+" "+treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getSurname().get());
+        		
+        Marker marker = new Marker(markerOptions);
+        marker.setTitle("Ubicacion");
+ 
+        map.addMarker(marker);
 
     }
 

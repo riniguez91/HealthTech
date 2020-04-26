@@ -226,6 +226,26 @@ public class ConexionBBDD {
         return datosSensCont;
     }
     
+    public Vector<sensor> leerDatosSensorGPS(int ID_User, String tipoSensor, String sql) {
+        Vector<sensor> datosSensorGPS = new Vector<>();
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+
+            pstm = c.prepareStatement(sql);
+
+            pstm.setInt(1, ID_User);
+            pstm.setString(2, tipoSensor);
+
+            rs = pstm.executeQuery();
+            while (rs.next())
+            	datosSensorGPS.add(new sensor(rs.getInt("ID_Sensor_GPS"), rs.getDouble("Latitude"), rs.getDouble("Longitude"), rs.getDate("Date_Time_Activation")));
+
+        } catch(SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+        return datosSensorGPS;
+    }
+    
     //-------Admin
     
 
