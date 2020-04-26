@@ -1,0 +1,122 @@
+CREATE TABLE IF NOT EXISTS `users` (
+	`ID_User` INT(11) NOT NULL AUTO_INCREMENT,
+	`Name` TINYTEXT NOT NULL,
+	`Surnames` TINYTEXT NOT NULL,
+	`DOB` DATE NOT NULL,
+	`User` TINYTEXT NOT NULL UNIQUE,
+	`Password` TEXT NOT NULL,
+	`Rol` TINYTEXT NOT NULL,
+	`Photo` TINYTEXT NULL DEFAULT NULL,
+	`Telephone` INT(11) NOT NULL,
+	`Adress` TEXT NULL DEFAULT NULL,
+	`DNI` TINYTEXT NOT NULL,
+	PRIMARY KEY (`ID_User`)
+);
+
+
+CREATE TABLE IF NOT EXISTS `Paciente-Familiar`(
+	`ID_Paciente_F` INT NOT NULL UNIQUE,
+	`ID_Familiar_P` INT NOT NULL UNIQUE,
+	INDEX `FK_Paciente_Users_PF` (`ID_Paciente_F`),
+	INDEX `FK_Familiar_Users_PF` (`ID_Familiar_P`),
+	CONSTRAINT `FK_Paciente_Users_PF` FOREIGN KEY(`ID_Paciente_F`) REFERENCES users(ID_User),
+	CONSTRAINT `FK_Familiar_Users_PF` FOREIGN KEY(`ID_Familiar_P`) REFERENCES users(ID_User),
+	CONSTRAINT `ID_Paciente_Familiar` PRIMARY KEY(ID_Paciente_F, ID_Familiar_P)
+);
+
+CREATE TABLE IF NOT EXISTS `Paciente-Cuidador`(
+	`ID_Paciente_C` INT NOT NULL UNIQUE,
+	`ID_Cuidador_P` INT NOT NULL UNIQUE,
+	INDEX `FK_Paciente_Users_PC` (`ID_Paciente_C`),
+	INDEX `FK_Cuidador_Users_PC` (`ID_Cuidador_P`),
+	CONSTRAINT `FK_Paciente_Users_PC` FOREIGN KEY (`ID_Paciente_C`) REFERENCES users(ID_User),
+	CONSTRAINT `FK_Cuidador_Users_PC` FOREIGN KEY (`ID_Cuidador_P`) REFERENCES users(ID_User),
+	CONSTRAINT `ID_Paciente_Cuidador` PRIMARY KEY(ID_Paciente_C, ID_Cuidador_P)
+);
+
+CREATE TABLE IF NOT EXISTS `Paciente-Medico`(
+	`ID_Paciente_M` INT NOT NULL UNIQUE,
+	`ID_Medico_P` INT NOT NULL UNIQUE,
+	INDEX `FK_Paciente_Users_PM` (`ID_Paciente_M`),
+	INDEX `FK_Medico_Users_PM` (`ID_Medico_P`),
+	CONSTRAINT `FK_Paciente_Users_PM` FOREIGN KEY (`ID_Paciente_M`) REFERENCES users(ID_User),
+	CONSTRAINT `FK_Medico_Users_PM` FOREIGN KEY (`ID_Medico_P`) REFERENCES users(ID_User),
+	CONSTRAINT `ID_Paciente_Medico` PRIMARY KEY(ID_Paciente_M, ID_Medico_P)
+);
+
+CREATE TABLE IF NOT EXISTS `Medico-Cuidador`(
+	`ID_Medico_C` INT NOT NULL UNIQUE,
+	`ID_Cuidador_M` INT NOT NULL UNIQUE,
+	INDEX `FK_Medico_Users_MC` (`ID_Medico_C`),
+	INDEX `FK_Cuidador_Users_MC` (`ID_Cuidador_M`),
+	CONSTRAINT `FK_Medico_Users_MC` FOREIGN KEY (`ID_Medico_C`) REFERENCES users(ID_User),
+	CONSTRAINT `FK_Cuidador_Users_MC` FOREIGN KEY (`ID_Cuidador_M`) REFERENCES users(ID_User),
+	CONSTRAINT `ID_Medico_Cuidador` PRIMARY KEY(ID_Medico_C, ID_Cuidador_M)
+);
+
+CREATE TABLE IF NOT EXISTS `Medico-Familiar`(
+	`ID_Medico_F` INT NOT NULL UNIQUE,
+	`ID_Familiar_M` INT NOT NULL UNIQUE,
+	INDEX `FK_Medico_Users_MF` (`ID_Medico_F`),
+	INDEX `FK_Familiar_Users_MF` (`ID_Familiar_M`),
+	CONSTRAINT `FK_Medico_Users_MF` FOREIGN KEY (`ID_Medico_F`) REFERENCES users(ID_User),
+	CONSTRAINT `FK_Familiar_Users_MF` FOREIGN KEY (`ID_Familiar_M`) REFERENCES users(ID_User),
+	CONSTRAINT `ID_Medico_Familiar` PRIMARY KEY(ID_Medico_F, ID_Familiar_M)
+);
+
+CREATE TABLE IF NOT EXISTS `Cuidador-Familiar`(
+	`ID_Cuidador_F` INT NOT NULL UNIQUE,
+	`ID_Familiar_C` INT NOT NULL UNIQUE,
+	INDEX `FK_Cuidador_Users_CF` (`ID_Cuidador_F`),
+	INDEX `FK_Familiar_Users_CF` (`ID_Familiar_C`),
+	CONSTRAINT `FK_Cuidador_Users_CF` FOREIGN KEY (`ID_Cuidador_F`) REFERENCES users(ID_User),
+	CONSTRAINT `FK_Familiar_Users_CF` FOREIGN KEY (`ID_Familiar_C`) REFERENCES users(ID_User),
+	CONSTRAINT `ID_Cuidador_Familiar` PRIMARY KEY(ID_Cuidador_F, ID_Familiar_C)
+);
+
+---Entidad Sensores
+CREATE TABLE IF NOT EXISTS `sensores` (
+	ID_Sensor INT(11) NOT NULL AUTO_INCREMENT,
+	`Type` TINYTEXT NOT NULL,
+	`Description` TEXT,
+	`Instalation_Date` DATE NOT NULL,
+	Users_ID1 INT NOT NULL UNIQUE,
+	INDEX FK_Users_ID1(Users_ID1),
+	CONSTRAINT FK_Users_ID1 FOREIGN KEY(Users_ID1) REFERENCES users(ID_User),
+	PRIMARY KEY (`ID_Sensor`)
+);
+
+CREATE TABLE IF NOT EXISTS Sensores_Continuos(
+	ID_Sensores_Continuos INT NOT NULL AUTO_INCREMENT,
+	Reading INT NOT NULL,
+	Date_Time_Activation DATETIME NOT NULL,
+	Sensores_ID1 INT NOT NULL UNIQUE,
+	INDEX FK_Sensores_ID1(Sensores_ID1),
+	CONSTRAINT FK_Sensores_ID1 FOREIGN KEY(Sensores_ID1) REFERENCES sensores(ID_Sensor),
+	PRIMARY KEY(ID_Sensores_Continuos)
+);
+
+CREATE TABLE IF NOT EXISTs Sensores_Discretos(
+	ID_Sensores_Discretos INT NOT NULL AUTO_INCREMENT,
+	Reading INT NOT NULL,
+	Date_Time_Activation DATETIME NOT NULL,
+	Sensores_ID2 INT NOT NULL UNIQUE,
+	INDEX FK_Sensores_ID2(Sensores_ID2),
+	CONSTRAINT FK_Sensores_ID2 FOREIGN KEY(Sensores_ID2) REFERENCES sensores(ID_Sensor),
+	PRIMARY KEY(ID_Sensores_Discretos)
+);
+
+CREATE TABLE IF NOT EXISTS `enviar_mensaje` (
+	`PK_Ticket` MEDIUMINT(8) NOT NULL AUTO_INCREMENT,
+	`ID_Ticket` TINYTEXT NOT NULL UNIQUE,
+	`Message` TEXT NOT NULL,
+	`Subject` TINYTEXT NOT NULL,
+	`Is_Read` TINYINT(1) NOT NULL,
+	`ID_User_Sender` INT(11) NOT NULL,
+	`ID_User_Receiver` INT(11) NOT NULL,
+	PRIMARY KEY (`PK_Ticket`),
+	INDEX `FK_Users_Sender` (`ID_User_Sender`),
+	INDEX `FK_Users_Receiver` (`ID_User_Receiver`),
+	CONSTRAINT `FK_Users_Receiver` FOREIGN KEY (`ID_User_Receiver`) REFERENCES `users` (`ID_User`),
+	CONSTRAINT `FK_Users_Sender` FOREIGN KEY (`ID_User_Sender`) REFERENCES `users` (`ID_User`)
+);
