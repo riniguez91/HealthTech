@@ -134,7 +134,7 @@
                               <Insets left="5.0" />
                            </padding>
                         </Label>
-                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Relaciones:" GridPane.rowIndex="11">
+                        <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Relaciones:" visible="false" GridPane.rowIndex="11">
                            <padding>
                               <Insets left="5.0" />
                            </padding>
@@ -150,7 +150,7 @@
                         <TextField fx:id="TextFieldTelephone" focusTraversable="false" layoutX="237.0" layoutY="62.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <TextField fx:id="TextFieldAddress" focusTraversable="false" layoutX="237.0" layoutY="89.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
                         <TextField fx:id="TextFieldDNI" focusTraversable="false" layoutX="237.0" layoutY="116.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <TextField fx:id="TextFieldRelaciones" focusTraversable="false" layoutX="237.0" layoutY="143.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <TextField fx:id="TextFieldRelaciones" focusTraversable="false" layoutX="237.0" layoutY="143.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                      </children>
                      <VBox.margin>
                         <Insets left="5.0" right="10.0" />

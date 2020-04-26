@@ -143,7 +143,6 @@ public class controladorAdmin{
                 TextFieldPhoto.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto());
                 TextFieldUsuario.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getUser());
                 userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto()));
-                //TextFieldRelaciones.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRelaciones());
             }
         }
     }

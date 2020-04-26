@@ -77,6 +77,8 @@ public class ConexionBBDD {
     public Vector<Integer> relatedUserIDS(Usuario usuario, String tabla, String FK1, String FK2) {
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            // Se podria hacer buscando solo en la tabla que relaciona los usuarios (pac-med, pac-fam etc.) pero lo dejamos asi por si en el
+            // futuro necesitamos información extra que solo se obtiene siguiendo las relaciones y multiplicando las tablas con el INNER JOIN
             String s = "SELECT `" + tabla + "`." + FK2 + " FROM users INNER JOIN `" + tabla + "` ON `" + tabla + "`." + FK1 + " = users.ID_User" +
                     " WHERE users.ID_User = " + usuario.getID_User();
             pstm = c.prepareStatement(s);

@@ -128,15 +128,6 @@ public class modelo {
         return !esValido;
     }
 
-    public boolean checkUniqueUsername(List<Usuario> usuarios, String username) {
-        for (Usuario user : usuarios) {
-            if (user.getUser().equals(username)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public ArrayList<Usuario> usuariosRelacionados(Usuario usuario) { // pac-cuid, pac-fam, pac-med, cuid-pac, cuid-med, cuid-fam,
         ArrayList<Usuario> usuariosRelacionados = new ArrayList<>();
         try {
