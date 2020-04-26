@@ -14,8 +14,9 @@ public class usuarioTTView extends RecursiveTreeObject<usuarioTTView> {
     private final StringProperty birthday;
     private final IntegerProperty age;
     private final StringProperty imagenPerfil;
+    private final StringProperty adress;
 
-    public usuarioTTView(int ID_User, String name, String surname, String rol, String birthday, Integer age, String imagenPerfil){
+    public usuarioTTView(int ID_User, String name, String surname, String rol, String birthday, Integer age, String imagenPerfil, String adress){
         this.ID_User = new SimpleIntegerProperty(ID_User);
         this.name = new SimpleStringProperty(name);
         this.surname = new SimpleStringProperty(surname);
@@ -23,6 +24,7 @@ public class usuarioTTView extends RecursiveTreeObject<usuarioTTView> {
         this.birthday = new SimpleStringProperty(birthday);
         this.age = new SimpleIntegerProperty(age);
         this.imagenPerfil = new SimpleStringProperty(imagenPerfil);
+        this.adress = new SimpleStringProperty(adress);
     }
 
     public IntegerProperty getID_User() { return this.ID_User; }
@@ -76,4 +78,9 @@ public class usuarioTTView extends RecursiveTreeObject<usuarioTTView> {
     public void setImagenPerfil(String imagenPerfil) {
         this.imagenPerfil.set(imagenPerfil);
     }
+
+	public StringProperty getAdress() {
+		return adress;
+	}
+    
 }

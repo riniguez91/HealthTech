@@ -95,9 +95,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             userImageViewInicio.setImage(new Image(usuario.getPhoto()));
 
         // Creamos las listas de usuarios y mensajes
-        crearTreeTableView(treeTableViewUsuarios);
-        crearTreeTableView(treeTableViewRegistros);
-        crearTreeTableView(treeTableViewLocalizacion);
+        crearTreeTableView(treeTableViewUsuarios, false);
+        crearTreeTableView(treeTableViewRegistros, true);
+        crearTreeTableView(treeTableViewLocalizacion, true);
+        
         crearTreeTableViewMensajes();
 
         // Comprobamos mensajes nuevos
@@ -370,7 +371,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 || usuarioTreeItem.getValue().getRolUsuario().get().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
     } // filterUserUsuario()
 
-    public void crearTreeTableView(TreeTableView<usuarioTTView> ttv) {
+    public void crearTreeTableView(TreeTableView<usuarioTTView> ttv, boolean soloPacientes) {
         JFXTreeTableColumn<usuarioTTView, String> nombreCol = new JFXTreeTableColumn<>("Nombre");
         JFXTreeTableColumn<usuarioTTView, String> apellidosCol = new JFXTreeTableColumn<>("Apellidos");
         JFXTreeTableColumn<usuarioTTView, String> rolCol = new JFXTreeTableColumn<>("Rol");
@@ -386,11 +387,18 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         rolCol.setMaxWidth(159);
 
         ObservableList<usuarioTTView> users = FXCollections.observableArrayList();
-
+        
         // Añadimos los usuarios
-        for (Usuario user : modelo.usuariosRelacionados(usuario))
-            users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto()));
-
+        if (soloPacientes) {
+        	for (Usuario user : modelo.usuariosRelacionados(usuario))
+        		if (user.getRol().equals("paciente")) 
+                    users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto(), user.getAdress()));
+		} else {
+	        // Añadimos los usuarios
+			for (Usuario user : modelo.usuariosRelacionados(usuario))
+				users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto(), user.getAdress()));
+		}
+ 
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
 
         // TTV Usuarios
@@ -652,68 +660,53 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Formato que le daremos a la fecha
         calendarioSensores.setConverter(new LocalDateStringConverter(formatter, null)); // Convertimos la fecha del objetos LocalDate con nuestro formato
 
-        // Temperatura
-        XYChart.Series seriesTemperatura = new XYChart.Series();
-        for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
-            if ((formatter.format(calendarioSensores.getValue()).compareTo(temperatura.getFecha())) == 0) {
-                seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
-            }
-        }
-        graficaTemperatura.getData().addAll(seriesTemperatura);
-
-        // Magnetico
-        XYChart.Series seriesMagnetico = new XYChart.Series();
-        for (modSensorMagnetico magnetico : modelo.getDatosMagnetico()) {
-            if ((formatter.format(calendarioSensores.getValue()).compareTo(magnetico.getFecha())) == 0) {
-                seriesMagnetico.getData().add(new XYChart.Data(magnetico.getHora(), magnetico.getValor()));
-            }
-        }
-        graficaMagnetico.getData().addAll(seriesMagnetico);
-
-        // Gas
-        XYChart.Series seriesGas = new XYChart.Series();
-        for (modSensorGas gas : modelo.getDatosGas()) {
-            if ((formatter.format(calendarioSensores.getValue()).compareTo(gas.getFecha())) == 0) {
-                seriesGas.getData().add(new XYChart.Data(gas.getHora(), gas.getValor()));
-            }
-        }
-        graficaGas.getData().addAll(seriesGas);
-
-        //Presion
-        for (modSensorPresion presion : modelo.getDatosPresion()) {
-            if ((formatter.format(calendarioSensores.getValue()).compareTo(presion.getFecha())) == 0) {
-                detalles.addAll(new PieChart.Data(presion.getDurmiendo(), presion.getValor()));
-                detalles.addAll(new PieChart.Data(presion.getDespierto(), (24 - presion.getValor())));
-                graficaPresion.setData(detalles);
-                graficaPresion.setLegendSide(Side.LEFT);
-                horasDurmiendo.setText(presion.getValor() + "");
-            }
-        }
+//        // Temperatura
+//        XYChart.Series seriesTemperatura = new XYChart.Series();
+//        for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
+//            if ((formatter.format(calendarioSensores.getValue()).compareTo(temperatura.getFecha())) == 0) {
+//                seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
+//            }
+//        }
+//        graficaTemperatura.getData().addAll(seriesTemperatura);
+//
+//        // Magnetico
+//        XYChart.Series seriesMagnetico = new XYChart.Series();
+//        for (modSensorMagnetico magnetico : modelo.getDatosMagnetico()) {
+//            if ((formatter.format(calendarioSensores.getValue()).compareTo(magnetico.getFecha())) == 0) {
+//                seriesMagnetico.getData().add(new XYChart.Data(magnetico.getHora(), magnetico.getValor()));
+//            }
+//        }
+//        graficaMagnetico.getData().addAll(seriesMagnetico);
+//
+//        // Gas
+//        XYChart.Series seriesGas = new XYChart.Series();
+//        for (modSensorGas gas : modelo.getDatosGas()) {
+//            if ((formatter.format(calendarioSensores.getValue()).compareTo(gas.getFecha())) == 0) {
+//                seriesGas.getData().add(new XYChart.Data(gas.getHora(), gas.getValor()));
+//            }
+//        }
+//        graficaGas.getData().addAll(seriesGas);
+//
+//        //Presion
+//        for (modSensorPresion presion : modelo.getDatosPresion()) {
+//            if ((formatter.format(calendarioSensores.getValue()).compareTo(presion.getFecha())) == 0) {
+//                detalles.addAll(new PieChart.Data(presion.getDurmiendo(), presion.getValor()));
+//                detalles.addAll(new PieChart.Data(presion.getDespierto(), (24 - presion.getValor())));
+//                graficaPresion.setData(detalles);
+//                graficaPresion.setLegendSide(Side.LEFT);
+//                horasDurmiendo.setText(presion.getValor() + "");
+//            }
+//        }
     }
 
     // ---------------------------- Tab Localizacion --------------------------------
-
-    @FXML
-    void ubicacionPaciente(ActionEvent event) {
-
-    }
-
-    @FXML
-    void verUbicacionCasa(ActionEvent event) {
-
-    }
-
-    @FXML
-    void mostrarDatosMapaPacientes(MouseEvent event) throws ParseException {
-        calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
-    }
-
+    
     public void initialize(URL url, ResourceBundle rb) {
         mapView.setKey("AIzaSyABUQnPXeldroN__fhm1LDiZh5sUtkSMBM"); // No usar
         mapView.addMapInializedListener(this);
         address.bind(addressTextField.textProperty());
     }
-
+    
     @Override
     public void mapInitialized() {
         geocodingService = new GeocodingService();
@@ -741,7 +734,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         Marker marker = new Marker(markerOptions);
         map.addMarker(marker);
     }
-
+    
     @FXML
     public void addressTextFieldAction(ActionEvent event) {
         geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
@@ -754,7 +747,57 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
             latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             map.setCenter(latLong);
+            
+            // Añadir un Marker al mapa de la casa
+            MarkerOptions markerOptions = new MarkerOptions();
+
+            markerOptions.position(latLong)
+                    .visible(Boolean.TRUE)
+                    .title("My Marker");
+
+            Marker marker = new Marker(markerOptions);
+            map.addMarker(marker);
         });
+    }
+
+    @FXML
+    void verUbicacionCasa(ActionEvent event) {
+    	if (treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getAdress().get() != null) {
+            geocodingService.geocode(treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getAdress().get(), (GeocodingResult[] results, GeocoderStatus status) -> {
+                LatLong latLong;
+                // No hubo resultados
+                if (status == GeocoderStatus.ZERO_RESULTS)
+                	modelo.createAlert("Error", "No se encontraron direcciones coincidentes");
+
+                if (results.length > 1) 
+                	modelo.createAlert("Informacion", "Multiples resultados encontrados, mostrando el primero.");
+
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+                map.setCenter(latLong);
+                
+                // Añadir un Marker al mapa de la casa
+                MarkerOptions markerOptions = new MarkerOptions();
+
+                markerOptions.position(latLong)
+                        .visible(Boolean.TRUE)
+                        .title("Casa de "+ treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getName().get()+" "+treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getSurname().get());
+                Marker marker = new Marker(markerOptions);
+         
+                map.addMarker(marker);
+            });
+		} else {
+			modelo.createAlert("Selección de usuario", "Debes seleccionar un usuario antes de poder ver la ubicación");
+		}
+    }
+    
+    @FXML
+    void ubicacionPaciente(ActionEvent event) {
+
+    }
+
+    @FXML
+    void mostrarDatosMapaPacientes(MouseEvent event) throws ParseException {
+        calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
     }
 
     // -------------------- Fin metodos tab Localizacion --------------------
