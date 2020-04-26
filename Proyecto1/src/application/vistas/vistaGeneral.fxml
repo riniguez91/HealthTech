@@ -563,7 +563,7 @@
                                           <DatePicker fx:id="calendarioSensores" onAction="#mostrarSensoresDia" prefHeight="51.0" prefWidth="293.0" />
                                        </children>
                                     </HBox>
-                                    <Label prefHeight="23.0" prefWidth="344.0" text="Solo hay datos los dias 19,20,21 de enero de 2020" />
+                                    <Label prefHeight="23.0" prefWidth="344.0" text="Solo hay datos para el 19 de enero de 2020" />
                                     <Separator prefWidth="200.0" />
                                  </children>
                               </VBox>

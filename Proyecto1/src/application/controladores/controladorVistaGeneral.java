@@ -38,7 +38,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.util.converter.LocalDateStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -70,12 +69,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         this.cp = cp_;
 
         modelo.setMessages(conexionBBDD.getMensajesDeUsuario(usuario.getID_User()));
-
-        /*modelo.leerJsonMensajes("./Proyecto1/src/application/jsonFiles/messages.json");
-        modelo.leerJsonTemperatura("./Proyecto1/src/application/jsonFiles/SensorTemp.json");
-        modelo.leerJsonGas("./Proyecto1/src/application/jsonFiles/SensorGas.json");
-        modelo.leerJsonMagnetico("./Proyecto1/src/application/jsonFiles/SensorMagnetico.json");
-        modelo.leerJsonPresion("./Proyecto1/src/application/jsonFiles/SensorPresion.json");*/
 
         aniadirPreguntasFrecuentes();
 
@@ -689,9 +682,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         // Gas
         XYChart.Series seriesGas = new XYChart.Series();
-
-        // Presion
-        XYChart.Series seriesPresion = new XYChart.Series();
 
         String sentenciaContinuo = "SELECT sensores_continuos.*\n" +
                 "FROM sensores_continuos\n" +
