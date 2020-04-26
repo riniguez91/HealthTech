@@ -44,6 +44,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -640,16 +641,37 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
 
 
+
     // -------------------- Metodos tab Registros --------------------
 
     @FXML
-    void mostrarDatosSensoresPacientes(MouseEvent event) throws ParseException {
-        calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
+    void mostrarSensoresDia(ActionEvent event) {
+        if (treeTableViewRegistros.getSelectionModel().getSelectedItem() != null)
+            llenarGraficasSensores();
+        else
+            modelo.createAlert("Cuidado", "Primero debe escojer un usuario");
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
+    public void poblarStackedBarChart(DateTimeFormatter formatter, XYChart.Series series, StackedBarChart<Double, Double> grafica, String sentencia,
+                                      String tipoSensor) {
+        for (sensor sc : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                tipoSensor, formatter.format(calendarioSensores.getValue().atStartOfDay()),
+                formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentencia) ) {
+            Timestamp timestamp = new Timestamp(sc.getDate_Time_Activation().getTime());
+            series.getData().add(new XYChart.Data(timestamp.toLocalDateTime().getHour()+"", sc.getReading()));
+        }
+        grafica.getData().addAll(series);
+    }
+
     @FXML
-    void mostrarSensoresDia(ActionEvent event) {
+    void mostrarDatosSensoresPacientes(MouseEvent event) { // mostrarDatosSensoresPacientes(MouseEvent event)
+        if (calendarioSensores.getValue() != null)
+            llenarGraficasSensores();
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    public void llenarGraficasSensores() {
         //Limpiamos todas las gráficas
         graficaTemperatura.getData().clear();
         graficaMagnetico.getData().clear();
@@ -657,46 +679,57 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         graficaPresion.getData().clear();
         detalles.clear();
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd"); // Formato que le daremos a la fecha
-        calendarioSensores.setConverter(new LocalDateStringConverter(formatter, null)); // Convertimos la fecha del objetos LocalDate con nuestro formato
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Formato que le daremos a la fecha
 
-//        // Temperatura
-//        XYChart.Series seriesTemperatura = new XYChart.Series();
-//        for (modSensorTemperatura temperatura : modelo.getDatosTemperatura()) {
-//            if ((formatter.format(calendarioSensores.getValue()).compareTo(temperatura.getFecha())) == 0) {
-//                seriesTemperatura.getData().add(new XYChart.Data(temperatura.getHora(), temperatura.getTemperatura()));
-//            }
-//        }
-//        graficaTemperatura.getData().addAll(seriesTemperatura);
-//
-//        // Magnetico
-//        XYChart.Series seriesMagnetico = new XYChart.Series();
-//        for (modSensorMagnetico magnetico : modelo.getDatosMagnetico()) {
-//            if ((formatter.format(calendarioSensores.getValue()).compareTo(magnetico.getFecha())) == 0) {
-//                seriesMagnetico.getData().add(new XYChart.Data(magnetico.getHora(), magnetico.getValor()));
-//            }
-//        }
-//        graficaMagnetico.getData().addAll(seriesMagnetico);
-//
-//        // Gas
-//        XYChart.Series seriesGas = new XYChart.Series();
-//        for (modSensorGas gas : modelo.getDatosGas()) {
-//            if ((formatter.format(calendarioSensores.getValue()).compareTo(gas.getFecha())) == 0) {
-//                seriesGas.getData().add(new XYChart.Data(gas.getHora(), gas.getValor()));
-//            }
-//        }
-//        graficaGas.getData().addAll(seriesGas);
-//
-//        //Presion
-//        for (modSensorPresion presion : modelo.getDatosPresion()) {
-//            if ((formatter.format(calendarioSensores.getValue()).compareTo(presion.getFecha())) == 0) {
-//                detalles.addAll(new PieChart.Data(presion.getDurmiendo(), presion.getValor()));
-//                detalles.addAll(new PieChart.Data(presion.getDespierto(), (24 - presion.getValor())));
-//                graficaPresion.setData(detalles);
-//                graficaPresion.setLegendSide(Side.LEFT);
-//                horasDurmiendo.setText(presion.getValor() + "");
-//            }
-//        }
+        // Temperatura
+        XYChart.Series seriesTemperatura = new XYChart.Series();
+
+        // Magnetico
+        XYChart.Series seriesMagnetico = new XYChart.Series();
+
+        // Gas
+        XYChart.Series seriesGas = new XYChart.Series();
+
+        // Presion
+        XYChart.Series seriesPresion = new XYChart.Series();
+
+        String sentenciaContinuo = "SELECT sensores_continuos.*\n" +
+                "FROM sensores_continuos\n" +
+                "INNER JOIN sensores ON sensores_continuos.Sensores_ID1 = sensores.ID_Sensor\n" +
+                "INNER JOIN users ON sensores.Users_ID1 = users.ID_User\n" +
+                "WHERE users.ID_User = ? AND sensores.`Type` = ? AND sensores_continuos.Date_Time_Activation BETWEEN ? AND ?";
+
+        String sentenciaDiscreto = "SELECT sensores_discretos.*\n" +
+                "FROM sensores_discretos\n" +
+                "INNER JOIN sensores ON sensores_discretos.Sensores_ID2 = sensores.ID_Sensor\n" +
+                "INNER JOIN users ON sensores.Users_ID1 = users.ID_User\n" +
+                "WHERE users.ID_User = ? AND sensores.`Type` = ? AND sensores_discretos.Date_Time_Activation BETWEEN ? AND ?";
+
+        if (treeTableViewRegistros.getSelectionModel().getSelectedItem() != null) {
+            for (sensor sc : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                    "Temperatura", formatter.format(calendarioSensores.getValue().atStartOfDay()),
+                    formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaContinuo)  ) {
+                Timestamp timestamp = new Timestamp(sc.getDate_Time_Activation().getTime());
+                seriesTemperatura.getData().add(new XYChart.Data(timestamp.toLocalDateTime().getHour()+"", sc.getReading()));
+            }
+            graficaTemperatura.getData().addAll(seriesTemperatura);
+
+            poblarStackedBarChart(formatter, seriesGas, graficaGas, sentenciaContinuo, "Gas");
+
+            poblarStackedBarChart(formatter, seriesMagnetico, graficaMagnetico, sentenciaDiscreto, "Magnetico");
+
+            double durmiendo = 0;
+            for (sensor sd : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                    "Presion", formatter.format(calendarioSensores.getValue().atStartOfDay()),
+                    formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaDiscreto) ) {
+                if (sd.getReading() == 1)
+                    durmiendo += 1;
+            }
+            detalles.add(new PieChart.Data("Durmiendo", durmiendo));
+            detalles.add(new PieChart.Data("Despierto", 24-durmiendo));
+            graficaPresion.setData(detalles);
+            horasDurmiendo.setText(durmiendo+"");
+        }
     }
 
     // ---------------------------- Tab Localizacion --------------------------------
@@ -762,7 +795,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     @FXML
     void verUbicacionCasa(ActionEvent event) {
-    	if (treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getAdress().get() != null) {
+    	if (treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getAdress().get() != null &&
+                treeTableViewLocalizacion.getSelectionModel().getSelectedItem() != null) {
             geocodingService.geocode(treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getAdress().get(), (GeocodingResult[] results, GeocoderStatus status) -> {
                 LatLong latLong;
                 // No hubo resultados
@@ -802,5 +836,5 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     // -------------------- Fin metodos tab Localizacion --------------------
 
-} // controladorVistaGeneral
+} // controladorVistaGeneral()
 

@@ -1,7 +1,6 @@
 package application.modelos;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Vector;
 
 public class ConexionBBDD {
@@ -14,8 +13,8 @@ public class ConexionBBDD {
 
     // public ConexionBBDD(String path) { BBDDName = path; };
 
-    public ArrayList<Usuario> sentenciaSQL(String sql) {
-    	ArrayList<Usuario> usuariosBBDD= new ArrayList<>();
+    public Vector<Usuario> sentenciaSQL(String sql) {
+    	Vector<Usuario> usuariosBBDD= new Vector<>();
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             stmt = c.createStatement();
@@ -31,7 +30,6 @@ public class ConexionBBDD {
             c.close();
         } catch (SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
-            return null;
         }
         return usuariosBBDD;
     }
@@ -198,6 +196,34 @@ public class ConexionBBDD {
         } catch(SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
+    }
+
+    public Vector<sensor> leerDatosSensor(int ID_User, String tipoSensor, String startDate, String endDate, String sql) {
+        Vector<sensor> datosSensCont = new Vector<>();
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+
+            pstm = c.prepareStatement(sql);
+
+            pstm.setInt(1, ID_User);
+            pstm.setString(2, tipoSensor);
+            pstm.setString(3, startDate);
+            pstm.setString(4, endDate);
+
+
+            rs = pstm.executeQuery();
+            while (rs.next())
+                if (tipoSensor.equals("Temperatura") || tipoSensor.equals("Gas"))
+                    datosSensCont.add(new sensor(rs.getInt("ID_Sensores_Continuos"), rs.getDouble("Reading"),
+                            rs.getDate("Date_Time_Activation")));
+                else
+                    datosSensCont.add(new sensor(rs.getInt("ID_Sensores_Discretos"), rs.getDouble("Reading"),
+                            rs.getDate("Date_Time_Activation")));
+
+        } catch(SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+        return datosSensCont;
     }
 
 } // ConexionBBDD()

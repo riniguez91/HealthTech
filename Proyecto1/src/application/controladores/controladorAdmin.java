@@ -1,24 +1,17 @@
 package application.controladores;
 
-import java.lang.reflect.Array;
-import java.text.ParseException;
-import java.util.ArrayList;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import application.modelos.ConexionBBDD;
 import application.modelos.Usuario;
 import application.modelos.modelo;
-import application.modelos.usuarioTTView;
-import javafx.beans.property.IntegerProperty;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -30,6 +23,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import sun.reflect.generics.tree.Tree;
+
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class controladorAdmin{
 
@@ -86,11 +82,16 @@ public class controladorAdmin{
     @FXML private TreeTableView<Usuario> treeTableViewUsuarios;
 
     @FXML void cancelarRespuestaTicket(ActionEvent event) {
+
     }
+
     @FXML void filterUsersUsuario(KeyEvent event) {
+
     }
+
     @FXML void mostrarDatosUsuarios(MouseEvent event) {
-        
+        if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null)
+            System.out.println(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName());
     }
    
     
@@ -114,14 +115,31 @@ public class controladorAdmin{
 
         TreeItem<Usuario> root = new TreeItem<>(new Usuario());
 
+        ObservableList<TreeItem<Usuario>> firstLevel = FXCollections.observableArrayList();
+
         // Añadimos los usuarios
         ConexionBBDD c = new ConexionBBDD();
 
-        for (Usuario user : c.sentenciaSQL("SELECT * FROM users"))
-            root.getChildren().add(new TreeItem<>(user));
+        for (Usuario user : c.sentenciaSQL("SELECT * FROM users")) {
+            if (user.getRol().equals("paciente")) {
+                TreeItem<Usuario> userNode = new TreeItem<>(user);
+                for (Usuario relatedUsers : modelo.usuariosRelacionados(user))
+                    userNode.getChildren().add(new TreeItem<>(relatedUsers));
+                firstLevel.add(userNode);
+            }
+        }
 
-        // ss.getChildren().addAll(so);
-        /*TreeItem<Usuario> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);*/
+        root.setExpanded(true);
+
+        FilteredList<TreeItem<Usuario>> filteredList = new FilteredList<>(firstLevel, usuarioTreeItem -> true);
+
+        filteredList.predicateProperty().bind(Bindings.createObjectBinding(() -> {
+            String filter = filtrarUsuarioTFieldUsuarios.getText();
+            if (filter.isEmpty()) return usuarioTreeItem -> true;
+            return usuarioTreeItem -> usuarioTreeItem.getValue().getName().startsWith(filter);
+        }, filtrarUsuarioTFieldUsuarios.textProperty()));
+
+        Bindings.bindContent(root.getChildren(), filteredList);
 
         // TTV Usuarios
         ttv.getColumns().add(0, nombreCol);
@@ -129,6 +147,7 @@ public class controladorAdmin{
         ttv.getColumns().add(2, rolCol);
         ttv.getColumns().add(3, userIDCol);
         ttv.setRoot(root);
+
     } // crearTreeTableViewUsuarios()
 
 
