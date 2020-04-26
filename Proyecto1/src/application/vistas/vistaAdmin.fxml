@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -34,9 +33,6 @@
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
-                           <image>
-                              <Image url="@../../resources/fotos/cuidador_jrodriguez.png" />
-                           </image>
                         </ImageView>
                      </children>
                      <VBox.margin>
@@ -143,18 +139,18 @@
                               <Insets left="5.0" />
                            </padding>
                         </Label>
-                        <TextField GridPane.columnIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField layoutX="237.0" layoutY="36.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField layoutX="237.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField layoutX="237.0" layoutY="36.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <TextField layoutX="237.0" layoutY="62.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <TextField layoutX="237.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <TextField layoutX="237.0" layoutY="36.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <TextField layoutX="237.0" layoutY="62.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <TextField layoutX="237.0" layoutY="89.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                        <TextField layoutX="237.0" layoutY="116.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-                        <TextField layoutX="237.0" layoutY="143.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <TextField fx:id="TextFieldID" GridPane.columnIndex="1" />
+                        <TextField fx:id="TextFieldNombre" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="TextFieldApellidos" layoutX="237.0" layoutY="36.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="TextFieldDOB" layoutX="237.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="TextFieldUsuario" layoutX="237.0" layoutY="36.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="TextFieldPassword" layoutX="237.0" layoutY="62.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="TextFieldRol" layoutX="237.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="TextFieldPhoto" layoutX="237.0" layoutY="36.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="TextFieldTelephone" layoutX="237.0" layoutY="62.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="TextFieldAddress" layoutX="237.0" layoutY="89.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextField fx:id="TextFieldDNI" layoutX="237.0" layoutY="116.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <TextField fx:id="TextFieldRelaciones" layoutX="237.0" layoutY="143.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                      </children>
                      <VBox.margin>
                         <Insets left="5.0" right="10.0" />
@@ -163,12 +159,12 @@
                   <Separator prefHeight="30.0" prefWidth="801.0" styleClass="separator-black" stylesheets="@../application.css" />
                   <HBox alignment="BOTTOM_CENTER" maxWidth="1076.0" prefHeight="42.0" prefWidth="1076.0" spacing="100.0">
                      <children>
-                        <JFXButton fx:id="EliminarUsuarioBtn" contentDisplay="RIGHT" prefHeight="41.0" prefWidth="310.0" styleClass="botones" stylesheets="@../application.css" text="Eliminar Usuario">
+                        <JFXButton fx:id="EliminarUsuarioBtn" contentDisplay="RIGHT" onAction="#DeleteUser" prefHeight="41.0" prefWidth="310.0" styleClass="botones" stylesheets="@../application.css" text="Eliminar Usuario">
                            <padding>
                               <Insets right="1.0" />
                            </padding>
                         </JFXButton>
-                        <JFXButton fx:id="GuardarCambiosBtn" onAction="#cancelarRespuestaTicket" prefHeight="41.0" prefWidth="310.0" styleClass="botones" stylesheets="@../application.css" text="Guardar Cambios" />
+                        <JFXButton fx:id="GuardarCambiosBtn" onAction="#GuardarCambios" prefHeight="41.0" prefWidth="310.0" styleClass="botones" stylesheets="@../application.css" text="Guardar Cambios" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" />
