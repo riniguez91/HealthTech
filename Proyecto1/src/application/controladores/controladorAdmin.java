@@ -14,10 +14,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +24,7 @@ import javafx.scene.layout.VBox;
 import sun.reflect.generics.tree.Tree;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Vector;
 
 public class controladorAdmin{
@@ -91,10 +89,17 @@ public class controladorAdmin{
     }
     
     @FXML void DeleteUser(ActionEvent event) {    	
-    		
-    	ConexionBBDD c = new ConexionBBDD();
-    		c.eliminarUsuario(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User());
-  	
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("Cuidado");
+        alert.setContentText("Estas seguro de que quieres borrar el usuario? Esto borrara todo dato asociado con el en la base de datos");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            ConexionBBDD c = new ConexionBBDD();
+            c.eliminarUsuario(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User());
+        }
+        else {
+            alert.close();
+        }
     }
     
     @FXML void GuardarCambios(ActionEvent event) {
@@ -138,8 +143,7 @@ public class controladorAdmin{
                 TextFieldPhoto.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto());
                 TextFieldUsuario.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getUser());
                 userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto()));
-                //TextFieldRelaciones.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRelaciones());				
-               
+                //TextFieldRelaciones.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRelaciones());
             }
         }
     }
