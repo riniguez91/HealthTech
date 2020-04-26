@@ -15,6 +15,7 @@ import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
@@ -30,6 +31,7 @@ import java.util.Vector;
 public class controladorAdmin{
 
     private modelo modelo;
+    private final ConexionBBDD conexionBBDD = new ConexionBBDD();
 
 
     public void initModelo(modelo modelo_) {
@@ -48,29 +50,43 @@ public class controladorAdmin{
     @FXML private VBox VBoxInformacion;
 
     @FXML private ImageView userImageViewUsuarios;
-
+/*
     @FXML private Label labelNombreUsuarios;
-
     @FXML private Label labelApellidosUsuarios;
-
     @FXML private Label labelFechaNacimientoUsuarios;
-
     @FXML private Label labelRolUsuarios;
-
     @FXML private Label labelEdadUsuarios;
-
     @FXML private Label labelIDUsuarios;
-
     @FXML private Label labelFotoUsuarios;
-
     @FXML private Label labelTelefonoUsuarios;
-
     @FXML private Label labelDireccionUsuarios;
-
     @FXML private Label labelDNIUsuarios;
-
     @FXML private Label labelRelacionesUsuarios;
+*/
+    @FXML private TextField TextFieldID;
 
+    @FXML private TextField TextFieldNombre;
+
+    @FXML private TextField TextFieldPassword;
+
+    @FXML private TextField TextFieldDOB;
+
+    @FXML private TextField TextFieldRol;
+
+    @FXML private TextField TextFieldUsuario;
+
+    @FXML private TextField TextFieldPhoto;
+
+    @FXML private TextField TextFieldAddress;
+
+    @FXML private TextField TextFieldRelaciones;
+
+    @FXML private TextField TextFieldApellidos;
+
+    @FXML private TextField TextFieldDNI;
+
+    @FXML private TextField TextFieldTelephone;
+    
     @FXML private JFXButton EliminarUsuarioBtn;
 
     @FXML private JFXButton GuardarCambiosBtn;
@@ -84,14 +100,62 @@ public class controladorAdmin{
     @FXML void cancelarRespuestaTicket(ActionEvent event) {
 
     }
-
-    @FXML void filterUsersUsuario(KeyEvent event) {
-
+    
+    @FXML void DeleteUser(ActionEvent event) {    	
+    		
+    	ConexionBBDD c = new ConexionBBDD();
+    		c.eliminarUsuario(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User());
+  	
+    }
+    
+    @FXML void GuardarCambios(ActionEvent event) {
+  	
+    	ConexionBBDD c = new ConexionBBDD();
+    		c.editUser(TextFieldNombre.getText(), TextFieldApellidos.getText(), TextFieldDOB.getText(), TextFieldUsuario.getText(), TextFieldPassword.getText(), TextFieldRol.getText(), 
+    				TextFieldPhoto.getText(), Integer.parseInt(TextFieldTelephone.getText()), TextFieldAddress.getText(), TextFieldDNI.getText(), Integer.parseInt(TextFieldID.getText()));   				    	
     }
 
+   /* @FXML void filterUsersUsuario(KeyEvent event) {
+        (treeTableViewUsuarios).setPredicate(usuarioTreeItem -> usuarioTreeItem.getValue().getName().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()) ||
+                usuarioTreeItem.getValue().getSurnames().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase())
+                || usuarioTreeItem.getValue().getRol().toLowerCase().startsWith(filtrarUsuarioTFieldUsuarios.getText().toLowerCase()));
+    }*/
+    
+    @FXML void filterUsersUsuario(KeyEvent event) {
+    	
+    }
     @FXML void mostrarDatosUsuarios(MouseEvent event) {
-        if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null)
-            System.out.println(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName());
+        
+    	// Cambiamos los datos del usuario mientras se haya seleccionado uno
+        if (treeTableViewUsuarios.getSelectionModel().getSelectedItem() != null) {
+            // Comprobamos si el panel de datos de usuario y creacion de mensajes esta visible
+        	//System.out.println(VBoxUsuarios.setVisible(false));
+        	//VBoxUsuarios.setVisible(false);
+            if (!VBoxInformacion.isVisible()) {
+            	VBoxInformacion.setVisible(true);
+                seleccionaUsuarioLabel.setVisible(false);
+            }
+            // Si esta visible actualizamos los datos del usuario seleccionado
+            if (VBoxUsuarios.isVisible()) {
+                TextFieldNombre.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName());
+                TextFieldApellidos.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurnames());
+                TextFieldRol.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRol());
+                TextFieldDOB.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getDOB());
+                TextFieldPassword.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPassword());
+                TextFieldTelephone.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getTelephone()+"");
+                TextFieldDNI.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getDNI());
+                TextFieldAddress.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAdress());
+                TextFieldID.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User()+"");
+                TextFieldPhoto.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto());
+                TextFieldUsuario.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getUser());
+                //TextFieldRelaciones.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRelaciones());
+                //System.out.println(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRelaciones());
+                
+				
+                //userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto()));
+               
+            }
+        }
     }
    
     

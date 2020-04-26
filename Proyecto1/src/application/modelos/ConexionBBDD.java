@@ -73,7 +73,7 @@ public class ConexionBBDD {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
     }
-
+    
     public Vector<Integer> relatedUserIDS(Usuario usuario, String tabla, String FK1, String FK2) {
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
@@ -224,6 +224,54 @@ public class ConexionBBDD {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
         return datosSensCont;
+    }
+    
+    //-------Admin
+    
+
+    public void eliminarUsuario(Integer ID_Usuario) {
+    	try {
+    		c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+    		String s = "DELETE FROM pr_healthtech.users WHERE ID_User = ? ;" ;
+    		pstm = c.prepareStatement(s);
+    		
+    		pstm.setInt(1, ID_Usuario );
+    		
+    		pstm.executeQuery();
+    		pstm.close();
+    		c.close();
+    	}catch (SQLException sqle) {   		
+    	System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());    	}
+    }
+    
+    //Editar Usuario para cambiarle los datos en la base de datos
+    public void editUser(String name, String surnames, String DOB, String user, String password,
+			String rol,String photo, int telephone, String adress, String dni, int ID_user) {
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String s = "UPDATE pr_healthtech.users SET users.name = ? , users.surnames = ?, users.DOB = ? , users.user = ? , users.password = ?, users.rol = ?, users.photo = ?, users.telephone = ?, users.adress = ?, users.DNI = ? WHERE users.ID_User = ?;";
+
+            pstm = c.prepareStatement(s);
+            
+            pstm.setString(1, name);
+			pstm.setString(2, surnames);
+			pstm.setString(3, DOB);
+			pstm.setString(4, user);
+			pstm.setString(5, password);
+			pstm.setString(6, rol);
+			pstm.setString(7, photo);
+			pstm.setInt(8, telephone);
+			pstm.setString(9, adress);
+			pstm.setString(10, dni);
+			pstm.setInt(11, ID_user);
+
+            pstm.executeQuery();
+
+            pstm.close();
+            c.close();
+        } catch(SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
     }
 
 } // ConexionBBDD()
