@@ -86,7 +86,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         if (usuario.getPhoto().isEmpty())
             userImageViewInicio.setImage(new Image("@..\\..\\resources\\fotos\\user.png"));
         else
-            userImageViewInicio.setImage(new Image(usuario.getPhoto()));
+        	userImageViewInicio.setImage(new Image(usuario.getPhoto()));
 
         // Creamos las listas de usuarios y mensajes
         crearTreeTableView(treeTableViewUsuarios, false);
