@@ -6,6 +6,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -101,23 +102,6 @@
                               <Insets left="5.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="labelNombreUsuarios" prefHeight="29.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelApellidosUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="labelFechaNacimientoUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelRolUsuarios" prefHeight="32.0" prefWidth="1300.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label fx:id="labelEdadUsuarios" prefHeight="32.0" prefWidth="1147.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
                         <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="ID Usuario:" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                            <font>
                               <Font name="System Bold" size="18.0" />
@@ -154,46 +138,23 @@
                               <Insets left="5.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="labelIDUsuarios" prefHeight="32.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelRolUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelFotoUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelTelefonoUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelDireccionUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelDNIUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
                         <Label prefHeight="50.0" prefWidth="230.0" style="-fx-background-color: white;" styleClass="LabelAdmin" stylesheets="@../application.css" text="Relaciones:" GridPane.rowIndex="11">
                            <padding>
                               <Insets left="5.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="labelRelacionesUsuarios" prefHeight="45.0" prefWidth="1200.0" style="-fx-background-color: white;" styleClass="LabelTextoAdmin" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="11">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
+                        <TextField GridPane.columnIndex="1" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField layoutX="237.0" layoutY="36.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField layoutX="237.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField layoutX="237.0" layoutY="36.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField layoutX="237.0" layoutY="62.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField layoutX="237.0" layoutY="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField layoutX="237.0" layoutY="36.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField layoutX="237.0" layoutY="62.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField layoutX="237.0" layoutY="89.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextField layoutX="237.0" layoutY="116.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <TextField layoutX="237.0" layoutY="143.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                      </children>
                      <VBox.margin>
                         <Insets left="5.0" right="10.0" />
