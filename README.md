@@ -4,7 +4,7 @@ displaying this info on a user-friendly application using java fx.
 We'll introduce actual sensor data from real sensors in the coming months along with the implementation of a database using MariaDB.
 
 ## Authors
- * Ramón Íñiguez - github.com/riniguez91
- * Víctor Hernández - github.com/victor00hs
- * Rubén Ortiz - github.com/RubenOrtizNieto
- * Pedro Navarro - github.com/pdroCN
+ * Ramón Íñiguez Bascuas - github.com/riniguez91
+ * Víctor Hernández Sanz - github.com/victor00hs
+ * Rubén Ortiz Nieto - github.com/RubenOrtizNieto
+ * Pedro Collado Navarro - github.com/PdroCN
