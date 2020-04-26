@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -50,19 +51,7 @@ public class controladorAdmin{
     @FXML private VBox VBoxInformacion;
 
     @FXML private ImageView userImageViewUsuarios;
-/*
-    @FXML private Label labelNombreUsuarios;
-    @FXML private Label labelApellidosUsuarios;
-    @FXML private Label labelFechaNacimientoUsuarios;
-    @FXML private Label labelRolUsuarios;
-    @FXML private Label labelEdadUsuarios;
-    @FXML private Label labelIDUsuarios;
-    @FXML private Label labelFotoUsuarios;
-    @FXML private Label labelTelefonoUsuarios;
-    @FXML private Label labelDireccionUsuarios;
-    @FXML private Label labelDNIUsuarios;
-    @FXML private Label labelRelacionesUsuarios;
-*/
+
     @FXML private TextField TextFieldID;
 
     @FXML private TextField TextFieldNombre;
@@ -148,11 +137,8 @@ public class controladorAdmin{
                 TextFieldID.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User()+"");
                 TextFieldPhoto.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto());
                 TextFieldUsuario.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getUser());
-                //TextFieldRelaciones.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRelaciones());
-                //System.out.println(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRelaciones());
-                
-				
-                //userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto()));
+                userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto()));
+                //TextFieldRelaciones.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRelaciones());				
                
             }
         }
