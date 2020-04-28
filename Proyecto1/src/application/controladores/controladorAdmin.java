@@ -96,6 +96,7 @@ public class controladorAdmin{
         if (result.get() == ButtonType.OK) {
             ConexionBBDD c = new ConexionBBDD();
             c.eliminarUsuario(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User());
+            treeTableViewUsuarios.getSelectionModel().selectFirst();
         }
         else {
             alert.close();
@@ -142,7 +143,8 @@ public class controladorAdmin{
                 TextFieldID.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User()+"");
                 TextFieldPhoto.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto());
                 TextFieldUsuario.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getUser());
-                userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto()));
+                if (treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto() != null)
+                    userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto()));
             }
         }
     }

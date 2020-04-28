@@ -83,7 +83,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
 
         // Establecemos la foto del usuario en la pestaña de Inicio
-        if (usuario.getPhoto().isEmpty())
+        if (usuario.getPhoto() == null)
             userImageViewInicio.setImage(new Image("@..\\..\\resources\\fotos\\user.png"));
         else
         	userImageViewInicio.setImage(new Image(usuario.getPhoto()));
