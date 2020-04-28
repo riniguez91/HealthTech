@@ -80,7 +80,7 @@ public class controladorCreacionUsuario {
             } else {
                 ConexionBBDD c = new ConexionBBDD();
                 String sentenciaSQL = "INSERT INTO users (`Name`, `Surnames`, `DOB`, `User`, `Password`, `Rol`, `Photo`, `Telephone`, `Adress`, `DNI`) \n" +
-                            "VALUE (?, ?, ?, ?, MD5(?), ?, \"@..\\..\\resources\\fotos\\user.png\", ?, ?, ?);";
+                            "VALUE (?, ?, ?, ?, MD5(?), ?, \"@..\\\\..\\\\resources\\\\fotos\\\\user.png\", ?, ?, ?);";
                 Date dob_util = new SimpleDateFormat("yyyy-MM-dd").parse(crearCumpleTField.getText());
                 java.sql.Date dob = new java.sql.Date(dob_util.getTime()); // Casteamos de java.util.Date a java.sql.Date mediante el metodo .getTime()
                 c.insertUserRS(sentenciaSQL, crearNombreTField.getText(), crearApellidosTField.getText(), dob,  crearUsernameTField.getText(), crearPasswordTField.getText(),

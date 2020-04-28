@@ -96,6 +96,8 @@ public class controladorAdmin{
         if (result.get() == ButtonType.OK) {
             ConexionBBDD c = new ConexionBBDD();
             c.eliminarUsuario(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User());
+            treeTableViewUsuarios.getRoot().getChildren().remove(treeTableViewUsuarios.getSelectionModel().getSelectedItem());
+            cargarDatos(treeTableViewUsuarios.getRoot().getChildren().get(0).getValue());
             treeTableViewUsuarios.getSelectionModel().selectFirst();
         }
         else {
@@ -132,19 +134,7 @@ public class controladorAdmin{
             }
             // Si esta visible actualizamos los datos del usuario seleccionado
             if (VBoxUsuarios.isVisible()) {
-                TextFieldNombre.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName());
-                TextFieldApellidos.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurnames());
-                TextFieldRol.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRol());
-                TextFieldDOB.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getDOB());
-                TextFieldPassword.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPassword());
-                TextFieldTelephone.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getTelephone()+"");
-                TextFieldDNI.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getDNI());
-                TextFieldAddress.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAdress());
-                TextFieldID.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getID_User()+"");
-                TextFieldPhoto.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto());
-                TextFieldUsuario.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getUser());
-                if (treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto() != null)
-                    userImageViewUsuarios.setImage(new Image(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getPhoto()));
+                cargarDatos(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue());
             }
         }
     }
@@ -205,6 +195,19 @@ public class controladorAdmin{
 
     } // crearTreeTableViewUsuarios()
 
-
-    
+    public void cargarDatos(Usuario usuario) {
+        TextFieldNombre.setText(usuario.getName());
+        TextFieldApellidos.setText(usuario.getSurnames());
+        TextFieldRol.setText(usuario.getRol());
+        TextFieldDOB.setText(usuario.getDOB());
+        TextFieldPassword.setText(usuario.getPassword());
+        TextFieldTelephone.setText(usuario.getTelephone()+"");
+        TextFieldDNI.setText(usuario.getDNI());
+        TextFieldAddress.setText(usuario.getAdress());
+        TextFieldID.setText(usuario.getID_User()+"");
+        TextFieldPhoto.setText(usuario.getPhoto());
+        TextFieldUsuario.setText(usuario.getUser());
+        if (usuario.getPhoto() != null)
+            userImageViewUsuarios.setImage(new Image(usuario.getPhoto()));
+    }
 }
