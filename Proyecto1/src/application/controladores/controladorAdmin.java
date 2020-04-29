@@ -106,10 +106,10 @@ public class controladorAdmin{
     }
     
     @FXML void GuardarCambios(ActionEvent event) {
-  	
     	ConexionBBDD c = new ConexionBBDD();
-    		c.editUser(TextFieldNombre.getText(), TextFieldApellidos.getText(), TextFieldDOB.getText(), TextFieldUsuario.getText(), TextFieldPassword.getText(), TextFieldRol.getText(), 
-    				TextFieldPhoto.getText(), Integer.parseInt(TextFieldTelephone.getText()), TextFieldAddress.getText(), TextFieldDNI.getText(), Integer.parseInt(TextFieldID.getText()));   				    	
+    	c.editUser(TextFieldNombre.getText(), TextFieldApellidos.getText(), TextFieldDOB.getText(), TextFieldUsuario.getText(), TextFieldPassword.getText(), TextFieldRol.getText(),
+    				TextFieldPhoto.getText(), Integer.parseInt(TextFieldTelephone.getText()), TextFieldAddress.getText(), TextFieldDNI.getText(), Integer.parseInt(TextFieldID.getText()));
+    	modelo.createAlert("Informacion", "Se han actualizado los cambios");
     }
 
    /* @FXML void filterUsersUsuario(KeyEvent event) {

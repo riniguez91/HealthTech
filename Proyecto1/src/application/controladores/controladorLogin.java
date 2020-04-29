@@ -185,9 +185,10 @@ public class controladorLogin {
                         break;
                     
                 }          
-            }else if (usrnameField.getText().equals("admin") && pswdField.getText().equals("admin"))
+            } else if (usrnameField.getText().equals("admin") && pswdField.getText().equals("admin"))
             	cargarVistaAdmin();
-            
+            if (!pswdField.getText().isEmpty())
+                pswdField.clear();
             incorrectFieldLabel.setVisible(true);
         }
         catch (SQLException | IOException | ParseException sqle) {
