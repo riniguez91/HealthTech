@@ -13,6 +13,20 @@ public class ConexionBBDD {
 
     // public ConexionBBDD(String path) { BBDDName = path; };
 
+    //Conectar base de datos en local
+    public void conexionLocal() {
+    	String BBDDName = "C:/Users/victo/Documents/GitHub/proyecto1-techhealth/Proyecto1/src/BaseDatosLocal.db"; //RUTA absoluta
+    	try {
+    		c = DriverManager.getConnection("jdbc:sqlite:"+BBDDName); //LOCAL
+    		//c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123"); //Remoto
+    		System.out.println("GG WP");
+    		c.close();
+		} catch (SQLException sqle) {
+			System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+		}
+    }//Fin Conexion local
+    
+    
     public Vector<Usuario> sentenciaSQL(String sql) {
     	Vector<Usuario> usuariosBBDD= new Vector<>();
         try {
