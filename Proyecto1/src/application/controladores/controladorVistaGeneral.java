@@ -591,7 +591,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             TextFlow tf = new TextFlow();
             Text t1 = new Text();
             t1.setFont(Font.font("Century Gothic", FontWeight.BOLD, 15));
-            // t1.setStyle("-fx-font-weight: bold");
 
             labelMessages.add(new Label(mensaje.getMessage()));
             labelMessages.get(i).setMaxWidth(scrollPaneMensajes.getPrefWidth()/2);
@@ -613,6 +612,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             vboxConversacionMensajes.setSpacing(15);
             i++;
         }
+        // Bajamos el scrollPane hasta el ultimo mensaje
+        vboxConversacionMensajes.heightProperty().addListener(observable -> scrollPaneMensajes.setVvalue(1.0));
     } // changeTicketConversation()
 
 
