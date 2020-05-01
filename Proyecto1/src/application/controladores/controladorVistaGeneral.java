@@ -22,6 +22,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.NodeOrientation;
+import javafx.geometry.Pos;
 import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,8 +39,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -214,6 +220,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     @FXML private AnchorPane conversacionMensajes;
 
     @FXML private VBox vboxConversacionMensajes;
+
+    @FXML private JFXButton botonResponderTicket;
 
 
 
@@ -453,7 +461,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                                                                usuario.getName() + usuario.getSurnames(),
                                                                treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get()
                                                                        + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get(),
-                                                               msg.getSubject(), msg.getMessage(), msg.getIdTicket(), msg.getRead())));
+                                                               msg.getSubject(), msg.getMessage(), msg.getIdTicket(), msg.getRead(), usuario.getUser())));
             // Junto a los mensajes no leidos
             comprobarMensajesNuevos();
         }
@@ -511,7 +519,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                     if (sender.next() && receiver.next()) { // Si hay un mensaje
                         messages.add(new messageTTView(msg.getSenderID(), msg.getReceiverID(), sender.getString("Name") + " " + sender.getString("Surnames"),
                                 receiver.getString("Name") + " " + receiver.getString("Surnames"), msg.getSubject(), msg.getMessage(), msg.getIdTicket(),
-                                msg.getRead()));
+                                msg.getRead(), sender.getString("User")));
                         uniqueMessageIDS.add(msg.getIdTicket());
                     }
                 }
@@ -544,7 +552,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             // Cojemos todos los mensajes pertenecientes a un ticket
             Vector<Message> messagesInATicket = conexionBBDD.getMensajesDeTicket(idTicketJFXTextFieldMensajes.getText());
 
-            // Marcamos el mensaje como leido
+            // Marcamos el mensaje/s como leido
             setMsgAsRead(messagesInATicket);
 
             // Cambiamos el scroll pane para mostrar la lista de mensajes correspondientes al ticket seleccionado
@@ -571,18 +579,32 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         // En este caso no usamos una lambda para no tener que usar un AtomicInteger, por lo tanto simplificando el codigo
         int i = 0;
         for (Message mensaje : messages) {
+            VBox vb = new VBox();
+            vb.setFillWidth(false);
+            vb.setPrefWidth(scrollPaneMensajes.getPrefWidth());
+
+            TextFlow tf = new TextFlow();
+            Text t1 = new Text();
+            t1.setFont(Font.font("Century Gothic", FontWeight.BOLD, 15));
+            // t1.setStyle("-fx-font-weight: bold");
+
             labelMessages.add(new Label(mensaje.getMessage()));
-            labelMessages.get(i).setPrefWidth(scrollPaneMensajes.getPrefWidth() - 10);
+            labelMessages.get(i).setMaxWidth(scrollPaneMensajes.getPrefWidth()/2);
             labelMessages.get(i).setWrapText(true);
-            labelMessages.get(i).setFont(new Font("Century Gothic", 17));
+            labelMessages.get(i).setFont(new Font("Century Gothic", 18));
             if (mensaje.getSenderID() == usuario.getID_User()) {
-                labelMessages.get(i).setPadding(new Insets(10, 310, 0, 13));
+                t1.setText(usuario.getUser().toUpperCase()+"\n");
+                vb.setAlignment(Pos.CENTER_RIGHT);
                 labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.WHEAT, new CornerRadii(5, 5, 5, 5, false), Insets.EMPTY)));
+                labelMessages.get(i).setPadding(new Insets(0, 10, 0, 10));
             } else {
-                labelMessages.get(i).setPadding(new Insets(10, 13, 0, 150));
-                labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.LIGHTBLUE, new CornerRadii(5, 5, 5, 5, false), Insets.EMPTY)));
+                t1.setText(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getSenderUName().get().toUpperCase()+"\n");
+                labelMessages.get(i).setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, new CornerRadii(5, 5, 5, 5, false), Insets.EMPTY)));
+                labelMessages.get(i).setPadding(new Insets(0,0,0,10));
             }
-            vboxConversacionMensajes.getChildren().add(labelMessages.get(i));
+            tf.getChildren().addAll(t1, labelMessages.get(i));
+            vb.getChildren().add(tf);
+            vboxConversacionMensajes.getChildren().add(vb);
             vboxConversacionMensajes.setSpacing(15);
             i++;
         }

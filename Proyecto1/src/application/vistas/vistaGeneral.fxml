@@ -511,13 +511,10 @@
                                     </Separator>
                                     <ScrollPane fx:id="scrollPaneMensajes" fitToHeight="true" fitToWidth="true" prefHeight="623.0" prefWidth="1391.0">
                                        <content>
-                                          <AnchorPane fx:id="conversacionMensajes" prefHeight="540.0" prefWidth="1426.0">
+                                          <AnchorPane fx:id="conversacionMensajes" styleClass="msgBImage">
                                              <children>
-                                                <VBox fx:id="vboxConversacionMensajes" alignment="CENTER" />
+                                                <VBox fx:id="vboxConversacionMensajes" fillWidth="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
-                                             <padding>
-                                                <Insets left="10.0" />
-                                             </padding>
                                           </AnchorPane>
                                        </content>
                                        <VBox.margin>

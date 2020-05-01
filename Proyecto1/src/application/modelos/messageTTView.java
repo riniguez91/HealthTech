@@ -2,6 +2,7 @@ package application.modelos;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.*;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 public class messageTTView extends RecursiveTreeObject<messageTTView> {
     private final IntegerProperty senderID;
@@ -12,8 +13,10 @@ public class messageTTView extends RecursiveTreeObject<messageTTView> {
     private final StringProperty message;
     private final StringProperty idTicket;
     private final BooleanProperty read;
+    private final StringProperty senderUName;
 
-    public messageTTView(int senderID, int receiverID, String senderName, String receiverName, String subject, String message, String idTicket, boolean read) {
+    public messageTTView(int senderID, int receiverID, String senderName, String receiverName, String subject, String message, String idTicket, boolean read,
+                         String senderUName) {
         this.senderID = new SimpleIntegerProperty(senderID);
         this.receiverID = new SimpleIntegerProperty(receiverID);
         this.senderName = new SimpleStringProperty(senderName);
@@ -22,6 +25,7 @@ public class messageTTView extends RecursiveTreeObject<messageTTView> {
         this.message = new SimpleStringProperty(message);
         this.idTicket = new SimpleStringProperty(idTicket);
         this.read = new SimpleBooleanProperty(read);
+        this.senderUName = new SimpleStringProperty(senderUName);
     }
 
     public IntegerProperty getSenderID() { return senderID; }
@@ -74,5 +78,13 @@ public class messageTTView extends RecursiveTreeObject<messageTTView> {
 
     public void setRead(boolean read) {
         this.read.set(read);
+    }
+
+    public StringProperty getSenderUName() {
+        return this.senderUName;
+    }
+
+    public void setSenderUName(String senderUName) {
+        this.senderUName.set(senderUName);
     }
 }

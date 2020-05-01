@@ -185,3 +185,7 @@
 	-fx-font-weight: normal;
 }
 
+/* Background image */
+.msgBImage {
+	-fx-background-image: url("../resources/fotos/whatsapp_bckground.jpg");
+}
