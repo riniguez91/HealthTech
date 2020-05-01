@@ -274,15 +274,20 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     public void aniadirPreguntasFrecuentes() {
         int i = 0;
-        String[] preguntasYRespuestas = {"1. ¿Cómo puedo enviar un mensaje a mi médico?\n En la pestaña \"Mensajes\" en la parte inferior izquierda hay que pulsar el botón \"Crear Nuevo Ticket\" ahi te aparece para introducir el destinatario, asunto y mensaje."
-                , "2. ¿Dónde puedo cerrar sesión?\nEn la pestaña de \"Inicio\" en la parte inferior izquierda, hay que pulsar el botón\"Cerrar Sesión\"."
-                , "3. ¿Puedo buscar un Usuario por su nombre o apellido?\nSí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido."
-                , "4. ¿Dónde puedo ver todos mis mensajes?\nEn la pestaña \"Mensajes\" sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos."};
+        String[] preguntasYRespuestas = {"1. ¿Cómo puedo enviar un mensaje a mi médico?\n", "En la pestaña \"Mensajes\" en la parte inferior izquierda hay que pulsar el botón \"Crear Nuevo Ticket\" ahi te aparece para introducir el destinatario, asunto y mensaje."
+                , "2. ¿Dónde puedo cerrar sesión?\n", "En la pestaña de \"Inicio\" en la parte inferior izquierda, hay que pulsar el botón\"Cerrar Sesión\"."
+                , "3. ¿Puedo buscar un Usuario por su nombre o apellido?\n", "Sí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido."
+                , "4. ¿Dónde puedo ver todos mis mensajes?\n", "En la pestaña \"Mensajes\" sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos."};
         for (String PyR : preguntasYRespuestas) {
             labelFAQ.add(new Label(PyR));
             labelFAQ.get(i).setPrefWidth(940);
             labelFAQ.get(i).setWrapText(true);
             labelFAQ.get(i).setFont(new Font("Century Gothic", 20));
+            if (i % 2 == 0)
+                labelFAQ.get(i).setFont(Font.font("Century Gothic", FontWeight.BOLD, 20));
+            else
+                Font.font("Century Gothic", 20);
+
             labelFAQ.get(i).setPadding(new Insets(0, 0, 0, 20));
             vboxFAQ.getChildren().add(labelFAQ.get(i));
             vboxFAQ.setSpacing(15);
