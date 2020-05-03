@@ -568,7 +568,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     public void setMsgAsRead(Vector<Message> messages) {
         // Cambiamos el mensaje como leido si no lo estaba
         for (Message msg : messages) {
-            if (!msg.getRead())
+            if (!msg.getRead() && msg.getReceiverID() == usuario.getID_User())
                 conexionBBDD.setMsgAsRead(msg);
         }
 
@@ -634,7 +634,13 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         // Insertamos el mensaje en la BBDD
         conexionBBDD.insertarMensaje(msg.getIdTicket(), msg.getMessage(), msg.getSubject(), msg.getSenderID(), msg.getReceiverID());
-        modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente, por favor compruebelo pinchando donde le indica la tabla");
+        modelo.createAlert("Informacion", "Se ha enviado el mensaje correctamente");
+
+        // Borramos la conversacion en caso de que hubiese una seleccionada para poder introducir la siguiente
+        labelMessages.clear();
+        vboxConversacionMensajes.getChildren().clear();
+        changeTicketConversation(conexionBBDD.getMensajesDeTicket(treeTableViewMensajes.getSelectionModel().getSelectedItem().getValue().getIdTicket().get()));
+
     } // crearMensajeYResponderTicket()
 
     @FXML
