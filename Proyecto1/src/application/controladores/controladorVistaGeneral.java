@@ -283,14 +283,17 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             labelFAQ.get(i).setPrefWidth(940);
             labelFAQ.get(i).setWrapText(true);
             labelFAQ.get(i).setFont(new Font("Century Gothic", 20));
-            if (i % 2 == 0)
+            if (i % 2 == 0) {
                 labelFAQ.get(i).setFont(Font.font("Century Gothic", FontWeight.BOLD, 20));
-            else
+                labelFAQ.get(i).setPadding(new Insets(0, 0, 0, 10));
+            }
+            else {
                 Font.font("Century Gothic", 20);
+                labelFAQ.get(i).setPadding(new Insets(0, 0, 0, 20));
+            }
 
-            labelFAQ.get(i).setPadding(new Insets(0, 0, 0, 20));
             vboxFAQ.getChildren().add(labelFAQ.get(i));
-            vboxFAQ.setSpacing(15);
+            vboxFAQ.setSpacing(10);
             i++;
         }
     } // aniadirPreguntasFrecuentes()
@@ -356,6 +359,12 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         if (calendario.getAgendaView().getListView().getItems().size() != 0) {
             agendaViewInicio.getListView().setItems(calendario.getAgendaView().getListView().getItems());
             modelo.createAlert("Informacion", "El evento se ha añadido correctamente");
+            // System.out.println(calendario.getAgendaView().getListView().getItems().get(0).getEntries().get(0).calendarProperty().get());
+            // calendario.getAgendaView().get
+            LocalDate d = LocalDate.now();
+            AgendaView.AgendaEntry n = new AgendaView.AgendaEntry(d);
+            agendaViewInicio.getListView().getItems().add(n);
+            calendario.getAgendaView().getListView().getItems().add(n);
         } else {
             modelo.createAlert("Informacion", "Primero debe de añadir un evento al calendario");
         }
@@ -857,11 +866,12 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 "INNER JOIN users ON sensores.Users_ID1 = users.ID_User\n" +
                 "WHERE users.ID_User = ? AND sensores.`Type` = ?";
         
-        for (sensor sg : conexionBBDD.leerDatosSensorGPS(treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getID_User().get(), "GPS" , sentenciaGPS)  ) {
+        for (sensor sg : conexionBBDD.leerDatosSensorGPS(treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                                                "GPS" , sentenciaGPS)) {
         	latlong = new LatLong (sg.getLatitude(), sg.getLongitude());
         	map.setCenter(latlong);
         }
-        
+
         // Añadir un Marker al mapa de la casa
         MarkerOptions markerOptions = new MarkerOptions();
         
