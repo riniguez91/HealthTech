@@ -233,6 +233,12 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     @FXML private DatePicker calendarioSensores;
 
+    @FXML private ScrollPane scrollPaneRegistros;
+
+    @FXML private AnchorPane apaneRegistros;
+
+    @FXML private VBox vboxRegistros_apane;
+
     @FXML private LineChart<Double, Double> graficaTemperatura;
 
     @FXML private StackedBarChart<Double, Double> graficaMagnetico;
@@ -280,17 +286,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 , "4. ¿Dónde puedo ver todos mis mensajes?\n", "En la pestaña \"Mensajes\" sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos."};
         for (String PyR : preguntasYRespuestas) {
             labelFAQ.add(new Label(PyR));
-            labelFAQ.get(i).setPrefWidth(940);
-            labelFAQ.get(i).setWrapText(true);
-            labelFAQ.get(i).setFont(new Font("Century Gothic", 20));
-            if (i % 2 == 0) {
-                labelFAQ.get(i).setFont(Font.font("Century Gothic", FontWeight.BOLD, 20));
-                labelFAQ.get(i).setPadding(new Insets(0, 0, 0, 10));
-            }
-            else {
-                Font.font("Century Gothic", 20);
-                labelFAQ.get(i).setPadding(new Insets(0, 0, 0, 20));
-            }
+            if (i % 2 == 0)
+                detailLabel(labelFAQ.get(i), Font.font("Century Gothic", FontWeight.BOLD, 20), 922, new Insets(0,0,0,10));
+            else
+                detailLabel(labelFAQ.get(i), Font.font("Century Gothic", 20), 922, new Insets(0,0,0,20));
 
             vboxFAQ.getChildren().add(labelFAQ.get(i));
             vboxFAQ.setSpacing(10);
@@ -308,12 +307,11 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             for (Message mensaje : modelo.getMessages()) {
                 // Si no esta leido y el senderID coincide con el del usuario
                 if (!mensaje.getRead() && mensaje.getReceiverID() == usuario.getID_User()) {
-                    // fds
                     ResultSet sender = conexionBBDD.selectUserFromID(mensaje.getSenderID());
                     sender.next(); // Sabemos que si que habra un resultado
                     labelMessagesInicio.add(new Label("- Asunto: " + mensaje.getSubject() + " || De parte de: " + sender.getString("Name")
                             + " " + sender.getString("Surnames")));
-                    labelMessagesInicio.get(i).setPrefWidth(1202);
+                    labelMessagesInicio.get(i).setPrefWidth(1330);
                     labelMessagesInicio.get(i).setWrapText(true);
                     labelMessagesInicio.get(i).setFont(new Font("Century Gothic", 26));
                     labelMessagesInicio.get(i).setPadding(new Insets(0, 0, 0, 20));
@@ -483,9 +481,9 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     @FXML
     void cancelarTicket(ActionEvent event) {
-        if (asuntoJFXTextFieldUsuarios.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty()) {
+        if (asuntoJFXTextFieldUsuarios.getText().isEmpty() && mensajeJFXTextFieldUsuarios.getText().isEmpty())
             modelo.createAlert("Informacion", "Primero debe introducir un asunto o un mensaje");
-        } else {
+        else {
             asuntoJFXTextFieldUsuarios.clear();
             mensajeJFXTextFieldUsuarios.clear();
         }
@@ -682,10 +680,37 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     @FXML
     void mostrarSensoresDia(ActionEvent event) {
-        if (treeTableViewRegistros.getSelectionModel().getSelectedItem() != null)
+        if (treeTableViewRegistros.getSelectionModel().getSelectedItem() != null) {
             llenarGraficasSensores();
+            dumpRegistrosSensores();
+        }
         else
             modelo.createAlert("Cuidado", "Primero debe escojer un usuario");
+    }
+
+    private void detailLabel(Label label, Font font, int prefWidth, Insets insets) {
+        label.setFont(font);
+        label.setPrefWidth(prefWidth);
+        label.setWrapText(true);
+        label.setPadding(insets);
+    }
+
+    private void dumpRegistrosSensores() {
+        // Limpiamos los registros
+        vboxRegistros_apane.getChildren().clear();
+
+        HashMap<String, Vector<String>> ss = conexionBBDD.recogerAlertasTemp(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                20, "Temperatura", "less");
+        for (Map.Entry<String, Vector<String>> entry : ss.entrySet()) {
+            Label dateInfo = new Label("--------------" + entry.getKey() + " --------------");
+            detailLabel(dateInfo, Font.font("Century Gothic", FontWeight.BOLD, 17), 595, new Insets(0, 0, 0, 5));
+            vboxRegistros_apane.getChildren().add(dateInfo);
+            for (String registro : entry.getValue()) {
+                Label registroSensor = new Label("\t" + registro);
+                detailLabel(registroSensor, Font.font("Century Gothic", 14), 595, new Insets(0,0,0,5));
+                vboxRegistros_apane.getChildren().add(registroSensor);
+            }
+        }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -701,10 +726,12 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     }
 
     @FXML
-    void mostrarDatosSensoresPacientes(MouseEvent event) { // mostrarDatosSensoresPacientes(MouseEvent event)
-        if (calendarioSensores.getValue() != null)
+    void mostrarDatosSensoresPacientes(MouseEvent event) {
+        if (calendarioSensores.getValue() != null) {
             llenarGraficasSensores();
-    }
+            dumpRegistrosSensores();
+        }
+    } // mostrarDatosSensoresPacientes()
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     public void llenarGraficasSensores() {

@@ -14,7 +14,7 @@
 	-fx-text-fill: black;
 	-fx-font-size: 40;
 	-fx-font-family: Century Gothic;
-	-fx-font-weight: bold;
+	/* -fx-font-weight: bold; */
 }
 .textoLabel{
 	-fx-text-fill: black;

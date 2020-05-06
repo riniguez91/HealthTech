@@ -152,9 +152,9 @@
                               </VBox>
                               <VBox alignment="CENTER" fillWidth="false" prefHeight="1046.0" prefWidth="1360.0">
                                  <children>
-                                    <Label prefHeight="37.0" prefWidth="453.0" text="RECORDATORIOS">
+                                    <Label prefHeight="83.0" prefWidth="474.0" text="RECORDATORIOS">
                                        <font>
-                                          <Font size="56.0" />
+                                          <Font name="System Bold" size="56.0" />
                                        </font>
                                     </Label>
                                     <Label prefHeight="58.0" prefWidth="1337.0" style="-fx-background-color: white;" styleClass="tituloLabel" stylesheets="@../application.css" text="Comunicación">
@@ -542,7 +542,7 @@
                      <children>
                         <HBox prefHeight="1046.0" prefWidth="1930.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox prefHeight="1046.0" prefWidth="640.0">
+                              <VBox fillWidth="false" prefHeight="1046.0" prefWidth="640.0">
                                  <children>
                                     <Label prefHeight="42.0" prefWidth="280.0" styleClass="textoLabel" stylesheets="@../application.css" text="Selecciona un paciente:">
                                        <font>
@@ -550,7 +550,7 @@
                                        </font>
                                     </Label>
                                     <JFXTreeTableView fx:id="treeTableViewRegistros" onMouseClicked="#mostrarDatosSensoresPacientes" prefHeight="383.0" prefWidth="640.0" showRoot="false" />
-                                    <HBox prefHeight="55.0" prefWidth="640.0">
+                                    <HBox alignment="TOP_RIGHT" prefHeight="55.0" prefWidth="640.0">
                                        <children>
                                           <Label prefHeight="51.0" prefWidth="175.0" styleClass="textoLabel" stylesheets="@../application.css" text="Selecciona un dia:">
                                              <font>
@@ -559,9 +559,30 @@
                                           </Label>
                                           <DatePicker fx:id="calendarioSensores" onAction="#mostrarSensoresDia" prefHeight="51.0" prefWidth="293.0" />
                                        </children>
+                                       <padding>
+                                          <Insets right="12.0" top="10.0" />
+                                       </padding>
                                     </HBox>
-                                    <Label prefHeight="23.0" prefWidth="344.0" text="Solo hay datos para el 19 de enero de 2020" />
-                                    <Separator prefWidth="200.0" />
+                                    <Label prefHeight="37.0" prefWidth="632.0" styleClass="tituloLabel" stylesheets="@../application.css" text="REGISTROS">
+                                       <font>
+                                          <Font name="System Bold" size="34.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="15.0" />
+                                       </padding></Label>
+                                    <Separator prefHeight="6.0" prefWidth="636.0" />
+                                    <ScrollPane fx:id="scrollPaneRegistros" fitToHeight="true" fitToWidth="true" prefHeight="484.0" prefWidth="612.0">
+                                       <content>
+                                          <AnchorPane fx:id="apaneRegistros" prefHeight="372.0" prefWidth="557.0">
+                                             <children>
+                                                <VBox fx:id="vboxRegistros_apane" alignment="CENTER" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </ScrollPane>
                                  </children>
                               </VBox>
                               <Separator orientation="VERTICAL" prefHeight="1080.0" />
