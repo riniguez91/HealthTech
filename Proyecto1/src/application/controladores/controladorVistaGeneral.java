@@ -65,6 +65,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     private final List<String> uniqueMessageIDS = new ArrayList<>();
     private controladorVistaGeneral cp;
     private final ConexionBBDD conexionBBDD = new ConexionBBDD();
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Formato que le daremos a la fecha
 
     public void initModelo(modelo modelo_, Usuario usuario_, controladorVistaGeneral cp_, String tipoVista) {
         if (this.modelo != null) {
@@ -686,35 +687,49 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         }
         else
             modelo.createAlert("Cuidado", "Primero debe escojer un usuario");
-    }
+    } // mostrarSensoresDia()
 
     private void detailLabel(Label label, Font font, int prefWidth, Insets insets) {
         label.setFont(font);
         label.setPrefWidth(prefWidth);
         label.setWrapText(true);
         label.setPadding(insets);
-    }
+    } // detialLabel()
 
-    private void dumpRegistrosSensores() {
-        // Limpiamos los registros
-        vboxRegistros_apane.getChildren().clear();
-
-        HashMap<String, Vector<String>> ss = conexionBBDD.recogerAlertasTemp(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
-                20, "Temperatura", "less");
-        for (Map.Entry<String, Vector<String>> entry : ss.entrySet()) {
-            Label dateInfo = new Label("--------------" + entry.getKey() + " --------------");
-            detailLabel(dateInfo, Font.font("Century Gothic", FontWeight.BOLD, 17), 595, new Insets(0, 0, 0, 5));
+    public void mostrarAlertasHashMap(HashMap<String, Vector<String >> hashMap) {
+        for (Map.Entry<String, Vector<String>> entry : hashMap.entrySet()) {
+            Label dateInfo = new Label("-------------- " + entry.getKey() + " --------------");
+            detailLabel(dateInfo, Font.font("Century Gothic", FontWeight.BOLD, 17), 595, new Insets(0, 0, 0, 10));
             vboxRegistros_apane.getChildren().add(dateInfo);
             for (String registro : entry.getValue()) {
                 Label registroSensor = new Label("\t" + registro);
                 detailLabel(registroSensor, Font.font("Century Gothic", 14), 595, new Insets(0,0,0,5));
                 vboxRegistros_apane.getChildren().add(registroSensor);
             }
+            vboxRegistros_apane.getChildren().add(new Label(" "));
         }
     }
 
+    private void dumpRegistrosSensores() {
+        // Limpiamos los registros
+        vboxRegistros_apane.getChildren().clear();
+
+        // Creamos el hash map para las alertas
+        HashMap<String, Vector<String>> alertasSensores = new HashMap<>();
+
+        // Lo poblamos con datos
+        conexionBBDD.recogerAlertas(alertasSensores, treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                                    formatter.format(calendarioSensores.getValue().minusWeeks(2).atStartOfDay()),
+                                    formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)) );
+
+        mostrarAlertasHashMap(alertasSensores);
+
+
+
+    } // dumpRegistrosSensores()
+
     @SuppressWarnings({"rawtypes", "unchecked"})
-    public void poblarStackedBarChart(DateTimeFormatter formatter, XYChart.Series series, StackedBarChart<Double, Double> grafica, String sentencia,
+    public void poblarStackedBarChart(XYChart.Series series, StackedBarChart<Double, Double> grafica, String sentencia,
                                       String tipoSensor) {
         for (sensor sc : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
                 tipoSensor, formatter.format(calendarioSensores.getValue().atStartOfDay()),
@@ -741,8 +756,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         graficaGas.getData().clear();
         graficaPresion.getData().clear();
         detalles.clear();
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Formato que le daremos a la fecha
 
         // Temperatura
         XYChart.Series seriesTemperatura = new XYChart.Series();
@@ -774,9 +787,9 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             }
             graficaTemperatura.getData().addAll(seriesTemperatura);
 
-            poblarStackedBarChart(formatter, seriesGas, graficaGas, sentenciaContinuo, "Gas");
+            poblarStackedBarChart(seriesGas, graficaGas, sentenciaContinuo, "Gas");
 
-            poblarStackedBarChart(formatter, seriesMagnetico, graficaMagnetico, sentenciaDiscreto, "Magnetico");
+            poblarStackedBarChart(seriesMagnetico, graficaMagnetico, sentenciaDiscreto, "Magnetico");
 
             double durmiendo = 0;
             for (sensor sd : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
@@ -792,7 +805,17 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         }
     }
 
-    // ---------------------------- Tab Localizacion --------------------------------
+    // -------------------- Fin metodos tab Registros --------------------
+
+
+
+
+
+
+
+
+
+    // -------------------- Metodos tab Localizacion --------------------
     
     public void initialize(URL url, ResourceBundle rb) {
         mapView.setKey("AIzaSyABUQnPXeldroN__fhm1LDiZh5sUtkSMBM"); // No usar

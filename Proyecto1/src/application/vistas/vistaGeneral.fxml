@@ -557,7 +557,7 @@
                                                 <Font name="Arial Bold" size="19.0" />
                                              </font>
                                           </Label>
-                                          <DatePicker fx:id="calendarioSensores" onAction="#mostrarSensoresDia" prefHeight="51.0" prefWidth="293.0" />
+                                          <DatePicker fx:id="calendarioSensores" onAction="#mostrarSensoresDia" prefHeight="51.0" prefWidth="293.0" showWeekNumbers="true" />
                                        </children>
                                        <padding>
                                           <Insets right="12.0" top="10.0" />

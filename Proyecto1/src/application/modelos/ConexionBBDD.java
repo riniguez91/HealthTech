@@ -257,7 +257,8 @@ public class ConexionBBDD {
 
             rs = pstm.executeQuery();
             while (rs.next())
-            	datosSensorGPS.add(new sensor(rs.getInt("ID_Sensor_GPS"), rs.getDouble("Latitude"), rs.getDouble("Longitude"), rs.getDate("Date_Time_Activation")));
+            	datosSensorGPS.add(new sensor(rs.getInt("ID_Sensor_GPS"), rs.getDouble("Latitude"), rs.getDouble("Longitude"),
+                                              rs.getDate("Date_Time_Activation")));
 
         } catch(SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
@@ -288,7 +289,8 @@ public class ConexionBBDD {
 			String rol,String photo, int telephone, String adress, String dni, int ID_user) {
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
-            String s = "UPDATE pr_healthtech.users SET users.name = ? , users.surnames = ?, users.DOB = ? , users.user = ? , users.password = ?, users.rol = ?, users.photo = ?, users.telephone = ?, users.adress = ?, users.DNI = ? WHERE users.ID_User = ?;";
+            String s = "UPDATE pr_healthtech.users SET users.name = ? , users.surnames = ?, users.DOB = ? , users.user = ? , users.password = ?, users.rol = ?, " +
+                       "users.photo = ?, users.telephone = ?, users.adress = ?, users.DNI = ? WHERE users.ID_User = ?;";
 
             pstm = c.prepareStatement(s);
             
@@ -313,42 +315,36 @@ public class ConexionBBDD {
         }
     }
 
-    public HashMap<String, Vector<String>> recogerAlertasTemp(int ID_User, int valorUmbral, String tipoSensor, String lesserOrGreater){
-        HashMap<String, Vector<String>> registros = new HashMap<>();
+    public void recogerAlertas(HashMap<String, Vector<String>> registros, int ID_User, String startDate, String endDate){
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
-            String s = "SELECT sensores.Type, sensores_continuos.Reading, sensores_continuos.Date_Time_Activation\n" +
-                    "FROM sensores_continuos\n" +
-                    "INNER JOIN sensores ON sensores.ID_Sensor = sensores_continuos.Sensores_ID1\n" +
-                    "INNER JOIN users ON users.ID_User = sensores.Users_ID1\n";
-            if (lesserOrGreater.equals("less"))
-                s += "WHERE users.ID_User = ? AND sensores_continuos.Reading < ? AND sensores.`Type`= ?;";
-            else
-                s += "WHERE users.ID_User = ? AND sensores_continuos.Reading > ? AND sensores.`Type`= ?;";
+            String s = "SELECT alertas.Tipo_Sensor, alertas.Reading, alertas.Date_Time_Activation\n" +
+                    "FROM alertas\n" +
+                    "WHERE alertas.ID_User = ? AND alertas.Date_Time_Activation BETWEEN ? AND ?";
             pstm = c.prepareStatement(s);
 
             pstm.setInt(1, ID_User);
-            pstm.setDouble(2, valorUmbral);
-            pstm.setString(3, tipoSensor);
+            pstm.setString(2, startDate);
+            pstm.setString(3, endDate);
+
             rs = pstm.executeQuery();
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             java.util.Date oldDate = sdf.parse("1999-12-10 18:44:44");
             while (rs.next()) {
                 String[] aux = rs.getString("Date_Time_Activation").split(" ");
-                if (sdf.parse(rs.getString("Date_Time_Activation")).getTime() != oldDate.getTime()) {
+                if (sdf.parse(rs.getString("Date_Time_Activation")).getTime() != oldDate.getTime() ) {
                     registros.put(aux[0], new Vector<>());
                     oldDate = sdf.parse(rs.getString("Date_Time_Activation"));
                 }
-                registros.get(aux[0]).add("Sensor " + rs.getString("Type") + " : " +
-                        rs.getDouble("Reading") + "ºC\tHora: " + rs.getString("Date_Time_Activation").split(" ")[1]);
+                registros.get(aux[0]).add(rs.getString("Tipo_Sensor") + " : " +
+                        rs.getDouble("Reading") + "ºC\tHora: " + rs.getString("Date_Time_Activation").split(" ")[1].split("\\.")[0]);
+                        // Cambiamos de un formato del tipo "YYYY-MM-DD HH:MM:SS.ffffff" a "HH:MM:SS"
             }
 
         } catch(SQLException | ParseException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
-
-        return registros;
-    }
+    } // recogerAlertas()
 
 } // ConexionBBDD()
