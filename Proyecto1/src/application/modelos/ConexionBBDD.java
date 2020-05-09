@@ -346,9 +346,9 @@ public class ConexionBBDD {
                 Text t1 = new Text("\t" + rs.getString("Tipo_Sensor") + " -->  ");
                 t1.setStyle("-fx-font-weight: bold");
 
-                Text t2 = new Text(rs.getDouble("Reading") + " ºC  ");
-                Text t3 = new Text(rs.getDouble("Reading") + " ppm  ");
-                Text t4 = new Text("Activado  ");
+                Text t2 = new Text(rs.getDouble("Reading") + " ºC  "); // Temperatura
+                Text t3 = new Text(rs.getDouble("Reading") + " ppm  "); // Gas
+                Text t4 = new Text("Activado  "); // Presion
 
                 Text t5 = new Text("Hora: ");
                 t5.setStyle("-fx-font-weight: bold");

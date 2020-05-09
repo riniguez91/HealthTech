@@ -2,6 +2,10 @@ package application.controladores;
 
 import application.modelos.*;
 
+import com.calendarfx.model.Calendar;
+import com.calendarfx.model.CalendarEvent;
+import com.calendarfx.model.CalendarSource;
+import com.calendarfx.model.Entry;
 import com.calendarfx.view.AgendaView;
 import com.calendarfx.view.page.DayPage;
 import com.jfoenix.controls.*;
@@ -18,6 +22,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -52,6 +57,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -106,6 +112,23 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         comprobarMensajesNuevos();
 
         if (tipoVista.equals("general")) tabPaneGeneral.getTabs().remove(4, 6);
+
+
+        Calendar cln = new Calendar("Citas");
+        Calendar cln2 = new Calendar("Personal");
+        cln2.addEntries(createEntry());
+        cln2.setStyle(Calendar.Style.STYLE3);
+        cln.setStyle(Calendar.Style.STYLE1); // 6 (rojo), 2 (azul)
+        cln.addEntries(createEntry(), createEntry());
+        CalendarSource calendarSourceTasks = new CalendarSource("Tasks");
+        calendarSourceTasks.getCalendars().addAll(cln, cln2);
+
+        calendario.getCalendarSources().set(0, calendarSourceTasks);
+        System.out.println(calendario.getCalendarSources().get(0).getName());
+
+        EventHandler<CalendarEvent> handler = event -> System.out.println(event.getEntry().getCalendar().getName());
+        cln2.addEventHandler(handler);
+        cln.addEventHandler(handler);
     }
 
     // -------------------- Tab Inicio --------------------
@@ -160,7 +183,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
 
 
-    // // -------------------- Tab Usuarios --------------------
+    // -------------------- Tab Usuarios --------------------
 
     @FXML private Tab tabUsuarios;
 
@@ -354,18 +377,37 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     // -------------------- Metodos tab Calendario --------------------
 
     @FXML
-    void guardarCalendario(ActionEvent event) {
+    public void ss(){
+        calendario.getDetailedDayView().getCalendarSources().get(0).getCalendars().get(0).addEntry(createEntry());
+        System.out.println(calendario.getDetailedDayView().getCalendarSources().get(0).getName());
+    }
+
+    public Entry<String> createEntry() {
+        Entry<String> entry = new Entry<>("Victor eres un jambocepticon");
+        entry.setInterval(LocalDate.now());
+        entry.changeStartDate(LocalDate.now());
+        entry.changeEndDate(LocalDate.now());
+        entry.changeStartTime(LocalTime.of(12, 30));
+        entry.changeEndTime(LocalTime.of(13, 30));
+
+        return entry;
+    }
+
+    @FXML
+    public void guardarCalendario(ActionEvent event) {
         if (calendario.getAgendaView().getListView().getItems().size() != 0) {
-            agendaViewInicio.getListView().setItems(calendario.getAgendaView().getListView().getItems());
+            // agendaViewInicio.getListView().setItems(calendario.getAgendaView().getListView().getItems());
             modelo.createAlert("Informacion", "El evento se ha añadido correctamente");
-            // System.out.println(calendario.getAgendaView().getListView().getItems().get(0).getEntries().get(0).calendarProperty().get());
-            // calendario.getAgendaView().get
-            LocalDate d = LocalDate.now();
-            AgendaView.AgendaEntry n = new AgendaView.AgendaEntry(d);
-            agendaViewInicio.getListView().getItems().add(n);
-            calendario.getAgendaView().getListView().getItems().add(n);
+
+            calendario.getDetailedDayView().getCalendarSources().get(0).getCalendars().get(0).addEntry(createEntry());
+            System.out.println(calendario.getDetailedDayView().getCalendarSources().get(0).getName());
+            // System.out.println(calendario.getDetailedDayView().getCalendarSources().get(0).getCalendars().get(0).findEntries("Que pasa victor"));
+            // System.out.println(calendario.getDetailedDayView().getCalendarSources().get(0).getCalendars().get(0).findEntries(""));
+
         } else {
             modelo.createAlert("Informacion", "Primero debe de añadir un evento al calendario");
+            calendario.getDetailedDayView().getCalendarSources().get(0).getCalendars().get(0).addEntry(createEntry());
+            System.out.println(calendario.getDetailedDayView().getCalendarSources().get(0).getName());
         }
     }
     // -------------------- Fin metodos tab Calendario --------------------
