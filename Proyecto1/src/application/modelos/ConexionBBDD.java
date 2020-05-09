@@ -339,38 +339,37 @@ public class ConexionBBDD {
                 if (sdf.parse(rs.getString("Date_Time_Activation")).getTime() != oldDate.getTime()) {
                     registros.put(aux[0], new Vector<>());
                     oldDate = sdf.parse(rs.getString("Date_Time_Activation"));
-                } else {
-                    TextFlow flow = new TextFlow();
-                    flow.setStyle("-fx-font-family: Century Gothic; -fx-font-size: 14");
+                }
+                TextFlow flow = new TextFlow();
+                flow.setStyle("-fx-font-family: Century Gothic; -fx-font-size: 14");
 
-                    Text t1 = new Text("\t" + rs.getString("Tipo_Sensor") + " -->  ");
-                    t1.setStyle("-fx-font-weight: bold");
+                Text t1 = new Text("\t" + rs.getString("Tipo_Sensor") + " -->  ");
+                t1.setStyle("-fx-font-weight: bold");
 
-                    Text t2 = new Text(rs.getDouble("Reading") + " ºC  ");
-                    Text t3 = new Text(rs.getDouble("Reading") + " ppm  ");
-                    Text t4 = new Text("Activado  ");
+                Text t2 = new Text(rs.getDouble("Reading") + " ºC  ");
+                Text t3 = new Text(rs.getDouble("Reading") + " ppm  ");
+                Text t4 = new Text("Activado  ");
 
-                    Text t5 = new Text("Hora: ");
-                    t5.setStyle("-fx-font-weight: bold");
+                Text t5 = new Text("Hora: ");
+                t5.setStyle("-fx-font-weight: bold");
 
-                    // Cambiamos de un formato del tipo "YYYY-MM-DD HH:MM:SS.ffffff" a "HH:MM:SS"
-                    Text t6 = new Text(rs.getString("Date_Time_Activation").split(" ")[1].split("\\.")[0]);
+                // Cambiamos de un formato del tipo "YYYY-MM-DD HH:MM:SS.ffffff" a "HH:MM:SS"
+                Text t6 = new Text(rs.getString("Date_Time_Activation").split(" ")[1].split("\\.")[0]);
 
-                    switch (rs.getString("Tipo_Sensor")) {
-                        case "Sensor Temperatura":
-                            flow.getChildren().addAll(t1, t2, t5, t6);
-                            registros.get(aux[0]).add(flow);
-                            break;
-                        case "Sensor Magnetico":
-                        case "Sensor Presion":
-                            flow.getChildren().addAll(t1, t4, t5, t6);
-                            registros.get(aux[0]).add(flow);
-                            break;
-                        case "Sensor Gas":
-                            flow.getChildren().addAll(t1, t3, t5, t6);
-                            registros.get(aux[0]).add(flow);
-                            break;
-                    }
+                switch (rs.getString("Tipo_Sensor")) {
+                    case "Sensor Temperatura":
+                        flow.getChildren().addAll(t1, t2, t5, t6);
+                        registros.get(aux[0]).add(flow);
+                        break;
+                    case "Sensor Magnetico":
+                    case "Sensor Presion":
+                        flow.getChildren().addAll(t1, t4, t5, t6);
+                        registros.get(aux[0]).add(flow);
+                        break;
+                    case "Sensor Gas":
+                        flow.getChildren().addAll(t1, t3, t5, t6);
+                        registros.get(aux[0]).add(flow);
+                        break;
                 }
             }
 
