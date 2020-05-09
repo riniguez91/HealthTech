@@ -696,16 +696,14 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         label.setPadding(insets);
     } // detialLabel()
 
-    public void mostrarAlertasHashMap(HashMap<String, Vector<String >> hashMap) {
-        for (Map.Entry<String, Vector<String>> entry : hashMap.entrySet()) {
+    public void mostrarAlertasHashMap(HashMap<String, Vector<TextFlow>> hashMap) {
+        for (Map.Entry<String, Vector<TextFlow>> entry : hashMap.entrySet()) {
             Label dateInfo = new Label("-------------- " + entry.getKey() + " --------------");
             detailLabel(dateInfo, Font.font("Century Gothic", FontWeight.BOLD, 17), 595, new Insets(0, 0, 0, 10));
             vboxRegistros_apane.getChildren().add(dateInfo);
-            for (String registro : entry.getValue()) {
-                Label registroSensor = new Label("\t" + registro);
-                detailLabel(registroSensor, Font.font("Century Gothic", 14), 595, new Insets(0,0,0,5));
-                vboxRegistros_apane.getChildren().add(registroSensor);
-            }
+            for (TextFlow registro : entry.getValue())
+                vboxRegistros_apane.getChildren().add(registro);
+
             vboxRegistros_apane.getChildren().add(new Label(" "));
         }
     }
@@ -715,7 +713,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         vboxRegistros_apane.getChildren().clear();
 
         // Creamos el hash map para las alertas
-        HashMap<String, Vector<String>> alertasSensores = new HashMap<>();
+        HashMap<String, Vector<TextFlow>> alertasSensores = new HashMap<>();
 
         // Lo poblamos con datos
         conexionBBDD.recogerAlertas(alertasSensores, treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),

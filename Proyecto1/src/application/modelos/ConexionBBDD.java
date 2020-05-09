@@ -1,5 +1,8 @@
 package application.modelos;
 
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -315,7 +318,7 @@ public class ConexionBBDD {
         }
     }
 
-    public void recogerAlertas(HashMap<String, Vector<String>> registros, int ID_User, String startDate, String endDate){
+    public void recogerAlertas(HashMap<String, Vector<TextFlow>> registros, int ID_User, String startDate, String endDate){
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String s = "SELECT alertas.Tipo_Sensor, alertas.Reading, alertas.Date_Time_Activation\n" +
@@ -332,14 +335,43 @@ public class ConexionBBDD {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             java.util.Date oldDate = sdf.parse("1999-12-10 18:44:44");
             while (rs.next()) {
-                String[] aux = rs.getString("Date_Time_Activation").split(" ");
-                if (sdf.parse(rs.getString("Date_Time_Activation")).getTime() != oldDate.getTime() ) {
+                String[] aux = rs.getString("Date_Time_Activation").split(" "); // aux[0] respresenta "YYYY-MM-DD" mientras que Aux[1] "HH:MM:SS.fffff"
+                if (sdf.parse(rs.getString("Date_Time_Activation")).getTime() != oldDate.getTime()) {
                     registros.put(aux[0], new Vector<>());
                     oldDate = sdf.parse(rs.getString("Date_Time_Activation"));
+                } else {
+                    TextFlow flow = new TextFlow();
+                    flow.setStyle("-fx-font-family: Century Gothic; -fx-font-size: 14");
+
+                    Text t1 = new Text("\t" + rs.getString("Tipo_Sensor") + " -->  ");
+                    t1.setStyle("-fx-font-weight: bold");
+
+                    Text t2 = new Text(rs.getDouble("Reading") + " ºC  ");
+                    Text t3 = new Text(rs.getDouble("Reading") + " ppm  ");
+                    Text t4 = new Text("Activado  ");
+
+                    Text t5 = new Text("Hora: ");
+                    t5.setStyle("-fx-font-weight: bold");
+
+                    // Cambiamos de un formato del tipo "YYYY-MM-DD HH:MM:SS.ffffff" a "HH:MM:SS"
+                    Text t6 = new Text(rs.getString("Date_Time_Activation").split(" ")[1].split("\\.")[0]);
+
+                    switch (rs.getString("Tipo_Sensor")) {
+                        case "Sensor Temperatura":
+                            flow.getChildren().addAll(t1, t2, t5, t6);
+                            registros.get(aux[0]).add(flow);
+                            break;
+                        case "Sensor Magnetico":
+                        case "Sensor Presion":
+                            flow.getChildren().addAll(t1, t4, t5, t6);
+                            registros.get(aux[0]).add(flow);
+                            break;
+                        case "Sensor Gas":
+                            flow.getChildren().addAll(t1, t3, t5, t6);
+                            registros.get(aux[0]).add(flow);
+                            break;
+                    }
                 }
-                registros.get(aux[0]).add(rs.getString("Tipo_Sensor") + " : " +
-                        rs.getDouble("Reading") + "ºC\tHora: " + rs.getString("Date_Time_Activation").split(" ")[1].split("\\.")[0]);
-                        // Cambiamos de un formato del tipo "YYYY-MM-DD HH:MM:SS.ffffff" a "HH:MM:SS"
             }
 
         } catch(SQLException | ParseException sqle) {
