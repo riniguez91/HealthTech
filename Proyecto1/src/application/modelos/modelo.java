@@ -1,5 +1,6 @@
 package application.modelos;
 
+import com.calendarfx.model.Entry;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -14,10 +15,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.ZoneId;
+import java.time.*;
 import java.util.*;
 import java.util.List;
 
@@ -186,5 +184,12 @@ public class modelo {
         usuariosRelacionados = crearArrListRolUsuario(relatedUTable1, usuariosRelacionados, c);
         usuariosRelacionados = crearArrListRolUsuario(relatedUTable2, usuariosRelacionados, c);
         crearArrListRolUsuario(relatedUTable3, usuariosRelacionados, c);
+    }
+
+    public Entry<String> createEntry(String title, LocalDateTime startDT, LocalDateTime endDT) {
+        Entry<String> entry = new Entry<>(title);
+        entry.setInterval(startDT, endDT);
+
+        return entry;
     }
 }

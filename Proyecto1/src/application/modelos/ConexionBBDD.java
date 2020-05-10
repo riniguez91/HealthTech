@@ -1,5 +1,6 @@
 package application.modelos;
 
+import com.calendarfx.model.Entry;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -7,6 +8,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class ConexionBBDD {
@@ -16,6 +18,7 @@ public class ConexionBBDD {
     private PreparedStatement pstm;
     private ResultSet rs;
     private Vector<Integer> relatedIDS;
+    private modelo m = new modelo();
 
     // public ConexionBBDD(String path) { BBDDName = path; };
 
@@ -377,5 +380,37 @@ public class ConexionBBDD {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
     } // recogerAlertas()
+
+    @SuppressWarnings({"rawtypes"})
+    public HashMap<String, Vector<Entry>> recogerEntradasUsuario(int ID_User) {
+        HashMap<String, Vector<Entry>> entradasCal = new HashMap<>();
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String sql = "SELECT *\n" +
+                    "FROM entradas_calendario\n" +
+                    "WHERE entradas_calendario.FK_User = ?";
+
+            pstm = c.prepareStatement(sql);
+            pstm.setInt(1, ID_User);
+            rs = pstm.executeQuery();
+
+            entradasCal.put("Personal", new Vector<>());
+            entradasCal.put("Citas", new Vector<>());
+            while (rs.next()) {
+                Date sdate = rs.getDate("Start_DateTime");
+                Date edate = rs.getDate("End_DateTime");
+
+                Timestamp timestampStart = new Timestamp(sdate.getTime());
+                Timestamp timestampEnd = new Timestamp(edate.getTime());
+                if (rs.getString("Calendario").equals("Personal"))
+                    entradasCal.get("Personal").add(m.createEntry(rs.getString("Title"), timestampStart.toLocalDateTime(), timestampEnd.toLocalDateTime()) );
+                else
+                    entradasCal.get("Citas").add(m.createEntry(rs.getString("Title"), timestampStart.toLocalDateTime(), timestampEnd.toLocalDateTime()) );
+            }
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+        return entradasCal;
+    }
 
 } // ConexionBBDD()
