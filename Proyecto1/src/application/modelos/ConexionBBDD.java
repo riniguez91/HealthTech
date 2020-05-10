@@ -4,9 +4,11 @@ import com.calendarfx.model.Entry;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
+import javax.swing.border.TitledBorder;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -403,14 +405,77 @@ public class ConexionBBDD {
                 Timestamp timestampStart = new Timestamp(sdate.getTime());
                 Timestamp timestampEnd = new Timestamp(edate.getTime());
                 if (rs.getString("Calendario").equals("Personal"))
-                    entradasCal.get("Personal").add(m.createEntry(rs.getString("Title"), timestampStart.toLocalDateTime(), timestampEnd.toLocalDateTime()) );
+                    entradasCal.get("Personal").add(m.createEntry(rs.getString("Title"), timestampStart.toLocalDateTime(),
+                            timestampEnd.toLocalDateTime(), rs.getInt("ID_Entry")+"") );
                 else
-                    entradasCal.get("Citas").add(m.createEntry(rs.getString("Title"), timestampStart.toLocalDateTime(), timestampEnd.toLocalDateTime()) );
+                    entradasCal.get("Citas").add(m.createEntry(rs.getString("Title"), timestampStart.toLocalDateTime(),
+                            timestampEnd.toLocalDateTime(), rs.getInt("ID_Entry")+"") );
             }
         } catch (SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
         return entradasCal;
+    }
+
+    public void insertarEntrada(int ID_User, String title, LocalDateTime startDate, LocalDateTime endDate, String calendario) {
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String sql = "INSERT INTO entradas_calendario (FK_User, Title, Start_DateTime, End_DateTime, Calendario) VALUES(?, ?, ?, ?, ?);";
+
+            pstm = c.prepareStatement(sql);
+            pstm.setInt(1, ID_User);
+            pstm.setString(2, title);
+            pstm.setString(3, startDate.toString());
+            pstm.setString(4, endDate.toString());
+            pstm.setString(5, calendario);
+
+            pstm.executeQuery();
+        } catch(SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+    }
+
+    public int idUltimaEntrada() {
+        int x = 1;
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String sql = "SELECT entradas_calendario.ID_Entry\n" +
+                    "FROM entradas_calendario\n" +
+                    "ORDER BY entradas_calendario.ID_Entry DESC\n" +
+                    "LIMIT 1";
+            stmt = c.createStatement();
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            x = rs.getInt("ID_Entry");
+
+
+        } catch(SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage() + "hola pepe");
+        }
+        return x;
+    }
+
+    public void removeEntry(int ID_Entry) {
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String sql = "DELETE FROM `entradas_calendario` WHERE `entradas_calendario`.`ID_Entry` = ?;";
+            pstm = c.prepareStatement(sql);
+            pstm.setInt(1, ID_Entry);
+
+            pstm.executeQuery();
+        } catch(SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+    }
+
+    public void updateEntry(String columnName) {
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+
+
+        } catch(SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
     }
 
 } // ConexionBBDD()

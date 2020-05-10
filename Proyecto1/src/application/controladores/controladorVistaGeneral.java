@@ -72,6 +72,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     private controladorVistaGeneral cp;
     private final ConexionBBDD conexionBBDD = new ConexionBBDD();
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Formato que le daremos a la fecha
+    private List<Entry> entradasPersonales;
+    private List<Entry> entradasCitas;
 
     public void initModelo(modelo modelo_, Usuario usuario_, controladorVistaGeneral cp_, String tipoVista) {
         if (this.modelo != null) {
@@ -373,6 +375,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         Calendar calendario_personal = new Calendar("Personal");
 
         HashMap<String, Vector<Entry>> entradasCal = conexionBBDD.recogerEntradasUsuario(usuario.getID_User());
+        entradasPersonales = entradasCal.get("Personal"); // CAMBIAR EL TIPO A VECTOR<STRING> (AHORA ESTA A LIST<STRING>)
+        entradasCitas = entradasCal.get("Citas");
         for (Map.Entry<String, Vector<Entry>> entry : entradasCal.entrySet()) {
             for (Entry single_entry : entry.getValue()) {
                 if (entry.getKey().equals("Personal"))
@@ -390,11 +394,42 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         calendario.getCalendarSources().set(0, calendarSourceTasks);
 
-        // CHECK
-        /*
-        EventHandler<CalendarEvent> handler = event -> System.out.println(event.getEntry().getCalendar().getName());
+        EventHandler<CalendarEvent> handler = event -> {
+            if (event.isEntryAdded()) {
+                conexionBBDD.insertarEntrada(usuario.getID_User(), event.getEntry().getTitle(), event.getEntry().getStartAsLocalDateTime(),
+                                             event.getEntry().getEndAsLocalDateTime(), event.getCalendar().getName());
+                if (event.getEntry().getCalendar().getName().equals("Citas")) {  // REALMENTE HACE FALTA? (MIRAR CON LA AGENDAVIEW DEL INICIO)
+                    event.getEntry().setId(conexionBBDD.idUltimaEntrada()+"");
+                    entradasCal.get("Citas").add(event.getEntry());
+                    // calendario_citas.addEntry(event.getEntry());
+                }
+                else {
+                    event.getEntry().setId(conexionBBDD.idUltimaEntrada()+"");
+                    entradasCal.get("Personal").add(event.getEntry());
+                }
+            }
+            else if (event.isEntryRemoved()) {
+                entradasCal.get(event.getOldCalendar().getName()).forEach(entry -> {
+                    if (entry.equals(event.getEntry()))
+                        conexionBBDD.removeEntry(Integer.parseInt(entry.getId()) );
+                });
+            }
+            else if (event.getOldInterval() != event.getEntry().getInterval() && event.getOldInterval() != null) {
+                // System.out.println("UPDATE START Y DATE TIME");
+                System.out.println("Old interval: " + event.getOldInterval() + "\nNew interval: " + event.getEntry().getInterval());
+                // event.getEntry().getInterval().getStartDateTime() + event.getEntry().getInterval().getEndDateTime();
+            }
+            else if (event.getOldText() != null) {
+                if (!event.getOldText().equals(event.getEntry().getTitle()))
+                    System.out.println("UPDATE TITLE");
+            }
+            else if (event.getOldCalendar() != event.getEntry().getCalendar()) {
+                System.out.println("UPDATE CALENDAR");
+            }
+
+        };
         calendario_personal.addEventHandler(handler);
-        calendario_citas.addEventHandler(handler); */
+        calendario_citas.addEventHandler(handler);
     }
 
     @FXML
