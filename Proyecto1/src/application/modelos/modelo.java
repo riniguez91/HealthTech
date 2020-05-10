@@ -186,10 +186,10 @@ public class modelo {
         crearArrListRolUsuario(relatedUTable3, usuariosRelacionados, c);
     }
 
-    public Entry<String> createEntry(String title, LocalDateTime startDT, LocalDateTime endDT, String ID_Entry) {
+    public Entry<String> createEntry(String title, LocalDateTime startDT, LocalDateTime endDT) {
         Entry<String> entry = new Entry<>(title);
         entry.setInterval(startDT, endDT);
-        entry.setId(ID_Entry);
+
         return entry;
     }
 }

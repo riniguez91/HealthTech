@@ -384,8 +384,8 @@ public class ConexionBBDD {
     } // recogerAlertas()
 
     @SuppressWarnings({"rawtypes"})
-    public HashMap<String, Vector<Entry>> recogerEntradasUsuario(int ID_User) {
-        HashMap<String, Vector<Entry>> entradasCal = new HashMap<>();
+    public HashMap<String, Vector<entradaCalendario>> recogerEntradasUsuario(int ID_User) {
+        HashMap<String, Vector<entradaCalendario>> entradasCal = new HashMap<>();
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String sql = "SELECT *\n" +
@@ -405,11 +405,11 @@ public class ConexionBBDD {
                 Timestamp timestampStart = new Timestamp(sdate.getTime());
                 Timestamp timestampEnd = new Timestamp(edate.getTime());
                 if (rs.getString("Calendario").equals("Personal"))
-                    entradasCal.get("Personal").add(m.createEntry(rs.getString("Title"), timestampStart.toLocalDateTime(),
-                            timestampEnd.toLocalDateTime(), rs.getInt("ID_Entry")+"") );
+                    entradasCal.get("Personal").add(new entradaCalendario(rs.getInt("ID_Entry"), m.createEntry(rs.getString("Title"),
+                            timestampStart.toLocalDateTime(), timestampEnd.toLocalDateTime())) );
                 else
-                    entradasCal.get("Citas").add(m.createEntry(rs.getString("Title"), timestampStart.toLocalDateTime(),
-                            timestampEnd.toLocalDateTime(), rs.getInt("ID_Entry")+"") );
+                    entradasCal.get("Citas").add(new entradaCalendario(rs.getInt("ID_Entry"), m.createEntry(rs.getString("Title"),
+                            timestampStart.toLocalDateTime(), timestampEnd.toLocalDateTime())) );
             }
         } catch (SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
@@ -468,14 +468,36 @@ public class ConexionBBDD {
         }
     }
 
-    public void updateEntry(String columnName) {
+    public void updateEntryInterval(String startDate, String endDate, int ID_Entry) {
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String sql = "UPDATE `entradas_calendario` SET Start_DateTime = ?, End_DateTime = ? WHERE ID_Entry = ?;";
+            pstm = c.prepareStatement(sql);
 
+            pstm.setString(1, startDate);
+            pstm.setString(2, endDate);
+            pstm.setInt(3, ID_Entry);
 
+            pstm.executeQuery();
         } catch(SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
     }
+
+    /*public void updateEntry(String sql, String value, int ID_Entry) {
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            pstm = c.prepareStatement(sql);
+
+            pstm.setString(1, value);
+            pstm.setInt(2, ID_Entry);
+
+            System.out.println(pstm.toString());
+
+            pstm.executeQuery();
+        } catch(SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+    }*/
 
 } // ConexionBBDD()

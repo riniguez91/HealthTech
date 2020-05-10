@@ -17,6 +17,7 @@ import com.lynden.gmapsfx.javascript.object.*;
 import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -72,8 +73,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     private controladorVistaGeneral cp;
     private final ConexionBBDD conexionBBDD = new ConexionBBDD();
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Formato que le daremos a la fecha
-    private List<Entry> entradasPersonales;
-    private List<Entry> entradasCitas;
+    private Vector<entradaCalendario> entradasPersonales;
+    private Vector<entradaCalendario> entradasCitas;
 
     public void initModelo(modelo modelo_, Usuario usuario_, controladorVistaGeneral cp_, String tipoVista) {
         if (this.modelo != null) {
@@ -374,15 +375,15 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         Calendar calendario_citas = new Calendar("Citas");
         Calendar calendario_personal = new Calendar("Personal");
 
-        HashMap<String, Vector<Entry>> entradasCal = conexionBBDD.recogerEntradasUsuario(usuario.getID_User());
+        HashMap<String, Vector<entradaCalendario>> entradasCal = conexionBBDD.recogerEntradasUsuario(usuario.getID_User());
         entradasPersonales = entradasCal.get("Personal"); // CAMBIAR EL TIPO A VECTOR<STRING> (AHORA ESTA A LIST<STRING>)
         entradasCitas = entradasCal.get("Citas");
-        for (Map.Entry<String, Vector<Entry>> entry : entradasCal.entrySet()) {
-            for (Entry single_entry : entry.getValue()) {
+        for (Map.Entry<String, Vector<entradaCalendario>> entry : entradasCal.entrySet()) {
+            for (entradaCalendario single_entry : entry.getValue()) {
                 if (entry.getKey().equals("Personal"))
-                    calendario_personal.addEntry(single_entry);
+                    calendario_personal.addEntry(single_entry.getEntradaCal());
                 else
-                    calendario_citas.addEntry(single_entry);
+                    calendario_citas.addEntry(single_entry.getEntradaCal());
             }
         }
 
@@ -396,28 +397,34 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         EventHandler<CalendarEvent> handler = event -> {
             if (event.isEntryAdded()) {
+                System.out.println("Entry added");
+                // Insertamos la entrada en la BBDD
                 conexionBBDD.insertarEntrada(usuario.getID_User(), event.getEntry().getTitle(), event.getEntry().getStartAsLocalDateTime(),
                                              event.getEntry().getEndAsLocalDateTime(), event.getCalendar().getName());
-                if (event.getEntry().getCalendar().getName().equals("Citas")) {  // REALMENTE HACE FALTA? (MIRAR CON LA AGENDAVIEW DEL INICIO)
-                    event.getEntry().setId(conexionBBDD.idUltimaEntrada()+"");
-                    entradasCal.get("Citas").add(event.getEntry());
+
+                // Cuando este compartido al tener el mismo ID, un cambio en la entrada supondria un cambio en el calendario para los dos, por lo que
+                // una solucion podria ser poner calendario_citas.setReadOnly(true) para el PACIENTE;
+                if (event.getEntry().getCalendar().getName().equals("Citas"))   // REALMENTE HACE FALTA? (MIRAR CON LA AGENDAVIEW DEL INICIO)
+                    entradasCal.get("Citas").add(new entradaCalendario(conexionBBDD.idUltimaEntrada(), event.getEntry()) );
                     // calendario_citas.addEntry(event.getEntry());
-                }
-                else {
-                    event.getEntry().setId(conexionBBDD.idUltimaEntrada()+"");
-                    entradasCal.get("Personal").add(event.getEntry());
-                }
+
+                else
+                    entradasCal.get("Personal").add(new entradaCalendario(conexionBBDD.idUltimaEntrada(), event.getEntry()) );
             }
             else if (event.isEntryRemoved()) {
-                entradasCal.get(event.getOldCalendar().getName()).forEach(entry -> {
-                    if (entry.equals(event.getEntry()))
-                        conexionBBDD.removeEntry(Integer.parseInt(entry.getId()) );
+                System.out.println("Entry removed");
+                entradasCal.get(event.getOldCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
+                    if (entry.getEntradaCal().equals(event.getEntry()))
+                        conexionBBDD.removeEntry(entry.getID_Entrada());
                 });
             }
+            // Mientras cambia algun intervalo (startDateTime o endDateTime cambian)
             else if (event.getOldInterval() != event.getEntry().getInterval() && event.getOldInterval() != null) {
-                // System.out.println("UPDATE START Y DATE TIME");
-                System.out.println("Old interval: " + event.getOldInterval() + "\nNew interval: " + event.getEntry().getInterval());
-                // event.getEntry().getInterval().getStartDateTime() + event.getEntry().getInterval().getEndDateTime();
+                entradasCal.get(event.getCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
+                    if (entry.getEntradaCal().equals(event.getEntry()))
+                        conexionBBDD.updateEntryInterval(event.getEntry().getStartAsLocalDateTime().toString(), event.getEntry().getEndAsLocalDateTime().toString(),
+                                entry.getID_Entrada());
+                });
             }
             else if (event.getOldText() != null) {
                 if (!event.getOldText().equals(event.getEntry().getTitle()))
