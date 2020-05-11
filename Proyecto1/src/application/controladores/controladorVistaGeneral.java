@@ -6,7 +6,7 @@ import com.calendarfx.model.Calendar;
 import com.calendarfx.model.CalendarEvent;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.model.Entry;
-import com.calendarfx.view.AgendaView;
+import com.calendarfx.view.*;
 import com.calendarfx.view.page.DayPage;
 import com.jfoenix.controls.*;
 
@@ -40,15 +40,18 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -394,7 +397,89 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         calendario.getCalendarSources().set(0, calendarSourceTasks);
 
+        // Creamos el menu que sale al dar doble click en una entrada, y añadimos la opcion de seleccionar usuarios a los que añadir el evento
+        calendario.setEntryContextMenuCallback((param) -> {
+            EntryViewBase<?> entryView = param.getEntryView();
+            Entry<?> entry = entryView.getEntry();
+            ContextMenu contextMenu = new ContextMenu();
+            MenuItem informationItem = new MenuItem(Messages.getString("DateControl.MENU_ITEM_INFORMATION"));
+            informationItem.setOnAction((evt) -> {
+                Callback<DateControl.EntryDetailsParameter, Boolean> detailsCallback = calendario.getEntryDetailsCallback();
+                if (detailsCallback != null) {
+                    ContextMenuEvent ctxEvent = param.getContextMenuEvent();
+                    DateControl.EntryDetailsParameter entryDetailsParam = new DateControl.EntryDetailsParameter(ctxEvent, calendario, entryView.getEntry(), calendario, ctxEvent.getScreenX(), ctxEvent.getScreenY());
+                    detailsCallback.call(entryDetailsParam);
+                }
+
+            });
+            contextMenu.getItems().add(informationItem);
+            String stylesheet = CalendarView.class.getResource("calendar.css").toExternalForm();
+            Menu calendarMenu = new Menu(Messages.getString("DateControl.MENU_CALENDAR"));
+            Iterator var8 = calendario.getCalendars().iterator();
+
+            while(var8.hasNext()) {
+                Calendar calendar = (Calendar)var8.next();
+                RadioMenuItem calendarItem = new RadioMenuItem(calendar.getName());
+                calendarItem.setOnAction((evt) -> {
+                    entry.setCalendar(calendar);
+                });
+                calendarItem.setDisable(calendar.isReadOnly());
+                calendarItem.setSelected(calendar.equals(param.getCalendar()));
+                calendarMenu.getItems().add(calendarItem);
+                StackPane graphic = new StackPane();
+                graphic.getStylesheets().add(stylesheet);
+                Rectangle icon = new Rectangle(10.0D, 10.0D);
+                icon.setArcHeight(2.0D);
+                icon.setArcWidth(2.0D);
+                icon.getStyleClass().setAll(new String[]{calendar.getStyle() + "-icon"});
+                graphic.getChildren().add(icon);
+                calendarItem.setGraphic(graphic);
+            }
+
+            if (usuario.getRol().equals("medico")) {
+                Menu usuariosMenu = new Menu("Pacientes");
+                Iterator relUsers = modelo.usuariosRelacionados(usuario).iterator();
+
+                while (relUsers.hasNext()) {
+                    Usuario user = (Usuario)relUsers.next();
+                    if (user.getRol().equals("cuidador")) {
+                        RadioMenuItem listaPacientes = new RadioMenuItem(user.getName()+ " "+user.getSurnames());
+                        listaPacientes.setOnAction(event -> {
+                            conexionBBDD.insertarEntrada(user.getID_User(), param.getEntry().getTitle(), param.getEntry().getStartAsLocalDateTime(),
+                                    param.getEntry().getEndAsLocalDateTime(), param.getCalendar().getName());
+                        });
+                        listaPacientes.setSelected(conexionBBDD.searchEntryInSharedCalendary(user.getID_User(), param.getEntry().getTitle()));
+                        usuariosMenu.getItems().add( listaPacientes);
+                    }
+                }
+
+                contextMenu.getItems().add(usuariosMenu);
+            }
+
+            calendarMenu.setDisable(param.getCalendar().isReadOnly());
+            contextMenu.getItems().add(calendarMenu);
+            if ((Boolean)calendario.getEntryEditPolicy().call(new DateControl.EntryEditParameter(calendario, entry, DateControl.EditOperation.DELETE))) {
+                MenuItem delete = new MenuItem(Messages.getString("DateControl.MENU_ITEM_DELETE"));
+                contextMenu.getItems().add(delete);
+                delete.setDisable(param.getCalendar().isReadOnly());
+                delete.setOnAction((evt) -> {
+                    Calendar calendar = entry.getCalendar();
+                    if (!calendar.isReadOnly()) {
+                        if (entry.isRecurrence()) {
+                            entry.getRecurrenceSourceEntry().removeFromCalendar();
+                        } else {
+                            entry.removeFromCalendar();
+                        }
+                    }
+
+                });
+            }
+
+            return contextMenu;
+        });
+
         EventHandler<CalendarEvent> handler = event -> {
+            // PODRIAMOS CAMBIAR TODOS LOS IF POR ESTO: event.getEventType().getName();
             if (event.isEntryAdded()) {
                 // Insertamos la entrada en la BBDD
                 conexionBBDD.insertarEntrada(usuario.getID_User(), event.getEntry().getTitle(), event.getEntry().getStartAsLocalDateTime(),
@@ -402,7 +487,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
                 // Cuando este compartido al tener el mismo ID, un cambio en la entrada supondria un cambio en el calendario para los dos, por lo que
                 // una solucion podria ser poner calendario_citas.setReadOnly(true) para el PACIENTE;
-                if (event.getEntry().getCalendar().getName().equals("Citas"))   // REALMENTE HACE FALTA? (MIRAR CON LA AGENDAVIEW DEL INICIO)
+                if (event.getEntry().getCalendar().getName().equals("Citas"))   // REALMENTE HACE FALTA AÑADIR A entradasCal ??
                     entradasCal.get("Citas").add(new entradaCalendario(conexionBBDD.idUltimaEntrada(), event.getEntry()) );
                 else
                     entradasCal.get("Personal").add(new entradaCalendario(conexionBBDD.idUltimaEntrada(), event.getEntry()) );

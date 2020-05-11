@@ -206,7 +206,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #ced6e0;">
                      <children>
-                        <DayPage fx:id="calendario" layoutX="437.0" layoutY="290.0" prefHeight="961.0" prefWidth="1900.0" style="-fx-background-color: #ced6e0;" AnchorPane.bottomAnchor="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                        <DayPage fx:id="calendario" layoutX="437.0" layoutY="290.0" prefHeight="1050.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children></AnchorPane>
                     </content>
                 </Tab>

@@ -498,4 +498,25 @@ public class ConexionBBDD {
         }
     }
 
+    // Se podria comprobar tmbn las fechas, pero si dos entradas tienen el mismo titulo no merece la pena ya que devolveria true y es lo que realmente nos
+    // interesa
+    public boolean searchEntryInSharedCalendary(int ID_User, String title) {
+        boolean found = false;
+        try {
+            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String sql = "SELECT * FROM entradas_calendario WHERE entradas_calendario.FK_User = ? AND entradas_calendario.Title = ?";
+            pstm = c.prepareStatement(sql);
+
+            pstm.setInt(1, ID_User);
+            pstm.setString(2, title);
+
+            rs = pstm.executeQuery();
+            if (rs.next())
+                found = true;
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+        return found;
+    }
+
 } // ConexionBBDD()
