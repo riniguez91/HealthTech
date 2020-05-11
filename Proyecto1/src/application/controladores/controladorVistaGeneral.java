@@ -17,6 +17,7 @@ import com.lynden.gmapsfx.javascript.object.*;
 import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
+import com.sun.javafx.css.Style;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -45,6 +46,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -389,8 +392,13 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             }
         }
 
-        calendario_personal.setStyle(Calendar.Style.STYLE3);
-        calendario_citas.setStyle(Calendar.Style.STYLE1);
+        // De esta forma si un medico le pone una cita el no podria hacerle cambios, ya que si pudiese entonces tambien le afectarian estos cambios
+        // al medico y podria ser critico
+        if (usuario.getRol().equals("paciente"))
+            calendario_citas.setReadOnly(true);
+
+        calendario_personal.setStyle(Calendar.Style.STYLE6); // rojo claro
+        calendario_citas.setStyle(Calendar.Style.STYLE1); // verde
 
         CalendarSource calendarSourceTasks = new CalendarSource("Eventos");
         calendarSourceTasks.getCalendars().addAll(calendario_citas, calendario_personal);
@@ -431,7 +439,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 Rectangle icon = new Rectangle(10.0D, 10.0D);
                 icon.setArcHeight(2.0D);
                 icon.setArcWidth(2.0D);
-                icon.getStyleClass().setAll(new String[]{calendar.getStyle() + "-icon"});
+                icon.getStyleClass().setAll(calendar.getStyle() + "-icon");
                 graphic.getChildren().add(icon);
                 calendarItem.setGraphic(graphic);
             }
@@ -442,14 +450,20 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
                 while (relUsers.hasNext()) {
                     Usuario user = (Usuario)relUsers.next();
-                    if (user.getRol().equals("cuidador")) {
+                    if (user.getRol().equals("paciente")) {
                         RadioMenuItem listaPacientes = new RadioMenuItem(user.getName()+ " "+user.getSurnames());
                         listaPacientes.setOnAction(event -> {
                             conexionBBDD.insertarEntrada(user.getID_User(), param.getEntry().getTitle(), param.getEntry().getStartAsLocalDateTime(),
                                     param.getEntry().getEndAsLocalDateTime(), param.getCalendar().getName());
                         });
                         listaPacientes.setSelected(conexionBBDD.searchEntryInSharedCalendary(user.getID_User(), param.getEntry().getTitle()));
-                        usuariosMenu.getItems().add( listaPacientes);
+
+                        StackPane graphic = new StackPane();
+                        Circle icon = new Circle(5.0D, Paint.valueOf("blue"));
+                        graphic.getChildren().add(icon);
+                        listaPacientes.setGraphic(graphic);
+
+                        usuariosMenu.getItems().add(listaPacientes);
                     }
                 }
 
