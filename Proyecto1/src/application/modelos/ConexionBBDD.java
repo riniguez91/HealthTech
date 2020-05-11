@@ -484,7 +484,7 @@ public class ConexionBBDD {
         }
     }
 
-    /*public void updateEntry(String sql, String value, int ID_Entry) {
+    public void updateEntry(String sql, String value, int ID_Entry) {
         try {
             c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             pstm = c.prepareStatement(sql);
@@ -492,12 +492,10 @@ public class ConexionBBDD {
             pstm.setString(1, value);
             pstm.setInt(2, ID_Entry);
 
-            System.out.println(pstm.toString());
-
             pstm.executeQuery();
         } catch(SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
-    }*/
+    }
 
 } // ConexionBBDD()
