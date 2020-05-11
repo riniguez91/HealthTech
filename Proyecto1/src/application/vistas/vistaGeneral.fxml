@@ -252,7 +252,7 @@
                                           <Insets left="65.0" />
                                        </VBox.margin>
                                     </Separator>
-                                    <HBox prefHeight="225.0" prefWidth="1244.0" spacing="50.0">
+                                    <HBox prefHeight="221.0" prefWidth="1296.0" spacing="50.0">
                                        <children>
                                           <ImageView fx:id="userImageViewUsuarios" fitHeight="220.0" fitWidth="270.0" pickOnBounds="true" />
                                           <GridPane prefHeight="225.0" prefWidth="983.0">
@@ -273,7 +273,7 @@
                                                       <Insets left="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <Label prefHeight="45.0" prefWidth="307.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:" GridPane.rowIndex="2">
+                                                <Label prefHeight="45.0" prefWidth="307.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Nacimiento:" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -289,7 +289,7 @@
                                                       <Insets left="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <Label prefHeight="45.0" prefWidth="302.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Tipo de Usuario (Rol):" GridPane.rowIndex="3">
+                                                <Label prefHeight="45.0" prefWidth="302.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Rol:" GridPane.rowIndex="3">
                                                    <padding>
                                                       <Insets left="5.0" />
                                                    </padding>
@@ -358,9 +358,9 @@
                                           <Insets />
                                        </VBox.margin>
                                     </Separator>
-                                    <HBox prefHeight="527.0" prefWidth="1360.0">
+                                    <HBox prefHeight="524.0" prefWidth="1376.0">
                                        <children>
-                                          <VBox prefHeight="511.0" prefWidth="1360.0">
+                                          <VBox prefHeight="522.0" prefWidth="1377.0">
                                              <children>
                                                 <Label prefHeight="44.0" prefWidth="1364.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Mensaje">
                                                    <VBox.margin>
@@ -382,7 +382,7 @@
                                           </VBox>
                                        </children>
                                     </HBox>
-                                    <HBox fx:id="generarTicketHBox" fillHeight="false" maxWidth="1365.0" prefHeight="72.0" prefWidth="1360.0" spacing="730.0">
+                                    <HBox fx:id="generarTicketHBox" fillHeight="false" maxWidth="1387.0" prefHeight="68.0" prefWidth="1387.0" spacing="730.0">
                                        <children>
                                           <JFXButton fx:id="cancelarTicketBttnMensajes" onAction="#cancelarTicket" prefHeight="41.0" prefWidth="310.0" styleClass="botones" stylesheets="@../application.css" text="Cancelar ticket">
                                              <HBox.margin>
@@ -444,7 +444,7 @@
                                     </JFXTreeTableView>
                                  </children>
                               </VBox>
-                              <VBox fx:id="datosVBoxMensajes" fillWidth="false" prefHeight="1050.0" prefWidth="1487.0" visible="false">
+                              <VBox fx:id="datosVBoxMensajes" fillWidth="false" prefHeight="1050.0" prefWidth="1487.0">
                                  <children>
                                     <Separator prefHeight="40.0" prefWidth="1402.0" styleClass="separator-black" stylesheets="@../application.css">
                                        <VBox.margin>
@@ -453,8 +453,8 @@
                                     </Separator>
                                     <GridPane prefHeight="225.0" prefWidth="1380.0">
                                        <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="811.0" minWidth="10.0" prefWidth="180.33349609375" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1263.3330078125" minWidth="10.0" prefWidth="1228.66650390625" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="811.0" minWidth="10.0" prefWidth="226.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1263.3330078125" minWidth="10.0" prefWidth="1154.0" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
