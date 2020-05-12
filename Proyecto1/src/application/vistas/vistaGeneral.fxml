@@ -30,6 +30,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controladores.controladorVistaGeneral">
@@ -637,7 +638,7 @@
                                        </children>
                                     </HBox>
                                     <Separator prefWidth="200.0" />
-                                    <StackedBarChart fx:id="graficaGas" prefHeight="556.0" prefWidth="636.0" styleClass="graphs" stylesheets="@../application.css" title="Sensor de gas">
+                                    <StackedBarChart fx:id="graficaGas" prefHeight="618.0" prefWidth="636.0" styleClass="graphs" stylesheets="@../application.css" title="Sensor de gas">
                                        <xAxis>
                                           <CategoryAxis label="Tiempo" side="BOTTOM" />
                                        </xAxis>
@@ -645,6 +646,33 @@
                                           <NumberAxis label="Gas" side="LEFT" />
                                        </yAxis>
                                     </StackedBarChart>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <Label prefHeight="25.0" prefWidth="104.0" styleClass="textoLabel" text=" Valores:  ">
+                                             <font>
+                                                <Font name="Century" size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <Circle fill="#25ff1f" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Label styleClass="textoLabel" text=" 0 - 450 ppm  ">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <Circle fill="#ffbd21" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Label styleClass="textoLabel" text=" 450 - 1000 ppm  ">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
+                                          </Label>
+                                          <Circle fill="#ff2121" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                                          <Label styleClass="textoLabel" text=" 1000 - 5000 ppm">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>
