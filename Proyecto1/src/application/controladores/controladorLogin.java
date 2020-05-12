@@ -34,6 +34,7 @@ public class controladorLogin {
     private modelo modelo;
     private Usuario usuario;
     private String nUsuario;
+    private ConexionBBDD c;
 
     public void initModelo(modelo modelo_, Usuario usuario_){
         if (this.modelo != null) {
@@ -41,6 +42,7 @@ public class controladorLogin {
         }
         this.modelo = modelo_;
         this.usuario = usuario_;
+        c = new ConexionBBDD();
 
         if (!checkBox.isSelected()) {
         	nUsuario = usrnameField.getText();
@@ -135,14 +137,14 @@ public class controladorLogin {
         
     } // initialize()
 
-    public void cargarVista(Usuario usuario, String tipoVista) throws IOException {
+    public void cargarVista(Usuario usuario, String tipoVista, ConexionBBDD c) throws IOException {
         // FXML Loader and Parent
         FXMLLoader loaderVistaGeneral = new FXMLLoader(getClass().getResource("/application/vistas/vistaGeneral.fxml"));
         Parent rootVistaGeneral = loaderVistaGeneral.load();
 
         // Controllers
         controladorVistaGeneral controladorVistaGeneral = loaderVistaGeneral.getController();
-        controladorVistaGeneral.initModelo(modelo,usuario, controladorVistaGeneral, tipoVista);
+        controladorVistaGeneral.initModelo(modelo,usuario, controladorVistaGeneral, tipoVista, c);
 
         Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
         stageBttnBelongsTo.setScene(new Scene(rootVistaGeneral));
@@ -163,7 +165,6 @@ public class controladorLogin {
     }
     public void login() {
         try {
-            ConexionBBDD c = new ConexionBBDD();
             ResultSet rs = c.loginRS("SELECT * \n" +
                     "FROM users\n" +
                     "WHERE users.User = ? AND users.Password = MD5(?)", usrnameField.getText(), pswdField.getText());
@@ -177,11 +178,11 @@ public class controladorLogin {
                 switch(usuario.getRol()){
                     case "medico":
                     case "familiar":
-                        cargarVista(usuario, "detallada");
+                        cargarVista(usuario, "detallada", c);
                         break;
                     case "paciente":
                     case "cuidador":
-                        cargarVista(usuario, "general");
+                        cargarVista(usuario, "general", c);
                         break;
                     
                 }          

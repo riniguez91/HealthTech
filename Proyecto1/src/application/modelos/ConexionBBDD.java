@@ -1,16 +1,12 @@
 package application.modelos;
 
-import com.calendarfx.model.Entry;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-
-import javax.swing.border.TitledBorder;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Vector;
 
 public class ConexionBBDD {
@@ -20,16 +16,14 @@ public class ConexionBBDD {
     private PreparedStatement pstm;
     private ResultSet rs;
     private Vector<Integer> relatedIDS;
-    private modelo m = new modelo();
-
-    // public ConexionBBDD(String path) { BBDDName = path; };
+    private final modelo m = new modelo();
 
     //Conectar base de datos en local
     public void conexionLocal() {
-    	String BBDDName = "C:/Users/victo/Documents/GitHub/proyecto1-techhealth/Proyecto1/src/BaseDatosLocal.db"; //RUTA absoluta
+    	String BBDDName = "C:/Users/victo/Documents/GitHub/proyecto1-techhealth/Proyecto1/src/BaseDatosLocal.db"; // Ruta absoluta
     	try {
-    		c = DriverManager.getConnection("jdbc:sqlite:"+BBDDName); //LOCAL
-    		//c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123"); //Remoto
+    		c = DriverManager.getConnection("jdbc:sqlite:"+BBDDName); // Local
+
     		System.out.println("GG WP");
     		c.close();
 		} catch (SQLException sqle) {
@@ -41,9 +35,9 @@ public class ConexionBBDD {
     public Vector<Usuario> sentenciaSQL(String sql) {
     	Vector<Usuario> usuariosBBDD= new Vector<>();
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             stmt = c.createStatement();
-           // stmt.executeUpdate(sql);
+
             rs = stmt.executeQuery(sql);
             while(rs.next()) {
             	usuariosBBDD.add(new Usuario(rs.getInt("ID_User"), rs.getString("Name"), rs.getString("Surnames"), rs.getString("DOB"), 
@@ -61,7 +55,8 @@ public class ConexionBBDD {
 
     public ResultSet loginRS(String sql, String username, String password) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+
             pstm = c.prepareStatement(sql);
             pstm.setString(1, username);
             pstm.setString(2, password);
@@ -78,7 +73,7 @@ public class ConexionBBDD {
     public void insertUserRS(String sql, String name, String surnames, Date DOB, String user, String password, String rol, int telephone, String adress,
                              String dni) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             pstm = c.prepareStatement(sql);
 
             pstm.setString(1, name);
@@ -101,7 +96,7 @@ public class ConexionBBDD {
     
     public Vector<Integer> relatedUserIDS(Usuario usuario, String tabla, String FK1, String FK2) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             // Se podria hacer buscando solo en la tabla que relaciona los usuarios (pac-med, pac-fam etc.) pero lo dejamos asi por si en el
             // futuro necesitamos información extra que solo se obtiene siguiendo las relaciones y multiplicando las tablas con el INNER JOIN
             String s = "SELECT `" + tabla + "`." + FK2 + " FROM users INNER JOIN `" + tabla + "` ON `" + tabla + "`." + FK1 + " = users.ID_User" +
@@ -123,7 +118,7 @@ public class ConexionBBDD {
 
     public ResultSet selectUserFromID(int id) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String s = "SELECT * \n" +
                     "FROM users \n" +
                     "WHERE users.ID_User = ?";
@@ -142,7 +137,7 @@ public class ConexionBBDD {
 
     public void insertarMensaje(String ID_Ticket, String message, String subject, int ID_User_Sender, int ID_User_Receiver) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String s = "INSERT INTO enviar_mensaje (ID_Ticket, Message, Subject, Is_Read, ID_User_Sender, ID_User_Receiver) \n" +
                     "VALUES (?, ?, ?, 0, ?, ?);";
             pstm = c.prepareStatement(s);
@@ -164,7 +159,7 @@ public class ConexionBBDD {
     public Vector<Message> getMensajesDeUsuario(int ID_User) {
         Vector<Message> mensajes = new Vector<>();
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String s = "SELECT * FROM enviar_mensaje WHERE `enviar_mensaje`.ID_User_Sender = ? OR `enviar_mensaje`.ID_User_Receiver = ?";
             pstm = c.prepareStatement(s);
 
@@ -188,7 +183,7 @@ public class ConexionBBDD {
     public Vector<Message> getMensajesDeTicket(String ID_Ticket) {
         Vector<Message> messgesInTicket = new Vector<>();
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String s = "SELECT * FROM enviar_mensaje WHERE `enviar_mensaje`.ID_Ticket = ?";
             pstm = c.prepareStatement(s);
 
@@ -210,7 +205,7 @@ public class ConexionBBDD {
 
     public void setMsgAsRead(Message msg) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String s = "UPDATE pr_healthtech.enviar_mensaje SET Is_Read = 1 WHERE PK_Ticket = ?";
 
             pstm = c.prepareStatement(s);
@@ -228,7 +223,7 @@ public class ConexionBBDD {
     public Vector<sensor> leerDatosSensor(int ID_User, String tipoSensor, String startDate, String endDate, String sql) {
         Vector<sensor> datosSensCont = new Vector<>();
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
 
             pstm = c.prepareStatement(sql);
 
@@ -256,7 +251,7 @@ public class ConexionBBDD {
     public Vector<sensor> leerDatosSensorGPS(int ID_User, String tipoSensor, String sql) {
         Vector<sensor> datosSensorGPS = new Vector<>();
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
 
             pstm = c.prepareStatement(sql);
 
@@ -279,7 +274,7 @@ public class ConexionBBDD {
 
     public void eliminarUsuario(Integer ID_Usuario) {
     	try {
-    		c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+    		c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
     		String s = "DELETE FROM pr_healthtech.users WHERE ID_User = ? ;" ;
     		pstm = c.prepareStatement(s);
     		
@@ -296,7 +291,7 @@ public class ConexionBBDD {
     public void editUser(String name, String surnames, String DOB, String user, String password,
 			String rol,String photo, int telephone, String adress, String dni, int ID_user) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String s = "UPDATE pr_healthtech.users SET users.name = ? , users.surnames = ?, users.DOB = ? , users.user = ? , users.password = ?, users.rol = ?, " +
                        "users.photo = ?, users.telephone = ?, users.adress = ?, users.DNI = ? WHERE users.ID_User = ?;";
 
@@ -325,7 +320,7 @@ public class ConexionBBDD {
 
     public void recogerAlertas(HashMap<String, Vector<TextFlow>> registros, int ID_User, String startDate, String endDate){
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String s = "SELECT alertas.Tipo_Sensor, alertas.Reading, alertas.Date_Time_Activation\n" +
                     "FROM alertas\n" +
                     "WHERE alertas.ID_User = ? AND alertas.Date_Time_Activation BETWEEN ? AND ?";
@@ -387,7 +382,7 @@ public class ConexionBBDD {
     public HashMap<String, Vector<entradaCalendario>> recogerEntradasUsuario(int ID_User) {
         HashMap<String, Vector<entradaCalendario>> entradasCal = new HashMap<>();
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String sql = "SELECT *\n" +
                     "FROM entradas_calendario\n" +
                     "WHERE entradas_calendario.FK_User = ?";
@@ -419,7 +414,7 @@ public class ConexionBBDD {
 
     public void insertarEntrada(int ID_User, String title, LocalDateTime startDate, LocalDateTime endDate, String calendario) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String sql = "INSERT INTO entradas_calendario (FK_User, Title, Start_DateTime, End_DateTime, Calendario) VALUES(?, ?, ?, ?, ?);";
 
             pstm = c.prepareStatement(sql);
@@ -438,7 +433,7 @@ public class ConexionBBDD {
     public int idUltimaEntrada() {
         int x = 1;
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String sql = "SELECT entradas_calendario.ID_Entry\n" +
                     "FROM entradas_calendario\n" +
                     "ORDER BY entradas_calendario.ID_Entry DESC\n" +
@@ -457,7 +452,7 @@ public class ConexionBBDD {
 
     public void removeEntry(int ID_Entry) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String sql = "DELETE FROM `entradas_calendario` WHERE `entradas_calendario`.`ID_Entry` = ?;";
             pstm = c.prepareStatement(sql);
             pstm.setInt(1, ID_Entry);
@@ -470,7 +465,7 @@ public class ConexionBBDD {
 
     public void updateEntryInterval(String startDate, String endDate, int ID_Entry) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String sql = "UPDATE `entradas_calendario` SET Start_DateTime = ?, End_DateTime = ? WHERE ID_Entry = ?;";
             pstm = c.prepareStatement(sql);
 
@@ -486,7 +481,7 @@ public class ConexionBBDD {
 
     public void updateEntry(String sql, String value, int ID_Entry) {
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             pstm = c.prepareStatement(sql);
 
             pstm.setString(1, value);
@@ -503,7 +498,7 @@ public class ConexionBBDD {
     public boolean searchEntryInSharedCalendary(int ID_User, String title) {
         boolean found = false;
         try {
-            c = DriverManager.getConnection("jdbc:mysql://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String sql = "SELECT * FROM entradas_calendario WHERE entradas_calendario.FK_User = ? AND entradas_calendario.Title = ?";
             pstm = c.prepareStatement(sql);
 

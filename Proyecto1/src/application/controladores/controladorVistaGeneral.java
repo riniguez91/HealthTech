@@ -77,18 +77,21 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     private final List<Label> labelFAQ = new ArrayList<>();
     private final List<String> uniqueMessageIDS = new ArrayList<>();
     private controladorVistaGeneral cp;
-    private final ConexionBBDD conexionBBDD = new ConexionBBDD();
+    private ConexionBBDD conexionBBDD; // new ConexionBBDD();
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Formato que le daremos a la fecha
     private Vector<entradaCalendario> entradasPersonales;
     private Vector<entradaCalendario> entradasCitas;
+    private ArrayList<Usuario> relatedUsers;
 
-    public void initModelo(modelo modelo_, Usuario usuario_, controladorVistaGeneral cp_, String tipoVista) {
+    public void initModelo(modelo modelo_, Usuario usuario_, controladorVistaGeneral cp_, String tipoVista, ConexionBBDD conexionBBDD) {
         if (this.modelo != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }
         this.modelo = modelo_;
         this.usuario = usuario_;
         this.cp = cp_;
+        this.conexionBBDD = conexionBBDD;
+        this.relatedUsers = modelo.usuariosRelacionados(usuario);
 
         modelo.setMessages(conexionBBDD.getMensajesDeUsuario(usuario.getID_User()));
 
@@ -445,7 +448,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
             if (usuario.getRol().equals("medico")) {
                 Menu usuariosMenu = new Menu("Pacientes");
-                Iterator relUsers = modelo.usuariosRelacionados(usuario).iterator();
+                Iterator relUsers = relatedUsers.iterator();
 
                 while (relUsers.hasNext()) {
                     Usuario user = (Usuario)relUsers.next();
@@ -563,7 +566,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         // Sincronizamos el calendar source del calendar principal con la agenda view del inicio, de tal forma que cualquier cambio se refleje en este
         agendaViewInicio.getCalendarSources().setAll(calendario.getCalendarSources());
-        
+
     } // initCalendario()
 
     // -------------------- Fin metodos tab Calendario --------------------
@@ -603,12 +606,12 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         
         // Añadimos los usuarios
         if (soloPacientes) {
-        	for (Usuario user : modelo.usuariosRelacionados(usuario))
+        	for (Usuario user : relatedUsers)
         		if (user.getRol().equals("paciente")) 
                     users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto(), user.getAdress()));
 		} else {
 	        // Añadimos los usuarios
-			for (Usuario user : modelo.usuariosRelacionados(usuario))
+			for (Usuario user : relatedUsers)
 				users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto(), user.getAdress()));
 		}
  
