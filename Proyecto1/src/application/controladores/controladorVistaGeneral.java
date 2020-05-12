@@ -1000,6 +1000,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             detalles.add(new PieChart.Data("Despierto", 24-durmiendo));
             graficaPresion.setData(detalles);
             horasDurmiendo.setText(durmiendo+"");
+            graficaTemperatura.setLegendVisible(false);
+            graficaPresion.setLegendVisible(false);
+            graficaGas.setLegendVisible(false);
+            graficaMagnetico.setLegendVisible(false);
         }
     }
 
