@@ -124,11 +124,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         // Poblamos el calendario con eventos
         initCalendario();
-        // System.out.println(calendario.getCalendars().get(0).findEntries(""));
-        // System.out.println(calendario.getCalendars().isEmpty());
 
-        if (calendario.getAgendaView().getListView().getItems().size() != 0)
-            agendaViewInicio.getListView().setItems(calendario.getAgendaView().getListView().getItems());
+        /*if (calendario.getDetailedDayView().getAgendaView().getListView().getItems().size() != 0)
+            agendaViewInicio.getListView().setItems(calendario.getDetailedDayView().getAgendaView().getListView().getItems());*/
+
     }
 
     // -------------------- Tab Inicio --------------------
@@ -454,12 +453,12 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                         RadioMenuItem listaPacientes = new RadioMenuItem(user.getName()+ " "+user.getSurnames());
                         listaPacientes.setOnAction(event -> {
                             conexionBBDD.insertarEntrada(user.getID_User(), param.getEntry().getTitle(), param.getEntry().getStartAsLocalDateTime(),
-                                    param.getEntry().getEndAsLocalDateTime(), param.getCalendar().getName());
+                                                         param.getEntry().getEndAsLocalDateTime(), param.getCalendar().getName());
                         });
                         listaPacientes.setSelected(conexionBBDD.searchEntryInSharedCalendary(user.getID_User(), param.getEntry().getTitle()));
 
                         StackPane graphic = new StackPane();
-                        Circle icon = new Circle(5.0D, Paint.valueOf("blue"));
+                        Circle icon = new Circle(5.0D, Paint.valueOf("KHAKI"));
                         graphic.getChildren().add(icon);
                         listaPacientes.setGraphic(graphic);
 
@@ -493,7 +492,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         });
 
         EventHandler<CalendarEvent> handler = event -> {
-            // PODRIAMOS CAMBIAR TODOS LOS IF POR ESTO: event.getEventType().getName();
             if (event.isEntryAdded()) {
                 // Insertamos la entrada en la BBDD
                 conexionBBDD.insertarEntrada(usuario.getID_User(), event.getEntry().getTitle(), event.getEntry().getStartAsLocalDateTime(),
@@ -506,34 +504,37 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 else
                     entradasCal.get("Personal").add(new entradaCalendario(conexionBBDD.idUltimaEntrada(), event.getEntry()) );
             }
+
             else if (event.isEntryRemoved()) {
                 entradasCal.get(event.getOldCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
                     if (entry.getEntradaCal().equals(event.getEntry()))
                         conexionBBDD.removeEntry(entry.getID_Entrada());
                 });
             }
+
             // Mientras cambia algun intervalo (startDateTime o endDateTime cambian)
-            else if (event.getOldInterval() != event.getEntry().getInterval() && event.getOldInterval() != null) {
+            // event.getOldInterval() != event.getEntry().getInterval() && event.getOldInterval() != null
+            else if (event.getEventType().getName().equals("ENTRY_INTERVAL_CHANGED")) {
                 entradasCal.get(event.getCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
                     if (entry.getEntradaCal().equals(event.getEntry()))
                         conexionBBDD.updateEntryInterval(event.getEntry().getStartAsLocalDateTime().toString(),
                                 event.getEntry().getEndAsLocalDateTime().toString(), entry.getID_Entrada());
                 }); // AÑADIR TMBN A ENTRADAS CAL PARA QUE SE EDITE AHI
             }
-            else if (event.getOldText() != null) {
-                if (!event.getOldText().equals(event.getEntry().getTitle())) {
-                    entradasCal.get(event.getCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
-                        if (entry.getEntradaCal().equals(event.getEntry())) {
-                            String sql = "UPDATE `entradas_calendario` SET Title = ? WHERE ID_Entry = ?;";
-                            conexionBBDD.updateEntry(sql, event.getEntry().getTitle(), entry.getID_Entrada());
 
-                            // Tenemos que fire el event manualmente al cambiar el titulo (supongo que por la implementacion de libreria)
-                            calendario.getAgendaView().getListView().refresh();
-                        }
-                    }); // AÑADIR TMBN A ENTRADAS CAL PARA QUE SE EDITE AHI
-                }
+            else if (event.getEventType().getName().equals("ENTRY_TITLE_CHANGED")) {
+                entradasCal.get(event.getCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
+                    if (entry.getEntradaCal().equals(event.getEntry())) {
+                        String sql = "UPDATE `entradas_calendario` SET Title = ? WHERE ID_Entry = ?;";
+                        conexionBBDD.updateEntry(sql, event.getEntry().getTitle(), entry.getID_Entrada());
+
+                        // Tenemos que fire el event manualmente al cambiar el titulo (supongo que por la implementacion de libreria)
+                        calendario.getAgendaView().getListView().refresh();
+                    }
+                }); // AÑADIR TMBN A ENTRADAS CAL PARA QUE SE EDITE AHI
             }
-            else if (event.getOldCalendar() != event.getEntry().getCalendar()) {
+
+            else if (event.getEventType().getName().equals("ENTRY_CALENDAR_CHANGED")) {
                 entradasCal.get(event.getOldCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
                     if (entry.getEntradaCal().equals(event.getEntry())) {
                         String sql = "UPDATE `entradas_calendario` SET Calendario = ? WHERE ID_Entry = ?;";
@@ -542,9 +543,27 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 }); // AÑADIR TMBN A ENTRADAS CAL PARA QUE SE EDITE AHI
             }
 
+            else if (event.getEventType().getName().equals("ENTRY_FULL_DAY_CHANGED")) {
+                System.out.println("Entry full day changed");
+            }
+
+            else if (event.getEventType().getName().equals("ENTRY_LOCATION_CHANGED")) {
+                System.out.println("Location changed");
+            }
+
+            else if (event.getEventType().getName().equals("ENTRY_RECURRENCE_RULE_CHANGED")) {
+                System.out.println("Recurrence rule modified"); // Mirar docs
+            }
+
+            // ENTRY_USER_OBJECT_CHANGED (creo que no hace falta)
+
         };
         calendario_personal.addEventHandler(handler);
         calendario_citas.addEventHandler(handler);
+
+        // Sincronizamos el calendar source del calendar principal con la agenda view del inicio, de tal forma que cualquier cambio se refleje en este
+        agendaViewInicio.getCalendarSources().setAll(calendario.getCalendarSources());
+        
     } // initCalendario()
 
     // -------------------- Fin metodos tab Calendario --------------------
