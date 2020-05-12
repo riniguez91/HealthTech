@@ -18,7 +18,7 @@ public class ConexionBBDD {
     private Vector<Integer> relatedIDS;
     private final modelo m = new modelo();
 
-    //Conectar base de datos en local
+    // Conectar base de datos en local
     public void conexionLocal() {
     	String BBDDName = "C:/Users/victo/Documents/GitHub/proyecto1-techhealth/Proyecto1/src/BaseDatosLocal.db"; // Ruta absoluta
     	try {
@@ -29,7 +29,7 @@ public class ConexionBBDD {
 		} catch (SQLException sqle) {
 			System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
 		}
-    }//Fin Conexion local
+    } // conexionLocal()
     
     
     public Vector<Usuario> sentenciaSQL(String sql) {

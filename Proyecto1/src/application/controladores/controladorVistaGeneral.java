@@ -399,7 +399,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         if (usuario.getRol().equals("paciente"))
             calendario_citas.setReadOnly(true);
 
-        calendario_personal.setStyle(Calendar.Style.STYLE6); // rojo claro
+        calendario_personal.setStyle(Calendar.Style.STYLE2); // rojo claro
         calendario_citas.setStyle(Calendar.Style.STYLE1); // verde
 
         CalendarSource calendarSourceTasks = new CalendarSource("Eventos");
@@ -461,7 +461,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                         listaPacientes.setSelected(conexionBBDD.searchEntryInSharedCalendary(user.getID_User(), param.getEntry().getTitle()));
 
                         StackPane graphic = new StackPane();
-                        Circle icon = new Circle(5.0D, Paint.valueOf("KHAKI"));
+                        Circle icon = new Circle(5.0D, Paint.valueOf("#0163af")); // El azul del tabpane
                         graphic.getChildren().add(icon);
                         listaPacientes.setGraphic(graphic);
 
@@ -516,7 +516,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             }
 
             // Mientras cambia algun intervalo (startDateTime o endDateTime cambian)
-            // event.getOldInterval() != event.getEntry().getInterval() && event.getOldInterval() != null
             else if (event.getEventType().getName().equals("ENTRY_INTERVAL_CHANGED")) {
                 entradasCal.get(event.getCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
                     if (entry.getEntradaCal().equals(event.getEntry()))
