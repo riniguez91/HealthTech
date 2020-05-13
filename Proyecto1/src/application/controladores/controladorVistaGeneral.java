@@ -64,10 +64,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
+import static java.lang.String.format;
 
 public class controladorVistaGeneral implements Initializable, MapComponentInitializedListener {
 
@@ -1005,27 +1008,19 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
             poblarStackedBarChart(seriesMagnetico, graficaMagnetico, sentenciaDiscreto, "Magnetico");
 
-            double durmiendo = 0;
-            for (sensor sd : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
-                    "Presion", formatter.format(calendarioSensores.getValue().atStartOfDay()),
-                    formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaDiscreto) ) {
-                if (sd.getReading() == 1)
-                    durmiendo += 1;
-            }
-
-            /*Vector<sensor> tuplasSinFiltrar = conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+            Vector<sensor> tuplasSinFiltrar = conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
                     "Presion", formatter.format(calendarioSensores.getValue().atStartOfDay()),
                     formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaDiscreto);
+            long totalMinutes = 0;
             for (int i = 1; i < tuplasSinFiltrar.size() ; i += 2) {
                 Period p = new org.joda.time.Period(tuplasSinFiltrar.get(i-1).getDate_Time_Activation().getTime(), tuplasSinFiltrar.get(i).getDate_Time_Activation().getTime());
-                System.out.println("Hours: " + p.getHours() + "Minutes: " + p.getMinutes());
-            }*/
+                totalMinutes += p.getMinutes();
+            }
 
-
-            detalles.add(new PieChart.Data("Durmiendo", durmiendo));
-            detalles.add(new PieChart.Data("Despierto", 24-durmiendo));
+            detalles.add(new PieChart.Data("Durmiendo", (float) totalMinutes / 60));
+            detalles.add(new PieChart.Data("Despierto", 24 - (float)(totalMinutes / 60)));
             graficaPresion.setData(detalles);
-            horasDurmiendo.setText(durmiendo+"");
+            horasDurmiendo.setText(LocalTime.MIN.plus(Duration.ofMinutes(totalMinutes)).toString());
             graficaTemperatura.setLegendVisible(false);
             graficaPresion.setLegendVisible(false);
             graficaGas.setLegendVisible(false);
