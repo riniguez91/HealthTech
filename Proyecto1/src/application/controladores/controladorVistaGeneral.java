@@ -1055,15 +1055,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             map.setCenter(latLong);
             
-            // Añadir un Marker al mapa de la casa
-            MarkerOptions markerOptions = new MarkerOptions();
-
-            markerOptions.position(latLong)
-                    .visible(Boolean.TRUE)
-                    .title("My Marker");
-
-            Marker marker = new Marker(markerOptions);
-            map.addMarker(marker);
         });
     }
 
