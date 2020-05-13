@@ -69,6 +69,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.Timer;
 
 import static java.lang.String.format;
 
@@ -94,6 +95,9 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         this.cp = cp_;
         this.conexionBBDD = conexionBBDD;
         this.relatedUsers = modelo.usuariosRelacionados(usuario);
+
+        Timer timer = new Timer();
+        timer.schedule(new comprobacionAlertas(this, modelo, conexionBBDD, usuario.getID_User()), 0, 300000); // Comprueba cada 5 minutos
 
         modelo.setMessages(conexionBBDD.getMensajesDeUsuario(usuario.getID_User()));
 
@@ -130,10 +134,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         // Poblamos el calendario con eventos
         initCalendario();
 
-        /*if (calendario.getDetailedDayView().getAgendaView().getListView().getItems().size() != 0)
-            agendaViewInicio.getListView().setItems(calendario.getDetailedDayView().getAgendaView().getListView().getItems());*/
-
-    }
+    } // initModelo()
 
     // -------------------- Tab Inicio --------------------
 
@@ -356,6 +357,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             vboxConversacionMensajesInicio.getChildren().add(labelMessagesInicio.get(0));
         }
     } // comprobarMensajesNuevos()
+
+    public void crearAlertaPaciente(String cuerpoMensaje) {
+        modelo.createAlert("Informacion", cuerpoMensaje);
+    }
 
     @FXML
     void cerrarSesion(ActionEvent event) throws IOException {
@@ -1021,6 +1026,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             detalles.add(new PieChart.Data("Despierto", 24 - (float)(totalMinutes / 60)));
             graficaPresion.setData(detalles);
             horasDurmiendo.setText(LocalTime.MIN.plus(Duration.ofMinutes(totalMinutes)).toString());
+            
             graficaTemperatura.setLegendVisible(false);
             graficaPresion.setLegendVisible(false);
             graficaGas.setLegendVisible(false);

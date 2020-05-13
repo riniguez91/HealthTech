@@ -514,4 +514,26 @@ public class ConexionBBDD {
         return found;
     }
 
+    public Vector<String> comprobarAlertasPaciente(int ID_Usuario) {
+        Vector<String> alertas = new Vector<>();
+        try {
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            String sql = "SELECT Reading, Date_Time_Activation, Tipo_Sensor\n" +
+                    "FROM alertas\n" +
+                    "WHERE alertas.ID_User = ? AND NOW() < DATE_ADD(Date_Time_Activation, INTERVAL 5 MINUTE)";
+
+            pstm = c.prepareStatement(sql);
+            pstm.setInt(1, ID_Usuario);
+
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                alertas.add("Ha saltado el " + rs.getString("Tipo_Sensor").toLowerCase() + " porfavor compruebelo\n");
+            }
+
+        } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+        return alertas;
+    }
+
 } // ConexionBBDD()
