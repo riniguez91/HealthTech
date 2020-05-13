@@ -978,11 +978,12 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         // Gas
         XYChart.Series seriesGas = new XYChart.Series();
 
-        String sentenciaContinuo = "SELECT sensores_continuos.*\n" +
+        String sentenciaContinuo = "SELECT ID_Sensores_Continuos, AVG(sensores_continuos.Reading) AS Reading, Date_Time_Activation\n" +
                 "FROM sensores_continuos\n" +
                 "INNER JOIN sensores ON sensores_continuos.Sensores_ID1 = sensores.ID_Sensor\n" +
                 "INNER JOIN users ON sensores.Users_ID1 = users.ID_User\n" +
-                "WHERE users.ID_User = ? AND sensores.`Type` = ? AND sensores_continuos.Date_Time_Activation BETWEEN ? AND ?";
+                "WHERE users.ID_User = ? AND sensores.`Type` = ? AND sensores_continuos.Date_Time_Activation BETWEEN ? AND ?\n" +
+                "GROUP BY HOUR(Date_Time_Activation)";
 
         String sentenciaDiscreto = "SELECT sensores_discretos.*\n" +
                 "FROM sensores_discretos\n" +
