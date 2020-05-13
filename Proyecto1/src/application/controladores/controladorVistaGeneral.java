@@ -79,8 +79,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     private controladorVistaGeneral cp;
     private ConexionBBDD conexionBBDD; // new ConexionBBDD();
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); // Formato que le daremos a la fecha
-    private Vector<entradaCalendario> entradasPersonales;
-    private Vector<entradaCalendario> entradasCitas;
     private ArrayList<Usuario> relatedUsers;
 
     public void initModelo(modelo modelo_, Usuario usuario_, controladorVistaGeneral cp_, String tipoVista, ConexionBBDD conexionBBDD) {
@@ -383,8 +381,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         Calendar calendario_personal = new Calendar("Personal");
 
         HashMap<String, Vector<entradaCalendario>> entradasCal = conexionBBDD.recogerEntradasUsuario(usuario.getID_User());
-        entradasPersonales = entradasCal.get("Personal"); // CAMBIAR EL TIPO A VECTOR<STRING> (AHORA ESTA A LIST<STRING>)
-        entradasCitas = entradasCal.get("Citas");
         for (Map.Entry<String, Vector<entradaCalendario>> entry : entradasCal.entrySet()) {
             for (entradaCalendario single_entry : entry.getValue()) {
                 if (entry.getKey().equals("Personal"))
@@ -499,13 +495,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 // Insertamos la entrada en la BBDD
                 conexionBBDD.insertarEntrada(usuario.getID_User(), event.getEntry().getTitle(), event.getEntry().getStartAsLocalDateTime(),
                                              event.getEntry().getEndAsLocalDateTime(), event.getCalendar().getName());
-
-                // Cuando este compartido al tener el mismo ID, un cambio en la entrada supondria un cambio en el calendario para los dos, por lo que
-                // una solucion podria ser poner calendario_citas.setReadOnly(true) para el PACIENTE;
-                if (event.getEntry().getCalendar().getName().equals("Citas"))   // REALMENTE HACE FALTA AÑADIR A entradasCal ??
-                    entradasCal.get("Citas").add(new entradaCalendario(conexionBBDD.idUltimaEntrada(), event.getEntry()) );
-                else
-                    entradasCal.get("Personal").add(new entradaCalendario(conexionBBDD.idUltimaEntrada(), event.getEntry()) );
             }
 
             else if (event.isEntryRemoved()) {
