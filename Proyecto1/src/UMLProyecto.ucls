@@ -4,7 +4,7 @@
   <class id="1" language="java" name="application.controladores.controladorLogin" project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/controladores/controladorLogin.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="60" width="154" x="545" y="-548"/>    
+    <position height="60" width="154" x="534" y="-541"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -14,7 +14,7 @@
   <class id="2" language="java" name="application.controladores.controladorVistaGeneral" project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/controladores/controladorVistaGeneral.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="60" width="173" x="531" y="-125"/>    
+    <position height="60" width="208" x="511" y="-209"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -23,44 +23,14 @@
   </class>  
   <class id="3" language="java" name="application.modelos.Message" project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/modelos/Message.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="60" width="156" x="1016" y="-234"/>    
+    <position height="60" width="156" x="1002" y="-289"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="application.modelos.modSensorGas" project="proyecto1-techhealth" 
-    file="/proyecto1-techhealth/Proyecto1/src/application/modelos/modSensorGas.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="60" width="138" x="1242" y="-468"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="application.modelos.modSensorGPS" project="proyecto1-techhealth" 
-    file="/proyecto1-techhealth/Proyecto1/src/application/modelos/modSensorGPS.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="60" width="142" x="1239" y="-544"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="application.modelos.modSensorTemperatura" project="proyecto1-techhealth" 
-    file="/proyecto1-techhealth/Proyecto1/src/application/modelos/modSensorTemperatura.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="60" width="195" x="1242" y="-397"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="application.modelos.modelo" project="proyecto1-techhealth" 
+  <class id="4" language="java" name="application.modelos.modelo" project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/modelos/modelo.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="60" width="147" x="915" y="-463"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -69,27 +39,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="application.modelos.modSensorMagnetico" project="proyecto1-techhealth" 
-    file="/proyecto1-techhealth/Proyecto1/src/application/modelos/modSensorMagnetico.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="60" width="179" x="1242" y="-322"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="9" language="java" name="application.modelos.modSensorPresion" project="proyecto1-techhealth" 
-    file="/proyecto1-techhealth/Proyecto1/src/application/modelos/modSensorPresion.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="60" width="160" x="1246" y="-229"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="10" language="java" name="application.modelos.Usuario" project="proyecto1-techhealth" 
+  <class id="5" language="java" name="application.modelos.Usuario" project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/modelos/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="60" width="156" x="154" y="-464"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -98,36 +48,36 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="application.modelos.messageTTView" project="proyecto1-techhealth" 
+  <class id="6" language="java" name="application.modelos.messageTTView" project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/modelos/messageTTView.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="60" width="140" x="70" y="-223"/>    
+    <position height="60" width="140" x="1008" y="-209"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="application.modelos.usuarioTTView" project="proyecto1-techhealth" 
+  <class id="7" language="java" name="application.modelos.usuarioTTView" project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/modelos/usuarioTTView.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="60" width="130" x="246" y="-226"/>    
+    <position height="60" width="130" x="19" y="-536"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="application.Main" project="proyecto1-techhealth" 
+  <class id="8" language="java" name="application.Main" project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/Main.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="60" width="104" x="150" y="-352"/>    
+    <position height="60" width="104" x="172" y="-321"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="application.controladores.controladorCreacionUsuario" 
+  <class id="9" language="java" name="application.controladores.controladorCreacionUsuario" 
     project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/controladores/controladorCreacionUsuario.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -138,7 +88,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="application.controladores.controladorResponderTicket" 
+  <class id="10" language="java" name="application.controladores.controladorResponderTicket" 
     project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/controladores/controladorResponderTicket.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -149,7 +99,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="application.modelos.ConexionBBDD" project="proyecto1-techhealth" 
+  <class id="11" language="java" name="application.modelos.ConexionBBDD" project="proyecto1-techhealth" 
     file="/proyecto1-techhealth/Proyecto1/src/application/modelos/ConexionBBDD.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="60" width="141" x="211" y="-122"/>    
@@ -159,156 +109,169 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="17">    
+  <class id="12" language="java" name="application.modelos.entradaCalendario" project="proyecto1-techhealth" 
+    file="/proyecto1-techhealth/Proyecto1/src/application/modelos/entradaCalendario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="60" width="155" x="22" y="-198"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="application.modelos.sensor" project="proyecto1-techhealth" 
+    file="/proyecto1-techhealth/Proyecto1/src/application/modelos/sensor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="61" width="122" x="1148" y="-535"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="application.controladores.controladorAdmin" project="proyecto1-techhealth" 
+    file="/proyecto1-techhealth/Proyecto1/src/application/controladores/controladorAdmin.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="60" width="149" x="642" y="-91"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="15">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="18" name="usuario"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
+      <attribute id="16" name="conexionBBDD">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="17" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="21" name="mensajes">        
-        <position height="0" width="0" x="99" y="-11"/>      
+  <association id="18">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="19" name="usuario">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="22" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="99" y="-11"/>      
+      <multiplicity id="20" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="22" name="mensajes">        
+        <position height="0" width="0" x="85" y="-66"/>      
+      </attribute>      
+      <multiplicity id="23" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="85" y="-66"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="24" name="datosMagnetico">        
-        <position height="0" width="0" x="-5" y="-60"/>      
+  <association id="24">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="25" name="usuarios">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="25" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-5" y="-60"/>      
+      <multiplicity id="26" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="27" name="usuarios"/>      
-      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="29">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="30" name="modelo"/>      
-      <multiplicity id="31" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
+  <association id="27">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="33" name="modelo">        
-        <position height="0" width="0" x="-7" y="-18"/>      
+      <attribute id="28" name="usuario">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-7" y="-18"/>      
+      <multiplicity id="29" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="36" name="cp"/>      
-      <multiplicity id="37" minimum="0" maximum="1"/>    
+  <association id="30">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="31" name="modelo"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="38">    
+  <association id="33">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="39" name="conexionBBDD"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="42" name="datosGas">        
-        <position height="0" width="0" x="-17" y="-20"/>      
+      <attribute id="34" name="modelo">        
+        <position height="0" width="0" x="-7" y="-18"/>      
       </attribute>      
-      <multiplicity id="43" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-17" y="-20"/>      
+      <multiplicity id="35" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-7" y="-18"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="44">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="45" name="datosPresion">        
-        <position height="0" width="0" x="85" y="-65"/>      
-      </attribute>      
-      <multiplicity id="46" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="85" y="-65"/>      
-      </multiplicity>    
+  <association id="36">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="37" name="conexionBBDD"/>      
+      <multiplicity id="38" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="48" name="datosTemperatura">        
-        <position height="0" width="0" x="-9" y="-36"/>      
-      </attribute>      
-      <multiplicity id="49" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-9" y="-36"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
+  <association id="39">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="51" name="usuario"/>      
-      <multiplicity id="52" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="53">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="54" name="modelo"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="56">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="57" name="modelo">        
+      <attribute id="40" name="modelo">        
         <position height="0" width="0" x="-7" y="-18"/>      
       </attribute>      
-      <multiplicity id="58" minimum="0" maximum="1">        
+      <multiplicity id="41" minimum="0" maximum="1">        
         <position height="0" width="0" x="-7" y="-18"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="60" name="datosGPS">        
-        <position height="0" width="0" x="-13" y="-14"/>      
+  <association id="42">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="43" name="modelo">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="61" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-13" y="-14"/>      
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="46" name="modelo">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="49" name="cp">        
+        <position height="0" width="0" x="-20" y="-84"/>      
+      </attribute>      
+      <multiplicity id="50" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-20" y="-84"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
