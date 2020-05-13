@@ -694,7 +694,7 @@
                                           <Font name="Arial Bold" size="19.0" />
                                        </font>
                                     </Label>
-                                    <JFXTreeTableView fx:id="treeTableViewLocalizacion" onMouseClicked="#mostrarDatosMapaPacientes" prefHeight="1013.0" prefWidth="400.0" showRoot="false" />
+                                    <JFXTreeTableView fx:id="treeTableViewLocalizacion" prefHeight="1013.0" prefWidth="400.0" showRoot="false" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="1050.0" prefWidth="1435.0">

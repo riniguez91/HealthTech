@@ -1052,9 +1052,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         address.bind(addressTextField.textProperty());
     }
     
-    @Override
     public void mapInitialized() {
-        geocodingService = new GeocodingService();
         MapOptions mapOptions = new MapOptions();
 
         mapOptions.center(new LatLong(40.371830555556, -3.9189527777778))
@@ -1068,11 +1066,13 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 .zoom(16);
 
         map = mapView.createMap(mapOptions);
+        System.out.println(LocalTime.now()+": GoogleMaps cargado");
 
     }
     
     @FXML
     public void addressTextFieldAction(ActionEvent event) {
+    	map.clearMarkers();
         geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
             LatLong latLong;
 
@@ -1099,6 +1099,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     @FXML
     void verUbicacionCasa(ActionEvent event) {
+        geocodingService = new GeocodingService();
+    	map.clearMarkers();
     	if (treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getAdress().get() != null &&
                 treeTableViewLocalizacion.getSelectionModel().getSelectedItem() != null) {
             geocodingService.geocode(treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getAdress().get(), (GeocodingResult[] results, GeocoderStatus status) -> {
@@ -1130,6 +1132,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
     
     @FXML
     void ubicacionPaciente(ActionEvent event) {
+        geocodingService = new GeocodingService();
+    	map.clearMarkers();
     	LatLong latlong = null;
         String sentenciaGPS = "SELECT sensor_GPS.*\n" +
                 "FROM sensor_GPS\n" +
@@ -1140,9 +1144,8 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         for (sensor sg : conexionBBDD.leerDatosSensorGPS(treeTableViewLocalizacion.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
                                                 "GPS" , sentenciaGPS)) {
         	latlong = new LatLong (sg.getLatitude(), sg.getLongitude());
-        	map.setCenter(latlong);
         }
-
+        map.setCenter(latlong);
         // Añadir un Marker al mapa de la casa
         MarkerOptions markerOptions = new MarkerOptions();
         
@@ -1157,11 +1160,11 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     }
 
-    @FXML
-    void mostrarDatosMapaPacientes(MouseEvent event) throws ParseException {
-        calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
-    }
-
+//    @FXML
+//    void mostrarDatosMapaPacientes(MouseEvent event) throws ParseException {
+//        calendarioSensores.setValue(LocalDate.now()); // Asignamos la fecha actual al seleccionar un usuario
+//    }
+    
     // -------------------- Fin metodos tab Localizacion --------------------
 
 } // controladorVistaGeneral()
