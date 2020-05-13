@@ -1056,15 +1056,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
         map = mapView.createMap(mapOptions);
 
-        // Añadir un Marker al mapa
-        MarkerOptions markerOptions = new MarkerOptions();
-
-        markerOptions.position(new LatLong(40.371830555556, -3.9189527777778))
-                .visible(Boolean.TRUE)
-                .title("My Marker");
-
-        Marker marker = new Marker(markerOptions);
-        map.addMarker(marker);
     }
     
     @FXML
@@ -1079,6 +1070,16 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
             latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             map.setCenter(latLong);
+            
+            // Añadir un Marker al mapa
+            MarkerOptions markerOptions = new MarkerOptions();
+
+            markerOptions.position(new LatLong(40.371830555556, -3.9189527777778))
+                    .visible(Boolean.TRUE)
+                    .title("My Marker");
+
+            Marker marker = new Marker(markerOptions);
+            map.addMarker(marker);
             
         });
     }
