@@ -55,6 +55,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.joda.time.Period;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -1011,6 +1012,16 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 if (sd.getReading() == 1)
                     durmiendo += 1;
             }
+
+            /*Vector<sensor> tuplasSinFiltrar = conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                    "Presion", formatter.format(calendarioSensores.getValue().atStartOfDay()),
+                    formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaDiscreto);
+            for (int i = 1; i < tuplasSinFiltrar.size() ; i += 2) {
+                Period p = new org.joda.time.Period(tuplasSinFiltrar.get(i-1).getDate_Time_Activation().getTime(), tuplasSinFiltrar.get(i).getDate_Time_Activation().getTime());
+                System.out.println("Hours: " + p.getHours() + "Minutes: " + p.getMinutes());
+            }*/
+
+
             detalles.add(new PieChart.Data("Durmiendo", durmiendo));
             detalles.add(new PieChart.Data("Despierto", 24-durmiendo));
             graficaPresion.setData(detalles);
