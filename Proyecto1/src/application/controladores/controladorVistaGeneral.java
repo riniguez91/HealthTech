@@ -494,44 +494,69 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             if (event.isEntryAdded()) {
                 // Insertamos la entrada en la BBDD
                 conexionBBDD.insertarEntrada(usuario.getID_User(), event.getEntry().getTitle(), event.getEntry().getStartAsLocalDateTime(),
-                                             event.getEntry().getEndAsLocalDateTime(), event.getCalendar().getName());
+                        event.getEntry().getEndAsLocalDateTime(), event.getCalendar().getName());
+
+                // El unico sitio donde hace falta añadir es aqui, puesto que el resto de eventos dependen de este hashmap
+                if (event.getEntry().getCalendar().getName().equals("Citas"))
+                    entradasCal.get("Citas").add(new entradaCalendario(conexionBBDD.idUltimaEntrada(), event.getEntry()) );
+                else
+                    entradasCal.get("Personal").add(new entradaCalendario(conexionBBDD.idUltimaEntrada(), event.getEntry()) );
             }
 
             else if (event.isEntryRemoved()) {
-                entradasCal.get(event.getOldCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
-                    if (entry.getEntradaCal().equals(event.getEntry()))
-                        conexionBBDD.removeEntry(entry.getID_Entrada());
-                });
+                Iterator<entradaCalendario> iter = entradasCal.get(event.getOldCalendar().getName()).iterator();
+
+                while (iter.hasNext()) {
+                    entradaCalendario entryIter = iter.next();
+                    if (entryIter.getEntradaCal().equals(event.getEntry())) {
+                        conexionBBDD.removeEntry(entryIter.getID_Entrada());
+                        break;
+                    }
+                }
             }
 
             // Mientras cambia algun intervalo (startDateTime o endDateTime cambian)
             else if (event.getEventType().getName().equals("ENTRY_INTERVAL_CHANGED")) {
-                entradasCal.get(event.getCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
-                    if (entry.getEntradaCal().equals(event.getEntry()))
+                Iterator<entradaCalendario> iter = entradasCal.get(event.getCalendar().getName()).iterator();
+
+                while (iter.hasNext()) {
+                    entradaCalendario entryIter = iter.next();
+                    if (entryIter.getEntradaCal().equals(event.getEntry())) {
                         conexionBBDD.updateEntryInterval(event.getEntry().getStartAsLocalDateTime().toString(),
-                                event.getEntry().getEndAsLocalDateTime().toString(), entry.getID_Entrada());
-                }); // AÑADIR TMBN A ENTRADAS CAL PARA QUE SE EDITE AHI
+                                event.getEntry().getEndAsLocalDateTime().toString(), entryIter.getID_Entrada());
+                        break;
+                    }
+                }
             }
 
             else if (event.getEventType().getName().equals("ENTRY_TITLE_CHANGED")) {
-                entradasCal.get(event.getCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
-                    if (entry.getEntradaCal().equals(event.getEntry())) {
+                Iterator<entradaCalendario> iter = entradasCal.get(event.getCalendar().getName()).iterator();
+
+                while (iter.hasNext()) {
+                    entradaCalendario entryIter = iter.next();
+                    if (entryIter.getEntradaCal().equals(event.getEntry())) {
                         String sql = "UPDATE `entradas_calendario` SET Title = ? WHERE ID_Entry = ?;";
-                        conexionBBDD.updateEntry(sql, event.getEntry().getTitle(), entry.getID_Entrada());
+                        conexionBBDD.updateEntry(sql, event.getEntry().getTitle(), entryIter.getID_Entrada());
 
                         // Tenemos que fire el event manualmente al cambiar el titulo (supongo que por la implementacion de libreria)
                         calendario.getAgendaView().getListView().refresh();
+                        break;
                     }
-                }); // AÑADIR TMBN A ENTRADAS CAL PARA QUE SE EDITE AHI
+                }
             }
 
             else if (event.getEventType().getName().equals("ENTRY_CALENDAR_CHANGED")) {
-                entradasCal.get(event.getOldCalendar().getName()).forEach(entry -> { // POSIBLE ALGORITMO DE TPA @JamboRama
-                    if (entry.getEntradaCal().equals(event.getEntry())) {
+                // Old Calendar al cambiar de un calendario a otro
+                Iterator<entradaCalendario> iter = entradasCal.get(event.getOldCalendar().getName()).iterator();
+
+                while (iter.hasNext()) {
+                    entradaCalendario entryIter = iter.next();
+                    if (entryIter.getEntradaCal().equals(event.getEntry())) {
                         String sql = "UPDATE `entradas_calendario` SET Calendario = ? WHERE ID_Entry = ?;";
-                        conexionBBDD.updateEntry(sql, event.getEntry().getCalendar().getName(), entry.getID_Entrada());
+                        conexionBBDD.updateEntry(sql, event.getEntry().getCalendar().getName(), entryIter.getID_Entrada());
+                        break;
                     }
-                }); // AÑADIR TMBN A ENTRADAS CAL PARA QUE SE EDITE AHI
+                }
             }
 
             else if (event.getEventType().getName().equals("ENTRY_FULL_DAY_CHANGED")) {
