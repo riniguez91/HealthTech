@@ -643,7 +643,7 @@
                                           <CategoryAxis label="Tiempo" side="BOTTOM" />
                                        </xAxis>
                                        <yAxis>
-                                          <NumberAxis label="Gas" side="LEFT" />
+                                          <NumberAxis label="ppm" side="LEFT" />
                                        </yAxis>
                                     </StackedBarChart>
                                     <HBox prefHeight="100.0" prefWidth="200.0">
