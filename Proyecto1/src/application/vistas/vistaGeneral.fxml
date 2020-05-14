@@ -445,7 +445,7 @@
                                     </JFXTreeTableView>
                                  </children>
                               </VBox>
-                              <VBox fx:id="datosVBoxMensajes" fillWidth="false" prefHeight="1050.0" prefWidth="1487.0">
+                              <VBox fx:id="datosVBoxMensajes" fillWidth="false" prefHeight="1050.0" prefWidth="1487.0" visible="false">
                                  <children>
                                     <Separator prefHeight="40.0" prefWidth="1402.0" styleClass="separator-black" stylesheets="@../application.css">
                                        <VBox.margin>
