@@ -3,7 +3,9 @@ package application.controladores;
 import application.modelos.ConexionBBDD;
 import com.jfoenix.controls.*;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -149,6 +152,14 @@ public class controladorLogin {
         Stage stageBttnBelongsTo = (Stage) loginButton.getScene().getWindow();
         stageBttnBelongsTo.setScene(new Scene(rootVistaGeneral));
 
+        stageBttnBelongsTo.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+
     } // cargarVista()
     
     public void cargarVistaAdmin() throws IOException {
@@ -164,6 +175,7 @@ public class controladorLogin {
     
     }
     public void login() {
+
         try {
             ResultSet rs = c.loginRS("SELECT * \n" +
                     "FROM users\n" +

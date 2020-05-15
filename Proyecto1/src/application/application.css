@@ -68,7 +68,7 @@
 	-fx-border-width: 2px;
 	-fx-font-family: Century Gothic;
 	-fx-font-size: 14px;
-	-fx-text-fill: white;
+	-fx-text-fill: #ffffff;
 }
 .botones:hover{
     -fx-cursor: hand;
@@ -87,7 +87,7 @@
 }
 
 .tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell{
-    -fx-text-fill: white;
+    -fx-text-fill: #ffffff;
 }
 
 .tree-table-view .jfx-rippler {
