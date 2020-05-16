@@ -1,7 +1,6 @@
 package application.controladores;
 
 import application.modelos.*;
-
 import com.calendarfx.model.Calendar;
 import com.calendarfx.model.CalendarEvent;
 import com.calendarfx.model.CalendarSource;
@@ -9,7 +8,6 @@ import com.calendarfx.model.Entry;
 import com.calendarfx.view.*;
 import com.calendarfx.view.page.DayPage;
 import com.jfoenix.controls.*;
-
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
@@ -17,8 +15,6 @@ import com.lynden.gmapsfx.javascript.object.*;
 import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
-import com.sun.javafx.css.Style;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -29,15 +25,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.geometry.NodeOrientation;
 import javafx.geometry.Pos;
-import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.StackedBarChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -57,21 +48,15 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.joda.time.Period;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.text.ParseException;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.Timer;
-
-import static java.lang.String.format;
 
 public class controladorVistaGeneral implements Initializable, MapComponentInitializedListener {
 
@@ -269,7 +254,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     @FXML private LineChart<Double, Double> graficaTemperatura;
 
-    @FXML private StackedBarChart<Double, Double> graficaMagnetico;
+    @FXML private ScatterChart<Double, Double> graficaMagnetico;
 
     @FXML private PieChart graficaPresion;
 
@@ -949,27 +934,66 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     } // dumpRegistrosSensores()
 
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public void poblarGraficaMagnetico(String sentenciaDiscreto) {
+        XYChart.Series series = new XYChart.Series();
+        sentenciaDiscreto += " AND sensores_discretos.Reading = 1"; // Si lo comentamos tmbn añadimos los 0s a la grafica
+
+        Vector<sensor> datosMagnetico = conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                "Magnetico", formatter.format(calendarioSensores.getValue().atStartOfDay()),
+                formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaDiscreto);
+        for (sensor sc : datosMagnetico) {
+            Timestamp timestamp = new Timestamp(sc.getDate_Time_Activation().getTime());
+            series.getData().add(new XYChart.Data(timestamp.toLocalDateTime().getHour()+"",sc.getReading()));
+        }
+
+        graficaMagnetico.getData().add(series);
+    } // poblarGraficaMagnetico()
+
     @SuppressWarnings({"rawtypes", "unchecked"})
-    public void poblarStackedBarChart(XYChart.Series series, StackedBarChart<Double, Double> grafica, String sentencia,
+    public void poblarGraficaGas(StackedBarChart<Double, Double> grafica, String sentencia,
                                       String tipoSensor) {
+        // Gas
+        XYChart.Series seriesGas = new XYChart.Series();
         for (sensor sc : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
                 tipoSensor, formatter.format(calendarioSensores.getValue().atStartOfDay()),
                 formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentencia) ) {
             Timestamp timestamp = new Timestamp(sc.getDate_Time_Activation().getTime());
-            series.getData().add(new XYChart.Data(timestamp.toLocalDateTime().getHour()+"", sc.getReading()));
+            seriesGas.getData().add(new XYChart.Data(timestamp.toLocalDateTime().getHour()+"", sc.getReading()));
         }
-        grafica.getData().addAll(series);
+        grafica.getData().addAll(seriesGas);
     }
 
-    @FXML
-    void mostrarDatosSensoresPacientes(MouseEvent event) {
-        if (calendarioSensores.getValue() != null) {
-            llenarGraficasSensores();
-            dumpRegistrosSensores();
-        }
-    } // mostrarDatosSensoresPacientes()
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public void poblarGraficaTemperatura(String sentenciaContinuo) {
+        // Temperatura
+        XYChart.Series seriesTemperatura = new XYChart.Series();
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
+        for (sensor sc : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                "Temperatura", formatter.format(calendarioSensores.getValue().atStartOfDay()),
+                formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaContinuo)  ) {
+            Timestamp timestamp = new Timestamp(sc.getDate_Time_Activation().getTime());
+            seriesTemperatura.getData().add(new XYChart.Data(timestamp.toLocalDateTime().getHour()+"", sc.getReading()));
+        }
+        graficaTemperatura.getData().addAll(seriesTemperatura);
+    }
+
+    public void poblarGraficaPresion(String sentenciaDiscreto) {
+        Vector<sensor> tuplasSinFiltrar = conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
+                "Presion", formatter.format(calendarioSensores.getValue().atStartOfDay()),
+                formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaDiscreto);
+        long totalMinutes = 0;
+        for (int i = 1; i < tuplasSinFiltrar.size() ; i += 2) {
+            Period p = new org.joda.time.Period(tuplasSinFiltrar.get(i-1).getDate_Time_Activation().getTime(), tuplasSinFiltrar.get(i).getDate_Time_Activation().getTime());
+            totalMinutes += p.getMinutes();
+        }
+
+        detalles.add(new PieChart.Data("Durmiendo", (float) totalMinutes / 60));
+        detalles.add(new PieChart.Data("Despierto", 24 - (float)(totalMinutes / 60)));
+        graficaPresion.setData(detalles);
+        horasDurmiendo.setText(LocalTime.MIN.plus(Duration.ofMinutes(totalMinutes)).toString());
+    }
+
     public void llenarGraficasSensores() {
         //Limpiamos todas las gráficas
         graficaTemperatura.getData().clear();
@@ -977,15 +1001,6 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         graficaGas.getData().clear();
         graficaPresion.getData().clear();
         detalles.clear();
-
-        // Temperatura
-        XYChart.Series seriesTemperatura = new XYChart.Series();
-
-        // Magnetico
-        XYChart.Series seriesMagnetico = new XYChart.Series();
-
-        // Gas
-        XYChart.Series seriesGas = new XYChart.Series();
 
         String sentenciaContinuo = "SELECT ID_Sensores_Continuos, AVG(sensores_continuos.Reading) AS Reading, Date_Time_Activation\n" +
                 "FROM sensores_continuos\n" +
@@ -1001,31 +1016,14 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 "WHERE users.ID_User = ? AND sensores.`Type` = ? AND sensores_discretos.Date_Time_Activation BETWEEN ? AND ?";
 
         if (treeTableViewRegistros.getSelectionModel().getSelectedItem() != null) {
-            for (sensor sc : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
-                    "Temperatura", formatter.format(calendarioSensores.getValue().atStartOfDay()),
-                    formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaContinuo)  ) {
-                Timestamp timestamp = new Timestamp(sc.getDate_Time_Activation().getTime());
-                seriesTemperatura.getData().add(new XYChart.Data(timestamp.toLocalDateTime().getHour()+"", sc.getReading()));
-            }
-            graficaTemperatura.getData().addAll(seriesTemperatura);
 
-            poblarStackedBarChart(seriesGas, graficaGas, sentenciaContinuo, "Gas");
+            poblarGraficaTemperatura(sentenciaContinuo);
 
-            poblarStackedBarChart(seriesMagnetico, graficaMagnetico, sentenciaDiscreto, "Magnetico");
+            poblarGraficaGas(graficaGas, sentenciaContinuo, "Gas");
 
-            Vector<sensor> tuplasSinFiltrar = conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
-                    "Presion", formatter.format(calendarioSensores.getValue().atStartOfDay()),
-                    formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaDiscreto);
-            long totalMinutes = 0;
-            for (int i = 1; i < tuplasSinFiltrar.size() ; i += 2) {
-                Period p = new org.joda.time.Period(tuplasSinFiltrar.get(i-1).getDate_Time_Activation().getTime(), tuplasSinFiltrar.get(i).getDate_Time_Activation().getTime());
-                totalMinutes += p.getMinutes();
-            }
+            poblarGraficaMagnetico(sentenciaDiscreto);
 
-            detalles.add(new PieChart.Data("Durmiendo", (float) totalMinutes / 60));
-            detalles.add(new PieChart.Data("Despierto", 24 - (float)(totalMinutes / 60)));
-            graficaPresion.setData(detalles);
-            horasDurmiendo.setText(LocalTime.MIN.plus(Duration.ofMinutes(totalMinutes)).toString());
+            poblarGraficaPresion(sentenciaDiscreto);
             
             graficaTemperatura.setLegendVisible(false);
             graficaPresion.setLegendVisible(false);
@@ -1033,6 +1031,14 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             graficaMagnetico.setLegendVisible(false);
         }
     }
+
+    @FXML
+    void mostrarDatosSensoresPacientes(MouseEvent event) {
+        if (calendarioSensores.getValue() != null) {
+            llenarGraficasSensores();
+            dumpRegistrosSensores();
+        }
+    } // mostrarDatosSensoresPacientes()
 
     // -------------------- Fin metodos tab Registros --------------------
 

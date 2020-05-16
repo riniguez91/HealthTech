@@ -13,6 +13,7 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.ScatterChart?>
 <?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -274,7 +275,7 @@
                                                       <Insets left="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <Label prefHeight="45.0" prefWidth="307.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Nacimiento:" GridPane.rowIndex="2">
+                                                <Label prefHeight="45.0" prefWidth="307.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -597,14 +598,14 @@
                                        </yAxis>
                                     </LineChart>
                                     <Separator prefWidth="200.0" />
-                                    <StackedBarChart fx:id="graficaMagnetico" prefHeight="640.0" prefWidth="640.0" styleClass="graphs" stylesheets="@../application.css" title="Sensor magnetico">
-                                       <xAxis>
-                                          <CategoryAxis label="Tiempo" side="BOTTOM" />
-                                       </xAxis>
-                                       <yAxis>
-                                          <NumberAxis label="Abierto/Cerrado" side="LEFT" />
-                                       </yAxis>
-                                    </StackedBarChart>
+                                    <ScatterChart fx:id="graficaMagnetico" prefHeight="640.0" prefWidth="640.0" title="Sensor Magnetico">
+                                      <xAxis>
+                                        <CategoryAxis label="TIempo" side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis label="Activaciones" side="LEFT" />
+                                      </yAxis>
+                                    </ScatterChart>
                                  </children>
                               </VBox>
                               <Separator orientation="VERTICAL" prefHeight="1080.0" />

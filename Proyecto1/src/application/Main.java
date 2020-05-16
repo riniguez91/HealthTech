@@ -1,6 +1,6 @@
 package application;
 
-import application.controladores.*;
+import application.controladores.controladorLogin;
 import application.modelos.Usuario;
 import application.modelos.modelo;
 import javafx.application.Application;
@@ -11,8 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.util.UUID;
 
 public class Main extends Application {
 

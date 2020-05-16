@@ -221,7 +221,7 @@ public class ConexionBBDD {
     }
 
     public Vector<sensor> leerDatosSensor(int ID_User, String tipoSensor, String startDate, String endDate, String sql) {
-        Vector<sensor> datosSensCont = new Vector<>();
+        Vector<sensor> datosSens = new Vector<>();
         try {
             c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
 
@@ -236,16 +236,16 @@ public class ConexionBBDD {
             rs = pstm.executeQuery();
             while (rs.next())
                 if (tipoSensor.equals("Temperatura") || tipoSensor.equals("Gas"))
-                    datosSensCont.add(new sensor(rs.getInt("ID_Sensores_Continuos"), rs.getDouble("Reading"),
+                    datosSens.add(new sensor(rs.getInt("ID_Sensores_Continuos"), rs.getDouble("Reading"),
                             rs.getDate("Date_Time_Activation")));
                 else
-                    datosSensCont.add(new sensor(rs.getInt("ID_Sensores_Discretos"), rs.getDouble("Reading"),
+                    datosSens.add(new sensor(rs.getInt("ID_Sensores_Discretos"), rs.getDouble("Reading"),
                             rs.getDate("Date_Time_Activation")));
 
         } catch(SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
-        return datosSensCont;
+        return datosSens;
     }
     
     public Vector<sensor> leerDatosSensorGPS(int ID_User, String tipoSensor, String sql) {
