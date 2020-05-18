@@ -97,7 +97,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         labelApellidosInicio.setText(usuario.getSurnames());
         labelRolInicio.setText(usuario.getRol());
         labelUsernameInicio.setText(usuario.getUser());
-        labelFechaNacimientoInicio.setText(usuario.getDOB());
+        labelTelefonoInicio.setText(usuario.getTelephone()+"");
         labelEdadInicio.setText(usuario.getAge() + "");
         labelDNIInicio.setText(usuario.getDNI());
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
@@ -194,7 +194,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
     @FXML private Label labelApellidosUsuarios;
 
-    @FXML private Label labelFechaNacimientoUsuarios;
+    @FXML private Label labelTelefonoUsuarios;
 
     @FXML private Label labelRolUsuarios;
 
@@ -619,11 +619,11 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         if (soloPacientes) {
         	for (Usuario user : relatedUsers)
         		if (user.getRol().equals("paciente")) 
-                    users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto(), user.getAdress()));
+                    users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto(), user.getAdress(),  user.getTelephone()));
 		} else {
 	        // Añadimos los usuarios
 			for (Usuario user : relatedUsers)
-				users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto(), user.getAdress()));
+				users.add(new usuarioTTView(user.getID_User(), user.getName(), user.getSurnames(), user.getRol(), user.getDOB(), user.getAge(), user.getPhoto(), user.getAdress(),  user.getTelephone()));
 		}
  
         TreeItem<usuarioTTView> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
@@ -650,7 +650,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 labelNombreUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get());
                 labelApellidosUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());
                 labelRolUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getRolUsuario().get());
-                labelFechaNacimientoUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getBirthday().get());
+                labelTelefonoUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getTelephone().get()+"");
                 labelEdadUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getAge().get() + "");
                 destinatarioJFXTextFieldUsuarios.setText(treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getName().get() + " "
                         + treeTableViewUsuarios.getSelectionModel().getSelectedItem().getValue().getSurname().get());

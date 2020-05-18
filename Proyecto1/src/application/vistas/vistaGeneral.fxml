@@ -275,7 +275,7 @@
                                                       <Insets left="5.0" />
                                                    </padding>
                                                 </Label>
-                                                <Label prefHeight="45.0" prefWidth="307.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Fecha de Nacimiento:" GridPane.rowIndex="2">
+                                                <Label prefHeight="45.0" prefWidth="307.0" style="-fx-background-color: white;" styleClass="preguntaLabel" stylesheets="@../application.css" text="Teléfono:" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
@@ -310,7 +310,7 @@
                                                    </font>
                                                 </Label>
                                                 <Label fx:id="labelApellidosUsuarios" prefHeight="45.0" prefWidth="700.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Label fx:id="labelFechaNacimientoUsuarios" prefHeight="45.0" prefWidth="700.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <Label fx:id="labelTelefonoUsuarios" prefHeight="45.0" prefWidth="700.0" style="-fx-background-color: white;" styleClass="textoLabel" stylesheets="@../application.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font name="System Bold" size="12.0" />
                                                    </font>
