@@ -598,7 +598,7 @@
                                        </yAxis>
                                     </LineChart>
                                     <Separator prefWidth="200.0" />
-                                    <ScatterChart fx:id="graficaMagnetico" prefHeight="640.0" prefWidth="640.0" title="Sensor Magnetico">
+                                    <ScatterChart fx:id="graficaMagnetico" prefHeight="640.0" prefWidth="640.0" styleClass="graphs" stylesheets="@../application.css" title="Sensor Magnetico">
                                       <xAxis>
                                         <CategoryAxis label="TIempo" side="BOTTOM" />
                                       </xAxis>

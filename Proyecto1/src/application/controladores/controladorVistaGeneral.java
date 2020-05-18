@@ -82,7 +82,11 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         this.relatedUsers = modelo.usuariosRelacionados(usuario);
 
         Timer timer = new Timer();
-        timer.schedule(new comprobacionAlertas(this, modelo, conexionBBDD, usuario.getID_User()), 0, 300000); // Comprueba cada 5 minutos
+        // Comprueba cada 5 minutos
+        if (usuario.getRol().equals("paciente"))
+            timer.schedule(new comprobacionAlertas(this, modelo, conexionBBDD, usuario.getID_User(), "paciente"), 0, 300000);
+        else
+            timer.schedule(new comprobacionAlertas(this, modelo, conexionBBDD, usuario.getRol(), relatedUsers), 0, 300000);
 
         modelo.setMessages(conexionBBDD.getMensajesDeUsuario(usuario.getID_User()));
 
@@ -955,13 +959,16 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                                       String tipoSensor) {
         // Gas
         XYChart.Series seriesGas = new XYChart.Series();
+
+
         for (sensor sc : conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
-                tipoSensor, formatter.format(calendarioSensores.getValue().atStartOfDay()),
-                formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentencia) ) {
+                         tipoSensor, formatter.format(calendarioSensores.getValue().atStartOfDay()),
+                         formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentencia) ) {
             Timestamp timestamp = new Timestamp(sc.getDate_Time_Activation().getTime());
             seriesGas.getData().add(new XYChart.Data(timestamp.toLocalDateTime().getHour()+"", sc.getReading()));
         }
-        grafica.getData().addAll(seriesGas);
+
+        grafica.getData().add(seriesGas);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})

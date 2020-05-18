@@ -6,6 +6,7 @@ import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 
@@ -531,6 +532,27 @@ public class ConexionBBDD {
             }
 
         } catch (SQLException sqle) {
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
+        }
+        return alertas;
+    }
+
+    public Vector<String> comprobarAlertasPacientesRelacionados(ArrayList<Usuario> relatedUsers) {
+        Vector<String> alertas = new Vector<>();
+        try {
+            c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
+            for (Usuario user : relatedUsers) {
+                if (user.getRol().equals("paciente")) {
+                    Vector<String> alertasSinFiltrar = comprobarAlertasPaciente(user.getID_User());
+                    if (alertasSinFiltrar.size() > 0) {
+                        alertas.add("     PACIENTE: " + user.getName() + " " + user.getSurnames() + " || TELEFONO: " + user.getTelephone() + "\n\n");
+                        alertas.addAll(alertasSinFiltrar);
+                        alertas.add("\n");
+                    }
+                }
+            }
+
+        } catch(SQLException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
         return alertas;
