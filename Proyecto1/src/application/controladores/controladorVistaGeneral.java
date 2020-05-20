@@ -46,6 +46,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.joda.time.Hours;
 import org.joda.time.Period;
 
 import java.io.IOException;
@@ -54,7 +55,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -918,7 +921,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
 
             vboxRegistros_apane.getChildren().add(new Label(" "));
         }
-    }
+    } // mostrarAlertasHashMap()
 
     private void dumpRegistrosSensores() {
         // Limpiamos los registros
@@ -969,7 +972,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         }
 
         grafica.getData().add(seriesGas);
-    }
+    } // poblarGraficaGas()
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     public void poblarGraficaTemperatura(String sentenciaContinuo) {
@@ -983,23 +986,49 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             seriesTemperatura.getData().add(new XYChart.Data(timestamp.toLocalDateTime().getHour()+"", sc.getReading()));
         }
         graficaTemperatura.getData().addAll(seriesTemperatura);
-    }
+    } // poblarGraficaTemperatura()
 
     public void poblarGraficaPresion(String sentenciaDiscreto) {
         Vector<sensor> tuplasSinFiltrar = conexionBBDD.leerDatosSensor(treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
                 "Presion", formatter.format(calendarioSensores.getValue().atStartOfDay()),
                 formatter.format(calendarioSensores.getValue().atTime(23, 59, 59)), sentenciaDiscreto);
+
         long totalMinutes = 0;
-        for (int i = 1; i < tuplasSinFiltrar.size() ; i += 2) {
-            Period p = new org.joda.time.Period(tuplasSinFiltrar.get(i-1).getDate_Time_Activation().getTime(), tuplasSinFiltrar.get(i).getDate_Time_Activation().getTime());
-            totalMinutes += p.getMinutes();
+        long totalHours = 0;
+        int i = 1;
+        int end = 0;
+        if (tuplasSinFiltrar.size() % 2 != 0) {
+            if (tuplasSinFiltrar.get(0).getReading() == 0) {
+                // de 00:00 a tuplasSinFiltar()
+                Date d = Date.from(calendarioSensores.getValue().atStartOfDay().toInstant(ZoneOffset.UTC));
+                Period p = new org.joda.time.Period(tuplasSinFiltrar.get(0).getDate_Time_Activation().getTime(), d.getTime());
+
+                totalMinutes += p.getMinutes();
+                i = 2;
+            } else {
+                // del ultimo a 24:00
+                Date d = Date.from(calendarioSensores.getValue().atTime(23, 59, 59).toInstant(ZoneOffset.UTC));
+                Period p = new org.joda.time.Period(tuplasSinFiltrar.lastElement().getDate_Time_Activation().getTime(), d.getTime());
+
+                totalMinutes += p.getMinutes();
+                end = 1;
+            }
         }
 
-        detalles.add(new PieChart.Data("Durmiendo", (float) totalMinutes / 60));
-        detalles.add(new PieChart.Data("Despierto", 24 - (float)(totalMinutes / 60)));
+
+        for ( ; i < tuplasSinFiltrar.size() - end; i += 2) {
+            Period p = new org.joda.time.Period(tuplasSinFiltrar.get(i - 1).getDate_Time_Activation().getTime(), tuplasSinFiltrar.get(i).getDate_Time_Activation().getTime());
+            totalMinutes += p.getMinutes();
+            totalHours += p.getHours();
+        }
+
+        long totalTime = (totalHours*60) + totalMinutes;
+        detalles.add(new PieChart.Data("Durmiendo", Duration.ofMinutes(totalTime).toMinutes()));
+        detalles.add(new PieChart.Data("Despierto", 1440 - Duration.ofMinutes(totalTime).toMinutes()));
         graficaPresion.setData(detalles);
-        horasDurmiendo.setText(LocalTime.MIN.plus(Duration.ofMinutes(totalMinutes)).toString());
-    }
+        horasDurmiendo.setText(LocalTime.MIN.plus(Duration.ofMinutes(totalTime)).toString());
+        // horasDurmiendo.setText(totalHours + ":" + totalMinutes);
+    } // poblarGraficaPresion()
 
     public void llenarGraficasSensores() {
         //Limpiamos todas las gráficas
@@ -1037,7 +1066,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
             graficaGas.setLegendVisible(false);
             graficaMagnetico.setLegendVisible(false);
         }
-    }
+    } // llenarGraficaSensores()
 
     @FXML
     void mostrarDatosSensoresPacientes(MouseEvent event) {

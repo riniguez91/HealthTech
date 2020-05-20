@@ -276,7 +276,7 @@ public class ConexionBBDD {
     public void eliminarUsuario(Integer ID_Usuario) {
     	try {
     		c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
-    		String s = "DELETE FROM pr_healthtech.users WHERE ID_User = ? ;" ;
+    		String s = "DELETE FROM pr_healthtech.users WHERE ID_User = ? ;";
     		pstm = c.prepareStatement(s);
     		
     		pstm.setInt(1, ID_Usuario );
@@ -521,7 +521,7 @@ public class ConexionBBDD {
             c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String sql = "SELECT Reading, Date_Time_Activation, Tipo_Sensor\n" +
                     "FROM alertas\n" +
-                    "WHERE alertas.ID_User = ? AND NOW() < DATE_ADD(Date_Time_Activation, INTERVAL 5 MINUTE)";
+                    "WHERE alertas.ID_User = ? AND NOW() < DATE_ADD(Date_Time_Activation, INTERVAL 5 MINUTE) AND alertas.Tipo_Sensor != \"Sensor Presion\"";
 
             pstm = c.prepareStatement(sql);
             pstm.setInt(1, ID_Usuario);
