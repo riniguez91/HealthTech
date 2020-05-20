@@ -655,19 +655,19 @@
                                              </font>
                                           </Label>
                                           <Circle fill="#25ff1f" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Label styleClass="textoLabel" text=" 0 - 450 ppm  ">
+                                          <Label styleClass="textoLabel" text=" 0 - 80 ppm  ">
                                              <font>
                                                 <Font size="19.0" />
                                              </font>
                                           </Label>
                                           <Circle fill="#ffbd21" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Label styleClass="textoLabel" text=" 450 - 1000 ppm  ">
+                                          <Label styleClass="textoLabel" text=" 80 - 450 ppm  ">
                                              <font>
                                                 <Font size="19.0" />
                                              </font>
                                           </Label>
                                           <Circle fill="#ff2121" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Label styleClass="textoLabel" text=" 1000 - 5000 ppm">
+                                          <Label styleClass="textoLabel" text=" 450 - 1000 ppm">
                                              <font>
                                                 <Font size="19.0" />
                                              </font>
