@@ -53,7 +53,7 @@ public class controladorCreacionUsuario {
     @FXML
     void crearUsuario(ActionEvent event) {
         try {
-            if (modelo.countWordsString(crearNombreTField.getText()) > 2) {
+            if (modelo.countWordsString(crearNombreTField.getText()) > 2 || modelo.countWordsString(crearNombreTField.getText()) == 0) {
                 modelo.createAlert("Cuidado",
                         "Debes introducir un nombre válido, que consista de una/dos palabras.");
             } else if (modelo.countWordsString(crearApellidosTField.getText()) != 2) {
@@ -63,7 +63,7 @@ public class controladorCreacionUsuario {
                 modelo.createAlert("Cuidado",
                         "Debes introducir una única palabra de longitud máxima 16, que consista de letras y/o numeros (pepe27).");
             } else if (crearPasswordTField.getText().isEmpty()) {
-                modelo.createAlert("Cuidado", "Porfavor rellene el campo de contraseña");
+                modelo.createAlert("Cuidado", "Por favor rellene el campo de contraseña");
             } else if (crearCumpleTField.getText().length() != 10) {
                 modelo.createAlert("Cuidado",
                         "Debes introducir una fecha válida (27-10-1989).");
