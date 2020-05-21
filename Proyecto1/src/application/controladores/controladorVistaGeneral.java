@@ -100,7 +100,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         labelApellidosInicio.setText(usuario.getSurnames());
         labelRolInicio.setText(usuario.getRol());
         labelUsernameInicio.setText(usuario.getUser());
-        labelTelefonoInicio.setText(usuario.getTelephone()+"");
+        labelFechaNacimientoInicio.setText(usuario.getDOB()+"");
         labelEdadInicio.setText(usuario.getAge() + "");
         labelDNIInicio.setText(usuario.getDNI());
         labelTelefonoInicio.setText(usuario.getTelephone() + "");
@@ -303,7 +303,10 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         String[] preguntasYRespuestas = {"1. ¿Cómo puedo enviar un mensaje a mi médico?\n", "En la pestaña \"Mensajes\" en la parte inferior izquierda hay que pulsar el botón \"Crear Nuevo Ticket\" ahi te aparece para introducir el destinatario, asunto y mensaje."
                 , "2. ¿Dónde puedo cerrar sesión?\n", "En la pestaña de \"Inicio\" en la parte inferior izquierda, hay que pulsar el botón\"Cerrar Sesión\"."
                 , "3. ¿Puedo buscar un Usuario por su nombre o apellido?\n", "Sí. En la pestaña de Usuarios, arriba a la izquierda pinchas donde pone buscar e introduces el nombre o apellido."
-                , "4. ¿Dónde puedo ver todos mis mensajes?\n", "En la pestaña \"Mensajes\" sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos."};
+                , "4. ¿Dónde puedo ver todos mis mensajes?\n", "En la pestaña \"Mensajes\" sale la lista de mensajes recibidos y enviados, pudiendo leerlos pinchando en ellos."
+                , "5. Ventajas en la lista de Usuarios.\n", "En la lista de usuarios, se pueden ordenar alfabéticamente tanto los nombres, los apellidos y los roles."
+                , "6. ¿Dónde puedo ver mis datos personales?\n", "En la pestaña \"Inicio\" debajo de la foto de perfil se encuentran todo sus datos personales."
+                , "7. ¿Cómo puedo buscar a un usuario?\n", "En la pestaña \"Usuarios\" una vez seleccionado el usuario de la lista, se mostrará a la derecha de la pantalla toda la información de los datos relativos."};
         for (String PyR : preguntasYRespuestas) {
             labelFAQ.add(new Label(PyR));
             if (i % 2 == 0)

@@ -53,9 +53,9 @@ public class controladorCreacionUsuario {
     @FXML
     void crearUsuario(ActionEvent event) {
         try {
-            if (modelo.countWordsString(crearNombreTField.getText()) != 1) {
+            if (modelo.countWordsString(crearNombreTField.getText()) > 2) {
                 modelo.createAlert("Cuidado",
-                        "Debes introducir un nombre válido, que consista de una sola palabra.");
+                        "Debes introducir un nombre válido, que consista de una/dos palabras.");
             } else if (modelo.countWordsString(crearApellidosTField.getText()) != 2) {
                 modelo.createAlert("Cuidado",
                         "Debes introducir unos apellidos válidos, que consista de dos palabras.");
@@ -76,7 +76,7 @@ public class controladorCreacionUsuario {
                         "Debes introducir un número de teléfono valido de 9 dígitos (654987123).");
             } else if (!modelo.checkRol(crearRolTField.getText())) {
                 modelo.createAlert("Cuidado",
-                        "Debes introducir un rol válido, que consista de una sola palabra (médico, cuidador, paciente, familiar).");
+                        "Roles validos: medico, cuidador, paciente, familiar");
             } else {
                 ConexionBBDD c = new ConexionBBDD();
                 String sentenciaSQL = "INSERT INTO users (`Name`, `Surnames`, `DOB`, `User`, `Password`, `Rol`, `Photo`, `Telephone`, `Adress`, `DNI`) \n" +
