@@ -3,12 +3,14 @@ package application.modelos;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import java.sql.*;
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Vector;
+import java.util.ArrayList;
 
 public class ConexionBBDD {
     private String BBDDName;
@@ -319,12 +321,13 @@ public class ConexionBBDD {
         }
     }
 
-    public void recogerAlertas(HashMap<String, Vector<TextFlow>> registros, int ID_User, String startDate, String endDate){
+    public void recogerAlertas(LinkedHashMap<String, Vector<TextFlow>> registros, int ID_User, String startDate, String endDate){
         try {
             c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String s = "SELECT alertas.Tipo_Sensor, alertas.Reading, alertas.Date_Time_Activation\n" +
                     "FROM alertas\n" +
-                    "WHERE alertas.ID_User = ? AND alertas.Date_Time_Activation BETWEEN ? AND ?";
+                    "WHERE alertas.ID_User = ? AND alertas.Date_Time_Activation BETWEEN ? AND ?\n" +
+                    "ORDER BY alertas.Date_Time_Activation DESC";
             pstm = c.prepareStatement(s);
 
             pstm.setInt(1, ID_User);
@@ -373,7 +376,7 @@ public class ConexionBBDD {
                         break;
                 }
             }
-
+            
         } catch(SQLException | ParseException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }

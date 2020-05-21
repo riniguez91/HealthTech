@@ -931,7 +931,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         vboxRegistros_apane.getChildren().clear();
 
         // Creamos el hash map para las alertas
-        HashMap<String, Vector<TextFlow>> alertasSensores = new HashMap<>();
+        LinkedHashMap<String, Vector<TextFlow>> alertasSensores = new LinkedHashMap<>();
 
         // Lo poblamos con datos
         conexionBBDD.recogerAlertas(alertasSensores, treeTableViewRegistros.getSelectionModel().getSelectedItem().getValue().getID_User().get(),
