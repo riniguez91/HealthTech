@@ -1015,6 +1015,7 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
                 Period p = new org.joda.time.Period(tuplasSinFiltrar.lastElement().getDate_Time_Activation().getTime(), d.getTime());
 
                 totalMinutes += p.getMinutes();
+                totalHours += p.getHours();
                 end = 1;
             }
         }
