@@ -1,5 +1,6 @@
 package application.modelos;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import java.sql.*;
@@ -376,7 +377,7 @@ public class ConexionBBDD {
                         break;
                 }
             }
-            
+
         } catch(SQLException | ParseException sqle) {
             System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
@@ -439,17 +440,27 @@ public class ConexionBBDD {
         try {
             c = DriverManager.getConnection("jdbc:mariadb://2.139.176.212:3306/pr_healthtech", "pr_healthtech", "Jamboneitor123");
             String sql = "SELECT entradas_calendario.ID_Entry\n" +
-                    "FROM entradas_calendario\n" +
-                    "ORDER BY entradas_calendario.ID_Entry DESC\n" +
-                    "LIMIT 1";
+                    "FROM entradas_calendario"; // "\n" +
+                    // "ORDER BY entradas_calendario.ID_Entry DESC\n" +
+                    // "LIMIT 1";
             stmt = c.createStatement();
             rs = stmt.executeQuery(sql);
-            rs.next();
-            x = rs.getInt("ID_Entry");
 
+            Vector<Integer> entradas = new Vector<>();
+
+            while (rs.next())
+                entradas.add(rs.getInt("ID_Entry"));
+
+            modelo m = new modelo();
+            m.quickSort(entradas, 0, entradas.size()-1);
+
+            x = entradas.lastElement();
+            
+            // rs.next();
+            // x = rs.getInt("ID_Entry");
 
         } catch(SQLException sqle) {
-            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage() + "hola pepe");
+            System.err.println(sqle.getClass().getName() + ": " + sqle.getMessage());
         }
         return x;
     }

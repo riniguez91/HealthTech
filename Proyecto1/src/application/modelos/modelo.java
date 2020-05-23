@@ -159,6 +159,19 @@ public class modelo {
         return usuariosRelacionados;
     }
 
+    public void caseUserRelated(ConexionBBDD c, Usuario usuario, ArrayList<Usuario> usuariosRelacionados, String tabla1, String FK1_t1,
+                                String FK2_t1, String tabla2, String FK1_t2, String FK2_t2, String tabla3, String FK1_t3, String FK2_t3)
+            throws SQLException, ParseException {
+
+        Vector<Integer> relatedUTable1 = c.relatedUserIDS(usuario, tabla1, FK1_t1, FK2_t1);
+        Vector<Integer> relatedUTable2 = c.relatedUserIDS(usuario, tabla2, FK1_t2, FK2_t2);
+        Vector<Integer> relatedUTable3 = c.relatedUserIDS(usuario, tabla3, FK1_t3, FK2_t3);
+
+        usuariosRelacionados = crearArrListRolUsuario(relatedUTable1, usuariosRelacionados, c);
+        usuariosRelacionados = crearArrListRolUsuario(relatedUTable2, usuariosRelacionados, c);
+        crearArrListRolUsuario(relatedUTable3, usuariosRelacionados, c);
+    }
+
     public ArrayList<Usuario> crearArrListRolUsuario(Vector<Integer> rt, ArrayList<Usuario> alu, ConexionBBDD c) throws SQLException, ParseException {
         for (int i : rt){
             ResultSet rs = c.selectUserFromID(i);
@@ -173,23 +186,40 @@ public class modelo {
         return alu;
     }
 
-    public void caseUserRelated(ConexionBBDD c, Usuario usuario, ArrayList<Usuario> usuariosRelacionados, String tabla1, String FK1_t1,
-                                String FK2_t1, String tabla2, String FK1_t2, String FK2_t2, String tabla3, String FK1_t3, String FK2_t3)
-                                throws SQLException, ParseException {
-
-        Vector<Integer> relatedUTable1 = c.relatedUserIDS(usuario, tabla1, FK1_t1, FK2_t1);
-        Vector<Integer> relatedUTable2 = c.relatedUserIDS(usuario, tabla2, FK1_t2, FK2_t2);
-        Vector<Integer> relatedUTable3 = c.relatedUserIDS(usuario, tabla3, FK1_t3, FK2_t3);
-
-        usuariosRelacionados = crearArrListRolUsuario(relatedUTable1, usuariosRelacionados, c);
-        usuariosRelacionados = crearArrListRolUsuario(relatedUTable2, usuariosRelacionados, c);
-        crearArrListRolUsuario(relatedUTable3, usuariosRelacionados, c);
-    }
-
     public Entry<String> createEntry(String title, LocalDateTime startDT, LocalDateTime endDT) {
         Entry<String> entry = new Entry<>(title);
         entry.setInterval(startDT, endDT);
 
         return entry;
+    }
+
+    private int partition(Vector<Integer> IDEntries, int begin, int end) {
+        int pivot = IDEntries.get(end);
+        int i = (begin-1);
+
+        for (int j = begin; j < end; j++) {
+            if (IDEntries.get(j) <= pivot) {
+                i++;
+
+                int swapTemp = IDEntries.get(i);
+                IDEntries.set(i, IDEntries.get(j));
+                IDEntries.set(j, swapTemp);
+            }
+        }
+
+        int swapTemp = IDEntries.get(i+1);
+        IDEntries.set(i+1, IDEntries.get(end));
+        IDEntries.set(end, swapTemp);
+
+        return i+1;
+    }
+
+    public void quickSort(Vector<Integer> IDEntries, int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(IDEntries, begin, end);
+
+            quickSort(IDEntries, begin, partitionIndex-1);
+            quickSort(IDEntries, partitionIndex+1, end);
+        }
     }
 }
