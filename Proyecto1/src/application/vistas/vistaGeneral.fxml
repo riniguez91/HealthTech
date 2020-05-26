@@ -225,7 +225,7 @@
                            <children>
                               <VBox alignment="CENTER" fillWidth="false" prefHeight="1050.0" prefWidth="497.0" spacing="10.0" style="-fx-background-color: #34394c;">
                                  <children>
-                                    <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" focusColor="WHITE" focusTraversable="false" labelFloat="true" onKeyPressed="#filterUsersUsuario" prefHeight="44.0" prefWidth="574.0" promptText="Buscar mensaje" styleClass="textoLabelwhite" stylesheets="@../application.css" unFocusColor="WHITE">
+                                    <JFXTextField fx:id="filtrarUsuarioTFieldUsuarios" focusColor="WHITE" focusTraversable="false" labelFloat="true" onKeyPressed="#filterUsersUsuario" prefHeight="44.0" prefWidth="574.0" promptText="Buscar usuario" styleClass="textoLabelwhite" stylesheets="@../application.css" unFocusColor="WHITE">
                                        <VBox.margin>
                                           <Insets top="40.0" />
                                        </VBox.margin>
@@ -558,7 +558,7 @@
                                                 <Font name="Arial Bold" size="19.0" />
                                              </font>
                                           </Label>
-                                          <DatePicker fx:id="calendarioSensores" onAction="#mostrarSensoresDia" prefHeight="51.0" prefWidth="293.0" showWeekNumbers="true" />
+                                          <DatePicker fx:id="calendarioSensores" editable="false" onAction="#mostrarSensoresDia" prefHeight="51.0" prefWidth="293.0" showWeekNumbers="true" />
                                        </children>
                                        <padding>
                                           <Insets right="12.0" top="10.0" />
