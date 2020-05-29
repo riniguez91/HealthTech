@@ -85,11 +85,11 @@ public class controladorVistaGeneral implements Initializable, MapComponentIniti
         this.relatedUsers = modelo.usuariosRelacionados(usuario);
 
         Timer timer = new Timer();
-        // Comprueba cada 5 minutos
+        // Comprueba cada minuto
         if (usuario.getRol().equals("paciente"))
-            timer.schedule(new comprobacionAlertas(this, modelo, conexionBBDD, usuario.getID_User(), "paciente"), 0, 300000);
+            timer.schedule(new comprobacionAlertas(this, modelo, conexionBBDD, usuario.getID_User(), "paciente"), 0, 60000);
         else
-            timer.schedule(new comprobacionAlertas(this, modelo, conexionBBDD, usuario.getRol(), relatedUsers), 0, 300000);
+            timer.schedule(new comprobacionAlertas(this, modelo, conexionBBDD, usuario.getRol(), relatedUsers), 0, 60000);
 
         modelo.setMessages(conexionBBDD.getMensajesDeUsuario(usuario.getID_User()));
 
