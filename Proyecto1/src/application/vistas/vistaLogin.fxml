@@ -59,7 +59,7 @@
                         <Insets bottom="10.0" top="25.0" />
                      </VBox.margin>
                     </JFXPasswordField>
-                    <JFXCheckBox fx:id="checkBox" focusTraversable="false" prefHeight="12.0" prefWidth="220.0" text="Recordar nombre de usuario">
+                    <JFXCheckBox fx:id="checkBox" focusTraversable="false" prefHeight="12.0" prefWidth="220.0" text="Recordar nombre de usuario" visible="false">
                         <font>
                             <Font size="13.0" />
                         </font>
